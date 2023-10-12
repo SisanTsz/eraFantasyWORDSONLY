@@ -1,0 +1,103 @@
+﻿@EVENTFIRST
+        CLEARLINE LINECOUNT
+        ALIGNMENT CENTER
+        CUSTOMDRAWLINE -
+        PRINTL
+        PRINTL 请选择游戏难度
+        PRINTBUTTON "难度说明",0
+        PRINTL
+        CUSTOMDRAWLINE -
+        PRINTL
+        PRINTBUTTON "简单",1
+        PRINTL
+        PRINTL
+        PRINTBUTTON "普通",2
+        PRINTL
+        PRINTL
+        PRINTBUTTON "困难",3
+        PRINTL
+        PRINTL
+        PRINTBUTTON "挑战",4
+        PRINTL
+        PRINTL
+    INPUT
+    IF RESULT == 0
+        CUSTOMDRAWLINE -
+        PRINTL
+        PRINTL 请选择游戏难度
+        PRINTFORML 难度只影响各种判断和数值获取
+        PRINTFORML 给想要刷的人
+        PRINTL
+        WAIT
+        RESTART
+    ELSEIF RESULT == 1 | 2 | 3 | 4
+        FLAG:0 = RESULT
+        CALL DIFFICULTY_CONFIRM
+    ENDIF
+    
+@DIFFICULTY_CONFIRM
+    CLEARLINE LINECOUNT
+    CUSTOMDRAWLINE -
+    PRINTL
+    IF FLAG:0 == 1
+        PRINTL 确认是简单难度吗？
+        PRINTL
+        PRINTBUTTON "确认",0
+        PRINTL
+        PRINTL
+        PRINTBUTTON "取消",1
+        INPUT
+        IF RESULT == 0
+            CALL CHARACTERCREATE
+        ELSEIF RESULT == 1
+            BEGIN FIRST
+        ENDIF
+    ELSEIF FLAG:0 == 2
+        PRINTL 确认是普通难度吗？
+        PRINTL
+        PRINTBUTTON "确认",0
+        PRINTL
+        PRINTL 
+        PRINTBUTTON "取消",1
+        PRINTL
+        PRINTL
+        INPUT
+        IF RESULT == 0
+            CALL CHARACTERCREATE
+        ELSEIF RESULT == 1
+            BEGIN FIRST
+        ENDIF
+    ELSEIF FLAG:0 == 3
+        PRINTL 确认是困难难度吗？
+        PRINTL
+        PRINTBUTTON "确认",0
+        PRINTL
+        PRINTL 
+        PRINTBUTTON "取消",1
+        PRINTL
+        PRINTL
+        INPUT
+        IF RESULT == 0
+            CALL CHARACTERCREATE
+        ELSEIF RESULT == 1
+            BEGIN FIRST
+        ENDIF
+    ELSEIF FLAG:0 == 4
+        PRINTL 确认是挑战难度吗？
+        PRINTL
+        PRINTBUTTON "确认",0
+        PRINTL
+        PRINTL
+        PRINTBUTTON "取消",1
+        PRINTL
+        PRINTL
+        INPUT
+        IF RESULT == 0
+            CALL CHARACTERCREATE
+        ELSEIF RESULT == 1
+            BEGIN FIRST
+        ENDIF
+    ENDIF
+
+@CHARACTERCREATE
+
