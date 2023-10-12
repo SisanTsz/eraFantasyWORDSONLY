@@ -96,7 +96,7 @@
         PRINTL
         INPUT
         IF RESULT == 0
-        ;CALL CHARACTERCREATE
+            CALL CHARACTERCREATE
             BEGIN SHOP
         ELSEIF RESULT == 1
             BEGIN FIRST
@@ -124,7 +124,7 @@ ENDIF
     PRINTFORML 你的名字？
     PRINTL
     INPUT
-    CSTR:0:12 = 'RESULT'
+    NAME:MASTER = 'RESULT'
     PRINTL
     CLEARLINE LINECOUNT
     CUSTOMDRAWLINE -
@@ -132,5 +132,5 @@ ENDIF
     PRINTFORML 你的昵称？
     PRINTL
     INPUT
-    CSTR:0:13 = 'RESULT'
+    CALLNAME:MASTER = 'RESULT'
 
