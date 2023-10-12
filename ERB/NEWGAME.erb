@@ -17,7 +17,7 @@
         PRINTBUTTON "困难",3
         PRINTL
         PRINTL
-        PRINTBUTTON "挑战",4
+        PRINTBUTTON "极限",4
         PRINTL
         PRINTL
     INPUT
@@ -48,11 +48,12 @@
         PRINTBUTTON "取消",1
         INPUT
         IF RESULT == 0
-            CALL CHARACTERCREATE
+        ;CALL CHARACTERCREATE
+            BEGIN SHOP
         ELSEIF RESULT == 1
             BEGIN FIRST
         ENDIF
-    ELSEIF FLAG:0 == 2
+        ELSEIF FLAG:0 == 2
         PRINTL 确认是普通难度吗？
         PRINTL
         PRINTBUTTON "确认",0
@@ -63,11 +64,12 @@
         PRINTL
         INPUT
         IF RESULT == 0
-            CALL CHARACTERCREATE
+        ;CALL CHARACTERCREATE
+            BEGIN SHOP
         ELSEIF RESULT == 1
             BEGIN FIRST
         ENDIF
-    ELSEIF FLAG:0 == 3
+        ELSEIF FLAG:0 == 3
         PRINTL 确认是困难难度吗？
         PRINTL
         PRINTBUTTON "确认",0
@@ -78,12 +80,13 @@
         PRINTL
         INPUT
         IF RESULT == 0
-            CALL CHARACTERCREATE
+        ;CALL CHARACTERCREATE
+            BEGIN SHOP
         ELSEIF RESULT == 1
             BEGIN FIRST
+        ELSEIF FLAG:0 == 4
         ENDIF
-    ELSEIF FLAG:0 == 4
-        PRINTL 确认是挑战难度吗？
+        PRINTL 确认是极限难度吗？
         PRINTL
         PRINTBUTTON "确认",0
         PRINTL
@@ -93,11 +96,41 @@
         PRINTL
         INPUT
         IF RESULT == 0
-            CALL CHARACTERCREATE
+        ;CALL CHARACTERCREATE
+            BEGIN SHOP
         ELSEIF RESULT == 1
             BEGIN FIRST
         ENDIF
     ENDIF
 
+IF RESULT == 0
+        ;CALL CHARACTERCREATE
+        BEGIN SHOP
+    ELSEIF RESULT == 1
+        BEGIN FIRST
+ENDIF
+IF RESULT == 0
+    ;CALL CHARACTERCREATE
+    BEGIN SHOP
+ELSEIF RESULT == 1
+    BEGIN FIRST
+ENDIF
+
 @CHARACTERCREATE
+    CLEARLINE LINECOUNT
+    ALIGNMENT LEFT
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTFORML 你的名字？
+    PRINTL
+    INPUT
+    CSTR:0:12 = 'RESULT'
+    PRINTL
+    CLEARLINE LINECOUNT
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTFORML 你的昵称？
+    PRINTL
+    INPUT
+    CSTR:0:13 = 'RESULT'
 
