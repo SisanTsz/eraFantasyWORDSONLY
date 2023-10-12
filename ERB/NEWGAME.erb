@@ -1,40 +1,77 @@
 ﻿@EVENTFIRST
+    CLEARLINE LINECOUNT
+    CALL DIFFICULTY_SELECT
+RETURN
+
+
+
+@DIFFICULTY_SELECT
+    $SELECTION_LOOP
+    CLEARLINE LINECOUNT
+    ALIGNMENT CENTER
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTL 请选择游戏难度
+    PRINTBUTTON "[难度说明]",0
+    PRINTL
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTBUTTON "[简单]",1
+    PRINTL
+    PRINTL
+    PRINTBUTTON "[普通]",2
+    PRINTL
+    PRINTL
+    PRINTBUTTON "[困难]",3
+    PRINTL
+    PRINTL
+    PRINTBUTTON "[极限]",4
+    PRINTL
+    PRINTL
+    PRINTBUTTON "[返回]",5
+    PRINTL
+    PRINTL
+    INPUT
+    IF RESULT == 0
         CLEARLINE LINECOUNT
         ALIGNMENT CENTER
         CUSTOMDRAWLINE -
         PRINTL
         PRINTL 请选择游戏难度
-        PRINTBUTTON "难度说明",0
-        PRINTL
-        CUSTOMDRAWLINE -
-        PRINTL
-        PRINTBUTTON "简单",1
-        PRINTL
-        PRINTL
-        PRINTBUTTON "普通",2
-        PRINTL
-        PRINTL
-        PRINTBUTTON "困难",3
-        PRINTL
-        PRINTL
-        PRINTBUTTON "极限",4
-        PRINTL
-        PRINTL
-    INPUT
-    IF RESULT == 0
-        CUSTOMDRAWLINE -
-        PRINTL
-        PRINTL 请选择游戏难度
-        PRINTFORML 难度只影响各种判断和数值获取
+        PRINTFORML 难度影响开局技能等级，各种判断和数值获取
         PRINTFORML 给想要刷的人
         PRINTL
-        WAIT
-        RESTART
+        CUSTOMDRAWLINE -
+        PRINTL
+        PRINTBUTTON "[简单]",1
+        PRINTL
+        PRINTL
+        PRINTBUTTON "[普通]",2
+        PRINTL
+        PRINTL
+        PRINTBUTTON "[困难]",3
+        PRINTL
+        PRINTL
+        PRINTBUTTON "[极限]",4
+        PRINTL
+        PRINTL
+        PRINTBUTTON "[返回]",5
+        PRINTL
+        PRINTL
+        INPUT
+        IF RESULT == 5
+            CALL SYSTEM_TITLE
+        ELSEIF RESULT == 1 | 2 | 3 | 4
+            FLAG:0 = RESULT
+            CALL DIFFICULTY_CONFIRM
+        ENDIF
+    ELSEIF RESULT == 5
+        CALL SYSTEM_TITLE
     ELSEIF RESULT == 1 | 2 | 3 | 4
         FLAG:0 = RESULT
         CALL DIFFICULTY_CONFIRM
     ENDIF
-    
+
 @DIFFICULTY_CONFIRM
     CLEARLINE LINECOUNT
     CUSTOMDRAWLINE -
@@ -42,95 +79,162 @@
     IF FLAG:0 == 1
         PRINTL 确认是简单难度吗？
         PRINTL
-        PRINTBUTTON "确认",0
+        PRINTBUTTON "[确认]",0
         PRINTL
         PRINTL
-        PRINTBUTTON "取消",1
+        PRINTBUTTON "[取消]",1
+        PRINTL
+        PRINTL
         INPUT
         IF RESULT == 0
-        ;CALL CHARACTERCREATE
-            BEGIN SHOP
+            CALL XP_FIRST_SETTING
         ELSEIF RESULT == 1
-            BEGIN FIRST
+            CALL DIFFICULTY_SELECT
         ENDIF
-        ELSEIF FLAG:0 == 2
+    ELSEIF FLAG:0 == 2
         PRINTL 确认是普通难度吗？
         PRINTL
-        PRINTBUTTON "确认",0
-        PRINTL
+        PRINTBUTTON "[确认]",0
         PRINTL 
-        PRINTBUTTON "取消",1
+        PRINTL
+        PRINTBUTTON "[取消]",1
         PRINTL
         PRINTL
         INPUT
         IF RESULT == 0
-        ;CALL CHARACTERCREATE
-            BEGIN SHOP
+            CALL XP_FIRST_SETTING
         ELSEIF RESULT == 1
-            BEGIN FIRST
+            CALL DIFFICULTY_SELECT
         ENDIF
-        ELSEIF FLAG:0 == 3
+    ELSEIF FLAG:0 == 3
         PRINTL 确认是困难难度吗？
         PRINTL
-        PRINTBUTTON "确认",0
-        PRINTL
+        PRINTBUTTON "[确认]",0
         PRINTL 
-        PRINTBUTTON "取消",1
+        PRINTL
+        PRINTBUTTON "[取消]",1
         PRINTL
         PRINTL
         INPUT
         IF RESULT == 0
-        ;CALL CHARACTERCREATE
-            BEGIN SHOP
+            CALL XP_FIRST_SETTING
         ELSEIF RESULT == 1
-            BEGIN FIRST
-        ELSEIF FLAG:0 == 4
+            CALL DIFFICULTY_SELECT
+        ENDIF
+    ELSEIF FLAG:0 == 4
         ENDIF
         PRINTL 确认是极限难度吗？
         PRINTL
-        PRINTBUTTON "确认",0
+        PRINTBUTTON "[确认]",0
         PRINTL
         PRINTL
-        PRINTBUTTON "取消",1
+        PRINTBUTTON "[取消]",1
         PRINTL
         PRINTL
         INPUT
         IF RESULT == 0
-            CALL CHARACTERCREATE
-            BEGIN SHOP
+            CALL XP_FIRST_SETTING
         ELSEIF RESULT == 1
-            BEGIN FIRST
+            CALL DIFFICULTY_SELECT
         ENDIF
-    ENDIF
 
-IF RESULT == 0
-        ;CALL CHARACTERCREATE
-        BEGIN SHOP
-    ELSEIF RESULT == 1
-        BEGIN FIRST
-ENDIF
-IF RESULT == 0
-    ;CALL CHARACTERCREATE
-    BEGIN SHOP
-ELSEIF RESULT == 1
-    BEGIN FIRST
-ENDIF
-
-@CHARACTERCREATE
+@NAME_FIRST_SETTING
+    #DIMS NAME1
+    #DIMS NAME2
     CLEARLINE LINECOUNT
-    ALIGNMENT LEFT
+    ALIGNMENT CENTER
     CUSTOMDRAWLINE -
     PRINTL
     PRINTFORML 你的名字？
     PRINTL
-    INPUT
-    NAME:MASTER = 'RESULT'
+    PRINTBUTTON "[默认]",0
+    PRINTBUTTON "[输入]",1
+    IF RESULT == 0
+
+    INPUTS
+    NAME1 = %RESULTS%
     PRINTL
-    CLEARLINE LINECOUNT
     CUSTOMDRAWLINE -
     PRINTL
     PRINTFORML 你的昵称？
     PRINTL
+    INPUTS
+    NAME2 = %RESULTS%
+    PRINTL
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTFORML 确认名字是%NAME1% 昵称是%NAME2%吗?
+    PRINTBUTTON "[确认]",0
+    PRINTBUTTON "[再输入]",1
+    PRINTL
+    PRINTL
     INPUT
-    CALLNAME:MASTER = 'RESULT'
+    IF RESULT == 0
+        NAME:1 = NAME1
+        CALLNAME:1 = NAME2
+        CALL SPECIES_FIRST_SETTING
+    ELSEIF RESULT == 1
+        RESTART
+    ENDIF
 
+
+
+
+
+@XP_FIRST_SETTING
+    CLEARLINE LINECOUNT
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTFORML XP 开关
+    PRINTL
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTBUTTON "[继续]",0
+    PRINTL
+    PRINTL
+    INPUT
+    IF RESULT == 0
+        CALL NAME_FIRST_SETTING
+    ENDIF
+
+@SPECIES_FIRST_SETTING
+    CLEARLINE LINECOUNT
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTFORML 种族选择
+    PRINTL
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTBUTTON "[人类]",1
+    PRINTL
+    PRINTL
+    PRINTBUTTON "[返回]",0
+    PRINTL
+    PRINTL
+    INPUT
+    IF RESULT == 1
+        CALL HUMAN_SELECTED
+    ELSEIF RESULT  == 0
+        CALL XP_FIRST_SETTING
+    ENDIF
+
+@HUMAN_SELECTED
+    CUSTOMDRAWLINE -
+    PRINTL
+    PRINTFORML 平凡但充满可能性的种族
+    PRINTL
+    PRINTFORML 确认种族是人类吗？
+    PRINTL
+    PRINTBUTTON "[确认]",0
+    PRINTBUTTON "[取消]",1
+    PRINTL
+    PRINTL
+    INPUT
+    IF RESULT == 0
+        PRINT YES
+    ELSEIF RESULT == 1
+        CLEARLINE LINECOUNT
+        CALL SPECIES_FIRST_SETTING
+    ENDIF
+
+@
