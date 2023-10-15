@@ -1,30 +1,42 @@
 ﻿@SYSTEM_TITLE
+    $TITLEMENU
     CLEARLINE LINECOUNT
     CUSTOMDRAWLINE -
     ALIGNMENT CENTER
     PRINTL
-    PRINTFORML eraFantasy
+    PRINTL eraFantasy 2023~
     PRINTL
     CUSTOMDRAWLINE -
     PRINTL
-    PRINTFORML 作者:紫三思
+    PRINTL 策划:
+    PRINTL 紫三思 娜娜莉 艾莉茜尔·沙利西斯
     PRINTL
-    PRINTFORML 口上:娜娜莉
+    PRINT 程序：
+    PRINTL 紫三思
+    PRINTL
+    PRINTL 口上:
+    PRINTL 娜娜莉 127 老湿姬
     PRINTL 
     CUSTOMDRAWLINE -
-
-    PRINTBUTTON "新游戏",0
+    PRINTL
+    PRINTBUTTON "[新游戏]",0
     PRINTL
     PRINTL
-    PRINTBUTTON "载入存档",1
+    PRINTBUTTON "[载入存档]",1
     PRINTL
     PRINTL
+    PRINTBUTTON "[退出]", 2
     INPUT
     IF RESULT == 0
-        CLEARLINE LINECOUNT
+        RESETDATA
+        ADDDEFCHARA
         BEGIN FIRST
+        RETURN
     ELSEIF RESULT == 1
-        CLEARLINE LINECOUNT
+        LOADGLOBAL
+        ALIGNMENT LEFT
+        LOADGAME
+    ELSEIF RESULT == 2
+        QUIT
     ENDIF
-
-    QUIT
+    GOTO TITLEMENU
