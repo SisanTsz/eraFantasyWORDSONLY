@@ -1,0 +1,117 @@
+﻿@NEW_CHARACTER_CHECK
+    IF RESULT == 1
+        PRINTL 请输入
+        INPUTS
+        NAME:MASTER = %RESULTS%
+    ELSEIF RESULT == 2
+        PRINTL 请输入
+        INPUTS
+        CALLNAME:MASTER = %RESULTS%
+    ELSEIF RESULT == 3
+        PRINTFORMLC [1] 人类
+        PRINT
+        PRINTFORMLC [2] 高等精灵
+        INPUT
+        IF RESULT == 1
+            CFLAG:MASTER:2 = 1
+        ELSEIF RESULT == 2
+            CFLAG:MASTER:2 = 2
+        ENDIF
+    ELSEIF RESULT == 4
+        IF CFLAG:MASTER:1 < 3
+            CFLAG:MASTER:1 +=1
+        ELSE
+            CFLAG:MASTER:1 = 1
+        ENDIF
+    ELSEIF RESULT == 5
+        IF CFLAG:MASTER:100 < 5
+            CFLAG:MASTER:100 += 1
+        ELSE 
+            CFLAG:MASTER:100 = 1
+        ENDIF
+    ELSEIF RESULT == 6
+        IF CFLAG:MASTER:103 < 2
+            CFLAG:MASTER:103 += 1
+        ELSE
+            CFLAG:MASTER:103 = 0
+        ENDIF
+    ELSEIF RESULT == 7
+        IF CFLAG:MASTER:104 <2
+            CFLAG:MASTER:104 += 1
+        ELSE
+            CFLAG:MASTER:104 = 1
+        ENDIF
+    ELSEIF RESULT == 8
+        IF CFLAG:MASTER:118 < 4
+            CFLAG:MASTER:118 += 1
+        ELSE
+            CFLAG:MASTER:118 = 1
+        ENDIF
+    ELSEIF RESULT == 9
+        IF CFLAG:MASTER:119 < 5
+            CFLAG:MASTER:119 += 1
+        ELSE
+            CFLAG:MASTER:119 = 1
+        ENDIF
+    ELSEIF RESULT == 10
+        IF CFLAG:MASTER:116 < 5
+            CFLAG:MASTER:116 += 1
+        ELSE
+            CFLAG:MASTER:116 =0
+        ENDIF
+    ELSEIF RESULT == 11
+        IF CFLAG:MASTER:117 == 1
+            CFLAG:MASTER:117 = 2
+        ELSE
+            CFLAG:MASTER:117 = 1
+        ENDIF
+    ELSEIF RESULT == 12
+        IF CFLAG:MASTER:122 <5
+            CFLAG:MASTER:122 += 1
+        ELSE
+            CFLAG:MASTER:122 == 1
+        ENDIF
+    ELSEIF RESULT == 13
+        IF CFLAG:MASTER:101 < 6
+            CFLAG:MASTER:101 += 1
+        ELSE
+            CFLAG:MASTER:101 = 1
+        ENDIF
+    ELSEIF RESULT == 14
+        IF CFLAG:MASTER:109 < 2
+            CFLAG:MASTER:109 += 1
+        ELSE
+            CFLAG:MASTER:109 = 0
+        ENDIF
+    ELSEIF RESULT == 15
+        IF CFLAG:MASTER:110 == 0
+            CFLAG:MASTER:110 = 1
+        ELSE
+            CFLAG:MASTER:110 = 0
+        ENDIF
+    ELSEIF RESULT == 16
+        IF CFLAG:MASTER:111 < 3
+            CFLAG:MASTER:111 += 1
+        ELSE
+            CFLAG:MASTER:111 =1
+        ENDIF
+    ELSEIF RESULT == 17
+        IF CFLAG:MASTER:106 < 3
+            CFLAG:MASTER:106 += 1
+        ELSE
+            CFLAG:MASTER:106 = 0
+        ENDIF
+    ELSEIF RESULT == 18
+        IF CFLAG:MASTER:107 < 6
+            CFLAG:MASTER:107 += 1
+        ELSE
+            CFLAG:MASTER:107 = 1
+        ENDIF
+    ELSEIF RESULT == 99
+        CALL RANDOM_CHARACTERDATA
+        CALL SHOW_SHOP
+    ENDIF
+    CALL NEW_CHARACTER
+
+@RANDOM_CHARACTERDATA
+    BASE:MASTER:101 = CFLAG:MASTER:1*4 + RAND:3
