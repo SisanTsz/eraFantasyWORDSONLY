@@ -1,0 +1,20 @@
+﻿@USERCOM
+    IF RESULT == 901
+        PRINT test
+        CALLFORM ABILITY_SHOW(TARGET)
+    ELSEIF RESULT == 902
+        CALL STATUS_SHOW
+    ELSEIF RESULT == 903
+        PRINT test
+        BEGIN AFTERTRAIN
+        RETURN 1
+    ELSEIF RESULT == 999
+        IF TFLAG:7 == 0
+            TFLAG:7 = 1
+        ELSE
+            TFLAG:7 = 0
+        ENDIF
+    ENDIF
+    RETURN 0
+
+@EVENTEND

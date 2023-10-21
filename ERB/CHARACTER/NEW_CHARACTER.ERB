@@ -1,4 +1,5 @@
 ﻿@NEW_CHARACTER
+    $NEW_CHARACTER
     PRINTL
     PRINTFORML 名称：%NAME:MASTER%
     PRINTFORML [1] 修改名称
@@ -184,6 +185,7 @@
         ENDIF
         PRINTFORML [18] 修改外阴形状
     ENDIF
-        PRINTFORML [99] 开始
-        INPUT
-        CALL NEW_CHARACTER_CHECK
+    PRINTFORML [99] 开始
+    INPUT
+    CALL NEW_CHARACTER_CHECK
+    GOTO NEW_CHARACTER ;角色创建循环

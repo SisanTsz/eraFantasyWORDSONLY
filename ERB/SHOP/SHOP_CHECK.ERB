@@ -1,4 +1,4 @@
-﻿@SHOPCHECK
+﻿@SHOP_CHECK
     IF RESULT == 900
         ALIGNMENT LEFT
         SAVEGAME
@@ -11,7 +11,7 @@
     ELSEIF RESULT == 200
         IF TARGET >= 1
             CLEARLINE LINECOUNT
-            CALL TRAIN
+            BEGIN TRAIN
         ELSE    
             CUSTOMDRAWLINE -
             PRINTL 选择调教对象
