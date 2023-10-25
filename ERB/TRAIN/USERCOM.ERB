@@ -1,19 +1,15 @@
 ﻿@USERCOM
     IF RESULT == 901
-        PRINT test
-        CALLFORM ABILITY_SHOW(TARGET)
+        CALL ABILITY_SHOW(TARGET)
     ELSEIF RESULT == 902
-        CALL STATUS_SHOW
-    ELSEIF RESULT == 903
-        PRINT test
-        BEGIN AFTERTRAIN
-        RETURN 1
-    ELSEIF RESULT == 999
-        IF TFLAG:7 == 0
-            TFLAG:7 = 1
+        IF TFLAG:0 == 1
+            TFLAG:0 = 0
         ELSE
-            TFLAG:7 = 0
+            TFLAG:0 = 1
         ENDIF
+    ELSEIF RESULT == 903
+        BEGIN ABLUP
+        RETURN 1
     ENDIF
     RETURN 0
 
