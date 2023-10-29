@@ -12,7 +12,7 @@ CALL 数据条绘制 (BASE:ARG:1,MAXBASE:ARG:1,"▥","▥",0xffff00,0x3c3c3c,10)
 PRINTFORM ({BASE:ARG:1}/{MAXBASE:ARG:1,4})
 PRINTL
 IF ARG != MASTER
-    PRINTFORML 好感: {BASE:ARG:5}
+    PRINTFORML 好感: {CFLAG:ARG:6}
 ENDIF
 PRINTL □ 基本信息 □------------------------------------------------------
 IF CFLAG:ARG:1 == 1

@@ -14,7 +14,7 @@
     ELSEIF RESULT == 0
         CALL EVENTFIRST
     ENDIF
-    GOTO FIRST_SETTING_LOOP ;设置循环
+    ;GOTO FIRST_SETTING_LOOP ;设置循环
 
 @FIRST_XPSETTING, ARG;xp屏蔽 1=开始的设置
     $FIRST_XP_LOOP
@@ -73,6 +73,6 @@
             GLOBAL:104 = 0
         ENDIF
     ELSEIF RESULT == 0
-        CALL FIRST_SETTING
+        JUMP FIRST_SETTING
     ENDIF
     GOTO FIRST_XP_LOOP; xp系统循环
