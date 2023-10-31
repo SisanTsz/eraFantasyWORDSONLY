@@ -14,14 +14,21 @@
     DOWNBASE:0 += 5
     DOWNBASE:1 += 50
 
-    SOURCE:不洁 = 30
-    SOURCE:耻情 = 100
+    SOURCE:不洁 += 30
+    SOURCE:耻情 += 100
 
-    SOURCE:快C = 100
-    SOURCE:快B = 100
+    SOURCE:快C += 100
+    SOURCE:快B += 100
+    SOURCE:快S += 100
 
-    TIMES SOURCE:快C , 1.2**(ABL:MASTER:手技 + ABL:TARGET:C感觉)
-    TIMES SOURCE:快B , 1.2**(ABL:MASTER:手技 + ABL:TARGET:B感觉)
+    TIMES SOURCE:快C , 1.1**(ABL:MASTER:手技)
+    TIMES SOURCE:快B , 1.1**(ABL:MASTER:手技)
+    TIMES SOURCE:快S , 1.1**(ABL:MASTER:手技)
+    TIMES SOURCE:快C , 1.1**(ABL:TARGET:C感觉)
+    TIMES SOURCE:快B , 1.1**(ABL:TARGET:C感觉)
+    TIMES SOURCE:快S , 1.1**(ABL:TARGET:C感觉)
+
+    FLAG:4 += 15
 
     RETURN 1
 
