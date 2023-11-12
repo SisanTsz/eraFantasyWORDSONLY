@@ -1,0 +1,229 @@
+﻿@COAT(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:2
+        CASE 1
+            RETURNF "西装"
+        CASE 2
+            RETURNF "运动服"
+        CASE 3
+            RETURNF "V领毛衣"
+        CASE 4
+            RETURNF "连帽风衣"
+        CASE 5
+            RETURNF "无帽风衣"
+        CASE 6
+            RETURNF "针织毛衣"
+        CASE 7
+            RETURNF "高领毛衣"
+        CASE 8
+            RETURNF "露肩外衣"
+        CASE 9
+            RETURNF "哥特披风"
+        CASE 10
+            RETURNF "和服"
+        CASEELSE
+            RETURNF "无"
+    ENDSELECT
+
+@JACKET(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:3
+        CASE 1
+            RETURNF "水手服"
+        CASE 2
+            RETURNF "背心"
+        CASE 3
+            RETURNF "女式衬衫"
+        CASE 4
+            RETURNF "无袖衬衫"
+        CASE 5
+            RETURNF "T恤"
+        CASE 6
+            RETURNF "圆领衬衫"
+        CASE 7
+            RETURNF "体操服"
+        CASE 8
+            RETURNF "吊带背心"
+        CASE 9
+            RETURNF "连衣裙"
+        CASE 10
+            RETURNF "晨衣"
+        CASE 11
+            RETURNF "睡衣"
+        CASE 12
+            RETURNF "哥特礼服"
+        CASE 13
+            RETURNF "连体泳衣"
+        CASE 14
+            RETURNF "拘束服"
+        CASE 15
+            RETURNF "女仆装"
+        CASE 16
+            RETURNF "护士服"
+        CASE 17
+            RETURNF "旗袍"
+        CASE 18
+            RETURNF "巫女服"
+        CASE 19
+            RETURNF "吊带睡裙"
+        CASEELSE
+            RETURNF "无"
+    ENDSELECT
+
+@UNDERWEAR(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:4
+        CASE 1
+            RETURNF "情趣内衣"
+        CASE 2
+            RETURNF "满杯胸罩"
+        CASE 3
+            RETURNF "3/4杯胸罩"
+        CASE 4
+            RETURNF "半杯胸罩"
+        CASE 5
+            RETURNF "开放型胸罩"
+        CASE 6
+            RETURNF "1/4杯胸罩"
+        CASE 7
+            RETURNF "比基尼胸罩"
+        CASE 8
+            RETURNF "猫猫胸罩"
+        CASE 9
+            RETURNF "蕾丝胸罩"
+        CASE 10
+            RETURNF "吊带背心"
+        CASE 11
+            RETURNF "抹胸"
+        CASE 12
+            RETURNF "乳贴"
+        CASE 13
+            RETURNF "胸衣"
+        CASEELSE
+            RETURNF "真空"
+    ENDSELECT
+
+@GLOVES(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:5
+        CASE 1
+            RETURNF "手套"
+        CASE 2
+            RETURNF "露指手套"
+        CASE 3
+            RETURNF "礼服手套"
+        CASE 4
+            RETURNF "礼服袖套"
+        CASEELSE
+            RETURNF "无"
+    ENDSELECT
+
+@PANTY(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:6
+        CASE 1
+            RETURNF "内裤"
+        CASE 2
+            RETURNF "三角胖次"
+        CASE 3
+            RETURNF "褶边胖次"
+        CASE 4
+            RETURNF "条纹胖次"
+        CASE 5
+            RETURNF "蕾丝胖次"
+        CASE 6
+            RETURNF "低腰胖次"
+        CASE 7
+            RETURNF "丁字裤"
+        CASE 8
+            RETURNF "平角裤"
+        CASE 9
+            RETURNF "兜裆布"
+        CASE 10
+            RETURNF "前贴"
+        CASE 11
+            RETURNF "儿童内裤"
+        CASE 12
+            RETURNF "衬裤"
+        CASE 13
+            RETURNF "比基尼"
+        CASE 14
+            RETURNF "情趣内裤"
+        CASEELSE
+            RETURNF "真空"
+    ENDSELECT
+
+@TROUSERS(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:7
+        CASE 1
+            RETURNF "百褶裙"
+        CASE 2
+            RETURNF "格子裙"
+        CASE 3
+            RETURNF "紧身裙"
+        CASE 4
+            RETURNF "荷叶边"
+        CASE 5
+            RETURNF "布鲁玛"
+        CASE 6
+            RETURNF "热裤"
+        CASE 7
+            RETURNF "休闲裤"
+        CASE 8
+            RETURNF "运动裤"
+        CASE 9
+            RETURNF "牛仔裤"
+        CASE 10
+            RETURNF "拘束服"
+        CASE 11
+            RETURNF "晨裤"
+        CASE 12
+            RETURNF "睡裤"
+        CASEELSE
+            RETURNF "无"
+    ENDSELECT
+
+@STOCKINGS(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:8
+        CASE 1
+            RETURNF "连裤袜"
+        CASE 2
+            RETURNF "丝袜"
+        CASE 3
+            RETURNF "长筒袜"
+        CASE 4
+            RETURNF "短袜"
+        CASE 5
+            RETURNF "及膝袜"
+        CASEELSE
+            RETURNF "无"
+    ENDSELECT
+
+@SHOES(ARG)
+    #FUNCTIONS
+    SELECTCASE EQUIP:ARG:9
+        CASE 1
+            RETURNF "小皮鞋"
+        CASE 2
+            RETURNF "运动鞋"
+        CASE 3
+            RETURNF "平底鞋"
+        CASE 4
+            RETURNF "高跟鞋"
+        CASE 5
+            RETURNF "凉鞋"
+        CASE 6
+            RETURNF "希腊凉鞋"
+        CASE 7
+            RETURNF "靴子"
+        CASE 8
+            RETURNF "皮靴"
+        CASE 9
+            RETURNF "木屐"
+        CASEELSE
+            RETURNF "无"
+    ENDSELECT
+
+    
