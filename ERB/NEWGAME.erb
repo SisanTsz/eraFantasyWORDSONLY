@@ -12,7 +12,7 @@
     PRINTFORML [1] 普通
     PRINTFORML [2] 困难
     PRINTL
-    PRINTFORML [3] 游戏设置(全局设置)
+    ;PRINTFORML [3] 游戏设置(全局设置)
     PRINTL
     PRINTFORML [4] 返回
 
@@ -21,7 +21,6 @@
         CALL SYSTEM_TITLE
     ELSEIF RESULT == 3
         CLEARLINE LINECOUNT - MEMO_LINECOUNT
-        CALL FIRST_SETTING
     ELSEIF RESULT == 0  ;难度修改
         FLAG:1 = 1
         CALL START_DATA
