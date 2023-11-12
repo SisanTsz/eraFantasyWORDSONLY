@@ -1,13 +1,20 @@
 ﻿@SOURCE_CHECK_MCVABU;部位等级计算
-    SIF ABL:TARGET:M感觉 >0
-        SOURCE:快M = SOURCE:快M *(100 + ABL:TARGET:M感觉*100) / 100
-    SIF ABL:TARGET:C感觉 >0
-        SOURCE:快C = SOURCE:快C *(100 + ABL:TARGET:C感觉*100) / 100
-    SIF ABL:TARGET:V感觉 >0
-        SOURCE:快V = SOURCE:快V *(100 + ABL:TARGET:V感觉*100) / 100
-    SIF ABL:TARGET:A感觉 >0
-        SOURCE:快A = SOURCE:快A *(100 + ABL:TARGET:A感觉*100) / 100
-    SIF ABL:TARGET:B感觉 >0
-        SOURCE:快B = SOURCE:快B *(100 + ABL:TARGET:B感觉*100) / 100
-    SIF ABL:TARGET:尿道感觉 >0
-        SOURCE:快U = SOURCE:快U *(100 + ABL:TARGET:U感觉*100) / 100
+    SIF ABL:TARGET:Ｍ感觉 >　0
+        SOURCE:快Ｍ = SOURCE:快Ｍ *(100 + ABL:TARGET:Ｍ感觉*100) / 100
+    SIF ABL:TARGET:Ｃ感觉 >　0
+        SOURCE:快Ｃ = SOURCE:快Ｃ *(100 + ABL:TARGET:Ｃ感觉*100) / 100
+    SIF ABL:TARGET:Ｖ感觉 >　0
+        SOURCE:快Ｖ = SOURCE:快Ｖ *(100 + ABL:TARGET:Ｖ感觉*100) / 100
+    SIF ABL:TARGET:Ａ感觉 >　0
+        SOURCE:快Ａ = SOURCE:快Ａ *(100 + ABL:TARGET:Ａ感觉*100) / 100
+    SIF ABL:TARGET:Ｂ感觉 >　0
+        SOURCE:快Ｂ = SOURCE:快Ｂ *(100 + ABL:TARGET:Ｂ感觉*100) / 100
+    SIF ABL:TARGET:Ｕ感觉 >　0
+        SOURCE:快Ｕ = SOURCE:快Ｕ *(100 + ABL:TARGET:Ｕ感觉*100) / 100
+
+    CUP:快Ｍ += SOURCE:快Ｍ
+    CUP:快Ｂ += SOURCE:快Ｂ
+    CUP:快Ｃ += SOURCE:快Ｃ
+    CUP:快Ｕ += SOURCE:快Ｕ
+    CUP:快Ｖ += SOURCE:快Ｖ
+    CUP:快Ａ += SOURCE:快Ａ

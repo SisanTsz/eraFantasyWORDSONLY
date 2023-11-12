@@ -1,191 +1,43 @@
 ﻿@NEW_CHARACTER
     ;$NEW_CHARACTER
+    CALL DRAWLINES("□ 创建角色 □")
+    PRINTBUTTON @"名称:%NAME:MASTER%" , 1
     PRINTL
-    PRINTFORML 名称:%NAME:MASTER%
-    PRINTFORML [1] 修改名称
-    PRINTFORML 昵称:%CALLNAME:MASTER%
-    PRINTFORML [2] 修改昵称
-    IF CFLAG:MASTER:2 == 1
-        PRINTFORML 种族:人类
-    ELSEIF CFLAG:MASTER:2 == 2
-        PRINTFORML 种族:高等精灵
-    ENDIF
-    PRINTFORML [3] 修改种族
-    IF CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:1 == 1
-            PRINTL 性别:男性
-        ELSEIF CFLAG:MASTER:1 == 2
-            PRINTL 性别:女性
-        ELSEIF CFLAG:MASTER:1 == 3
-            PRINTL 性别:扶她
-        ENDIF
-        PRINTFORML [4] 需改性别
-    ENDIF
-    ;阴茎设置
-    IF CFLAG:MASTER:1 != 2 && CFLAG:MASTER:2 == 1 | 2
-       IF CFLAG:MASTER:100 == 1
-            PRINTFORML 阴茎:短小
-        ELSEIF CFLAG:MASTER:100 == 2
-            PRINTFORML 阴茎:偏短
-        ELSEIF CFLAG:MASTER:100 == 3
-            PRINTFORML 阴茎:普长
-        ELSEIF CFLAG:MASTER:100 == 4
-            PRINTFORML 阴茎:偏长
-        ELSEIF CFLAG:MASTER:100 == 5
-            PRINTFORML 阴茎:巨根
-       ENDIF
-        PRINTFORML [5] 修改阴茎大小
-    ENDIF
-    IF CFLAG:MASTER:1 != 2 && GLOBAL:102 == 0 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:103 == 0
-            PRINTFORML 包茎:无包茎
-        ELSEIF CFLAG:MASTER:103 == 1
-            PRINTFORML 包茎:假性包茎
-        ELSEIF CFLAG:MASTER:103 == 2
-            PRINTFORML 包茎:真性包茎
-        ENDIF
-        PRINTFORML [6] 修改包茎
-    ENDIF
-    IF CFLAG:MASTER:1 != 1 && GLOBAL:102 == 0 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:104 == 0
-            PRINTL 包皮:无包皮
-       ELSEIF CFLAG:MASTER:104 == 1
-           PRINTL 包皮:假性包皮
-        ELSEIF CFLAG:MASTER:104 == 2
-            PRINTL 包皮:真性包皮
-        ENDIF
-        PRINTFORML [7] 修改包皮
-    ENDIF
-    IF CFLAG:MASTER:1 != 2 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:118 == 1
-            PRINTL 精液颜色:纯白
-        ELSEIF CFLAG:MASTER:118 == 2
-        PRINTL 精液颜色:半透明
-        ELSEIF CFLAG:MASTER:118 == 3
-            PRINTL 精液颜色:微黄
-        ELSEIF CFLAG:MASTER:118 == 4
-            PRINTL 精液颜色:病变
-        ENDIF
-        IF CFLAG:MASTER:119 == 1
-            PRINTL 浓度:水性
-        ELSEIF CFLAG:MASTER:119 == 2
-            PRINTL 浓度:稀薄
-        ELSEIF CFLAG:MASTER:119 == 3
-            PRINTL 浓度:普通
-        ELSEIF CFLAG:MASTER:119 == 4
-            PRINTL 浓度:粘性
-        ELSEIF CFLAG:MASTER:119 == 5
-            PRINTL 浓度:浓稠
-        ENDIF
-        PRINTFORML [8] 修改精液颜色
-        PRINTFORML [9] 修改精液浓度
-    ENDIF
-    IF GLOBAL:101 == 0 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:116 == 0
-            PRINTL 耻垢:无耻垢
-        ELSEIF CFLAG:MASTER:116 == 1
-            PRINTL 耻垢:微量
-        ELSEIF CFLAG:MASTER:116 == 2
-            PRINTL 耻垢:少量
-        ELSEIF CFLAG:MASTER:116 == 3
-            PRINTL 耻垢:普通
-        ELSEIF CFLAG:MASTER:116 == 4
-            PRINTL 耻垢:大量
-        ELSEIF CFLAG:MASTER:116 == 5
-            PRINTL 耻垢:巨量
-        ENDIF
-        IF CFLAG:MASTER:116 != 0
-            IF CFLAG:MASTER:117 == 1
-                PRINTL 类型:软块耻垢
-            ELSE
-                PRINTL 类型:粘液耻垢
-            ENDIF
-        ENDIF
-        PRINTFORML [10] 修改耻垢
-        IF CFLAG:MASTER:116 != 0
-            PRINTFORML [11] 修改类型
-        ENDIF
-    ENDIF
-    ; 乳房设置
-    IF CFLAG:MASTER:1 != 1 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:122 == 1
-            PRINTL 乳量:绝壁
-        ELSEIF CFLAG:MASTER:122 == 2
-            PRINTL 乳量:贫乳
-        ELSEIF CFLAG:MASTER:122 == 3
-            PRINTL 乳量:普乳
-        ELSEIF CFLAG:MASTER:122 == 4
-            PRINTL 乳量:大胸
-       ELSEIF CFLAG:MASTER:122 == 5
-            PRINTL 乳量:巨乳
-        ENDIF
-        IF CFLAG:MASTER:101 == 1
-            PRINTFORML 乳房形状:圆锥型
-        ELSEIF CFLAG:MASTER:101 == 2
-            PRINTFORML 乳房形状:半球型
-        ELSEIF CFLAG:MASTER:101 == 3
-            PRINTFORML 乳房形状:梨型
-        ELSEIF CFLAG:MASTER:101 == 4
-            PRINTFORML 乳房形状:圆盘型
-        ELSEIF CFLAG:MASTER:101 == 5
-            PRINTFORML 乳房形状:扁平型
-        ELSEIF CFLAG:MASTER:101 == 6
-            PRINTFORML 乳房形状:下垂型
-        ENDIF
-        PRINTFORML [12] 修改乳量
-        PRINTFORML [13] 修改乳房形状
-        IF CFLAG:MASTER:109 == 0
-            PRINTL 乳头:无陷没
-        ELSEIF CFLAG:MASTER:109 == 1
-            PRINTL 乳头:假性陷没
-        ELSEIF CFLAG:MASTER:109 == 2
-            PRINTL 乳头:真性陷没
-        ENDIF
-        IF CFLAG:MASTER:110 == 0
-            PRINTL 颜色:嫩粉
-        ELSEIF CFLAG:MASTER:110 == 1
-            PRINTL 颜色:黝黑
-        ENDIF
-        PRINTFORML [14] 修改乳头陷没
-        PRINTFORML [15] 修改乳头颜色
-        IF CFLAG:MASTER:111 == 1
-            PRINTL 乳晕大小:小
-       ELSEIF CFLAG:MASTER:111 == 2
-            PRINTL 乳晕大小:普通
-        ELSEIF CFLAG:MASTER:111 == 3
-            PRINTL 乳晕大小:巨大
-        ENDIF
-        PRINTFORML [16] 修改乳晕大小
-    ENDIF
-    IF GLOBAL:104 == 0 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:106 == 0
-            PRINTFORML 阴毛量:无毛
-        ELSEIF CFLAG:MASTER:106 == 1
-            PRINTFORML 阴毛量:稀疏
-        ELSEIF CFLAG:MASTER:106 == 2
-            PRINTFORML 阴毛量:普通
-        ELSEIF CFLAG:MASTER:106 == 3
-            PRINTFORML 阴毛量:浓密
-        ENDIF
-        PRINTFORML [17] 修改阴毛量
-    ENDIF 
-    IF CFLAG:MASTER:1 != 1 && CFLAG:MASTER:2 == 1 | 2
-        IF CFLAG:MASTER:107 == 1
-            PRINTFORML 外阴形状:馒头
-        ELSEIF CFLAG:MASTER:107 == 2
-            PRINTFORML 外阴形状:白虎
-        ELSEIF CFLAG:MASTER:107 == 3
-            PRINTFORML 外阴形状:布条
-        ELSEIF CFLAG:MASTER:107 == 4
-            PRINTFORML 外阴形状:蝴蝶
-        ELSEIF CFLAG:MASTER:107 == 5
-            PRINTFORML 外阴形状:水滴
-        ELSEIF CFLAG:MASTER:107 == 6
-            PRINTFORML 外阴形状:狗耳
-        ENDIF
-        PRINTFORML [18] 修改外阴形状
-    ENDIF
-    PRINTFORML [99] 开始
+    PRINTBUTTON @"昵称:%CALLNAME:MASTER%" , 2
+    PRINTL
+    PRINTBUTTON @"种族:%SPECIES(MASTER)%" , 3
+    PRINTL
+    PRINTBUTTON @"性别:%SEX(MASTER)%" , 4
+    PRINTL
+    PRINTBUTTON @"阴茎:%PENNIS_SIZE(MASTER)%" , 5
+    PRINTL
+    PRINTBUTTON @"包茎:%PHIMOSIS(MASTER)%" , 6
+    PRINTL
+    PRINTBUTTON @"包皮:%FORESKIN(MASTER)%" , 7
+    PRINTL
+    PRINTBUTTON @"精液颜色:%SEMEN(MASTER)%" , 8
+    PRINTL
+    PRINTBUTTON @"精液浓度:%SEMEN_WATERY(MASTER)%" , 9
+    PRINTL
+    PRINTBUTTON @"耻垢:%SMEGMA(MASTER)%" , 10
+    PRINTL
+    PRINTBUTTON @"耻垢类型:%SMEGMA_TYPE(MASTER)%" , 11
+    PRINTL
+    PRINTBUTTON @"乳量:%BREAST_SIZE(MASTER)%" , 12
+    PRINTL
+    PRINTBUTTON @"乳房形状:%BREAST_TYPE(MASTER)%" , 13
+    PRINTL
+    PRINTBUTTON @"陷没乳头:%INVERTED_NIPPLES(MASTER)%" , 14
+    PRINTL
+    PRINTBUTTON @"乳头颜色:%NIPPLES_COLOR(MASTER)%" , 15
+    PRINTL
+    PRINTBUTTON @"乳晕大小:%AREOLA(MASTER)%" , 16
+    PRINTL
+    PRINTBUTTON @"阴毛:%PUBLIC_HAIR(MASTER)%" , 17
+    PRINTL
+    PRINTBUTTON @"外阴形状:%VUVLA(MASTER)%" , 17
+    PRINTL
+    PRINTL
+    PRINTBUTTON "开始" , 99
     INPUT
-    CALL NEW_CHARACTER_CHECK
-    ;GOTO NEW_CHARACTER
+    CALL NEW_CHARACTER_CHECK(RESULT)

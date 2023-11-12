@@ -1,0 +1,12 @@
+﻿@SOURCE_CHECK_BASE(ARG)
+    IF BASE:ARG:0 - DOWNBASE:ARG:0 > 0
+        BASE:ARG:0 -= DOWNBASE:ARG:0
+    ELSE
+        BASE::ARG:0 = 1
+    ENDIF
+
+    BASE:ARG:1 -= DOWNBASE:ARG:1
+    SIF BASE:ARG:1 < 0
+        BASE:ARG:1 = 0
+    
+    
