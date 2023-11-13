@@ -1,38 +1,363 @@
 ﻿@ABILITY_SHOW(ARG,ARG:1);人物,页数
-    IF ARG:1 == 1
-        CALL DRAWLINES("□　基础信息　□")
-        PRINTFORML 姓名:%NAME:ARG%
-        PRINTFORML 昵称:%CALLNAME:ARG%
-        PRINTFORML 好感:{CFLAG:ARG:6}
-        PRINT 体力:
-	    CALL PRINT_BAR(BASE:ARG:0,MAXBASE:ARG:0,25,　COLOR("体力"))
-	    PRINTFORML ({BASE:ARG:0}/{MAXBASE:ARG:0})
-	    PRINT 气力:
-	    CALL PRINT_BAR(BASE:ARG:1,MAXBASE:ARG:1,25,　COLOR("气力"))
-	    PRINTFORML ({BASE:ARG:1}/{MAXBASE:ARG:1}) 
-	    PRINT ＳＰ:
-	    CALL PRINT_BAR(BASE:ARG:2,MAXBASE:ARG:2,25,　COLOR("ＳＰ"))
-	    PRINTFORML ({BASE:ARG:2}/{MAXBASE:ARG:2})
-	    PRINT 理智:
-	    CALL PRINT_BAR(BASE:ARG:4,MAXBASE:ARG:4,25,　COLOR("理智"))
-	    PRINTFORML ({BASE:ARG:4}/{MAXBASE:ARG:4})
-        CALL DRAWLINES("□　人物属性　□")
-        CALL DRAWLINES("□　人物介绍　□")
+    #DIM LCOUNT
+    #DIM PCOUNT = 0
+    SELECTCASE ARG:1
+        CASE 1
+            CALL DRAWLINES("□　基础信息　□")
+            PRINTFORML 姓名:%NAME:ARG%
+            PRINTFORML 昵称:%CALLNAME:ARG%
+            SIF ARG != MASTER
+                PRINTFORML 好感:{CFLAG:ARG:6}
+            PRINT 体力:
+	        CALL PRINT_BAR(BASE:ARG:0,MAXBASE:ARG:0,25,　COLOR("体力"))
+	        PRINTFORML ({BASE:ARG:0}/{MAXBASE:ARG:0})
+	        PRINT 气力:
+	        CALL PRINT_BAR(BASE:ARG:1,MAXBASE:ARG:1,25,　COLOR("气力"))
+	        PRINTFORML ({BASE:ARG:1}/{MAXBASE:ARG:1}) 
+	        PRINT ＳＰ:
+	        CALL PRINT_BAR(BASE:ARG:2,MAXBASE:ARG:2,25,　COLOR("ＳＰ"))
+	        PRINTFORML ({BASE:ARG:2}/{MAXBASE:ARG:2})
+            IF ARG == MASTER
+                PRINT 精力:
+	            CALL PRINT_BAR(BASE:ARG:3,MAXBASE:ARG:3,25,　COLOR("精力"))
+	            PRINTFORML ({BASE:ARG:3}/{MAXBASE:ARG:3})
+            ENDIF
+	        IF ARG != MASTER
+                PRINT 理智:
+	            CALL PRINT_BAR(BASE:ARG:4,MAXBASE:ARG:4,25,　COLOR("理智"))
+	            PRINTFORML ({BASE:ARG:4}/{MAXBASE:ARG:4})
+            ENDIF
+            CALL DRAWLINES("□　状态　□")
+            CALL DRAWLINES("□　人物属性　□")
+            PRINTFORML 身高:{BASE:ARG:11}
+            PRINTFORML 年龄:{BASE:ARG:12}
+            PRINTFORML 出生月:{BASE:ARG:13}
+            PRINTFORML 出生日:{BASE:ARG:14}
+            CALL DRAWLINES("□　人物介绍　□")
 
-    ENDIF
-    CUSTOMDRAWLINE -
-    PRINTBUTTONLC "[　上一页]" , 95
-    PRINTBUTTONLC "[返回]" , 96
-    PRINTBUTTONLC "[下一页　]" , 97
+        CASE 2
+            CALL DRAWLINES("□　性格　□")
+            FOR LCOUNT, 1, 50
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　能力　□")
+            FOR LCOUNT, 50, 200
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　色情类　□")
+            FOR LCOUNT, 201, 223
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　Ｍ　□")
+            FOR LCOUNT, 301, 320
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　Ｂ　□")
+            FOR LCOUNT, 321, 340
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　Ｃ　□")
+            FOR LCOUNT, 341, 360
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　Ｕ　□")
+            FOR LCOUNT, 361, 380
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　Ｖ　□")
+            FOR LCOUNT, 381, 400
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　Ａ　□")
+            FOR LCOUNT, 401, 420
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　癖好　□")
+            FOR LCOUNT, 500, 550
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　中毒　□")
+            FOR LCOUNT, 551, 600
+                IF　TALENTNAME:LCOUNT != ""
+                    IF TALENT:ARG:LCOUNT > 0
+                        PRINTFORMLC [%TALENTNAME:LCOUNT%]
+                        PCOUNT += 1
+                    ENDIF
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+
+
+
+
+        CASE 3
+            CALL DRAWLINES("□　經驗　□")
+            FOR LCOUNT, 1, 300
+                IF EXPNAME:LCOUNT != ""
+                    PRINTFORMLC %EXPNAME:LCOUNT%{EXP:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+        CASE 4
+            CALL DRAWLINES("□　部位感觉　□")
+            FOR LCOUNT, 1, 20
+                IF ABLNAME:LCOUNT != ""
+                    PRINTFORMLC %ABLNAME:LCOUNT%:LV{ABL:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　技巧　□")
+            FOR LCOUNT, 21, 50
+                IF ABLNAME:LCOUNT != ""
+                    PRINTFORMLC %ABLNAME:LCOUNT%:LV{ABL:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　精神　□")
+            FOR LCOUNT, 51, 80
+                IF ABLNAME:LCOUNT != ""
+                    PRINTFORMLC %ABLNAME:LCOUNT%:LV{ABL:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　扩張　□")
+            FOR LCOUNT, 81, 100
+                IF ABLNAME:LCOUNT != ""
+                    PRINTFORMLC %ABLNAME:LCOUNT%:LV{ABL:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　癖好　□")
+            FOR LCOUNT, 300, 350
+                IF ABLNAME:LCOUNT != ""
+                    PRINTFORMLC %ABLNAME:LCOUNT%:LV{ABL:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+            PRINTL
+            PCOUNT = 0
+            CALL DRAWLINES("□　中毒　□")
+            FOR LCOUNT, 351, 400
+                IF ABLNAME:LCOUNT != ""
+                    PRINTFORMLC %ABLNAME:LCOUNT%:LV{ABL:ARG:LCOUNT}
+                    PCOUNT += 1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+
+
+        CASE 5
+            CALL DRAWLINES("□　詳細信息　□")
+            
+            FOR LCOUNT, 101, 150
+                IF BASENAME:LCOUNT != ""
+                    PRINTFORMLC %BASENAME:LCOUNT%:{BASE:ARG:LCOUNT}
+                    PCOUNT +=1
+                ENDIF
+                IF PCOUNT >= 6
+                    PRINTL
+                    PCOUNT = 0
+                ENDIF
+            NEXT
+    ENDSELECT
     PRINTL
+
+
+            
+    CUSTOMDRAWLINE -
+    IF ARG:1 != 1
+        PRINTBUTTONLC "[基础信息]" , 91
+    ELSE
+        PRINTLC [基础信息]
+    ENDIF
+    IF ARG:1 != 2
+        PRINTBUTTONLC "[特质]" , 92
+    ELSE
+        PRINTLC [特质]
+    ENDIF
+    IF ARG:1 != 3
+        PRINTBUTTONLC "[经验]" , 93
+    ELSE
+        PRINTLC [经验]
+    ENDIF
+    IF ARG:1 != 4
+        PRINTBUTTONLC "[等级]" , 90
+    ELSE
+        PRINTLC [等级]
+    ENDIF
+    IF ARG:1 != 5
+        PRINTBUTTONLC "[详细信息]" , 94
+    ELSE
+        PRINTLC [详细信息]
+    ENDIF
+    PRINTL
+    PRINTBUTTONLC "[上一页]" , 95
+    PRINTBUTTONLC "[下一页]" , 97
     PRINTBUTTONLC "[上一角色]", 98
-    PRINTLC  
     PRINTBUTTONLC "[下一角色]", 99
+    PRINTBUTTONLC "[列表]" , 100
+    PRINTBUTTONLC "[返回]" , 96
     INPUT
     CALL ABILITY_SHOW_CHECK(ARG,ARG:1,RESULT)
 
 @ABILITY_SHOW_CHECK(ARG,ARG:1,ARG:2)
     SELECTCASE ARG:2
+        CASE 91
+            CALL ABILITY_SHOW(ARG,1)
+        CASE 92
+            CALL ABILITY_SHOW(ARG,2)
+        CASE 93
+            CALL ABILITY_SHOW(ARG,3)
+        CASE 94
+            CALL ABILITY_SHOW(ARG,5)
         CASE 95
             SIF ARG:1 > 1
                 CALL ABILITY_SHOW(ARG,ARG:1-1)
@@ -46,4 +371,9 @@
         CASE 99
             SIF ARG + 1 < CHARANUM
                 CALL ABILITY_SHOW(ARG+1,ARG:1)
+        CASE 100
+            CALL CHARACTER_LIST(1)
+            CALL ABILITY_SHOW(ARG,ARG:1)
+        CASE 90
+            CALL ABILITY_SHOW(ARG,4)
     ENDSELECT

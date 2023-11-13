@@ -7,13 +7,17 @@
     CALL HEADING_TARGET(TARGET)
     CALL DRAWLINES_CENTER("【　移动　】")
     CALL MOVING_LIST
-    CALL DRAWLINES_CENTER("【　调教　】")
+    ;CALL DRAWLINES_CENTER("【　调教　】")
+    PRINTL 【　调教　】
     CALL TRAIN_PRE
-    CALL DRAWLINES_CENTER("【　角色管理　】")
+    ;CALL DRAWLINES_CENTER("【　角色管理　】")
+    PRINTL 【　角色管理　】
     CALL CHARACTER_MANAGEMENT
-    CALL DRAWLINES_CENTER("【　持有管理　】")
+    ;CALL DRAWLINES_CENTER("【　持有管理　】")
+    PRINTL 【　持有管理　】
     CALL MANAGEMENT
-    CALL DRAWLINES_CENTER("【　系统　】")
+    ;CALL DRAWLINES_CENTER("【　系统　】")
+    PRINTL 【　系统　】
     CALL SYSTEM_LIST
     PRINTL
     ALIGNMENT LEFT
@@ -44,7 +48,7 @@
     PRINTLC [402] 衣装
     PRINTLC [403] 调教用具
     PRINTL
-    PRINTLC [404] 器具
+    PRINTLC [404] 神器
     PRINTLC [405] 设施
     PRINTLC [---] ----
     PRINTL
@@ -57,8 +61,12 @@
     PRINTLC [902] 设置
     PRINTL
     PRINTLC [903] 实绩
-    PRINTLC [904] 典开
-    PRINTLC [905] DEBUG
+    PRINTLC [904] 典開
+    IF FLAG:5 == 1
+        PRINTLC [905] DEBUG
+    ELSE 
+        PRINTLC [---] ----
+    ENDIF
     PRINTL
 
 @TRAIN_PRE  

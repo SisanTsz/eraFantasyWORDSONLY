@@ -41,7 +41,13 @@
     ELSEIF RESULT == 300
         CALL OTHER_CHARACTER_LIST, 4
     ELSEIF RESULT == 301
-        CALL ITEM_LIST
+        CALL CHARACTER_LIST(2)
     ELSEIF RESULT == 302
         ;CALL BUILDING_LIST
+    ELSEIF RESULT == 3441
+        IF FLAG:5 == 1
+            FLAG:5 = 0
+        ELSE
+            FLAG:5 = 1
+        ENDIF
     ENDIF

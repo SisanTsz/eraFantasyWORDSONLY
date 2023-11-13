@@ -1,4 +1,4 @@
-﻿@CHARACTER_LIST, ARG ;角色列表 1=显示能力
+﻿@CHARACTER_LIST, ARG ;角色列表 1=显示能力,2=能力提升
     #DIM CHARACTERNUM
     #DIM NUM
     NUM = 0
@@ -9,6 +9,7 @@
             PRINTFORML [{NUM}] %NAME:NUM%
         ENDIF
     NEXT
+    CUSTOMDRAWLINE -
     PRINTFORML [99] 返回
     INPUT
     ;IF EXISTCSV(RESULT,0) == 1
@@ -20,8 +21,7 @@
     #DIM CHARACTERNUM
     #DIM NUM
     NUM = 1
-    PRINTL 角色列表
-    CUSTOMDRAWLINE -
+    CALL DRAWLINES("□　角色列表　□")
     FOR CHARACTERNUM, 2, 100
         NUM += 1
         IF EXISTCSV(CHARACTERNUM-1,0) == 1
