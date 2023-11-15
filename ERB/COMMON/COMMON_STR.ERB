@@ -20,26 +20,232 @@
             RETURNF "高等精灵"
     ENDSELECT
 
+
+@PENNIS_LENGTH(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:101
+        CASE 0 TO 5
+            RETURNF "Ｆ"
+        CASE 6 TO 7
+            RETURNF "Ｅ"
+        CASE 8 TO 9
+            RETURNF "Ｄ"
+        CASE 10 TO 11
+            RETURNF "Ｃ"
+        CASE 12 TO 14
+            RETURNF "Ｂ"
+        CASE 15 TO 16
+            RETURNF "Ａ"
+        CASE 17 TO 18
+            RETURNF "Ｓ"
+        CASE 19 TO 20
+            RETURNF "ＳＳ"
+        CASE 21 TO 24
+            RETURNF "ＳＳＳ"
+        CASE IS > 24
+            RETURNF "Ｘ"
+    ENDSELECT
+
+@VAGINAL_LENGTH(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:103
+        CASE 0 TO 3
+            RETURNF "Ｆ"
+        CASE 4 TO 5
+            RETURNF "Ｅ"
+        CASE 6 TO 7
+            RETURNF "Ｄ"
+        CASE 8 TO 9
+            RETURNF "Ｃ"
+        CASE 10 TO 12
+            RETURNF "Ｂ"
+        CASE 13 TO 14
+            RETURNF "Ａ"
+        CASE 15 TO 16
+            RETURNF "Ｓ"
+        CASE 17 TO 18
+            RETURNF "ＳＳ"
+        CASE 18 TO 20
+            RETURNF "ＳＳＳ"
+        CASE IS > 20
+            RETURNF "Ｘ"
+    ENDSELECT
+
 @PENNIS_SIZE(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:100
-        CASE 1
-            RETURNF "迷你"
-        CASE 2
-            RETURNF "短小"
-        CASE 3
-            RETURNF "普通"
-        CASE 4
-            RETURNF "偏长"
-        CASE 5
-            RETURNF "巨根"
-        CASE 6
-            RETURNF "巨龙"
-        CASE 7
-            RETURNF "马吊"
-        CASE 8
-            RETURNF "伸缩"
+    SELECTCASE BASE:ARG:102
+        CASE 0 TO 15
+            RETURNF "Ｆ"
+        CASE 16 TO 19
+            RETURNF "Ｅ"
+        CASE 20 TO 23
+            RETURNF "Ｄ"
+        CASE 24 TO 27
+            RETURNF "Ｃ"
+        CASE 28 TO 30
+            RETURNF "Ｂ"
+        CASE 31 TO 35
+            RETURNF "Ａ"
+        CASE 36 TO 40
+            RETURNF "Ｓ"
+        CASE 41 TO 42
+            RETURNF "ＳＳ"
+        CASE 43 TO 45
+            RETURNF "ＳＳＳ"
+        CASE IS > 45
+            RETURNF "Ｘ"
     ENDSELECT
+
+@VAGINAL_SIZE_DAILY(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:104
+        CASE 0 TO 1
+            RETURNF "Ｆ"
+        CASE 2 TO 4
+            RETURNF "Ｅ"
+        CASE 5 TO 9
+            RETURNF "Ｄ"
+        CASE 10 TO 14
+            RETURNF "Ｃ"
+        CASE 15 TO 19
+            RETURNF "Ｂ"
+        CASE 20 TO 24
+            RETURNF "Ａ"
+        CASE 25 TO 29
+            RETURNF "Ｓ"
+        CASE 30 TO 34
+            RETURNF "ＳＳ"
+        CASE 35 TO 40
+            RETURNF "ＳＳＳ"
+        CASE IS > 40
+            RETURNF "Ｘ"
+    ENDSELECT
+
+@VAGINAL_SIZE_MAX(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:105
+        CASE 0 TO 1
+            RETURNF "Ｆ"
+        CASE 2 TO 4
+            RETURNF "Ｅ"
+        CASE 5 TO 9
+            RETURNF "Ｄ"
+        CASE 10 TO 14
+            RETURNF "Ｃ"
+        CASE 15 TO 19
+            RETURNF "Ｂ"
+        CASE 20 TO 24
+            RETURNF "Ａ"
+        CASE 25 TO 29
+            RETURNF "Ｓ"
+        CASE 30 TO 34
+            RETURNF "ＳＳ"
+        CASE 35 TO 40
+            RETURNF "ＳＳＳ"
+        CASE IS > 45
+            RETURNF "Ｘ"
+    ENDSELECT
+
+@ANUS_SIZE_DAILY(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:106
+        CASE 0 TO 19
+            RETURNF "Ｆ"
+        CASE 20 TO 24
+            RETURNF "Ｅ"
+        CASE 25 TO 29
+            RETURNF "Ｄ"
+        CASE 30 TO 34
+            RETURNF "Ｃ"
+        CASE 35 TO 39
+            RETURNF "Ｂ"
+        CASE 40 TO 44
+            RETURNF "Ａ"
+        CASE 45 TO 49
+            RETURNF "Ｓ"
+        CASE 50 TO 54
+            RETURNF "ＳＳ"
+        CASE 55 TO 60
+            RETURNF "ＳＳＳ"
+        CASE IS > 60
+            RETURNF "Ｘ"
+    ENDSELECT
+
+@ANUS_SZIE_MAX(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:107
+        CASE 0 TO 39
+            RETURNF "Ｆ"
+        CASE 40 TO 44
+            RETURNF "Ｅ"
+        CASE 45 TO 49
+            RETURNF "Ｄ"
+        CASE 50 TO 54
+            RETURNF "Ｃ"
+        CASE 55 TO 59
+            RETURNF "Ｂ"
+        CASE 60 TO 64
+            RETURNF "Ａ"
+        CASE 65 TO 69
+            RETURNF "Ｓ"
+        CASE 70 TO 74
+            RETURNF "ＳＳ"
+        CASE 75 TO 80
+            RETURNF "ＳＳＳ"
+        CASE IS > 80
+            RETURNF "Ｘ"
+    ENDSELECT
+
+@URETHA_SIZE_DAILY(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:109
+        CASE 0 TO 5
+            RETURNF "Ｆ"
+        CASE 6 TO 7
+            RETURNF "Ｅ"
+        CASE 8 TO 9
+            RETURNF "Ｄ"
+        CASE 10 TO 11
+            RETURNF "Ｃ"
+        CASE 12 TO 13
+            RETURNF "Ｂ"
+        CASE 14 TO 15
+            RETURNF "Ａ"
+        CASE 16 TO 20
+            RETURNF "Ｓ"
+        CASE 21 TO 25
+            RETURNF "ＳＳ"
+        CASE 26 TO 30
+            RETURNF "ＳＳＳ"
+        CASE IS > 30
+            RETURNF "Ｘ"
+    ENDSELECT
+    
+@URETHA_SIZE_MAX(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:110
+        CASE 0 TO 14
+            RETURNF "Ｆ"
+        CASE 15 TO 18
+            RETURNF "Ｅ"
+        CASE 19 TO 20
+            RETURNF "Ｄ"
+        CASE 21 TO 23
+            RETURNF "Ｃ"
+        CASE 24 TO 26
+            RETURNF "Ｂ"
+        CASE 27 TO 29
+            RETURNF "Ａ"
+        CASE 29 TO 31
+            RETURNF "Ｓ"
+        CASE 32 TO 34
+            RETURNF "ＳＳ"
+        CASE 35 TO 40
+            RETURNF "ＳＳＳ"
+        CASE IS > 40
+            RETURNF "Ｘ"
+    ENDSELECT
+
 
 @PHIMOSIS(ARG)
     #FUNCTIONS
@@ -209,3 +415,4 @@
         CASE 6
             RETURNF "狗耳"
     ENDSELECT
+

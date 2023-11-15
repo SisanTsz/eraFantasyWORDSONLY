@@ -9,27 +9,27 @@
             SIF ARG != MASTER
                 PRINTFORML 好感:{CFLAG:ARG:6}
             PRINT 体力:
-	        CALL PRINT_BAR(BASE:ARG:0,MAXBASE:ARG:0,25,　COLOR("体力"))
+	        CALL PRINT_BAR(BASE:ARG:0,MAXBASE:ARG:0,10,　COLOR("体力"))
 	        PRINTFORML ({BASE:ARG:0}/{MAXBASE:ARG:0})
 	        PRINT 气力:
-	        CALL PRINT_BAR(BASE:ARG:1,MAXBASE:ARG:1,25,　COLOR("气力"))
+	        CALL PRINT_BAR(BASE:ARG:1,MAXBASE:ARG:1,10,　COLOR("气力"))
 	        PRINTFORML ({BASE:ARG:1}/{MAXBASE:ARG:1}) 
 	        PRINT ＳＰ:
-	        CALL PRINT_BAR(BASE:ARG:2,MAXBASE:ARG:2,25,　COLOR("ＳＰ"))
+	        CALL PRINT_BAR(BASE:ARG:2,MAXBASE:ARG:2,10,　COLOR("ＳＰ"))
 	        PRINTFORML ({BASE:ARG:2}/{MAXBASE:ARG:2})
             IF ARG == MASTER
                 PRINT 精力:
-	            CALL PRINT_BAR(BASE:ARG:3,MAXBASE:ARG:3,25,　COLOR("精力"))
+	            CALL PRINT_BAR(BASE:ARG:3,MAXBASE:ARG:3,10,　COLOR("精力"))
 	            PRINTFORML ({BASE:ARG:3}/{MAXBASE:ARG:3})
             ENDIF
 	        IF ARG != MASTER
                 PRINT 理智:
-	            CALL PRINT_BAR(BASE:ARG:4,MAXBASE:ARG:4,25,　COLOR("理智"))
+	            CALL PRINT_BAR(BASE:ARG:4,MAXBASE:ARG:4,10,　COLOR("理智"))
 	            PRINTFORML ({BASE:ARG:4}/{MAXBASE:ARG:4})
             ENDIF
             CALL DRAWLINES("□　状态　□")
             CALL DRAWLINES("□　人物属性　□")
-            PRINTFORML 身高:{BASE:ARG:11}
+            PRINTFORML 身高:{BASE:ARG:11}cm
             PRINTFORML 年龄:{BASE:ARG:12}
             PRINTFORML 出生月:{BASE:ARG:13}
             PRINTFORML 出生日:{BASE:ARG:14}
@@ -207,7 +207,7 @@
             CALL DRAWLINES("□　經驗　□")
             FOR LCOUNT, 1, 300
                 IF EXPNAME:LCOUNT != ""
-                    PRINTFORMLC %EXPNAME:LCOUNT%{EXP:ARG:LCOUNT}
+                    PRINTFORMLC [%EXPNAME:LCOUNT%]:{EXP:ARG:LCOUNT}
                     PCOUNT += 1
                 ENDIF
                 IF PCOUNT >= 6

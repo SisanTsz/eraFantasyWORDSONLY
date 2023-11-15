@@ -1,4 +1,4 @@
-﻿@SOURCE_CHECK_MCVABU;部位等级计算
+﻿@SOURCE_CHECK_MCVABUFS;部位等级计算
     SIF ABL:TARGET:Ｍ感觉 >　0
         SOURCE:快Ｍ = SOURCE:快Ｍ *(100 + ABL:TARGET:Ｍ感觉*100) / 100
     SIF ABL:TARGET:Ｃ感觉 >　0
@@ -11,6 +11,9 @@
         SOURCE:快Ｂ = SOURCE:快Ｂ *(100 + ABL:TARGET:Ｂ感觉*100) / 100
     SIF ABL:TARGET:Ｕ感觉 >　0
         SOURCE:快Ｕ = SOURCE:快Ｕ *(100 + ABL:TARGET:Ｕ感觉*100) / 100
+    SIF ABL:TARGET:Ｆ感觉 > 0
+        SOURCE:快Ｆ = SOURCE:快Ｆ *(100 + ABL:TARGET:Ｆ感觉*100) / 100
+
 
     CUP:快Ｍ += SOURCE:快Ｍ
     CUP:快Ｂ += SOURCE:快Ｂ
@@ -18,3 +21,5 @@
     CUP:快Ｕ += SOURCE:快Ｕ
     CUP:快Ｖ += SOURCE:快Ｖ
     CUP:快Ａ += SOURCE:快Ａ
+    CUP:快Ｆ += SOURCE:快Ｆ
+    CUP:快Ｓ += SOURCE:快Ｓ
