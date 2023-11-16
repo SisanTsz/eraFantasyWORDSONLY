@@ -13,13 +13,94 @@
         SOURCE:快Ｕ = SOURCE:快Ｕ *(100 + ABL:TARGET:Ｕ感觉*100) / 100
     SIF ABL:TARGET:Ｆ感觉 > 0
         SOURCE:快Ｆ = SOURCE:快Ｆ *(100 + ABL:TARGET:Ｆ感觉*100) / 100
+    SIF ABL:TARGET:Ｓ感觉 > 0
+        SOURCE:快Ｓ = SOURCE:快Ｓ *(100 + ABL:TARGET:Ｓ感觉*100) / 100
 
+    ;钝感
+    SIF TALENT:Ｍ钝感
+        TIMES SOURCE:快Ｍ, 0.8
+    SIF TALENT:Ｃ钝感
+        TIMES SOURCE:快Ｃ, 0.8
+    SIF TALENT:Ｖ钝感
+        TIMES SOURCE:快Ｖ, 0.8
+    SIF TALENT:Ａ钝感
+        TIMES SOURCE:快Ａ, 0.8
+    SIF TALENT:Ｂ钝感
+        TIMES SOURCE:快Ｂ, 0.8
+    SIF TALENT:Ｕ钝感
+        TIMES SOURCE:快Ｕ, 0.8
+    SIF TALENT:Ｆ钝感
+        TIMES SOURCE:快Ｆ, 0.8
+    SIF TALENT:Ｓ钝感
+        TIMES SOURCE:快Ｓ, 0.8
 
-    CUP:快Ｍ += SOURCE:快Ｍ
-    CUP:快Ｂ += SOURCE:快Ｂ
-    CUP:快Ｃ += SOURCE:快Ｃ
-    CUP:快Ｕ += SOURCE:快Ｕ
-    CUP:快Ｖ += SOURCE:快Ｖ
-    CUP:快Ａ += SOURCE:快Ａ
-    CUP:快Ｆ += SOURCE:快Ｆ
-    CUP:快Ｓ += SOURCE:快Ｓ
+    ;性感
+    SIF TALENT:Ｍ性感
+        TIMES SOURCE:快Ｍ, 1.1
+    SIF TALENT:Ｃ性感
+        TIMES SOURCE:快Ｃ, 1.1
+    SIF TALENT:Ｖ性感
+        TIMES SOURCE:快Ｖ, 1.1
+    SIF TALENT:Ａ性感
+        TIMES SOURCE:快Ａ, 1.1
+    SIF TALENT:Ｂ性感
+        TIMES SOURCE:快Ｂ, 1.1
+    SIF TALENT:Ｕ性感
+        TIMES SOURCE:快Ｕ, 1.1
+    SIF TALENT:Ｆ性感
+        TIMES SOURCE:快Ｆ, 1.1
+    SIF TALENT:Ｓ性感
+        TIMES SOURCE:快Ｓ, 1.1
+    ;过敏
+    SIF TALENT:Ｍ过敏
+        TIMES SOURCE:快Ｍ, 1.25
+    SIF TALENT:Ｃ过敏
+        TIMES SOURCE:快Ｃ, 1.25
+    SIF TALENT:Ｖ过敏
+        TIMES SOURCE:快Ｖ, 1.25
+    SIF TALENT:Ａ过敏
+        TIMES SOURCE:快Ａ, 1.25
+    SIF TALENT:Ｂ过敏
+        TIMES SOURCE:快Ｂ, 1.25
+    SIF TALENT:Ｕ过敏
+        TIMES SOURCE:快Ｕ, 1.25
+    SIF TALENT:Ｆ过敏
+        TIMES SOURCE:快Ｆ, 1.25
+    SIF TALENT:Ｓ过敏
+        TIMES SOURCE:快Ｓ, 1.25
+
+    ;淫乱
+    IF TALENT:淫乱
+        TIMES SOURCE:快Ｍ, 1.2
+        TIMES SOURCE:快Ｃ, 1.2
+        TIMES SOURCE:快Ｖ, 1.2
+        TIMES SOURCE:快Ａ, 1.2
+        TIMES SOURCE:快Ｂ, 1.2
+        TIMES SOURCE:快Ｕ, 1.2
+        TIMES SOURCE:快Ｆ, 1.2
+        TIMES SOURCE:快Ｓ, 1.2
+    ENDIF
+
+    ;接受快感
+    IF TALENT:接受快感
+        TIMES SOURCE:快Ｍ, 1.1
+        TIMES SOURCE:快Ｃ, 1.1
+        TIMES SOURCE:快Ｖ, 1.1
+        TIMES SOURCE:快Ａ, 1.1
+        TIMES SOURCE:快Ｂ, 1.1
+        TIMES SOURCE:快Ｕ, 1.1
+        TIMES SOURCE:快Ｆ, 1.1
+        TIMES SOURCE:快Ｓ, 1.1
+    ENDIF
+
+    ;否认快感
+    IF TALENT:否认快感
+        TIMES SOURCE:快Ｍ, 0.85
+        TIMES SOURCE:快Ｃ, 0.85
+        TIMES SOURCE:快Ｖ, 0.85
+        TIMES SOURCE:快Ａ, 0.85
+        TIMES SOURCE:快Ｂ, 0.85
+        TIMES SOURCE:快Ｕ, 0.85
+        TIMES SOURCE:快Ｆ, 0.85
+        TIMES SOURCE:快Ｓ, 0.85
+    ENDIF

@@ -36,19 +36,29 @@
             PRINTFORML 出生月:{BASE:ARG:13}
             PRINTFORML 出生日:{BASE:ARG:14}
             CALL DRAWLINES("□　身体属性　□")
-            IF CFLAG:ARG:2 == 1 | 3
+            IF CFLAG:ARG:2 == 1 | CFLAG:ARG:2 == 3
                 PRINTFORML 阴茎长度:{BASE:ARG:101}cm(%PENNIS_LENGTH(ARG)%)
                 PRINTFORML 阴茎直径:{BASE:ARG:102}mm(%PENNIS_SIZE(ARG)%)
+                PRINTFORML 精液量:{BASE:ARG:201}ml
+                PRINTFORML 射精量:{BASE:ARG:202}ml
             ENDIF
-            IF CFLAG:ARG:2 == 2 | 3
-                PRINTFORML 阴道长度:{BASE:ARG:103}cm(%VAGINAL_LENGTH(ARG)%)
-                PRINTFORML 阴道直径:{BASE:ARG:104}mm(%VAGINAL_SIZE_DAILY(ARG)%)
-                PRINTFORML 阴道极限直径:{BASE:ARG:105}mm(%VAGINAL_SIZE_MAX(ARG)%)
-                PRINTFORML 肛门直径:{BASE:ARG:106}mm(%ANUS_SIZE_DAILY(ARG)%)
-                PRINTFORML 肛门极限直径:{BASE:ARG:107}mm(%ANUS_SIZE_MAX(ARG)%)
-                PRINTFORML 尿道长度:{BASE:ARG:108}mm(%URETHA_LENGTH(ARG)%)
-                PRINTFORML 尿道直径:{BASE:ARG:109}mm(%URETHA_SIZE_DAILY(ARG)%)
-                PRINTFORML 尿道最大直径:{BASE:ARG:110}mm(%URETHA_SIZE_MAX(ARG)%)
+            IF CFLAG:ARG:2 == 2 | CFLAG:ARG:2 == 3
+                PRINTFORMLC 罩杯:%BREAST_SIZE(ARG)%%BREAST_CUP(ARG)%
+                PRINTL
+                PRINTFORMLC 阴道长度:{BASE:ARG:103}cm(%VAGINAL_LENGTH(ARG)%)
+                PRINTFORMLC 阴道直径:{BASE:ARG:104}mm(%VAGINAL_SIZE_DAILY(ARG)%)
+                PRINTFORMLC 阴道极限直径:{BASE:ARG:105}mm(%VAGINAL_SIZE_MAX(ARG)%)
+                PRINTL
+                PRINTFORMLC 肛门直径:{BASE:ARG:106}mm(%ANUS_SIZE_DAILY(ARG)%)
+                PRINTFORMLC 肛门极限直径:{BASE:ARG:107}mm(%ANUS_SIZE_MAX(ARG)%)
+                PRINTL
+                PRINTFORMLC 尿道长度:{BASE:ARG:108}mm(%URETHA_LENGTH(ARG)%)
+                PRINTFORMLC 尿道直径:{BASE:ARG:109}mm(%URETHA_SIZE_DAILY(ARG)%)
+                PRINTFORMLC 尿道最大直径:{BASE:ARG:110}mm(%URETHA_SIZE_MAX(ARG)%)
+                PRINTL
+                PRINTFORMLC 子宫容量:{BASE:ARG:155}ml
+                PRINTFORMLC 子宫内精液:{BASE:ARG:203}
+                PRINTL
             ENDIF
             CALL DRAWLINES("□　人物介绍　□")
 

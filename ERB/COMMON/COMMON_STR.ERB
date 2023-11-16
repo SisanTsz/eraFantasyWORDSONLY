@@ -441,3 +441,71 @@
             RETURNF "狗耳"
     ENDSELECT
 
+@BREAST_SIZE(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:151
+        CASE 63 TO 67
+            RETURNF "65"
+        CASE 68 TO 72
+            RETURNF "70"
+        CASE 73 TO 77
+            RETURNF "75"
+        CASE 78 TO 82
+            RETURNF "80"
+        CASE 83 TO 87
+            RETURNF "85"
+        CASE 88 TO 92
+            RETURNF "90"
+        CASE 93 TO 97
+            RETURNF "95"
+        CASE 98 TO 102
+            RETURNF "100"
+        CASE 103 TO 107
+            RETURNF "105"
+        CASE 108 TO 112
+            RETURNF "110"
+    ENDSELECT
+        
+@BREAST_CUP(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:151 - BASE:ARG:152
+        CASE 0
+            RETURNF "ＡＡ"
+        CASE 1
+            RETURNF "Ａ"
+        CASE 2
+            RETURNF "Ｂ"
+        CASE 3 
+            RETURNF "Ｃ"
+        CASE 4
+            RETURNF "Ｄ"
+        CASE 5
+            RETURNF "Ｅ
+        CASE 6
+            RETURNF "Ｆ"
+        CASE 7
+            RETURNF "Ｇ"
+        CASE 8
+            RETURNF "Ｈ"
+        CASE 9
+            RETURNF "Ｉ"
+        CASE 10
+            RETURNF "Ｊ"
+        CASE 11
+            RETURNF "Ｋ"
+        CASE 12
+            RETURNF "Ｌ"
+        CASE 13
+            RETURNF "Ｍ"
+        CASE 14
+            RETURNF "Ｎ"
+        CASE 15
+            RETURNF "Ｏ"
+        CASE 16
+            RETURNF "Ｐ"
+        CASE 17
+            RETURNF "Ｑ"
+        CASE 18
+            RETURNF "Ｒ"
+    ENDSELECT
+ 
