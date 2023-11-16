@@ -171,7 +171,7 @@
             RETURNF "Ｘ"
     ENDSELECT
 
-@ANUS_SZIE_MAX(ARG)
+@ANUS_SIZE_MAX(ARG)
     #FUNCTIONS
     SELECTCASE BASE:ARG:107
         CASE 0 TO 39
@@ -193,6 +193,31 @@
         CASE 75 TO 80
             RETURNF "ＳＳＳ"
         CASE IS > 80
+            RETURNF "Ｘ"
+    ENDSELECT
+
+@URETHA_LENGTH(ARG)
+    #FUNCTIONS
+    SELECTCASE BASE:ARG:108
+        CASE 0 TO 24
+            RETURNF "Ｆ"
+        CASE 25 TO 29
+            RETURNF "Ｅ"
+        CASE 30 TO 34
+            RETURNF "Ｄ"
+        CASE 35 TO 39
+            RETURNF "Ｃ"
+        CASE 45 TO 49
+            RETURNF "Ｂ"
+        CASE 50 TO 54
+            RETURNF "Ａ"
+        CASE 55 TO 59
+            RETURNF "Ｓ"
+        CASE 60 TO 64
+            RETURNF "ＳＳ"
+        CASE 65 TO 69
+            RETURNF "ＳＳＳ"
+        CASE IS > 69
             RETURNF "Ｘ"
     ENDSELECT
 
