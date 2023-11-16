@@ -357,6 +357,17 @@
 
 
         CASE 5
+            CALL DRAWLINES("□　衣装　□")
+            PRINTFORML 风衣: %COAT(ARG)%
+            PRINTFORML 外套: %JACKET(ARG)%
+            PRINTFORML 内衣: %UNDERWEAR(ARG)%
+            PRINTFORML 手套: %GLOVES(ARG)%
+            PRINTFORML 内裤: %PANTY(ARG)%
+            PRINTFORML 裙裤: %TROUSERS(ARG)%
+            PRINTFORML 袜子: %STOCKINGS(ARG)%
+            PRINTFORML 鞋子: %COAT(ARG)%
+            CALL DRAWLINES("□　身嗜　□")
+        CASE 6
             CALL DRAWLINES("□　詳細信息　□")
             
             FOR LCOUNT, 151, 200
@@ -396,7 +407,12 @@
         PRINTLC [等级]
     ENDIF
     IF ARG:1 != 5
-        PRINTBUTTONLC "[详细信息]" , 94
+        PRINTBUTTONLC "[衣装/身嗜]" , 94
+    ELSE
+        PRINTLC [衣装/身嗜]
+    ENDIF
+    IF ARG:1 != 6
+        PRINTBUTTONLC "[详细信息]" , 90
     ELSE
         PRINTLC [详细信息]
     ENDIF
@@ -412,6 +428,8 @@
 
 @ABILITY_SHOW_CHECK(ARG,ARG:1,ARG:2)
     SELECTCASE ARG:2
+        CASE 90
+            CALL ABILITY_SHOW(ARG,6)
         CASE 91
             CALL ABILITY_SHOW(ARG,1)
         CASE 92
