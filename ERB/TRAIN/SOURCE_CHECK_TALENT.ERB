@@ -1,0 +1,44 @@
+@SOURCE_CHECK_TALENT
+    ;淫乱
+    IF TALENT:淫乱
+        TIMES SOURCE:快Ｍ, 1.2
+        TIMES SOURCE:快Ｃ, 1.2
+        TIMES SOURCE:快Ｖ, 1.2
+        TIMES SOURCE:快Ａ, 1.2
+        TIMES SOURCE:快Ｂ, 1.2
+        TIMES SOURCE:快Ｕ, 1.2
+        TIMES SOURCE:快Ｆ, 1.2
+        TIMES SOURCE:快Ｓ, 1.2
+    ENDIF
+
+    ;接受快感
+    IF TALENT:接受快感
+        TIMES SOURCE:快Ｍ, 1.1
+        TIMES SOURCE:快Ｃ, 1.1
+        TIMES SOURCE:快Ｖ, 1.1
+        TIMES SOURCE:快Ａ, 1.1
+        TIMES SOURCE:快Ｂ, 1.1
+        TIMES SOURCE:快Ｕ, 1.1
+        TIMES SOURCE:快Ｆ, 1.1
+        TIMES SOURCE:快Ｓ, 1.1
+    ENDIF
+
+    ;否认快感
+    IF TALENT:否认快感
+        TIMES SOURCE:快Ｍ, 0.85
+        TIMES SOURCE:快Ｃ, 0.85
+        TIMES SOURCE:快Ｖ, 0.85
+        TIMES SOURCE:快Ａ, 0.85
+        TIMES SOURCE:快Ｂ, 0.85
+        TIMES SOURCE:快Ｕ, 0.85
+        TIMES SOURCE:快Ｆ, 0.85
+        TIMES SOURCE:快Ｓ, 0.85
+    ENDIF
+
+    ;学习快
+    SIF TALENT:学习快
+        TIMES SOURCE:习得, 1.2
+
+    ;学习慢
+    SIF TALENT:学习慢
+        TIMES SOURCE:习得, 0.8

@@ -11,13 +11,16 @@
     CALL SOURCE_CHECK_POWER
     ;气力减免
     CALL SOURCE_CHECK_ENERGY
-    ;快感计算
+    ;快感等级计算
     CALL SOURCE_CHECK_MCVABUFS
     ;不同理智下的加成
     CALL SOURCE_CHECK_SANS
+    ;特质加成
+    CALL SOURCE_CHECK_TALENT
     ;高潮计算
-    CALL SOURCE_CHECK_EX(TARGET)
+    CALL EX_CHECK
     ;高潮加成
+    CALL SOURCE_CHECK_EX
     ;SP计算
     ;尿意计算
     ;便意计算

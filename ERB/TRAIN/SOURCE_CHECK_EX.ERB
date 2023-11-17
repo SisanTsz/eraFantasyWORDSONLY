@@ -1,48 +1,8 @@
-﻿@SOURCE_CHECK_EX(ARG:0); 高潮运算
-    #DIM LCOUNT
-    #DIMS NAME_EX
-    FOR LCOUNT, 0, 7
-        SELECTCASE PALAMNAME:LCOUNT
-        CASE "快Ｃ"
-            NAME_EX = Ｃ绝顶
-        CASE "快Ｍ"
-            NAME_EX = Ｍ绝顶
-        CASE "快Ｂ"
-            NAME_EX = Ｂ绝顶
-        CASE "快Ｖ"
-            NAME_EX = Ｖ绝顶
-        CASE "快Ａ"
-            NAME_EX = Ａ绝顶
-        CASE "快Ｕ"
-            NAME_EX = Ｕ绝顶
-        CASE "快Ｆ"
-            NAME_EX = Ｆ绝顶
-        CASE "快Ｓ"
-            NAME_EX = Ｓ绝顶
-        CASEELSE
-            CONTINUE
-        ENDSELECT
+@SOURCE_CHECK_EX
+    IF 
 
-        SELECTCASE NOW_PALAM(PALAMNAME:LCOUNT)
-            CASE IS >= 100000
-                NOWEX:NAME_EX = 5
-            CASE IS >= 50000
-                NOWEX:NAME_EX = 4
-            CASE IS >= 30000
-                NOWEX:NAME_EX = 3
-            CASE IS >= 20000
-                NOWEX:NAME_EX = 2
-            CASE IS >= 10000
-        ENDSELECT
 
-        SIF NOW_PALAM(PALAMNAME:LCOUNT) - CDOWN:LCOUNT >= 10000 && NOWEX:NAME_EX
-		CDOWN:LCOUNT = NOW_PALAM(PALAMNAME:LCOUNT) - 10000 + 1000 * NOWEX:NAME_EX
 
-    NEXT
-
-@NOW_PALAM(ARGS, ARG);from edge
-#FUNCTION
-SIF ARG == 0 && TARGET
-	ARG = TARGET
-LOCAL = CUP:ARG:ARGS + PALAM:ARG:ARGS
-RETURNF LOCAL
+@SOURCE_CHECK_EX_NO
+    LOCAL = 0
+    SIF NOWEX:TARGET:
