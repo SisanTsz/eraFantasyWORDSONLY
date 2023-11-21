@@ -1,4 +1,4 @@
-@SOURCE_CHECK_TALENT
+﻿@SOURCE_CHECK_TALENT
     ;淫乱
     IF TALENT:淫乱
         TIMES SOURCE:快Ｍ, 1.2
@@ -12,7 +12,7 @@
     ENDIF
 
     ;接受快感
-    IF TALENT:接受快感
+    IF TALENT:220
         TIMES SOURCE:快Ｍ, 1.1
         TIMES SOURCE:快Ｃ, 1.1
         TIMES SOURCE:快Ｖ, 1.1
@@ -24,7 +24,7 @@
     ENDIF
 
     ;否认快感
-    IF TALENT:否认快感
+    IF TALENT:221
         TIMES SOURCE:快Ｍ, 0.85
         TIMES SOURCE:快Ｃ, 0.85
         TIMES SOURCE:快Ｖ, 0.85
@@ -36,9 +36,9 @@
     ENDIF
 
     ;学习快
-    SIF TALENT:学习快
+    SIF TALENT:101
         TIMES SOURCE:习得, 1.2
 
     ;学习慢
-    SIF TALENT:学习慢
+    SIF TALENT:102
         TIMES SOURCE:习得, 0.8

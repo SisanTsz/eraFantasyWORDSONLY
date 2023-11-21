@@ -1,0 +1,54 @@
+﻿@SOURCE_CHECK_LUST
+    ;性欲加成
+    IF BASE:TARGET:5 <= (20*MAXBASE:TARGET:5) / 100
+        TIMES SOURCE:快Ｍ, 0.9
+        TIMES SOURCE:快Ｂ, 0.9
+        TIMES SOURCE:快Ｃ, 0.9
+        TIMES SOURCE:快Ｕ, 0.9
+        TIMES SOURCE:快Ｖ, 0.9
+        TIMES SOURCE:快Ａ, 0.9
+        TIMES SOURCE:快Ｆ, 0.9
+        TIMES SOURCE:快Ｓ, 0.9
+        TIMES SOURCE:欲情, 0.8
+    ELSEIF BASE:TARGET:5 >= (40*MAXBASE:TARGET:5) / 100 & BASE:TARGET:5 <= (60*MAXBASE:TARGET:5) / 100
+        TIMES SOURCE:快Ｍ, 1.1
+        TIMES SOURCE:快Ｂ, 1.1
+        TIMES SOURCE:快Ｃ, 1.1
+        TIMES SOURCE:快Ｕ, 1.1
+        TIMES SOURCE:快Ｖ, 1.1
+        TIMES SOURCE:快Ａ, 1.1
+        TIMES SOURCE:快Ｆ, 1.1
+        TIMES SOURCE:快Ｓ, 1.1
+        TIMES SOURCE:欲情, 0.9
+    ELSEIF BASE:TARGET:5 >= (60*MAXBASE:TARGET:5) / 100 & BASE:TARGET:5 <= (80*MAXBASE:TARGET:5) / 100
+        TIMES SOURCE:快Ｍ, 1.2
+        TIMES SOURCE:快Ｂ, 1.2
+        TIMES SOURCE:快Ｃ, 1.2
+        TIMES SOURCE:快Ｕ, 1.2
+        TIMES SOURCE:快Ｖ, 1.2
+        TIMES SOURCE:快Ａ, 1.2
+        TIMES SOURCE:快Ｆ, 1.2
+        TIMES SOURCE:快Ｓ, 1.2
+        TIMES SOURCE:欲情, 1.1
+    ELSEIF BASE:TARGET:5 >= (80*MAXBASE:TARGET:5) / 100 & BASE:TARGET:5 <= (99*MAXBASE:TARGET:5) / 100
+        TIMES SOURCE:快Ｍ, 1.5
+        TIMES SOURCE:快Ｂ, 1.5
+        TIMES SOURCE:快Ｃ, 1.5
+        TIMES SOURCE:快Ｕ, 1.5
+        TIMES SOURCE:快Ｖ, 1.5
+        TIMES SOURCE:快Ａ, 1.5
+        TIMES SOURCE:快Ｆ, 1.5
+        TIMES SOURCE:快Ｓ, 1.5
+        TIMES SOURCE:欲情, 1.2
+    ELSEIF BASE:TARGET:5 > (99*MAXBASE:TARGET:5) / 100
+        TIMES SOURCE:快Ｍ, 2.0
+        TIMES SOURCE:快Ｂ, 2.0
+        TIMES SOURCE:快Ｃ, 2.0
+        TIMES SOURCE:快Ｕ, 2.0
+        TIMES SOURCE:快Ｖ, 2.0
+        TIMES SOURCE:快Ａ, 2.0
+        TIMES SOURCE:快Ｆ, 2.0
+        TIMES SOURCE:快Ｓ, 2.0
+        TIMES SOURCE:欲情, 1.5
+    ENDIF
+    
