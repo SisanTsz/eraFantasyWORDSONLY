@@ -274,7 +274,7 @@
 
 @PHIMOSIS(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:103
+    SELECTCASE CFLAG:ARG:106
         CASE 0
             RETURNF "无包茎"
         CASE 1
@@ -285,7 +285,7 @@
 
 @FORESKIN(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:104
+    SELECTCASE CFLAG:ARG:105
         CASE 0
             RETURNF "无包皮"
         CASE 1
@@ -296,35 +296,35 @@
 
 @SEMEN(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:118
-        CASE 1
+    SELECTCASE CFLAG:ARG:115
+        CASE 0
             RETURNF "纯白"
-        CASE 2
+        CASE 1
             RETURNF "半透明"
-        CASE 3
+        CASE 2
             RETURNF "微黄"
-        CASE 4
+        CASE 3
             RETURNF "病变"
     ENDSELECT
 
 @SEMEN_WATERY(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:119
-        CASE 1
+    SELECTCASE CFLAG:ARG:116
+        CASE 0
             RETURNF "水性"
-        CASE 2
+        CASE 1
             RETURNF "稀薄"
-        CASE 3
+        CASE 2
             RETURNF "普通"
-        CASE 4
+        CASE 3
             RETURNF "粘性"
-        CASE 5
+        CASE 4
             RETURNF "浓稠"
     ENDSELECT
 
 @SMEGMA(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:116
+    SELECTCASE CFLAG:ARG:113
         CASE 0
             RETURNF "无耻垢"
         CASE 1
@@ -341,10 +341,10 @@
 
 @SMEGMA_TYPE(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:117
-        CASE 1
+    SELECTCASE CFLAG:ARG:114
+        CASE 0
             RETURNF "软块"
-        CASE 2
+        CASE 1
             RETURNF "粘液"
     ENDSELECT
 
@@ -365,18 +365,18 @@
 
 @BREAST_TYPE(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:101
-        CASE 1
+    SELECTCASE CFLAG:ARG:112
+        CASE 0
             RETURNF "圆锥型"
-        CASE 2
+        CASE 1
             RETURNF "半球型"
-        CASE 3
+        CASE 2
             RETURNF "梨型"
-        CASE 4
+        CASE 3
             RETURNF "圆盘型"
-        CASE 5
+        CASE 4
             RETURNF "扁平型"
-        CASE 6
+        CASE 5
             RETURNF "下垂型"
     ENDSELECT
 
@@ -403,41 +403,45 @@
 @AREOLA(ARG)
     #FUNCTIONS
     SELECTCASE CFLAG:ARG:111
-        CASE 1
+        CASE 0
             RETURNF "小"
-        CASE 2
+        CASE 1
             RETURNF "普通"
-        CASE 3
+        CASE 2
             RETURNF "巨大"
     ENDSELECT
 
 @PUBLIC_HAIR(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:106
+    SELECTCASE CFLAG:ARG:101
         CASE 0
-            RETURNF "无毛"
+            RETURNF "永久脱毛"
         CASE 1
-            RETURNF "稀疏"
+            RETURNF "未生长"
         CASE 2
-            RETURNF "普通
+            RETURNF "无毛"
         CASE 3
+            RETURNF "稀疏"
+        CASE 4
+            RETURNF "普通"
+        CASE 5
             RETURNF "浓密"
     ENDSELECT
 
 @VUVLA(ARG)
     #FUNCTIONS
-    SELECTCASE CFLAG:ARG:107
-        CASE 1
+    SELECTCASE CFLAG:ARG:108
+        CASE 0
             RETURNF "馒头"
-        CASE 2
+        CASE 1
             RETURNF "白虎"
-        CASE 3
+        CASE 2
             RETURNF "布条"
-        CASE 4
+        CASE 3
             RETURNF "蝴蝶"
-        CASE 5
+        CASE 4
             RETURNF "水滴"
-        CASE 6
+        CASE 5
             RETURNF "狗耳"
     ENDSELECT
 
