@@ -52,8 +52,9 @@
     IF ARG:1 == 1
         PRINTFORMLC [数据条]
     ELSE
-        PRINTBUTTONLC [数据条], 999
+        PRINTBUTTONLC "[数据条]", 999
     ENDIF
+    PRINTL
     CUSTOMDRAWLINE -
     FOR NUM, 1, 100
         IF EXISTCSV(NUM,0) == 1
