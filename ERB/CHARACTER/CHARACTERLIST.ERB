@@ -12,20 +12,20 @@
     FOR NUM, 1, 100
         IF EXISTCSV(NUM,0) == 1
             PRINTBUTTONLC @" [{NUM}] %NAME:NUM%", NUM
-            PRINT 体力:
-	        CALL PRINT_BAR(BASE:NUM:0,MAXBASE:NUM:0,10,　COLOR("体力"))
+            PRINT 体力
+	        CALL PRINT_BAR(BASE:NUM:0,MAXBASE:NUM:0,5,　COLOR("体力"))
 	        PRINTFORM ({BASE:NUM:0}/{MAXBASE:NUM:0})
-	        PRINT 气力:
-	        CALL PRINT_BAR(BASE:NUM:1,MAXBASE:NUM:1,10,　COLOR("气力"))
+	        PRINT 气力
+	        CALL PRINT_BAR(BASE:NUM:1,MAXBASE:NUM:1,5,　COLOR("气力"))
 	        PRINTFORM ({BASE:NUM:1}/{MAXBASE:NUM:1}) 
-	        PRINT ＳＰ:
-	        CALL PRINT_BAR(BASE:NUM:2,MAXBASE:NUM:2,10,　COLOR("ＳＰ"))
+	        PRINT ＳＰ
+	        CALL PRINT_BAR(BASE:NUM:2,MAXBASE:NUM:2,5,　COLOR("ＳＰ"))
 	        PRINTFORM ({BASE:NUM:2}/{MAXBASE:NUM:2})
-            PRINT 精力:
-	        CALL PRINT_BAR(BASE:NUM:4,MAXBASE:NUM:4,10,　COLOR("精力"))
+            PRINT 精力
+	        CALL PRINT_BAR(BASE:NUM:4,MAXBASE:NUM:4,5,　COLOR("精力"))
 	        PRINTFORM ({BASE:NUM:4}/{MAXBASE:NUM:4})
-            PRINT 性欲:
-            CALL PRINT_BAR(BASE:NUM:5,MAXBASE:NUM:5,10,COLOR("粉红"))
+            PRINT 性欲
+            CALL PRINT_BAR(BASE:NUM:5,MAXBASE:NUM:5,5,COLOR("粉红"))
             PRINTFORM ({BASE:NUM:5}/{MAXBASE:NUM:5})
             PRINTL
         ENDIF
@@ -59,20 +59,20 @@
     FOR NUM, 1, 100
         IF EXISTCSV(NUM,0) == 1
             PRINTBUTTONLC @" [{NUM}] %NAME:NUM%", NUM
-            PRINT 体力:
-	        CALL PRINT_BAR(BASE:NUM:0,MAXBASE:NUM:0,10,　COLOR("体力"))
+            PRINT 体力
+	        CALL PRINT_BAR(BASE:NUM:0,MAXBASE:NUM:0,5,　COLOR("体力"))
 	        PRINTFORM ({BASE:NUM:0}/{MAXBASE:NUM:0})
-	        PRINT 气力:
-	        CALL PRINT_BAR(BASE:NUM:1,MAXBASE:NUM:1,10,　COLOR("气力"))
+	        PRINT 气力
+	        CALL PRINT_BAR(BASE:NUM:1,MAXBASE:NUM:1,5,　COLOR("气力"))
 	        PRINTFORM ({BASE:NUM:1}/{MAXBASE:NUM:1}) 
-	        PRINT ＳＰ:
-	        CALL PRINT_BAR(BASE:NUM:2,MAXBASE:NUM:2,10,　COLOR("ＳＰ"))
+	        PRINT ＳＰ
+	        CALL PRINT_BAR(BASE:NUM:2,MAXBASE:NUM:2,5,　COLOR("ＳＰ"))
 	        PRINTFORM ({BASE:NUM:2}/{MAXBASE:NUM:2})
-            PRINT 精力:
-	        CALL PRINT_BAR(BASE:NUM:4,MAXBASE:NUM:4,10,　COLOR("精力"))
+            PRINT 精力
+	        CALL PRINT_BAR(BASE:NUM:4,MAXBASE:NUM:4,5,　COLOR("精力"))
 	        PRINTFORM ({BASE:NUM:4}/{MAXBASE:NUM:4})
-            PRINT 性欲:
-            CALL PRINT_BAR(BASE:NUM:5,MAXBASE:NUM:5,10,COLOR("粉红"))
+            PRINT 性欲
+            CALL PRINT_BAR(BASE:NUM:5,MAXBASE:NUM:5,5,COLOR("粉红"))
             PRINTFORM ({BASE:NUM:5}/{MAXBASE:NUM:5})
             PRINTL
         ENDIF

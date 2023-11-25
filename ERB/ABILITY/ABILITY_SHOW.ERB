@@ -12,30 +12,30 @@
                 PRINTFORML 好感度:{BASE:ARG:9}
                 PRINTFORML 服从度:{BASE:ARG:10}
             ENDIF
-            PRINT 体力:
-	        CALL PRINT_BAR(BASE:ARG:0,MAXBASE:ARG:0,10,　COLOR("体力"))
+            PRINT 体力
+	        CALL PRINT_BAR(BASE:ARG:0,MAXBASE:ARG:0,10,  COLOR("体力"))
 	        PRINTFORML ({BASE:ARG:0}/{MAXBASE:ARG:0})
-	        PRINT 气力:
+	        PRINT 气力
 	        CALL PRINT_BAR(BASE:ARG:1,MAXBASE:ARG:1,10,　COLOR("气力"))
 	        PRINTFORML ({BASE:ARG:1}/{MAXBASE:ARG:1}) 
-	        PRINT ＳＰ:
+	        PRINT ＳＰ
 	        CALL PRINT_BAR(BASE:ARG:2,MAXBASE:ARG:2,10,　COLOR("ＳＰ"))
 	        PRINTFORML ({BASE:ARG:2}/{MAXBASE:ARG:2})
-            PRINT 精力:
+            PRINT 精力
 	        CALL PRINT_BAR(BASE:ARG:4,MAXBASE:ARG:4,10,　COLOR("精力"))
 	        PRINTFORML ({BASE:ARG:4}/{MAXBASE:ARG:4})
 	        IF ARG != MASTER
-                PRINT 理智:
+                PRINT 理智
 	            CALL PRINT_BAR(BASE:ARG:3,MAXBASE:ARG:3,10,　COLOR("理智"))
 	            PRINTFORML ({BASE:ARG:3}/{MAXBASE:ARG:3})
             ENDIF
-            PRINT 性欲:
+            PRINT 性欲
             CALL PRINT_BAR(BASE:ARG:5,MAXBASE:ARG:5,10,COLOR("粉红"))
             PRINTFORML ({BASE:ARG:5}/{MAXBASE:ARG:5})
-            PRINT 尿意:
+            PRINT 尿意
             CALL PRINT_BAR(BASE:ARG:6,MAXBASE:ARG:6,10,COLOR("浅黄"))
             PRINTFORML ({BASE:ARG:6}/{MAXBASE:ARG:6})
-            PRINT 便意:
+            PRINT 便意
             CALL PRINT_BAR(BASE:ARG:7,MAXBASE:ARG:7,10,COLOR("土黄"))
             PRINTFORML ({BASE:ARG:7}/{MAXBASE:ARG:7})
             IF ARG != MASTER
@@ -476,14 +476,14 @@
             NEXT
         CASE 6
             CALL DRAWLINES("□　衣装　□")
-            PRINTFORML 风衣: %COAT(ARG)%
-            PRINTFORML 外套: %JACKET(ARG)%
-            PRINTFORML 内衣: %UNDERWEAR(ARG)%
-            PRINTFORML 手套: %GLOVES(ARG)%
-            PRINTFORML 内裤: %PANTY(ARG)%
-            PRINTFORML 裙裤: %TROUSERS(ARG)%
-            PRINTFORML 袜子: %STOCKINGS(ARG)%
-            PRINTFORML 鞋子: %COAT(ARG)%
+            PRINTFORML 风衣: %GET_STR_CLOTHE("风衣",ARG)%
+            PRINTFORML 外套: %GET_STR_CLOTHE("外套",ARG)%
+            PRINTFORML 内衣: %GET_STR_CLOTHE("内衣",ARG)%
+            PRINTFORML 手套: %GET_STR_CLOTHE("手套",ARG)%
+            PRINTFORML 内裤: %GET_STR_CLOTHE("内裤",ARG)%
+            PRINTFORML 裙裤: %GET_STR_CLOTHE("裙裤",ARG)%
+            PRINTFORML 袜子: %GET_STR_CLOTHE("袜子",ARG)%
+            PRINTFORML 鞋子: %GET_STR_CLOTHE("鞋子",ARG)%
             CALL DRAWLINES("□　身嗜　□")
         CASE 7
             CALL DRAWLINES("□　詳細信息　□")
