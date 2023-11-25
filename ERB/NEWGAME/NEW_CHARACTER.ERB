@@ -1,44 +1,45 @@
 ﻿@NEW_CHARACTER
-    ;$NEW_CHARACTER
     CALL DRAWLINES("□ 　创建角色　□")
-    PRINTBUTTON @"名称:%NAME:MASTER%" , 1
+    PRINTBUTTON @"名称:%NAME:MASTER%" , "名称"
     PRINTL
-    PRINTBUTTON @"昵称:%CALLNAME:MASTER%" , 2
+    PRINTBUTTON @"昵称:%CALLNAME:MASTER%" , "昵称"
     PRINTL
-    PRINTBUTTON @"种族:%SPECIES(MASTER)%" , 3
+    PRINTBUTTON @"种族:%GET_STR("种族",MASTER)%" , "种族"
     PRINTL
-    PRINTBUTTON @"性别:%SEX(MASTER)%" , 4
+    PRINTBUTTON @"性别:%GET_STR("性别",MASTER)%" , "性别"
     PRINTL
-    PRINTBUTTON @"阴茎:%PENNIS_SIZE(MASTER)%" , 5
+    PRINTBUTTON @"阴茎长度:%GET_STR("阴茎长度",MASTER)%" , "阴茎长度"
     PRINTL
-    PRINTBUTTON @"包茎:%PHIMOSIS(MASTER)%" , 6
+    PRINTBUTTON @"阴茎直径:%GET_STR("阴茎直径",MASTER)%" , "阴茎直径"
     PRINTL
-    PRINTBUTTON @"包皮:%FORESKIN(MASTER)%" , 7
+    PRINTBUTTON @"包茎:%GET_STR("包茎",MASTER)%" , "包茎"
     PRINTL
-    PRINTBUTTON @"精液颜色:%SEMEN(MASTER)%" , 8
+    PRINTBUTTON @"包皮:%GET_STR("包皮",MASTER)%" , "包皮"
     PRINTL
-    PRINTBUTTON @"精液浓度:%SEMEN_WATERY(MASTER)%" , 9
+    PRINTBUTTON @"精液颜色:%GET_STR("精液颜色",MASTER)%" , "精液颜色"
     PRINTL
-    PRINTBUTTON @"耻垢:%SMEGMA(MASTER)%" , 10
+    PRINTBUTTON @"精液浓度:%GET_STR("精液浓度",MASTER)%" , "精液浓度"
     PRINTL
-    PRINTBUTTON @"耻垢类型:%SMEGMA_TYPE(MASTER)%" , 11
+    PRINTBUTTON @"耻垢:%GET_STR("耻垢",MASTER)%" , "耻垢"
     PRINTL
-    PRINTBUTTON @"乳量:%BREAST_SIZE(MASTER)%" , 12
+    PRINTBUTTON @"耻垢类型:%GET_STR("耻垢类型",MASTER)%" , "耻垢类型"
     PRINTL
-    PRINTBUTTON @"乳房形状:%BREAST_TYPE(MASTER)%" , 13
+    PRINTBUTTON @"胸部大小:%GET_STR("胸部大小",MASTER)%" , "胸部大小"
     PRINTL
-    PRINTBUTTON @"陷没乳头:%INVERTED_NIPPLES(MASTER)%" , 14
+    PRINTBUTTON @"乳房形状:%GET_STR("乳房形状",MASTER)%" , "乳房形状"
     PRINTL
-    PRINTBUTTON @"乳头颜色:%NIPPLES_COLOR(MASTER)%" , 15
+    PRINTBUTTON @"陷没乳头:%GET_STR("陷没乳头",MASTER)%" , "陷没乳头"
     PRINTL
-    PRINTBUTTON @"乳晕大小:%AREOLA(MASTER)%" , 16
+    PRINTBUTTON @"乳头颜色:%GET_STR("乳头颜色",MASTER)%" , "乳头颜色"
     PRINTL
-    PRINTBUTTON @"阴毛:%PUBLIC_HAIR(MASTER)%" , 17
+    PRINTBUTTON @"乳晕大小:%GET_STR("乳晕大小",MASTER)%" , "乳晕大小"
     PRINTL
-    PRINTBUTTON @"外阴形状:%VUVLA(MASTER)%" , 17
+    PRINTBUTTON @"阴毛:%GET_STR("阴毛",MASTER)%" , "阴毛"
+    PRINTL
+    PRINTBUTTON @"穴型:%GET_STR("穴型",MASTER)%" , "穴型"
     PRINTL
     PRINTL
     CUSTOMDRAWLINE -
-    PRINTBUTTON "[开始]" , 99
-    INPUT
-    CALL NEW_CHARACTER_CHECK(RESULT)
+    PRINTBUTTON "[开始]" , "[开始]"
+    INPUTS
+    CALL NEW_CHARACTER_CHECK(RESULTS)
