@@ -1,6 +1,6 @@
 ﻿@SOURCE_CHECK_SANS
     ;不同理智下的加成
-    IF BASE:TARGET:4 >= (90*MAXBASE:TARGET:4) / 100
+    IF BASE:TARGET:理智 >= (90*MAXBASE:TARGET:4) / 100
         TIMES SOURCE:情爱, 0.9
         TIMES SOURCE:屈服, 0.9
         TIMES SOURCE:恭顺, 0.9
@@ -8,7 +8,7 @@
         TIMES SOURCE:习得, 1.2
         TIMES SOURCE:耻情, 1.2
         TIMES SOURCE:恐惧, 1.2
-        TIMES SOURCE:否定, 1.2
+        TIMES SOURCE:反抗, 1.2
     ELSEIF BASE:TARGET:4 <= (60*MAXBASE:TARGET:4) / 100
         TIMES SOURCE:情爱, 1.1
         TIMES SOURCE:屈服, 1.1
@@ -18,7 +18,7 @@
         TIMES SOURCE:耻情, 0.8
         TIMES SOURCE:恐惧, 0.8
         TIMES SOURCE:支配, 1.1
-    ELSEIF BASE:TARGET:4 <= (20*MAXBASE:TARGET:4) / 100 & BASE:TARGET:4 > 0
+    ELSEIF BASE:TARGET:理智 <= (20*MAXBASE:TARGET:4) / 100 & BASE:TARGET:4 > 0
         TIMES SOURCE:情爱, 0.5
         TIMES SOURCE:恭顺, 1.6
         TIMES SOURCE:欲情, 1.3
@@ -26,8 +26,8 @@
         TIMES SOURCE:耻情, 0.6
         TIMES SOURCE:恐惧, 0.6
         TIMES SOURCE:支配, 1.2
-        TIMES SOURCE:否定, 0.5
-    ELSEIF BASE:TARGET:4 == 0 ;彻底疯狂!
+        TIMES SOURCE:反抗, 0.5
+    ELSEIF BASE:TARGET:理智 == 0 ;彻底疯狂!
         TIMES SOURCE:情爱, 0.2
         TIMES SOURCE:恭顺, 2.0
         TIMES SOURCE:欲情, 2.0
@@ -35,5 +35,5 @@
         TIMES SOURCE:耻情, 0.2
         TIMES SOURCE:恐惧, 0.2
         TIMES SOURCE:支配, 2.0
-        TIMES SOURCE:否定, 0.1
+        TIMES SOURCE:反抗, 0.1
     ENDIF

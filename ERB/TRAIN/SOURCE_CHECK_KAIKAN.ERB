@@ -1,0 +1,80 @@
+﻿@SOURCE_CHECK_KAIKAN;部位等级计算
+    SIF ABL:TARGET:Ｍ感觉 >　0
+        SOURCE:Ｍ快楽 = SOURCE:Ｍ快楽 *(100 + ABL:TARGET:Ｍ感觉*100) / 100
+    SIF ABL:TARGET:Ｂ感觉 >　0
+        SOURCE:Ｂ快楽 = SOURCE:Ｂ快楽 *(100 + ABL:TARGET:Ｂ感觉*100) / 100
+    SIF ABL:TARGET:Ｎ感觉 >　0
+        SOURCE:Ｎ快楽 = SOURCE:Ｎ快楽 *(100 + ABL:TARGET:Ｂ感觉*100) / 100
+    SIF ABL:TARGET:Ｃ感觉 >　0
+        SOURCE:Ｃ快楽 = SOURCE:Ｃ快楽 *(100 + ABL:TARGET:Ｃ感觉*100) / 100
+    SIF ABL:TARGET:Ｕ感觉 >　0
+        SOURCE:Ｕ快楽 = SOURCE:Ｕ快楽 *(100 + ABL:TARGET:Ｕ感觉*100) / 100
+    SIF ABL:TARGET:Ｖ感觉 >　0
+        SOURCE:Ｖ快楽 = SOURCE:Ｖ快楽 *(100 + ABL:TARGET:Ｖ感觉*100) / 100
+    SIF ABL:TARGET:Ａ感觉 >　0
+        SOURCE:Ａ快楽 = SOURCE:Ａ快楽 *(100 + ABL:TARGET:Ａ感觉*100) / 100
+    SIF ABL:TARGET:Ｆ感觉 > 0
+        SOURCE:Ｆ快楽 = SOURCE:Ｆ快楽 *(100 + ABL:TARGET:Ｆ感觉*100) / 100
+    SIF ABL:TARGET:Ｓ感觉 > 0
+        SOURCE:Ｓ快楽 = SOURCE:Ｓ快楽 *(100 + ABL:TARGET:Ｓ感觉*100) / 100
+
+    ;钝感
+    SIF TALENT:Ｍ钝感
+        TIMES SOURCE:Ｍ快楽, 0.8
+    SIF TALENT:Ｂ钝感
+        TIMES SOURCE:Ｂ快楽, 0.8
+    SIF TALENT:Ｎ钝感
+        TIMES SOURCE:Ｎ快楽, 0.8
+    SIF TALENT:Ｃ钝感
+        TIMES SOURCE:Ｃ快楽, 0.8
+    SIF TALENT:Ｕ钝感
+        TIMES SOURCE:Ｕ快楽, 0.8
+    SIF TALENT:Ｖ钝感
+        TIMES SOURCE:Ｖ快楽, 0.8
+    SIF TALENT:Ａ钝感
+        TIMES SOURCE:Ａ快楽, 0.8
+    SIF TALENT:Ｆ钝感
+        TIMES SOURCE:Ｆ快楽, 0.8
+    SIF TALENT:Ｓ钝感
+        TIMES SOURCE:Ｓ快楽, 0.8
+
+    ;性感
+    SIF TALENT:Ｍ性感
+        TIMES SOURCE:Ｍ快楽, 1.1
+    SIF TALENT:Ｂ性感
+        TIMES SOURCE:Ｂ快楽, 1.1
+    SIF TALENT:Ｎ性感
+        TIMES SOURCE:Ｎ快楽, 1.1
+    SIF TALENT:Ｃ性感
+        TIMES SOURCE:Ｃ快楽, 1.1
+    SIF TALENT:Ｕ性感
+        TIMES SOURCE:Ｕ快楽, 1.1
+    SIF TALENT:Ｖ性感
+        TIMES SOURCE:Ｖ快楽, 1.1
+    SIF TALENT:Ａ性感
+        TIMES SOURCE:Ａ快楽, 1.1
+    SIF TALENT:Ｆ性感
+        TIMES SOURCE:Ｆ快楽, 1.1
+    SIF TALENT:Ｓ性感
+        TIMES SOURCE:Ｓ快楽, 1.1
+    ;过敏
+    SIF TALENT:Ｍ过敏
+        TIMES SOURCE:Ｍ快楽, 1.25
+    SIF TALENT:Ｂ过敏
+        TIMES SOURCE:Ｂ快楽, 1.25
+    SIF TALENT:Ｂ过敏
+        TIMES SOURCE:Ｎ快楽, 1.25
+    SIF TALENT:Ｃ过敏
+        TIMES SOURCE:Ｃ快楽, 1.25
+    SIF TALENT:Ｕ过敏
+        TIMES SOURCE:Ｕ快楽, 1.25
+    SIF TALENT:Ｖ过敏
+        TIMES SOURCE:Ｖ快楽, 1.25
+    SIF TALENT:Ａ过敏
+        TIMES SOURCE:Ａ快楽, 1.25
+    SIF TALENT:Ｆ过敏
+        TIMES SOURCE:Ｆ快楽, 1.25
+    SIF TALENT:Ｓ过敏
+        TIMES SOURCE:Ｓ快楽, 1.25
+
+    

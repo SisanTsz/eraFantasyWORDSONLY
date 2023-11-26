@@ -14,7 +14,12 @@
     CUSTOMDRAWLINE -
     PRINTC 能力显示 [2001]
     PRINTC 状态显示 [2002]
+    SIF TFLAG:303 == 0
+        PRINTC 连发切换 [2003]
+    SIF TFLAG:303 == 1
+        PRINTC 单发切换 [2003]
     PRINTC 结束调教 [2099]
+    CALL PRINT_LINE(3)
 
 @TRAIN_UI
     #DIM LCOUNT
@@ -64,7 +69,7 @@
     #DIM BAR_COLOUR
     #DIM PALAM_MAX
     #DIM PCOUNT
-
+    PCOUNT = 0
     BAR_SIZE = 5
     BAR_COLOUR = 0x6666FF
     CALL DRAWLINES("【 珠 】")
@@ -80,7 +85,7 @@
     
 	        CALL PRINT_BAR(PALAM:ARG:LCOUNT, BAR_MAX, BAR_SIZE, BAR_COLOUR)
             PCOUNT += 1
-            IF PCOUNT >= 6
+            IF PCOUNT >= 7
                 PRINTL
                 PCOUNT = 0
             ENDIF

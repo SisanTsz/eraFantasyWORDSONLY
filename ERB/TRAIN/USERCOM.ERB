@@ -1,13 +1,13 @@
 ﻿@USERCOM
     SELECTCASE RESULT
-        CASE 2095
-            IF TFLAG:301 == 0
-                TFLAG:301 = 1
-            ELSEIF TFLAG:301 == 1
-                TFLAG:301 = 0
+        CASE 2003
+            IF TFLAG:303 == 1
+                TFLAG:303 = 0
+            ELSE
+                TFLAG:303 = 1
             ENDIF
     ENDSELECT
-
+    
 @EVENTEND ;调教结束
     BEGIN ABLUP
 

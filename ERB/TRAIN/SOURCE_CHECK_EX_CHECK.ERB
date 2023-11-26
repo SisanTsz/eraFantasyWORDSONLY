@@ -1,24 +1,46 @@
-﻿@EX_CHECK; 高潮运算
+﻿@SOURCE_CHECK_EX_CHECK; 高潮运算
     #DIM LCOUNT
     #DIMS NAME_EX
+    #DIMS STOP_EX
+    #DIMS ENDURE_EX
     FOR LCOUNT, 0, 9
         SELECTCASE PALAMNAME:LCOUNT
-        CASE "快Ｃ"
-            NAME_EX = Ｃ绝顶
         CASE "快Ｍ"
             NAME_EX = Ｍ绝顶
+            STOP_EX = Ｍ寸止
+            ENDURE_EX = Ｍ忍耐
         CASE "快Ｂ"
             NAME_EX = Ｂ绝顶
-        CASE "快Ｖ"
-            NAME_EX = Ｖ绝顶
-        CASE "快Ａ"
-            NAME_EX = Ａ绝顶
+            STOP_EX = Ｂ寸止
+            ENDURE_EX = Ｂ忍耐
+        CASE "快Ｎ"
+            NAME_EX = Ｎ绝顶
+            STOP_EX = Ｎ寸止
+            ENDURE_EX = Ｎ忍耐
+        CASE "快Ｃ"
+            NAME_EX = Ｃ绝顶
+            STOP_EX = Ｃ寸止
+            ENDURE_EX = Ｃ忍耐
         CASE "快Ｕ"
             NAME_EX = Ｕ绝顶
+            STOP_EX = Ｕ寸止
+            ENDURE_EX = Ｕ忍耐
+        CASE "快Ｖ"
+            NAME_EX = Ｖ绝顶
+            STOP_EX = Ｖ寸止
+            ENDURE_EX = Ｖ忍耐
+        CASE "快Ａ"
+            NAME_EX = Ａ绝顶
+            STOP_EX = Ａ寸止
+            ENDURE_EX = Ａ忍耐
         CASE "快Ｆ"
             NAME_EX = Ｆ绝顶
+            STOP_EX = Ｆ寸止
+            ENDURE_EX = Ｆ忍耐
         CASE "快Ｓ"
             NAME_EX = Ｓ绝顶
+            STOP_EX = Ｓ寸止
+            ENDURE_EX = Ｓ忍耐
         CASEELSE
             CONTINUE
         ENDSELECT
