@@ -72,23 +72,38 @@
     #DIM BAR_COLOUR
     #DIM PALAM_MAX
     #DIM PCOUNT
+    #DIM EX_LEVEL
     PCOUNT = 0
     BAR_SIZE = 5
     BAR_COLOUR = 0x6666FF
-    PRINTL 【 珠 】
-    FOR LCOUNT, 0, 100
+    PRINTL 【 快感 】
+    FOR LCOUNT, 101, 110
+        SELECTCASE PALAM:LCOUNT
+            CASE IS >= 200000
+                EX_LEVEL = 5
+                PALAM_MAX = PALAM:LCOUNT + 1
+            CASE IS >= 100000
+                EX_LEVEL = 4
+                PALAM_MAX = 200000
+            CASE IS >= 50000
+                EX_LEVEL = 3
+                PALAM_MAX = 100000
+            CASE IS >= 20000
+                EX_LEVEL = 2
+                PALAM_MAX = 50000
+            CASE IS >= 10000
+                EX_LEVEL = 1
+                PALAM_MAX = 20000
+            CASE IS < 10000
+                EX_LEVEL = 0
+                PALAM_MAX = 10000
+        ENDSELECT
         IF PALAMNAME:LCOUNT != ""
-	        PRINTFORM %PALAMNAME:LCOUNT%LV:{GETPALAMLV(PALAM:ARG:LCOUNT,10)} 
-            PALAM_MAX = 10
-	        IF GETPALAMLV(PALAM:ARG:LCOUNT,10) > PALAM_MAX
-	    	    BAR_MAX = PALAMLV:PALAM_MAX
-	        ELSE
-	     	    BAR_MAX = PALAMLV:GETPALAMLV(PALAM:ARG:LCOUNT,10) + 1
-	        ENDIF
-    
-	        CALL PRINT_BAR(PALAM:ARG:LCOUNT, BAR_MAX, BAR_SIZE, BAR_COLOUR)
+	        PRINTFORM %PALAMNAME:(LCOUNT-100)%LV:{EX_LEVEL}
+
+	        CALL PRINT_BAR(PALAM:ARG:LCOUNT, PALAM_MAX, BAR_SIZE, BAR_COLOUR)
             PCOUNT += 1
-            IF PCOUNT >= 7
+            IF PCOUNT >= 3
                 PRINTL
                 PCOUNT = 0
             ENDIF

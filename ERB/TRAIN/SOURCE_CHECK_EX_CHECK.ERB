@@ -1,72 +1,54 @@
 ﻿@SOURCE_CHECK_EX_CHECK; 高潮运算
     #DIM LCOUNT
-    #DIMS NAME_EX
     #DIMS STOP_EX
     #DIMS ENDURE_EX
+    #DIM EXLEVEL = 0
     FOR LCOUNT, 0, 10
-        SELECTCASE PALAMNAME:LCOUNT
-        CASE "快Ｍ"
-            NAME_EX = Ｍ绝顶
-            STOP_EX = Ｍ寸止
-            ENDURE_EX = Ｍ忍耐
-        CASE "快Ｂ"
-            NAME_EX = Ｂ绝顶
-            STOP_EX = Ｂ寸止
-            ENDURE_EX = Ｂ忍耐
-        CASE "快Ｎ"
-            NAME_EX = Ｎ绝顶
-            STOP_EX = Ｎ寸止
-            ENDURE_EX = Ｎ忍耐
-        CASE "快Ｃ"
-            NAME_EX = Ｃ绝顶
-            STOP_EX = Ｃ寸止
-            ENDURE_EX = Ｃ忍耐
-        CASE "快Ｕ"
-            NAME_EX = Ｕ绝顶
-            STOP_EX = Ｕ寸止
-            ENDURE_EX = Ｕ忍耐
-        CASE "快Ｖ"
-            NAME_EX = Ｖ绝顶
-            STOP_EX = Ｖ寸止
-            ENDURE_EX = Ｖ忍耐
-        CASE "快Ａ"
-            NAME_EX = Ａ绝顶
-            STOP_EX = Ａ寸止
-            ENDURE_EX = Ａ忍耐
-        CASE "快Ｆ"
-            NAME_EX = Ｆ绝顶
-            STOP_EX = Ｆ寸止
-            ENDURE_EX = Ｆ忍耐
-        CASE "快Ｓ"
-            NAME_EX = Ｓ绝顶
-            STOP_EX = Ｓ寸止
-            ENDURE_EX = Ｓ忍耐
-        CASEELSE
-            CONTINUE
+        SELECTCASE NOW_PALAM(LCOUNT)
+            CASE IS >= 200000
+                NOWEX:LCOUNT = 5
+            CASE IS >= 100000
+                NOWEX:LCOUNT = 4
+            CASE IS >= 50000
+                NOWEX:LCOUNT = 3
+            CASE IS >= 20000
+                NOWEX:LCOUNT = 2
+            CASE IS >= 10000
+                NOWEX:LCOUNT = 1
+            CASE IS < 10000
+                NOWEX:LCOUNT = 0
         ENDSELECT
-        IF TFLAG:忍耐中 == 0
-            SELECTCASE NOW_PALAM(PALAMNAME:LCOUNT)
-                CASE IS >= 200000
-                    NOWEX:NAME_EX = 5
-                CASE IS >= 100000
-                    NOWEX:NAME_EX = 4
-                CASE IS >= 50000
-                    NOWEX:NAME_EX = 3
-                CASE IS >= 20000
-                    NOWEX:NAME_EX = 2
-                CASE IS >= 10000
-                    NOWEX:NAME_EX = 1
-            ENDSELECT
-        ELSEIF TFLAG:忍耐中 == 1
-        ENDIF
-
-
-        SIF NOW_PALAM(PALAMNAME:LCOUNT) - CDOWN:LCOUNT >= 10000 && NOWEX:NAME_EX
-		CDOWN:LCOUNT = NOW_PALAM(PALAMNAME:LCOUNT) - 10000 + 1000 * NOWEX:NAME_EX
-
+        SIF NOWEX:LCOUNT > 0
+            TFLAG:今回高潮 = 1
     NEXT
+    IF TFLAG:忍耐中 == 1
+        FOR LCOUNT, 0, 10
+            EXLEVEL += NOWEX:LCOUNT
+        NEXT
+        IF EXLEVEL*2 <= ABL:TARGET:快感忍耐*7
+            IF RAND:10 > 8
+                FOR LCOUNT, 0, 10
+                    NOWEX:LCOUNT = 0
+                NEXT
+            ELSE
+                TFLAG:忍耐中 = 0
+                TFLAG:忍耐失败 = 1
+                TFLAG:今回高潮 = 1
+            ENDIF
+        ELSE
+            IF RAND:10 > 4
+                FOR LCOUNT, 0, 10
+                    NOWEX:LCOUNT = 0
+                NEXT
+            ELSE
+                TFLAG:忍耐中 = 0
+                TFLAG:忍耐失败 = 1
+                TFLAG:今回高潮 = 1
+            ENDIF
+        ENDIF
+    ENDIF
 
-@NOW_PALAM(ARGS);from edge
+@NOW_PALAM(ARG)
 #FUNCTION
-LOCAL = CUP:TARGET:ARGS + PALAM:TARGET:ARGS
+LOCAL = SOURCE:TARGET:ARG + PALAM:TARGET:(100 + ARG)
 RETURNF LOCAL

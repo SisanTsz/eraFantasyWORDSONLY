@@ -1,30 +1,15 @@
 ﻿@SOURCE_CHECK_TALENT
     #DIM LCOUNT
     ;淫乱
-    IF TALENT:淫乱
+    IF TALENT:TARGET:淫乱
         FOR LCOUNT, 1, 10
             TIMES SOURCE:LCOUNT, 1.2
         NEXT
     ENDIF
 
-    ;接受快感
-    IF TALENT:220
-        FOR LCOUNT, 1, 10
-            TIMES SOURCE:LCOUNT, 1.1
-        NEXT
-    ENDIF
-
     ;否认快感
-    IF TALENT:221
+    IF TALENT:TARGET:否认快感
         FOR LCOUNT, 1, 10
             TIMES SOURCE:LCOUNT, 0.85
         NEXT
     ENDIF
-
-    ;学习快
-    SIF TALENT:101
-        TIMES SOURCE:习得, 1.2
-
-    ;学习慢
-    SIF TALENT:102
-        TIMES SOURCE:习得, 0.8
