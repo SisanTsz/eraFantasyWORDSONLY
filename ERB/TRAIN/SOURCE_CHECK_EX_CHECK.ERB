@@ -3,7 +3,7 @@
     #DIMS NAME_EX
     #DIMS STOP_EX
     #DIMS ENDURE_EX
-    FOR LCOUNT, 0, 9
+    FOR LCOUNT, 0, 10
         SELECTCASE PALAMNAME:LCOUNT
         CASE "快Ｍ"
             NAME_EX = Ｍ绝顶
@@ -44,19 +44,22 @@
         CASEELSE
             CONTINUE
         ENDSELECT
+        IF TFLAG:忍耐中 == 0
+            SELECTCASE NOW_PALAM(PALAMNAME:LCOUNT)
+                CASE IS >= 200000
+                    NOWEX:NAME_EX = 5
+                CASE IS >= 100000
+                    NOWEX:NAME_EX = 4
+                CASE IS >= 50000
+                    NOWEX:NAME_EX = 3
+                CASE IS >= 20000
+                    NOWEX:NAME_EX = 2
+                CASE IS >= 10000
+                    NOWEX:NAME_EX = 1
+            ENDSELECT
+        ELSEIF TFLAG:忍耐中 == 1
+        ENDIF
 
-        SELECTCASE NOW_PALAM(PALAMNAME:LCOUNT)
-            CASE IS >= 100000
-                NOWEX:NAME_EX = 5
-            CASE IS >= 50000
-                NOWEX:NAME_EX = 4
-            CASE IS >= 30000
-                NOWEX:NAME_EX = 3
-            CASE IS >= 20000
-                NOWEX:NAME_EX = 2
-            CASE IS >= 10000
-                NOWEX:NAME_EX = 1
-        ENDSELECT
 
         SIF NOW_PALAM(PALAMNAME:LCOUNT) - CDOWN:LCOUNT >= 10000 && NOWEX:NAME_EX
 		CDOWN:LCOUNT = NOW_PALAM(PALAMNAME:LCOUNT) - 10000 + 1000 * NOWEX:NAME_EX
