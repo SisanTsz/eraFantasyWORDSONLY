@@ -3,6 +3,7 @@
     #DIMS STOP_EX
     #DIMS ENDURE_EX
     #DIM EXLEVEL = 0
+    #DIM OTHER_JUEL
     FOR LCOUNT, 0, 10
         SELECTCASE NOW_PALAM(LCOUNT)
             CASE IS >= 200000
@@ -25,7 +26,7 @@
         FOR LCOUNT, 0, 10
             EXLEVEL += NOWEX:LCOUNT
         NEXT
-        IF EXLEVEL*2 <= ABL:TARGET:快感忍耐*7
+        IF EXLEVEL*2 <= ABL:TARGET:忍耐技巧*7
             IF RAND:10 > 8
                 FOR LCOUNT, 0, 10
                     NOWEX:LCOUNT = 0
@@ -47,7 +48,74 @@
             ENDIF
         ENDIF
     ENDIF
-
+    IF TFLAG:寸止中 == 1
+        FOR LCOUNT, 1, 10
+            SELECTCASE NOW_PALAM(LCOUNT)
+            CASE IS >= 200000
+                OTHER_JUEL == NOW_PALAM(LCOUNT) - 200000
+                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
+                SOURCE:TARGET:情爱 += OTHER_JEUL/2
+                SOURCE:TARGET:屈服 += OTHER_JEUL/2
+                SOURCE:TARGET:欲情 += OTHER_JEUL/2
+            CASE IS >= 100000
+                OTHER_JUEL == NOW_PALAM(LCOUNT) - 100000
+                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
+                SOURCE:TARGET:情爱 += OTHER_JEUL/2
+                SOURCE:TARGET:屈服 += OTHER_JEUL/2
+                SOURCE:TARGET:欲情 += OTHER_JEUL/2
+            CASE IS >= 50000
+                OTHER_JUEL == NOW_PALAM(LCOUNT) - 50000
+                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
+                SOURCE:TARGET:情爱 += OTHER_JEUL/2
+                SOURCE:TARGET:屈服 += OTHER_JEUL/2
+                SOURCE:TARGET:欲情 += OTHER_JEUL/2
+            CASE IS >= 20000
+                OTHER_JUEL == NOW_PALAM(LCOUNT) - 20000
+                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
+                SOURCE:TARGET:情爱 += OTHER_JEUL/2
+                SOURCE:TARGET:屈服 += OTHER_JEUL/2
+                SOURCE:TARGET:欲情 += OTHER_JEUL/2
+            CASE IS >= 10000
+                OTHER_JUEL == NOW_PALAM(LCOUNT) - 10000
+                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
+                SOURCE:TARGET:情爱 += OTHER_JEUL/2
+                SOURCE:TARGET:屈服 += OTHER_JEUL/2
+                SOURCE:TARGET:欲情 += OTHER_JEUL/2
+            CASE IS < 10000
+                OTHER_JUEL == NOW_PALAM(LCOUNT) - 5000
+                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
+                SOURCE:TARGET:情爱 += OTHER_JEUL/2
+                SOURCE:TARGET:屈服 += OTHER_JEUL/2
+                SOURCE:TARGET:欲情 += OTHER_JEUL/2
+            ENDSELECT
+        NEXT
+    ENDIF
+    IF TFLAG:寸止中 == 1
+        FOR LCOUNT, 0, 10
+            EXLEVEL += NOWEX:LCOUNT
+        NEXT
+        IF EXLEVEL*2 <= ABL:MASTER:寸止技巧*7
+            IF RAND:10 > 8
+                FOR LCOUNT, 0, 10
+                    NOWEX:LCOUNT = 0
+                NEXT
+            ELSE
+                TFLAG:寸止中 = 0
+                TFLAG:寸止失败 = 1
+                TFLAG:今回高潮 = 1
+            ENDIF
+        ELSE
+            IF RAND:10 > 4
+                FOR LCOUNT, 0, 10
+                    NOWEX:LCOUNT = 0
+                NEXT
+            ELSE
+                TFLAG:寸止中 = 0
+                TFLAG:寸止失败 = 1
+                TFLAG:今回高潮 = 1
+            ENDIF
+        ENDIF
+    ENDIF
 @NOW_PALAM(ARG)
 #FUNCTION
 LOCAL = SOURCE:TARGET:ARG + PALAM:TARGET:(100 + ARG)
