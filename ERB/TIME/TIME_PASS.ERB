@@ -1,0 +1,24 @@
+﻿@TIME_PASS(ARG)
+
+    FOR NUM, 1, 100
+        IF EXISTCSV(NUM,0) == 1
+            IF CFLAG:NUM:状态 == 1
+                BASE:NUM:体力 += (MAXBASE:NUM:体力/1000) * ARG  
+            ELSEIF CFLAG:NUM:状态 == 2
+                BASE:NUM:体力 += (MAXBASE:NUM:体力/480) * ARG
+            ELSE
+                BASE:NUM:体力 += (MAXBASE:NUM:体力/1200) * ARG
+            ENDIF
+            SIF BASE:NUM:体力 > MAXBASE::NUM:体力
+                BASE:NUM:体力 = MAXBASE::NUM:体力
+            
+            BASE:NUM:精力 += ARG
+            SIF BASE:NUM:精力 > MAXBASE::NUM:精力
+                BASE:NUM:精力 = MAXBASE::NUM:精力
+
+            SIF BASE:NUM:精力 >= (MAXBASE:NUM:精力*99) / 100
+                BASE:NUM:性欲 += ARG
+            
+        ENDIF
+
+

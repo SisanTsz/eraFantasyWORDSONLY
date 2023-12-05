@@ -14,24 +14,24 @@
             ENDIF
             PRINT 体力
 	        CALL PRINT_BAR(BASE:ARG:体力,MAXBASE:ARG:体力,10,  COLOR("体力"))
-	        PRINTFORML ({BASE:ARG:体力}/{MAXBASE:ARG:体力})
+	        PRINTFORML ({BASE:ARG:体力/1000}/{MAXBASE:ARG:体力/1000})
 	        PRINT ＳＰ
 	        CALL PRINT_BAR(BASE:ARG:ＳＰ,MAXBASE:ARG:ＳＰ,10,　COLOR("ＳＰ"))
-	        PRINTFORML ({BASE:ARG:ＳＰ}/{MAXBASE:ARG:ＳＰ})
+	        PRINTFORML ({BASE:ARG:ＳＰ/1000}/{MAXBASE:ARG:ＳＰ/1000})
             PRINT 精力
 	        CALL PRINT_BAR(BASE:ARG:精力,MAXBASE:ARG:精力,10,　COLOR("精力"))
-	        PRINTFORML ({BASE:ARG:精力}/{MAXBASE:ARG:精力})
+	        PRINTFORML ({BASE:ARG:精力/1000}/{MAXBASE:ARG:精力/1000})
 	        IF ARG != MASTER
                 PRINT 理智
 	            CALL PRINT_BAR(BASE:ARG:理智,MAXBASE:ARG:理智,10,　COLOR("理智"))
-	            PRINTFORML ({BASE:ARG:理智}/{MAXBASE:ARG:理智})
+	            PRINTFORML ({BASE:ARG:理智/1000}/{MAXBASE:ARG:理智/1000})
             ENDIF
             PRINT 性欲
             CALL PRINT_BAR(BASE:ARG:性欲,MAXBASE:ARG:性欲,10,COLOR("粉红"))
-            PRINTFORML ({BASE:ARG:性欲}/{MAXBASE:ARG:性欲})
+            PRINTFORML ({BASE:ARG:性欲/1000}/{MAXBASE:ARG:性欲/1000})
             PRINT 尿意
             CALL PRINT_BAR(BASE:ARG:尿意,MAXBASE:ARG:尿意,10,COLOR("浅黄"))
-            PRINTFORML ({BASE:ARG:尿意}/{MAXBASE:ARG:尿意})
+            PRINTFORML ({BASE:ARG:尿意/1000}/{MAXBASE:ARG:尿意/1000})
             PRINT 便意
             CALL PRINT_BAR(BASE:ARG:便意,MAXBASE:ARG:便意,10,COLOR("土黄"))
             PRINTFORML ({BASE:ARG:便意}/{MAXBASE:ARG:便意})
