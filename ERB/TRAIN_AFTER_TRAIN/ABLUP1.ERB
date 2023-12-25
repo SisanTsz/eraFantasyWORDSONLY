@@ -1,12 +1,7 @@
 ﻿@ABLUP1
     DRAWLINE
+
+    CALL IS_ABLUP1
     SIF ABL:TARGET:1 == 10
         JUMP ABL_MAX
-
-
-
-
-
-@ISABLUP1
-    SIF ABL:TARGET:1 == 10
-        RETURN 0
+    

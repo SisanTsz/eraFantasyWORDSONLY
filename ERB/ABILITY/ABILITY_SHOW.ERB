@@ -34,10 +34,10 @@
             PRINTFORML ({BASE:ARG:尿意/1000}/{MAXBASE:ARG:尿意/1000})
             PRINT 便意
             CALL PRINT_BAR(BASE:ARG:便意,MAXBASE:ARG:便意,10,COLOR("土黄"))
-            PRINTFORML ({BASE:ARG:便意}/{MAXBASE:ARG:便意})
+            PRINTFORML ({BASE:ARG:便意/1000}/{MAXBASE:ARG:便意/1000})
             IF ARG != MASTER
                 CALL DRAWLINES("□　人物属性　□")
-                PRINTFORML 身高:{BASE:ARG:身高}cm
+                PRINTFORML 身高:{BASE:ARG:身高/1000}cm
                 PRINTFORML 年龄:{BASE:ARG:年龄}
                 PRINTFORML 外表年龄:{BASE:ARG:外表年龄}
                 PRINTFORML 出生月:{BASE:ARG:出生月}
@@ -48,31 +48,31 @@
         CASE 2
             CALL DRAWLINES("□　身体属性　□")
             IF CFLAG:ARG:1 == 1 | 3
-                PRINTFORML 阴茎长度:{BASE:ARG:阴茎长度}mm(%GET_STR("阴茎长度",ARG)%)
-                PRINTFORML 阴茎直径:{BASE:ARG:阴茎直径}mm(%GET_STR("阴茎直径",ARG)%)
+                PRINTFORML 阴茎长度:{BASE:ARG:阴茎长度/1000}mm(%GET_STR("阴茎长度",ARG)%)
+                PRINTFORML 阴茎直径:{BASE:ARG:阴茎直径/1000}mm(%GET_STR("阴茎直径",ARG)%)
                 FOR LCOUNT, 601, 603
                     PRINTFORML %BASENAME:LCOUNT%:{BASE:ARG:LCOUNT}ml
                 NEXT
             ENDIF
             IF ARG != MASTER
                 IF CFLAG:ARG:1 == 2 | 3
-                    PRINTFORML 阴蒂长度:{BASE:ARG:阴蒂长度}mm(%GET_STR("阴蒂长度",ARG)%)
-                    PRINTFORML 阴蒂直径:{BASE:ARG:阴蒂直径}mm(%GET_STR("阴蒂直径",ARG)%)
-                    PRINTFORML 喉长度:{BASE:ARG:喉长度}mm(%GET_STR("喉长度",ARG)%)
-                    PRINTFORML 喉直径:{BASE:ARG:喉直径}mm(%GET_STR("喉直径",ARG)%)
-                    PRINTFORML 喉扩张直径:{BASE:ARG:喉扩张直径}mm(%GET_STR("喉扩张直径",ARG)%)
-                    PRINTFORML 乳孔直径:{BASE:ARG:乳孔直径}mm(%GET_STR("乳孔直径",ARG)%)
-                    PRINTFORML 乳孔扩张直径:{BASE:ARG:乳孔扩张直径}mm(%GET_STR("乳孔扩张直径",ARG)%)
-                    PRINTFORML 阴道长度:{BASE:ARG:阴道长度}mm(%GET_STR("阴道长度",ARG)%)
-                    PRINTFORML 阴道直径:{BASE:ARG:阴道直径}mm(%GET_STR("阴道直径",ARG)%)
-                    PRINTFORML 阴道扩张直径:{BASE:ARG:阴道扩张直径}mm(%GET_STR("阴道扩张直径",ARG)%)
-                    PRINTFORML 尿道长度:{BASE:ARG:尿道长度}mm(%GET_STR("尿道长度",ARG)%)
-                    PRINTFORML 尿道直径:{BASE:ARG:尿道直径}mm(%GET_STR("尿道直径",ARG)%)
-                    PRINTFORML 尿道扩张直径:{BASE:ARG:尿道扩张直径}mm(%GET_STR("尿道扩张直径",ARG)%)
-                    PRINTFORML 肛门直径:{BASE:ARG:肛门直径}mm(%GET_STR("肛门直径",ARG)%)
-                    PRINTFORML 肛门极限直径:{BASE:ARG:肛门极限直径}mm(%GET_STR("肛门极限直径",ARG)%)
+                    PRINTFORML 阴蒂长度:{BASE:ARG:阴蒂长度/1000}mm(%GET_STR("阴蒂长度",ARG)%)
+                    PRINTFORML 阴蒂直径:{BASE:ARG:阴蒂直径/1000}mm(%GET_STR("阴蒂直径",ARG)%)
+                    PRINTFORML 喉长度:{BASE:ARG:喉长度/1000}mm(%GET_STR("喉长度",ARG)%)
+                    PRINTFORML 喉直径:{BASE:ARG:喉直径/1000}mm(%GET_STR("喉直径",ARG)%)
+                    PRINTFORML 喉扩张直径:{BASE:ARG:喉扩张直径/1000}mm(%GET_STR("喉扩张直径",ARG)%)
+                    PRINTFORML 乳孔直径:{BASE:ARG:乳孔直径/1000}mm(%GET_STR("乳孔直径",ARG)%)
+                    PRINTFORML 乳孔扩张直径:{BASE:ARG:乳孔扩张直径/1000}mm(%GET_STR("乳孔扩张直径",ARG)%)
+                    PRINTFORML 阴道长度:{BASE:ARG:阴道长度/1000}mm(%GET_STR("阴道长度",ARG)%)
+                    PRINTFORML 阴道直径:{BASE:ARG:阴道直径/1000}mm(%GET_STR("阴道直径",ARG)%)
+                    PRINTFORML 阴道扩张直径:{BASE:ARG:阴道扩张直径/1000}mm(%GET_STR("阴道扩张直径",ARG)%)
+                    PRINTFORML 尿道长度:{BASE:ARG:尿道长度/1000}mm(%GET_STR("尿道长度",ARG)%)
+                    PRINTFORML 尿道直径:{BASE:ARG:尿道直径/1000}mm(%GET_STR("尿道直径",ARG)%)
+                    PRINTFORML 尿道扩张直径:{BASE:ARG:尿道扩张直径/1000}mm(%GET_STR("尿道扩张直径",ARG)%)
+                    PRINTFORML 肛门直径:{BASE:ARG:肛门直径/1000}mm(%GET_STR("肛门直径",ARG)%)
+                    PRINTFORML 肛门极限直径:{BASE:ARG:肛门极限直径/1000}mm(%GET_STR("肛门极限直径",ARG)%)
                 ENDIF
-                PRINTFORML 胃容量:{BASE:ARG:胃容量}ml
+                PRINTFORML 胃容量:{BASE:ARG:胃容量/1000}ml
                 FOR LCOUNT, 251, 254
                     PRINTFORML %BASENAME:LCOUNT%:{BASE:ARG:LCOUNT}ml
                 NEXT
