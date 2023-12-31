@@ -38,6 +38,8 @@
             PRINTFORML 现在的助手是%NAME:ASSI%
             CALL OTHER_CHARACTER_LIST, 2
         ENDIF
+    ELSEIF RESULT == 301
+        CALL CHARACTER_LIST, 2, 1
     ELSEIF RESULT == 3441
         IF FLAG:5 == 1
             FLAG:5 = 0

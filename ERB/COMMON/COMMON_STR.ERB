@@ -579,3 +579,30 @@
             BCUP += "Ｒ"
     ENDSELECT
     RETURNF BCUP
+
+@GET_LV, ARG
+    #FUNCTIONS
+    SELECTCASE ARG
+        CASE 0
+            RETURNF "Ｇ"
+        CASE 1
+            RETURNF "Ｆ"
+        CASE 2
+            RETURNF "Ｅ"
+        CASE 3
+            RETURNF "Ｄ"
+        CASE 4
+            RETURNF "Ｃ"
+        CASE 5
+            RETURNF "Ｂ"
+        CASE 6
+            RETURNF "Ａ"
+        CASE 7
+            RETURNF "Ｓ"
+        CASE 8
+            RETURNF "ＳＳ"
+        CASE 9
+            RETURNF "ＳＳＳ"
+        CASE IS > 9
+            RETURNF "Ｘ"
+    ENDSELECT

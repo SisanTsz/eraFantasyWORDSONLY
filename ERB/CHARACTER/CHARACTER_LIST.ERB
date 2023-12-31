@@ -1,4 +1,4 @@
-﻿@CHARACTER_LIST, ARG , ARG:1 ;作用,1=能力显示 ;页数
+﻿@CHARACTER_LIST, ARG , ARG:1 ;作用,1=能力显示 2=能力提升;页数
     #DIM NUM
     CALL DRAWLINES("□　角色列表　□")
     PRINTBUTTONLC @" [0] %NAME:MASTER%", 0
@@ -36,7 +36,9 @@
         IF RESULT != 99
             SELECTCASE ARG
                 CASE 1
-                    CALL ABILITY_SHOW, ARG, 1
+                    CALL ABILITY_SHOW, RESULT
+                CASE 2
+                    CALL ABLUP_CHARA, RESULT
             ENDSELECT
         ENDIF
     ENDIF

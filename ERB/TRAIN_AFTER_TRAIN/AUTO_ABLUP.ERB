@@ -1,0 +1,222 @@
+﻿@AUTO_ABLUP_MAIN
+    #DIM IS_LVUP
+    #DIM LCOUNT
+    #DIMS ANAME
+    #DIMS TNAME
+    #DIM EXP_NEEDED
+    #DIM JUEL_NEEDED
+    #DIM BASE_NEEDED
+    #DIMS PNAME
+    IS_LVUP = 0
+    $LOOP
+    FOR LCOUNT, 1, 11
+        ANAME = %ABLNAME:LCOUNT%
+        SELECTCASE LCOUNT
+            CASE 1
+                PNAME = Ｍ
+            CASE 2
+                PNAME = Ｂ
+            CASE 3
+                PNAME = Ｈ
+            CASE 4
+                PNAME = Ｃ
+            CASE 5
+                PNAME = Ｐ
+            CASE 6
+                PNAME = Ｕ
+            CASE 7
+                PNAME = Ｖ
+            CASE 8
+                PNAME = Ａ
+            CASE 9
+                PNAME = Ｆ
+            CASE 10
+                PNAME = Ｓ
+        ENDSELECT
+        SELECTCASE LCOUNT
+            CASE 1
+                TNAME = 娇唇
+            CASE 2
+                TNAME = 柔乳
+            CASE 3
+                TNAME = 葇荑
+            CASE 4
+                TNAME = 嫩核
+            CASE 5
+                TNAME = 秒硬
+            CASE 6
+                TNAME = 秘穴
+            CASE 7
+                TNAME = 名器
+            CASE 8
+                TNAME = 幻洞
+            CASE 9
+                TNAME = 娇足
+            CASE 10
+                TNAME = 凝玉
+        ENDSELECT
+            
+        JUEL_NEEDED = ABLUP_JUEL_NEEDED(ANAME)
+        EXP_NEEDED = ABLUP_EXP_NEEDED(ANAME)
+        SELECTCASE ABL:TARGET:ANAME
+            CASE 0 TO 4
+                IF JUEL:TARGET:("快"+PNAME) > JUEL_NEEDED && EXP:TARGET:(PNAME+"经验") > EXP_NEEDED
+                    JUEL:TARGET:("快"+PNAME) -= JUEL_NEEDED
+                    ABL:TARGET:(PNAME+"感觉") += 1
+                    IS_LVUP += 1
+                ENDIF
+            CASE 5 TO 9
+                IF JUEL:TARGET:("快"+PNAME) > JUEL_NEEDED && EXP:TARGET:(PNAME+"经验") > EXP_NEEDED && TALENT:TARGET:TNAME != 0
+                    JUEL:TARGET:("快"+PNAME) -= JUEL_NEEDED
+                    ABL:TARGET:(PNAME+"感觉") += 1
+                    IS_LVUP += 1
+                ENDIF
+        ENDSELECT
+    NEXT
+    FOR LCOUNT, 101, 114
+        ANAME = %ABLNAME:LCOUNT%
+        SELECTCASE LCOUNT
+            CASE 1
+                PNAME = Ｍ
+            CASE 2
+                PNAME = Ｂ
+            CASE 3
+                PNAME = Ｈ
+            CASE 4
+                PNAME = Ｃ
+            CASE 5
+                PNAME = Ｐ
+            CASE 6
+                PNAME = Ｕ
+            CASE 7
+                PNAME = Ｖ
+            CASE 8
+                PNAME = Ａ
+            CASE 9
+                PNAME = Ｆ
+            CASE 10
+                PNAME = Ｓ
+            CASE 11
+                PNAME = 道具
+            CASE 12
+                PNAME = 寸止
+            CASE 13
+                PNAME = 忍耐
+        ENDSELECT
+        SELECTCASE LCOUNT
+            CASE 1
+                TNAME = 口部精通
+            CASE 2
+                TNAME = 胸部精通
+            CASE 3
+                TNAME = 手艺精湛
+            CASE 4
+                TNAME = 外阴精通
+            CASE 5
+                TNAME = 雄器之珍宝
+            CASE 6
+                TNAME = 雄器之珍宝
+            CASE 7
+                TNAME = 阴道精通
+            CASE 8
+                TNAME = 第二穴
+            CASE 9
+                TNAME = 雄器之珍宝
+            CASE 10
+                TNAME = 雄器之珍宝
+            CASE 11
+                TNAME = 道具精通
+            CASE 12
+                TNAME = 寸止精通
+            CASE 13
+                TNAME = 忍耐精通
+        ENDSELECT
+            
+        JUEL_NEEDED = ABLUP_JUEL_NEEDED(ANAME)
+        EXP_NEEDED = ABLUP_EXP_NEEDED(ANAME)
+        SELECTCASE ABL:TARGET:ANAME
+            CASE 0 TO 4
+                IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:(PNAME+"经验") > EXP_NEEDED
+                    JUEL:TARGET:习得 -= JUEL_NEEDED
+                    ABL:TARGET:(PNAME+"技巧") += 1
+                    IS_LVUP += 1
+                ENDIF
+            CASE 5 TO 9
+                IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:(PNAME+"经验") > EXP_NEEDED && TALENT:TARGET:TNAME != 0
+                    JUEL:TARGET:习得 -= JUEL_NEEDED
+                    ABL:TARGET:(PNAME+"技巧") += 1
+                    IS_LVUP += 1
+                ENDIF
+        ENDSELECT
+    NEXT
+
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("信赖")
+    BASE_NEEDED = ABLUP_BASE_NEEDED("信赖")
+    SELECTCASE ABL:TARGET:信赖
+        CASE 0 TO 4
+            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                JUEL:TARGET:情爱 -= JUEL_NEEDED
+                ABL:TARGET:信赖 += 1
+                IS_LVUP += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
+                JUEL:TARGET:情爱 -= JUEL_NEEDED
+                ABL:TARGET:信赖 += 1
+                IS_LVUP += 1
+            ENDIF
+    ENDSELECT
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("欲望")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("欲望")
+    SELECTCASE ABL:TARGET:欲望
+        CASE 0 TO 4
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                JUEL:TARGET:欲情 -= JUEL_NEEDED
+                ABL:TARGET:欲望 += 1
+                IS_LVUP += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:淫乱 != 0
+                JUEL:TARGET:欲情 -= JUEL_NEEDED
+                ABL:TARGET:欲望 += 1
+                IS_LVUP += 1
+            ENDIF
+    ENDSELECT
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("服从")
+    BASE_NEEDED = ABLUP_BASE_NEEDED("服从")
+    SELECTCASE ABL:TARGET:服从
+        CASE 0 TO 4
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                JUEL:TARGET:屈服 -= JUEL_NEEDED
+                ABL:TARGET:服从 += 1
+                IS_LVUP += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:顺遂 != 0
+                JUEL:TARGET:屈服 -= JUEL_NEEDED
+                ABL:TARGET:服从 += 1
+                IS_LVUP += 1
+            ENDIF
+    ENDSELECT
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("献身")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("献身")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:献身
+        CASE 0 TO 4
+            IF JUEL:TARGET:情爱 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                JUEL:TARGET:情爱 -= JUEL_NEEDED
+                ABL:TARGET:献身 += 1
+                IS_LVUP += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:情爱 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:盲信 != 0
+                JUEL:TARGET:情爱 -= JUEL_NEEDED
+                ABL:TARGET:献身 += 1
+                IS_LVUP += 1
+            ENDIF
+    ENDSELECT
+
+    IF IS_LVUP > 0
+        IS_LVUP = 0
+        GOTO LOOP
+    ENDIF

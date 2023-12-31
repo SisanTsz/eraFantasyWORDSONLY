@@ -1,0 +1,78 @@
+﻿@ABLUP_COND111
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    PRINTFORML 道具技巧 LV{ABL:TARGET:道具技巧+1}
+    PRINTL 道具技巧描述
+    PRINTL
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("道具技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("道具技巧")
+    SELECTCASE ABL:TARGET:道具技巧
+        CASE 0 TO 4
+            PRINTFORML 习得之珠 {JUEL:TARGET:习得}/{JUEL_NEEDED}
+            PRINTFORML 道具经验 {EXP:TARGET:道具经验}/{EXP_NEEDED}
+            PRINTL
+        CASE 5 TO 9
+            PRINTFORML 习得之珠 {JUEL:TARGET:习得}/{JUEL_NEEDED}
+            PRINTFORML 道具经验 {EXP:TARGET:道具经验}/{EXP_NEEDED}
+            PRINTFORML 道具精通特质 {TALENT:TARGET:道具精通}/1
+    ENDSELECT
+    PRINTL
+    SELECTCASE ABL:TARGET:道具技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:道具经验 > EXP_NEEDED
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:道具经验 > EXP_NEEDED && TALENT:TARGET:道具精通 != 0
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+    ENDSELECT
+
+@ABLUP111_CONFIRM
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("道具技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("道具技巧")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:道具技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:道具经验 > EXP_NEEDED
+                JUEL:TARGET:习得 -= JUEL_NEEDED
+                ABL:TARGET:道具技巧 += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:道具经验 > EXP_NEEDED && TALENT:TARGET:道具精通 != 0
+                JUEL:TARGET:习得 -= JUEL_NEEDED
+                ABL:TARGET:道具技巧 += 1
+            ENDIF
+    ENDSELECT
+
+@IS_ABLUP111
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    #DIMS COND
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("道具技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("道具技巧")
+    SELECTCASE ABL:TARGET:道具技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 >= JUEL_NEEDED && EXP:TARGET:道具经验 > EXP_NEEDED
+                COND = ◯
+            ELSE
+                COND = 
+            ENDIF
+        CASE 5 TO 9
+            IF TALENT:TARGET:道具精通 == 0
+                COND = 
+            ELSE
+                IF JUEL:TARGET:习得 >= JUEL_NEEDED && EXP:TARGET:道具经验 > EXP_NEEDED
+                    COND = ◯
+                ELSE
+                    COND =
+                ENDIF
+            ENDIF
+    ENDSELECT
+    PRINTFORM %COND%
