@@ -9,19 +9,4 @@
     FOR LCOUNT, 1, 10
         UP:(LCOUNT + 100) = SOURCE:LCOUNT
     NEXT
-    IF TFLAG:今回高潮 == 1
-        FOR LCOUNT, 1, 10
-            UP:LCOUNT = UP:(LCOUNT + 100)
-            SELECTCASE NOWEX:LCOUNT
-                CASE 1
-                    TIMES UP:LCOUNT, 0.9
-                CASE 3
-                    TIMES UP:LCOUNT, 1.1
-                CASE 4
-                    TIMES UP:LCOUNT, 1.5
-                CASE 5
-                    TIMES UP:LCOUNT, 2.0
-            ENDSELECT
-            UP:(LCOUNT + 100) = 0
-        NEXT
-    ENDIF
+    

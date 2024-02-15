@@ -6,27 +6,55 @@
 ;up再变成珠
 ;懂?
 
-@SOURCE_CHECK
-    ;体力减免
-    CALL SOURCE_CHECK_POWER
-    ;快感等级计算
-    CALL SOURCE_CHECK_KAIKAN
-    ;不同理智下的加成
-    CALL SOURCE_CHECK_SANS
-    ;特质加成
-    CALL SOURCE_CHECK_TALENT
-    ;性欲计算
-    CALL SOURCE_CHECK_LUST_CHECK
-    ;性欲加成
-    CALL SOURCE_CHECK_LUST
-    ;高潮计算
-    CALL SOURCE_CHECK_EX_CHECK
-    ;高潮加成
-    CALL SOURCE_CHECK_EX
-    ;高潮文本
-    CALL EX_TEXT
-    ;SP计算
-    
+@SOURCE_CHECK_MAIN
+    #DIM MEMO_MASTER
+    #DIM MEMO_TARGET
+    #DIM NEW_MASTER
+    #DIM NEW_TARGET
+    #DIM LCOUNT
+    #DIM LCOUNT_1
+    #DIM LCOUNT_2
+    #DIMS LOCATION
+
+    LOCATION = MASTER:所在处
+    MEMO_MASTER = MASTER
+    MEMO_TARGET = TARGET
+
+    FOR LCOUNT, 0 ,CHARANUM
+        MASTER = LCOUNT
+        IF CFLAG:MASTER:调教中 >= 1 && CFLAG:MASTER:所在处 = LOCATION
+            FOR LCOUNT_1, 301, 311
+                IF CFLAG:MASTER:LCOUNT_1 == 1
+                    TARGET = CFLAG:MASTER:(LCOUNT_1 + 10)
+                ELSEIF CFLAG:MASTER:LCOUNT_1 != 1
+                    TARGET = MEMO_TARGET
+                ENDIF
+                IF BASE:MASTER:体力 > 0
+                    TRYCALLFORM COM_{CFLAG:MASTER:(LCOUNT_1 + 20)}
+                    ;体力减免
+                    CALL SOURCE_CHECK_POWER
+                    ;快感等级计算
+                    CALL SOURCE_CHECK_KAIKAN
+                    ;不同理智下的加成
+                    CALL SOURCE_CHECK_SANS
+                    ;特质加成
+                    CALL SOURCE_CHECK_TALENT
+                    ;性欲计算
+                    CALL SOURCE_CHECK_LUST_CHECK
+                    ;性欲加成
+                    CALL SOURCE_CHECK_LUST
+                    ;名器计算
+                    CALL SOURCE_CHECK_MEIKI
+                    ;调教者口上(口上_番号_COM_动作番号_A)
+                    TRYCALLFORM KOJO_{MASTER}_COM_{LCOUNT_1 + 20}_A
+                    ;被调教者口上(口上_番号_COM_动作番号_B)
+                    TRYCALLFORM KOJO_{TARGET}_COM_{LCOUNT_1 + 20}_B
+                    ;SOURCE结算
+                    CALL UP_CHECK
+                ENDIF
+            NEXT
+        ENDIF
+    NEXT
     ;尿意计算
 
     ;便意计算
@@ -34,7 +62,28 @@
     ;经验增加
 
     ;刻印增加
+    
+    FOR LCOUNT, 0 ,CHARANUM                    
+        MASTER = LCOUNT
+        IF CFLAG:MASTER:调教中 >= 1 && CFLAG:MASTER:所在处 = LOCATION
+            ;高潮计算            
+            CALL SOURCE_CHECK_EX_CHECK
+            ;高潮加成
+            CALL SOURCE_CHECK_EX
+            ;高潮文本            
+            TRYCALLFORM KOJO_{MASTER}_EX
+            ;SP计算            
+        ENDIF
+    NEXT
 
-    ;SOURCE变UP
-    CALL UP_CHECK
-    ;TFLAG 复位
+    MASTER = MEMO_MASTER
+    TARGET = MEMO_TARGET                              
+    
+    ;高潮运算                  
+    
+                        
+
+
+    
+    
+    
