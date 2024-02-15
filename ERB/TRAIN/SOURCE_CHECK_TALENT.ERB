@@ -1,15 +1,27 @@
 ﻿@SOURCE_CHECK_TALENT
     #DIM LCOUNT
-    ;淫乱
-    IF TALENT:TARGET:淫乱
-        FOR LCOUNT, 1, 10
-            TIMES SOURCE:LCOUNT, 1.2
-        NEXT
-    ENDIF
 
-    ;否认快感
-    IF TALENT:TARGET:否认快感
-        FOR LCOUNT, 1, 10
-            TIMES SOURCE:LCOUNT, 0.85
-        NEXT
-    ENDIF
+    ;容易中毒
+    SIF TALENT:TARGET:容易中毒 == 1
+        TIMES SOURCE:TARGET:药毒, 1.2
+    SIF TALENT:MASTER:容易中毒 == 1
+        TIMES SOURCE:MASTER:药毒, 1.2
+
+    ;药毒耐性
+    SIF TALENT:TARGET:药毒耐性 == 1
+        TIMES SOURCE:TARGET:药毒, 0.5
+    SIF TALENT:MASTER:药毒耐性 == 1
+        TIMES SOURCE:MASTER:药毒, 0.5
+
+    ;容易湿
+    SIF TALENT:TARGET:容易湿 == 1
+        TIMES SOURCE:TARGET:Ｖ润滑, 2.0
+    SIF TALENT:MASTER:容易湿 == 1
+        TIMES SOURCE:MASTER:Ｖ润滑, 2.0
+
+    ;不易湿
+    SIF TALENT:TARGET:不易湿 == 1
+        TIMES SOURCE:TARGET:Ｖ润滑, 0.5
+    SIF TALENT:MASTER:不易湿 == 1
+        TIMES SOURCE:MASTER:Ｖ润滑, 0.5
+

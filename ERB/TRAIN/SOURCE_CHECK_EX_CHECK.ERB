@@ -1,122 +1,37 @@
-﻿@SOURCE_CHECK_EX_CHECK; 高潮运算
+﻿@SOURCE_CHECK_EX_CHECK_MASTER; 高潮运算
     #DIM LCOUNT
     #DIMS STOP_EX
     #DIMS ENDURE_EX
     #DIM EXLEVEL = 0
     #DIM OTHER_JUEL
-    FOR LCOUNT, 0, 10
-        SELECTCASE NOW_PALAM(LCOUNT)
+    #DIM EX_LV
+    #DIM EX_LV_TOTAL
+
+    FOR LCOUNT, 101, 111
+        SELECTCASE PALAM:MASTER:LCOUNT
+            CASE IS >= 500000
+                EX_LV = 10
+            CASE IS >= 400000
+                EX_LV = 9
+            CASE IS >= 300000
+                EX_LV = 8
+            CASE IS >= 250000
+                EX_LV = 7
             CASE IS >= 200000
-                NOWEX:LCOUNT = 5
+                EX_LV = 6
+            CASE IS >= 150000
+                EX_LV = 5
             CASE IS >= 100000
-                NOWEX:LCOUNT = 4
+                EX_LV = 4
             CASE IS >= 50000
-                NOWEX:LCOUNT = 3
+                EX_LV = 3
             CASE IS >= 20000
-                NOWEX:LCOUNT = 2
+                EX_LV = 2
             CASE IS >= 10000
-                NOWEX:LCOUNT = 1
+                EX_LV = 1
             CASE IS < 10000
-                NOWEX:LCOUNT = 0
+                EX_LV = 0
         ENDSELECT
-        SIF NOWEX:LCOUNT > 0
-            TFLAG:今回高潮 = 1
+        CFLAG:MASTER:(LCOUNT + 230) = EX_LV
+        EX_LV = 0
     NEXT
-    IF TFLAG:忍耐中 == 1
-        FOR LCOUNT, 0, 10
-            EXLEVEL += NOWEX:LCOUNT
-        NEXT
-        IF EXLEVEL*2 <= ABL:TARGET:忍耐技巧*7
-            IF RAND:10 > 8
-                FOR LCOUNT, 0, 10
-                    NOWEX:LCOUNT = 0
-                NEXT
-            ELSE
-                TFLAG:忍耐中 = 0
-                TFLAG:忍耐失败 = 1
-                TFLAG:今回高潮 = 1
-            ENDIF
-        ELSE
-            IF RAND:10 > 4
-                FOR LCOUNT, 0, 10
-                    NOWEX:LCOUNT = 0
-                NEXT
-            ELSE
-                TFLAG:忍耐中 = 0
-                TFLAG:忍耐失败 = 1
-                TFLAG:今回高潮 = 1
-            ENDIF
-        ENDIF
-    ENDIF
-    IF TFLAG:寸止中 == 1
-        FOR LCOUNT, 1, 10
-            SELECTCASE NOW_PALAM(LCOUNT)
-            CASE IS >= 200000
-                OTHER_JUEL == NOW_PALAM(LCOUNT) - 200000
-                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
-                SOURCE:TARGET:情爱 += OTHER_JEUL/2
-                SOURCE:TARGET:屈服 += OTHER_JEUL/2
-                SOURCE:TARGET:欲情 += OTHER_JEUL/2
-            CASE IS >= 100000
-                OTHER_JUEL == NOW_PALAM(LCOUNT) - 100000
-                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
-                SOURCE:TARGET:情爱 += OTHER_JEUL/2
-                SOURCE:TARGET:屈服 += OTHER_JEUL/2
-                SOURCE:TARGET:欲情 += OTHER_JEUL/2
-            CASE IS >= 50000
-                OTHER_JUEL == NOW_PALAM(LCOUNT) - 50000
-                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
-                SOURCE:TARGET:情爱 += OTHER_JEUL/2
-                SOURCE:TARGET:屈服 += OTHER_JEUL/2
-                SOURCE:TARGET:欲情 += OTHER_JEUL/2
-            CASE IS >= 20000
-                OTHER_JUEL == NOW_PALAM(LCOUNT) - 20000
-                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
-                SOURCE:TARGET:情爱 += OTHER_JEUL/2
-                SOURCE:TARGET:屈服 += OTHER_JEUL/2
-                SOURCE:TARGET:欲情 += OTHER_JEUL/2
-            CASE IS >= 10000
-                OTHER_JUEL == NOW_PALAM(LCOUNT) - 10000
-                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
-                SOURCE:TARGET:情爱 += OTHER_JEUL/2
-                SOURCE:TARGET:屈服 += OTHER_JEUL/2
-                SOURCE:TARGET:欲情 += OTHER_JEUL/2
-            CASE IS < 10000
-                OTHER_JUEL == NOW_PALAM(LCOUNT) - 5000
-                SOURCE:TARGET:LCOUNT -= OTHER_JUEL/2
-                SOURCE:TARGET:情爱 += OTHER_JEUL/2
-                SOURCE:TARGET:屈服 += OTHER_JEUL/2
-                SOURCE:TARGET:欲情 += OTHER_JEUL/2
-            ENDSELECT
-        NEXT
-    ENDIF
-    IF TFLAG:寸止中 == 1
-        FOR LCOUNT, 0, 10
-            EXLEVEL += NOWEX:LCOUNT
-        NEXT
-        IF EXLEVEL*2 <= ABL:MASTER:寸止技巧*7
-            IF RAND:10 > 8
-                FOR LCOUNT, 0, 10
-                    NOWEX:LCOUNT = 0
-                NEXT
-            ELSE
-                TFLAG:寸止中 = 0
-                TFLAG:寸止失败 = 1
-                TFLAG:今回高潮 = 1
-            ENDIF
-        ELSE
-            IF RAND:10 > 4
-                FOR LCOUNT, 0, 10
-                    NOWEX:LCOUNT = 0
-                NEXT
-            ELSE
-                TFLAG:寸止中 = 0
-                TFLAG:寸止失败 = 1
-                TFLAG:今回高潮 = 1
-            ENDIF
-        ENDIF
-    ENDIF
-@NOW_PALAM(ARG)
-#FUNCTION
-LOCAL = SOURCE:TARGET:ARG + PALAM:TARGET:(100 + ARG)
-RETURNF LOCAL

@@ -176,7 +176,7 @@
                 IS_LVUP += 1
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:淫乱 != 0
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:情欲 != 0
                 JUEL:TARGET:欲情 -= JUEL_NEEDED
                 ABL:TARGET:欲望 += 1
                 IS_LVUP += 1
@@ -192,30 +192,13 @@
                 IS_LVUP += 1
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:顺遂 != 0
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:服从 != 0
                 JUEL:TARGET:屈服 -= JUEL_NEEDED
                 ABL:TARGET:服从 += 1
                 IS_LVUP += 1
             ENDIF
     ENDSELECT
-    JUEL_NEEDED = ABLUP_JUEL_NEEDED("献身")
-    EXP_NEEDED = ABLUP_EXP_NEEDED("献身")
-    CUSTOMDRAWLINE -
-    SELECTCASE ABL:TARGET:献身
-        CASE 0 TO 4
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
-                JUEL:TARGET:情爱 -= JUEL_NEEDED
-                ABL:TARGET:献身 += 1
-                IS_LVUP += 1
-            ENDIF
-        CASE 5 TO 9
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:盲信 != 0
-                JUEL:TARGET:情爱 -= JUEL_NEEDED
-                ABL:TARGET:献身 += 1
-                IS_LVUP += 1
-            ENDIF
-    ENDSELECT
-
+    
     IF IS_LVUP > 0
         IS_LVUP = 0
         GOTO LOOP

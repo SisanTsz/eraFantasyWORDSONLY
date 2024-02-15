@@ -14,7 +14,7 @@
         CASE 5 TO 9
             PRINTFORML 屈服之珠 {JUEL:TARGET:屈服}/{JUEL_NEEDED}
             PRINTFORML 服从度 {BASE:TARGET:服从度}/{BASE_NEEDED}
-            PRINTFORML 顺遂特质 {TALENT:TARGET:顺遂}/1
+            PRINTFORML 服从特质 {TALENT:TARGET:服从}/1
     ENDSELECT
     PRINTL
     SELECTCASE ABL:TARGET:服从
@@ -25,7 +25,7 @@
                 PRINTL [    ] 条件不足
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:顺遂 != 0
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:服从 != 0
                 PRINTFORML [ 998] 确认升级
             ELSE
                 PRINTL [    ] 条件不足
@@ -45,7 +45,7 @@
                 ABL:TARGET:服从 += 1
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:顺遂 != 0
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:服从 != 0
                 JUEL:TARGET:屈服 -= JUEL_NEEDED
                 ABL:TARGET:服从 += 1
             ENDIF
@@ -65,7 +65,7 @@
                 COND = 
             ENDIF
         CASE 5 TO 9
-            IF TALENT:TARGET:顺遂 == 0
+            IF TALENT:TARGET:服从 == 0
                 COND = 
             ELSE
                 IF JUEL:TARGET:屈服 >= JUEL_NEEDED && BASE:TARGET:服从度 > BASE_NEEDED

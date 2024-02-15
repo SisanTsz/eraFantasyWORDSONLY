@@ -14,7 +14,7 @@
     #DIM LCOUNT
     #DIM LCOUNT_1
     #DIM LCOUNT_2
-    #DIMS LOCATION
+    #DIM LOCATION
 
     LOCATION = MASTER:所在处
     MEMO_MASTER = MASTER
@@ -22,7 +22,7 @@
 
     FOR LCOUNT, 0 ,CHARANUM
         MASTER = LCOUNT
-        IF CFLAG:MASTER:调教中 >= 1 && CFLAG:MASTER:所在处 = LOCATION
+        IF CFLAG:MASTER:调教中 >= 1 && CFLAG:MASTER:所在处 == LOCATION
             FOR LCOUNT_1, 301, 311
                 IF CFLAG:MASTER:LCOUNT_1 == 1
                     TARGET = CFLAG:MASTER:(LCOUNT_1 + 10)
@@ -50,7 +50,7 @@
                     ;被调教者口上(口上_番号_COM_动作番号_B)
                     TRYCALLFORM KOJO_{TARGET}_COM_{LCOUNT_1 + 20}_B
                     ;SOURCE结算
-                    CALL UP_CHECK
+                    CALL SOURCE_TO_PALAM
                 ENDIF
             NEXT
         ENDIF
@@ -65,9 +65,9 @@
     
     FOR LCOUNT, 0 ,CHARANUM                    
         MASTER = LCOUNT
-        IF CFLAG:MASTER:调教中 >= 1 && CFLAG:MASTER:所在处 = LOCATION
+        IF CFLAG:MASTER:调教中 >= 1 && CFLAG:MASTER:所在处 == LOCATION
             ;高潮计算            
-            CALL SOURCE_CHECK_EX_CHECK
+            CALL SOURCE_CHECK_EX_CHECK_MASTER
             ;高潮加成
             CALL SOURCE_CHECK_EX
             ;高潮文本            
