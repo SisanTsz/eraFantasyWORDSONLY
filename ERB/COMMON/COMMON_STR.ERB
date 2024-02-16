@@ -1,0 +1,608 @@
+﻿@GET_STR(ARGS,ARG)
+    #FUNCTIONS
+    SELECTCASE ARGS
+        CASE "性别"
+            SELECTCASE CFLAG:ARG:1
+                CASE 1
+                    RETURNF "男"
+                CASE 2
+                    RETURNF "女"
+                CASE 3
+                    RETURNF "扶她"
+                CASEELSE
+                    RETURNF "无"
+            ENDSELECT
+        CASE "种族"
+            SELECTCASE CFLAG:ARG:2
+                CASE 1
+                    RETURNF "人类"
+                CASE 2
+                    RETURNF "高等精灵"
+            ENDSELECT
+        CASE "阴毛"
+            SELECTCASE CFLAG:ARG:101
+                CASE 0
+                    RETURNF "永久脱毛"
+                CASE 1
+                    RETURNF "未生长"
+                CASE 2
+                    RETURNF "无毛"
+                CASE 3
+                    RETURNF "稀疏"
+                CASE 4
+                    RETURNF "普通"
+                CASE 5
+                    RETURNF "浓密"
+                CASE 6
+                    RETURNF "刚毛"
+            ENDSELECT
+        CASE "包皮"
+            SELECTCASE CFLAG:ARG:105
+                CASE 0
+                    RETURNF "无包皮"
+                CASE 1
+                    RETURNF "假性包皮"
+                CASE 2
+                    RETURNF "真性包皮"
+            ENDSELECT
+        CASE "包茎"
+            SELECTCASE CFLAG:ARG:106
+                CASE 0
+                    RETURNF "无包茎"
+                CASE 1
+                    RETURNF "假性包茎"
+                CASE 2
+                    RETURNF "真性包茎"
+            ENDSELECT
+        CASE "穴型"
+            SELECTCASE CFLAG:ARG:108
+                CASE 0
+                    RETURNF "馒头"
+                CASE 1
+                    RETURNF "白虎"
+                CASE 2
+                    RETURNF "布条"
+                CASE 3
+                    RETURNF "蝴蝶"
+                CASE 4
+                    RETURNF "水滴"
+                CASE 5
+                    RETURNF "狗耳"
+            ENDSELECT
+        CASE "陷没乳头"
+            SELECTCASE CFLAG:ARG:109
+                CASE 0
+                    RETURNF "无陷没"
+                CASE 1
+                    RETURNF "假性陷没"
+                CASE 2
+                    RETURNF "真性陷没"
+            ENDSELECT
+        CASE "乳头颜色"
+            SELECTCASE CFLAG:ARG:110
+                CASE 0
+                    RETURNF "嫩粉"
+                CASE 1
+                    RETURNF "黝黑"
+            ENDSELECT
+        CASE "乳晕大小"
+            SELECTCASE CFLAG:ARG:111
+                CASE 0
+                    RETURNF "小"
+                CASE 1
+                    RETURNF "普通"
+                CASE 2
+                    RETURNF "巨大"
+            ENDSELECT
+        CASE "乳房形状"
+            SELECTCASE CFLAG:ARG:112
+                CASE 0
+                    RETURNF "圆锥型"
+                CASE 1
+                    RETURNF "半球型"
+                CASE 2
+                    RETURNF "梨型"
+                CASE 3
+                    RETURNF "圆盘型"
+                CASE 4
+                    RETURNF "扁平型"
+                CASE 5
+                    RETURNF "下垂型"
+            ENDSELECT
+        CASE "耻垢"
+            SELECTCASE CFLAG:ARG:113
+                CASE 0
+                    RETURNF "无耻垢"
+                CASE 1
+                    RETURNF "微量"
+                CASE 2
+                    RETURNF "少量"
+                CASE 3
+                    RETURNF "普通"
+                CASE 4
+                    RETURNF "大量"
+                CASE 5
+                    RETURNF "巨量"
+            ENDSELECT
+        CASE "耻垢类型"
+            SELECTCASE CFLAG:ARG:114
+                CASE 0
+                    RETURNF "软块"
+                CASE 1
+                    RETURNF "粘液"
+            ENDSELECT
+        CASE "精液颜色"
+            SELECTCASE CFLAG:ARG:115
+                CASE 0
+                    RETURNF "纯白"
+                CASE 1
+                    RETURNF "半透明"
+                CASE 2
+                    RETURNF "微黄"
+                CASE 3
+                    RETURNF "病变"
+            ENDSELECT
+        CASE "精液浓度"
+            SELECTCASE CFLAG:ARG:116
+                CASE 0
+                    RETURNF "水性"
+                CASE 1
+                    RETURNF "稀薄"
+                CASE 2
+                    RETURNF "普通"
+                CASE 3
+                    RETURNF "粘性"
+                CASE 4
+                    RETURNF "浓稠"
+            ENDSELECT
+        CASE "胸部大小"
+            SELECTCASE CFLAG:ARG:201
+                CASE 0
+                    RETURNF "绝壁"
+                CASE 1
+                    RETURNF "贫乳"
+                CASE 2
+                    RETURNF "普乳"
+                CASE 3
+                    RETURNF "巨乳"
+                CASE 4
+                    RETURNF "爆乳"
+            ENDSELECT
+        CASE "阴茎长度"
+            SELECTCASE CFLAG:ARG:202
+                CASE 0
+                    RETURNF "针"
+                CASE 1
+                    RETURNF "短"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长根"
+                CASE 4
+                    RETURNF "巨根"
+                CASE 5
+                    RETURNF "马根"
+                CASE 6
+                    RETURNF "凶兽"
+                CASE 7
+                    RETURNF "龙根"
+                CASE 8
+                    RETURNF "规格外"
+                CASE 9
+                    RETURNF "最强"
+            ENDSELECT
+        CASE "阴茎直径"
+            SELECTCASE CFLAG:ARG:203
+                CASE 0
+                    RETURNF "针"
+                CASE 1
+                    RETURNF "小"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长根"
+                CASE 4
+                    RETURNF "巨根"
+                CASE 5
+                    RETURNF "马根"
+                CASE 6
+                    RETURNF "凶兽"
+                CASE 7
+                    RETURNF "龙根"
+                CASE 8
+                    RETURNF "规格外"
+                CASE 9
+                    RETURNF "最强"
+            ENDSELECT
+        CASE "阴蒂长度"
+            SELECTCASE CFLAG:ARG:204
+                CASE 0
+                    RETURNF "极短"
+                CASE 1
+                    RETURNF "短"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长"
+                CASE 4
+                    RETURNF "极长"
+            ENDSELECT
+        CASE "阴蒂直径"
+            SELECTCASE CFLAG:ARG:205
+                CASE 0
+                    RETURNF "极短"
+                CASE 1
+                    RETURNF "短"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长"
+                CASE 4
+                    RETURNF "极长"
+            ENDSELECT
+        CASE "喉长度"
+            SELECTCASE CFLAG:ARG:206
+                CASE 0
+                    RETURNF "极短"
+                CASE 1
+                    RETURNF "短"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长"
+                CASE 4
+                    RETURNF "极长"
+            ENDSELECT
+        CASE "喉直径"
+            SELECTCASE CFLAG:ARG:207
+                CASE 0
+                    RETURNF "紧闭"
+                CASE 1
+                    RETURNF "闭合"
+                CASE 2
+                    RETURNF "微闭"
+                CASE 3
+                    RETURNF "名器"
+                CASE 4
+                    RETURNF "微张"
+                CASE 5
+                    RETURNF "略张"
+                CASE 6
+                    RETURNF "张开"
+                CASE 7
+                    RETURNF "扩张"
+                CASE 8
+                    RETURNF "变形"
+                CASE 9
+                    RETURNF "崩坏"
+            ENDSELECT
+        CASE "喉扩张直径"
+            SELECTCASE CFLAG:ARG:208
+                CASE 0
+                    RETURNF "Ｆ"
+                CASE 1
+                    RETURNF "Ｅ"
+                CASE 2
+                    RETURNF "Ｄ"
+                CASE 3
+                    RETURNF "Ｃ"
+                CASE 4
+                    RETURNF "Ｂ"
+                CASE 5
+                    RETURNF "Ａ"
+                CASE 6
+                    RETURNF "Ｓ"
+                CASE 7
+                    RETURNF "ＳＳ"
+                CASE 8
+                    RETURNF "ＳＳＳ"
+                CASE 9
+                    RETURNF "Ｘ"
+            ENDSELECT
+        CASE "乳孔直径"
+            SELECTCASE CFLAG:ARG:209
+                CASE 0
+                    RETURNF "紧闭"
+                CASE 1
+                    RETURNF "闭合"
+                CASE 2
+                    RETURNF "微闭"
+                CASE 3
+                    RETURNF "名器"
+                CASE 4
+                    RETURNF "微张"
+                CASE 5
+                    RETURNF "略张"
+                CASE 6
+                    RETURNF "张开"
+                CASE 7
+                    RETURNF "扩张"
+                CASE 8
+                    RETURNF "变形"
+                CASE 9
+                    RETURNF "崩坏"
+            ENDSELECT
+        CASE "乳孔扩张直径"
+            SELECTCASE CFLAG:ARG:210
+                CASE 0
+                    RETURNF "Ｆ"
+                CASE 1
+                    RETURNF "Ｅ"
+                CASE 2
+                    RETURNF "Ｄ"
+                CASE 3
+                    RETURNF "Ｃ"
+                CASE 4
+                    RETURNF "Ｂ"
+                CASE 5
+                    RETURNF "Ａ"
+                CASE 6
+                    RETURNF "Ｓ"
+                CASE 7
+                    RETURNF "ＳＳ"
+                CASE 8
+                    RETURNF "ＳＳＳ"
+                CASE 9
+                    RETURNF "Ｘ"
+            ENDSELECT
+        CASE "阴道长度"
+            SELECTCASE CFLAG:ARG:211
+                CASE 0
+                    RETURNF "极短"
+                CASE 1
+                    RETURNF "短"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长"
+                CASE 4
+                    RETURNF "极长"
+            ENDSELECT
+        CASE "阴道直径"
+            SELECTCASE CFLAG:ARG:212
+                CASE 0
+                    RETURNF "紧闭"
+                CASE 1
+                    RETURNF "闭合"
+                CASE 2
+                    RETURNF "微闭"
+                CASE 3
+                    RETURNF "名器"
+                CASE 4
+                    RETURNF "微张"
+                CASE 5
+                    RETURNF "略张"
+                CASE 6
+                    RETURNF "张开"
+                CASE 7
+                    RETURNF "扩张"
+                CASE 8
+                    RETURNF "变形"
+                CASE 9
+                    RETURNF "崩坏"
+            ENDSELECT
+        CASE "阴道扩张直径"
+            SELECTCASE CFLAG:ARG:213
+                CASE 0
+                    RETURNF "Ｆ"
+                CASE 1
+                    RETURNF "Ｅ"
+                CASE 2
+                    RETURNF "Ｄ"
+                CASE 3
+                    RETURNF "Ｃ"
+                CASE 4
+                    RETURNF "Ｂ"
+                CASE 5
+                    RETURNF "Ａ"
+                CASE 6
+                    RETURNF "Ｓ"
+                CASE 7
+                    RETURNF "ＳＳ"
+                CASE 8
+                    RETURNF "ＳＳＳ"
+                CASE 9
+                    RETURNF "Ｘ"
+            ENDSELECT
+        CASE "尿道长度"
+            SELECTCASE CFLAG:ARG:214
+                CASE 0
+                    RETURNF "极短"
+                CASE 1
+                    RETURNF "短"
+                CASE 2
+                    RETURNF "普"
+                CASE 3
+                    RETURNF "长"
+                CASE 4
+                    RETURNF "极长"
+            ENDSELECT
+        CASE "尿道直径"
+            SELECTCASE CFLAG:ARG:215
+                CASE 0
+                    RETURNF "紧闭"
+                CASE 1
+                    RETURNF "闭合"
+                CASE 2
+                    RETURNF "微闭"
+                CASE 3
+                    RETURNF "名器"
+                CASE 4
+                    RETURNF "微张"
+                CASE 5
+                    RETURNF "略张"
+                CASE 6
+                    RETURNF "张开"
+                CASE 7
+                    RETURNF "扩张"
+                CASE 8
+                    RETURNF "变形"
+                CASE 9
+                    RETURNF "崩坏"
+            ENDSELECT
+        CASE "尿道扩张直径"
+            SELECTCASE CFLAG:ARG:216
+                CASE 0
+                    RETURNF "Ｆ"
+                CASE 1
+                    RETURNF "Ｅ"
+                CASE 2
+                    RETURNF "Ｄ"
+                CASE 3
+                    RETURNF "Ｃ"
+                CASE 4
+                    RETURNF "Ｂ"
+                CASE 5
+                    RETURNF "Ａ"
+                CASE 6
+                    RETURNF "Ｓ"
+                CASE 7
+                    RETURNF "ＳＳ"
+                CASE 8
+                    RETURNF "ＳＳＳ"
+                CASE 9
+                    RETURNF "Ｘ"
+            ENDSELECT
+        CASE "肛门直径"
+            SELECTCASE CFLAG:ARG:217
+                CASE 0
+                    RETURNF "紧闭"
+                CASE 1
+                    RETURNF "闭合"
+                CASE 2
+                    RETURNF "微闭"
+                CASE 3
+                    RETURNF "名器"
+                CASE 4
+                    RETURNF "微张"
+                CASE 5
+                    RETURNF "略张"
+                CASE 6
+                    RETURNF "张开"
+                CASE 7
+                    RETURNF "扩张"
+                CASE 8
+                    RETURNF "变形"
+                CASE 9
+                    RETURNF "崩坏"
+            ENDSELECT
+        CASE "肛门极限直径"
+            SELECTCASE CFLAG:ARG:218
+                CASE 0
+                    RETURNF "Ｆ"
+                CASE 1
+                    RETURNF "Ｅ"
+                CASE 2
+                    RETURNF "Ｄ"
+                CASE 3
+                    RETURNF "Ｃ"
+                CASE 4
+                    RETURNF "Ｂ"
+                CASE 5
+                    RETURNF "Ａ"
+                CASE 6
+                    RETURNF "Ｓ"
+                CASE 7
+                    RETURNF "ＳＳ"
+                CASE 8
+                    RETURNF "ＳＳＳ"
+                CASE 9
+                    RETURNF "Ｘ"
+            ENDSELECT
+    ENDSELECT
+
+@BREAST_CUP(ARG)
+    #FUNCTIONS
+    #DIMS BCUP
+    SELECTCASE BASE:ARG:651
+        CASE 63 TO 67
+            BCUP = "65"
+        CASE 68 TO 72
+            BCUP = "70"
+        CASE 73 TO 77
+            BCUP = "75"
+        CASE 78 TO 82
+            BCUP = "80"
+        CASE 83 TO 87
+            BCUP = "85"
+        CASE 88 TO 92
+            BCUP = "90"
+        CASE 93 TO 97
+            BCUP = "95"
+        CASE 98 TO 102
+            BCUP = "100"
+        CASE 103 TO 107
+            BCUP = "105"
+        CASE 108 TO 112
+            BCUP = "110"
+        CASE IS > 112
+            BCUP = "112+"
+    ENDSELECT
+    SELECTCASE BASE:ARG:651 - BASE:ARG:652
+        CASE 0
+            BCUP += "ＡＡ"
+        CASE 1
+            BCUP += "Ａ"
+        CASE 2
+            BCUP += "Ｂ"
+        CASE 3 
+            BCUP += "Ｃ"
+        CASE 4
+            BCUP += "Ｄ"
+        CASE 5
+            BCUP += "Ｅ
+        CASE 6
+            BCUP += "Ｆ"
+        CASE 7
+            BCUP += "Ｇ"
+        CASE 8
+            BCUP += "Ｈ"
+        CASE 9
+            BCUP += "Ｉ"
+        CASE 10
+            BCUP += "Ｊ"
+        CASE 11
+            BCUP += "Ｋ"
+        CASE 12
+            BCUP += "Ｌ"
+        CASE 13
+            BCUP += "Ｍ"
+        CASE 14
+            BCUP += "Ｎ"
+        CASE 15
+            BCUP += "Ｏ"
+        CASE 16
+            BCUP += "Ｐ"
+        CASE 17
+            BCUP += "Ｑ"
+        CASE 18
+            BCUP += "Ｒ"
+    ENDSELECT
+    RETURNF BCUP
+
+@GET_LV, ARG
+    #FUNCTIONS
+    SELECTCASE ARG
+        CASE 0
+            RETURNF "Ｇ"
+        CASE 1
+            RETURNF "Ｆ"
+        CASE 2
+            RETURNF "Ｅ"
+        CASE 3
+            RETURNF "Ｄ"
+        CASE 4
+            RETURNF "Ｃ"
+        CASE 5
+            RETURNF "Ｂ"
+        CASE 6
+            RETURNF "Ａ"
+        CASE 7
+            RETURNF "Ｓ"
+        CASE 8
+            RETURNF "ＳＳ"
+        CASE 9
+            RETURNF "ＳＳＳ"
+        CASE IS > 9
+            RETURNF "Ｘ"
+    ENDSELECT

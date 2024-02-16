@@ -1,0 +1,79 @@
+﻿@ABLUP_COND302
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    PRINTFORML 欲望 LV{ABL:TARGET:欲望+1}
+    PRINTL 欲望描述
+    PRINTL
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("欲望")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("欲望")
+    SELECTCASE ABL:TARGET:欲望
+        CASE 0 TO 4
+            PRINTFORML 欲情之珠 {JUEL:TARGET:欲情}/{JUEL_NEEDED}
+            PRINTFORML 绝顶经验 {EXP:TARGET:绝顶经验}/{EXP_NEEDED}
+            PRINTL
+        CASE 5 TO 9
+            PRINTFORML 欲情之珠 {JUEL:TARGET:欲情}/{JUEL_NEEDED}
+            PRINTFORML 绝顶经验 {EXP:TARGET:绝顶经验}/{EXP_NEEDED}
+            PRINTFORML 淫乱特质 {TALENT:TARGET:淫乱}/1
+    ENDSELECT
+    PRINTL
+    SELECTCASE ABL:TARGET:欲望
+        CASE 0 TO 4
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:淫乱 != 0
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+    ENDSELECT
+
+@ABLUP302_CONFIRM
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("欲望")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("欲望")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:欲望
+        CASE 0 TO 4
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                JUEL:TARGET:欲情 -= JUEL_NEEDED
+                ABL:TARGET:欲望 += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:淫乱 != 0
+                JUEL:TARGET:欲情 -= JUEL_NEEDED
+                ABL:TARGET:欲望 += 1
+            ENDIF
+    ENDSELECT
+
+
+@IS_ABLUP302
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    #DIMS COND
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("欲望")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("欲望")
+    SELECTCASE ABL:TARGET:欲望
+        CASE 0 TO 4
+            IF JUEL:TARGET:欲情 >= JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                COND = ◯
+            ELSE
+                COND = 
+            ENDIF
+        CASE 5 TO 9
+            IF TALENT:TARGET:淫乱 == 0
+                COND = 
+            ELSE
+                IF JUEL:TARGET:欲情 >= JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                    COND = ◯
+                ELSE
+                    COND =
+                ENDIF
+            ENDIF
+    ENDSELECT
+    PRINTFORM %COND%

@@ -1,0 +1,79 @@
+﻿@ABLUP_COND8
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    PRINTFORML Ａ感觉 LV{ABL:TARGET:Ａ感觉+1}
+    PRINTL Ａ感觉描述
+    PRINTL
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ａ感觉")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ａ感觉")
+    SELECTCASE ABL:TARGET:Ａ感觉
+        CASE 0 TO 4
+            PRINTFORML 快Ａ之珠 {JUEL:TARGET:快Ａ}/{JUEL_NEEDED}
+            PRINTFORML Ａ经验 {EXP:TARGET:Ａ经验}/{EXP_NEEDED}
+            PRINTL
+        CASE 5 TO 9
+            PRINTFORML 快Ａ之珠 {JUEL:TARGET:快Ａ}/{JUEL_NEEDED}
+            PRINTFORML Ａ经验 {EXP:TARGET:Ａ经验}/{EXP_NEEDED}
+            PRINTFORML 幻洞特质 {TALENT:TARGET:幻洞}/1
+    ENDSELECT
+    PRINTL
+    SELECTCASE ABL:TARGET:Ａ感觉
+        CASE 0 TO 4
+            IF JUEL:TARGET:快Ａ > JUEL_NEEDED && EXP:TARGET:Ａ经验 > EXP_NEEDED
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:快Ａ > JUEL_NEEDED && EXP:TARGET:Ａ经验 > EXP_NEEDED && TALENT:TARGET:幻洞 != 0
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+    ENDSELECT
+
+
+@ABLUP8_CONFIRM
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ａ感觉")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ａ感觉")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:Ａ感觉
+        CASE 0 TO 4
+            IF JUEL:TARGET:快Ａ > JUEL_NEEDED && EXP:TARGET:Ａ经验 > EXP_NEEDED
+                JUEL:TARGET:快Ａ -= JUEL_NEEDED
+                ABL:TARGET:Ａ感觉 += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:快Ａ > JUEL_NEEDED && EXP:TARGET:Ａ经验 > EXP_NEEDED && TALENT:TARGET:幻洞 != 0
+                JUEL:TARGET:快Ａ -= JUEL_NEEDED
+                ABL:TARGET:Ａ感觉 += 1
+            ENDIF
+    ENDSELECT
+
+@IS_ABLUP8
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    #DIMS COND
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ａ感觉")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ａ感觉")
+    SELECTCASE ABL:TARGET:Ａ感觉
+        CASE 0 TO 4
+            IF JUEL:TARGET:快Ａ >= JUEL_NEEDED && EXP:TARGET:Ａ经验 > EXP_NEEDED
+                COND = ◯
+            ELSE
+                COND = 
+            ENDIF
+        CASE 5 TO 9
+            IF TALENT:TARGET:幻洞 == 0
+                COND = 
+            ELSE
+                IF JUEL:TARGET:快Ａ >= JUEL_NEEDED && EXP:TARGET:Ａ经验 > EXP_NEEDED
+                    COND = ◯
+                ELSE
+                    COND =
+                ENDIF
+            ENDIF
+    ENDSELECT
+    PRINTFORM %COND%

@@ -1,0 +1,17 @@
+;骰子相关函数
+
+@ROLL_MULTI, ARG:0, ARG:1                ;投一组骰子，语义为(arg:0)d(arg:1)
+    #FUNCTION
+    #DIM SUM_A
+    SUM_A = 0
+    ASSERT ARG:0 > 0
+    ASSERT ARG:1 > 1
+    REPEAT ARG:0
+        SUM_A += RAND(1, ARG:1)
+    REND
+RETURNF SUM_A
+
+@ROLL_ONCE, ARG:0                       ;投一个骰子，语义为d(arg:0)
+    #FUNCTION
+    ASSERT ARG:0 > 1
+RETURNF RAND(1, ARG:0)

@@ -1,0 +1,171 @@
+﻿@SOURCE_CHECK_KAIKAN;部位等级计算
+    SIF ABL:TARGET:Ｍ感觉 >　0
+        SOURCE:TARGET:Ｍ快楽 == SOURCE:TARGET:Ｍ快楽 *(100 + ABL:TARGET:Ｍ感觉*10) / 100
+    SIF ABL:TARGET:Ｂ感觉 >　0
+        SOURCE:TARGET:Ｂ快楽 == SOURCE:TARGET:Ｂ快楽 *(100 + ABL:TARGET:Ｂ感觉*10) / 100
+    SIF ABL:TARGET:Ｃ感觉 >　0
+        SOURCE:TARGET:Ｃ快楽 == SOURCE:TARGET:Ｃ快楽 *(100 + ABL:TARGET:Ｃ感觉*10) / 100
+    SIF ABL:TARGET:Ｈ感觉 >　0
+        SOURCE:TARGET:Ｈ快楽 == SOURCE:TARGET:Ｈ快楽 *(100 + ABL:TARGET:Ｈ感觉*10) / 100
+    SIF ABL:TARGET:Ｐ感觉 >　0
+        SOURCE:TARGET:Ｐ快楽 == SOURCE:TARGET:Ｐ快楽 *(100 + ABL:TARGET:Ｐ感觉*10) / 100
+    SIF ABL:TARGET:Ｕ感觉 >　0
+        SOURCE:TARGET:Ｕ快楽 == SOURCE:TARGET:Ｕ快楽 *(100 + ABL:TARGET:Ｕ感觉*10) / 100
+    SIF ABL:TARGET:Ｖ感觉 >　0
+        SOURCE:TARGET:Ｖ快楽 == SOURCE:TARGET:Ｖ快楽 *(100 + ABL:TARGET:Ｖ感觉*10) / 100
+    SIF ABL:TARGET:Ａ感觉 >　0
+        SOURCE:TARGET:Ａ快楽 == SOURCE:TARGET:Ａ快楽 *(100 + ABL:TARGET:Ａ感觉*10) / 100
+    SIF ABL:TARGET:Ｆ感觉 > 0
+        SOURCE:TARGET:Ｆ快楽 == SOURCE:TARGET:Ｆ快楽 *(100 + ABL:TARGET:Ｆ感觉*10) / 100
+    SIF ABL:TARGET:Ｓ感觉 > 0
+        SOURCE:TARGET:Ｓ快楽 == SOURCE:TARGET:Ｓ快楽 *(100 + ABL:TARGET:Ｓ感觉*10) / 100
+
+    SIF ABL:MASTER:Ｍ感觉 >　0
+        SOURCE:MASTER:Ｍ快楽 == SOURCE:MASTER:Ｍ快楽 *(100 + ABL:MASTER:Ｍ感觉*10) / 100
+    SIF ABL:MASTER:Ｂ感觉 >　0
+        SOURCE:MASTER:Ｂ快楽 == SOURCE:MASTER:Ｂ快楽 *(100 + ABL:MASTER:Ｂ感觉*10) / 100
+    SIF ABL:MASTER:Ｈ感觉 >　0
+        SOURCE:MASTER:Ｈ快楽 == SOURCE:MASTER:Ｈ快楽 *(100 + ABL:MASTER:Ｈ感觉*10) / 100
+    SIF ABL:MASTER:Ｃ感觉 >　0
+        SOURCE:MASTER:Ｃ快楽 == SOURCE:MASTER:Ｃ快楽 *(100 + ABL:MASTER:Ｃ感觉*10) / 100
+    SIF ABL:MASTER:Ｐ感觉 >　0
+        SOURCE:MASTER:Ｐ快楽 == SOURCE:MASTER:Ｐ快楽 *(100 + ABL:MASTER:Ｐ感觉*10) / 100
+    SIF ABL:MASTER:Ｕ感觉 >　0
+        SOURCE:MASTER:Ｕ快楽 == SOURCE:MASTER:Ｕ快楽 *(100 + ABL:MASTER:Ｕ感觉*10) / 100
+    SIF ABL:MASTER:Ｖ感觉 >　0
+        SOURCE:MASTER:Ｖ快楽 == SOURCE:MASTER:Ｖ快楽 *(100 + ABL:MASTER:Ｖ感觉*10) / 100
+    SIF ABL:MASTER:Ａ感觉 >　0
+        SOURCE:MASTER:Ａ快楽 == SOURCE:MASTER:Ａ快楽 *(100 + ABL:MASTER:Ａ感觉*10) / 100
+    SIF ABL:MASTER:Ｆ感觉 > 0
+        SOURCE:MASTER:Ｆ快楽 == SOURCE:MASTER:Ｆ快楽 *(100 + ABL:MASTER:Ｆ感觉*10) / 100
+    SIF ABL:MASTER:Ｓ感觉 > 0
+        SOURCE:MASTER:Ｓ快楽 == SOURCE:MASTER:Ｓ快楽 *(100 + ABL:MASTER:Ｓ感觉*10) / 100
+
+    ;钝感
+    SIF TALENT:TARGET:Ｍ性感 == 1
+        TIMES SOURCE:TARGET:Ｍ快楽, 0.75
+    SIF TALENT:TARGET:Ｂ性感 == 1
+        TIMES SOURCE:TARGET:Ｂ快楽, 0.75
+    SIF TALENT:TARGET:Ｈ性感 == 1
+        TIMES SOURCE:TARGET:Ｈ快楽, 0.75
+    SIF TALENT:TARGET:Ｃ性感 == 1
+        TIMES SOURCE:TARGET:Ｃ快楽, 0.75
+    SIF TALENT:TARGET:Ｐ性感 == 1
+        TIMES SOURCE:TARGET:Ｐ快楽, 0.75
+    SIF TALENT:TARGET:Ｕ性感 == 1
+        TIMES SOURCE:TARGET:Ｕ快楽, 0.75
+    SIF TALENT:TARGET:Ｖ性感 == 1
+        TIMES SOURCE:TARGET:Ｖ快楽, 0.75
+    SIF TALENT:TARGET:Ａ性感 == 1
+        TIMES SOURCE:TARGET:Ａ快楽, 0.75
+    SIF TALENT:TARGET:Ｆ性感 == 1
+        TIMES SOURCE:TARGET:Ｆ快楽, 0.75
+    SIF TALENT:TARGET:Ｓ性感 == 1
+        TIMES SOURCE:TARGET:Ｓ快楽, 0.75
+
+    SIF TALENT:MASTER:Ｍ性感 == 1
+        TIMES SOURCE:MASTER:Ｍ快楽, 0.75
+    SIF TALENT:MASTER:Ｂ性感 == 1
+        TIMES SOURCE:MASTER:Ｂ快楽, 0.75
+    SIF TALENT:MASTER:Ｈ性感 == 1
+        TIMES SOURCE:MASTER:Ｈ快楽, 0.75
+    SIF TALENT:MASTER:Ｃ性感 == 1
+        TIMES SOURCE:MASTER:Ｃ快楽, 0.75
+    SIF TALENT:MASTER:Ｐ性感 == 1
+        TIMES SOURCE:MASTER:Ｐ快楽, 0.75
+    SIF TALENT:MASTER:Ｕ性感 == 1
+        TIMES SOURCE:MASTER:Ｕ快楽, 0.75
+    SIF TALENT:MASTER:Ｖ性感 == 1
+        TIMES SOURCE:MASTER:Ｖ快楽, 0.75
+    SIF TALENT:MASTER:Ａ性感 == 1
+        TIMES SOURCE:MASTER:Ａ快楽, 0.75
+    SIF TALENT:MASTER:Ｆ性感 == 1
+        TIMES SOURCE:MASTER:Ｆ快楽, 0.75
+    SIF TALENT:MASTER:Ｓ性感 == 1
+        TIMES SOURCE:MASTER:Ｓ快楽, 0.75
+    
+    ;敏感
+    SIF TALENT:TARGET:Ｍ性感 == 2
+        TIMES SOURCE:TARGET:Ｍ快楽, 1.25
+    SIF TALENT:TARGET:Ｂ性感 == 2
+        TIMES SOURCE:TARGET:Ｂ快楽, 1.25
+    SIF TALENT:TARGET:Ｈ性感 == 2
+        TIMES SOURCE:TARGET:Ｈ快楽, 1.25
+    SIF TALENT:TARGET:Ｃ性感 == 2
+        TIMES SOURCE:TARGET:Ｃ快楽, 1.25
+    SIF TALENT:TARGET:Ｐ性感 == 2
+        TIMES SOURCE:TARGET:Ｐ快楽, 1.25
+    SIF TALENT:TARGET:Ｕ性感 == 2
+        TIMES SOURCE:TARGET:Ｕ快楽, 1.25
+    SIF TALENT:TARGET:Ｖ性感 == 2
+        TIMES SOURCE:TARGET:Ｖ快楽, 1.25
+    SIF TALENT:TARGET:Ａ性感 == 2
+        TIMES SOURCE:TARGET:Ａ快楽, 1.25
+    SIF TALENT:TARGET:Ｆ性感 == 2
+        TIMES SOURCE:TARGET:Ｆ快楽, 1.25
+    SIF TALENT:TARGET:Ｓ性感 == 2
+        TIMES SOURCE:TARGET:Ｓ快楽, 1.25
+    
+    SIF TALENT:MASTER:Ｍ性感 == 2
+        TIMES SOURCE:MASTER:Ｍ快楽, 1.25
+    SIF TALENT:MASTER:Ｂ性感 == 2
+        TIMES SOURCE:MASTER:Ｂ快楽, 1.25
+    SIF TALENT:MASTER:Ｈ性感 == 2
+        TIMES SOURCE:MASTER:Ｈ快楽, 1.25
+    SIF TALENT:MASTER:Ｃ性感 == 2
+        TIMES SOURCE:MASTER:Ｃ快楽, 1.25
+    SIF TALENT:MASTER:Ｐ性感 == 2
+        TIMES SOURCE:MASTER:Ｐ快楽, 1.25
+    SIF TALENT:MASTER:Ｕ性感 == 2
+        TIMES SOURCE:MASTER:Ｕ快楽, 1.25
+    SIF TALENT:MASTER:Ｖ性感 == 2
+        TIMES SOURCE:MASTER:Ｖ快楽, 1.25
+    SIF TALENT:MASTER:Ａ性感 == 2
+        TIMES SOURCE:MASTER:Ａ快楽, 1.25
+    SIF TALENT:MASTER:Ｆ性感 == 2
+        TIMES SOURCE:MASTER:Ｆ快楽, 1.25
+    SIF TALENT:MASTER:Ｓ性感 == 2
+        TIMES SOURCE:MASTER:Ｓ快楽, 1.25
+    
+    ;过敏
+    SIF TALENT:TARGET:Ｍ性感 == 3
+        TIMES SOURCE:TARGET:Ｍ快楽, 2.0
+    SIF TALENT:TARGET:Ｂ性感 == 3
+        TIMES SOURCE:TARGET:Ｂ快楽, 2.0
+    SIF TALENT:TARGET:Ｈ性感 == 3
+        TIMES SOURCE:TARGET:Ｈ快楽, 2.0
+    SIF TALENT:TARGET:Ｃ性感 == 3
+        TIMES SOURCE:TARGET:Ｃ快楽, 2.0
+    SIF TALENT:TARGET:Ｐ性感 == 3
+        TIMES SOURCE:TARGET:Ｐ快楽, 2.0
+    SIF TALENT:TARGET:Ｕ性感 == 3
+        TIMES SOURCE:TARGET:Ｕ快楽, 2.0
+    SIF TALENT:TARGET:Ｖ性感 == 3
+        TIMES SOURCE:TARGET:Ｖ快楽, 2.0
+    SIF TALENT:TARGET:Ａ性感 == 3
+        TIMES SOURCE:TARGET:Ａ快楽, 2.0
+    SIF TALENT:TARGET:Ｆ性感 == 3
+        TIMES SOURCE:TARGET:Ｆ快楽, 2.0
+    SIF TALENT:TARGET:Ｓ性感 == 3
+        TIMES SOURCE:TARGET:Ｓ快楽, 2.0
+
+    SIF TALENT:MASTER:Ｍ性感 == 3
+        TIMES SOURCE:MASTER:Ｍ快楽, 2.0
+    SIF TALENT:MASTER:Ｂ性感 == 3
+        TIMES SOURCE:MASTER:Ｂ快楽, 2.0
+    SIF TALENT:MASTER:Ｈ性感 == 3
+        TIMES SOURCE:MASTER:Ｈ快楽, 2.0
+    SIF TALENT:MASTER:Ｃ性感 == 3
+        TIMES SOURCE:MASTER:Ｃ快楽, 2.0
+    SIF TALENT:MASTER:Ｐ性感 == 3
+        TIMES SOURCE:MASTER:Ｐ快楽, 2.0
+    SIF TALENT:MASTER:Ｕ性感 == 3
+        TIMES SOURCE:MASTER:Ｕ快楽, 2.0
+    SIF TALENT:MASTER:Ｖ性感 == 3
+        TIMES SOURCE:MASTER:Ｖ快楽, 2.0
+    SIF TALENT:MASTER:Ａ性感 == 3
+        TIMES SOURCE:MASTER:Ａ快楽, 2.0
+    SIF TALENT:MASTER:Ｆ性感 == 3
+        TIMES SOURCE:MASTER:Ｆ快楽, 2.0
+    SIF TALENT:MASTER:Ｓ性感 == 3
+        TIMES SOURCE:MASTER:Ｓ快楽, 2.0

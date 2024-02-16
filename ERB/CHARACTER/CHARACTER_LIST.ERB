@@ -1,0 +1,90 @@
+﻿@CHARACTER_LIST, ARG , ARG:1 ;作用,1=能力显示 2=能力提升;页数
+    #DIM NUM
+    CALL DRAWLINES("□　角色列表　□")
+    PRINTBUTTONLC @" [0] %NAME:MASTER%", 0
+    IF ARG:1 == 1
+        PRINTFORMLC [数据条]
+    ELSE
+        PRINTBUTTONLC "[数据条]", 999
+    ENDIF
+    PRINTL
+    CUSTOMDRAWLINE -
+    FOR NUM, 1, 100
+        IF EXISTCSV(NUM,0) == 1
+            PRINTBUTTONLC @" [{NUM}] %NAME:NUM%", NUM
+            PRINT 体力
+	        CALL PRINT_BAR(BASE:NUM:0,MAXBASE:NUM:0,5,　COLOR("体力"))
+	        PRINTFORM ({BASE:NUM:0}/{MAXBASE:NUM:0})
+	        PRINT ＳＰ
+	        CALL PRINT_BAR(BASE:NUM:2,MAXBASE:NUM:2,5,　COLOR("ＳＰ"))
+	        PRINTFORM ({BASE:NUM:2}/{MAXBASE:NUM:2})
+            PRINT 精力
+	        CALL PRINT_BAR(BASE:NUM:4,MAXBASE:NUM:4,5,　COLOR("精力"))
+	        PRINTFORM ({BASE:NUM:4}/{MAXBASE:NUM:4})
+            PRINT 性欲
+            CALL PRINT_BAR(BASE:NUM:5,MAXBASE:NUM:5,5,COLOR("粉红"))
+            PRINTFORM ({BASE:NUM:5}/{MAXBASE:NUM:5})
+            PRINTL
+        ENDIF
+    NEXT
+    CUSTOMDRAWLINE -
+    PRINTFORML [99] 返回
+    INPUT
+    SIF RESULT == 999
+        CALL CHARACTER_LIST, ARG, 1
+    IF EXISTCSV(RESULT,0) == 1
+        IF RESULT != 99
+            SELECTCASE ARG
+                CASE 1
+                    CALL ABILITY_SHOW, RESULT
+                CASE 2
+                    CALL ABLUP_CHARA, RESULT
+            ENDSELECT
+        ENDIF
+    ENDIF
+
+
+@OTHER_CHARACTER_LIST, ARG , ARG:1 ;没有主角,1= 选择调教角色, 2=选择助手;ARG1 = 页数
+    #DIM NUM
+    CALL DRAWLINES("□　角色列表　□")
+    PRINTLC [ ]
+    IF ARG:1 == 1
+        PRINTFORMLC [数据条]
+    ELSE
+        PRINTBUTTONLC "[数据条]", 999
+    ENDIF
+    PRINTL
+    CUSTOMDRAWLINE -
+    FOR NUM, 1, 100
+        IF EXISTCSV(NUM,0) == 1
+            PRINTBUTTONLC @" [{NUM}] %NAME:NUM%", NUM
+            PRINT 体力
+	        CALL PRINT_BAR(BASE:NUM:0,MAXBASE:NUM:0,5,　COLOR("体力"))
+	        PRINTFORM ({BASE:NUM:0}/{MAXBASE:NUM:0})
+	        PRINT ＳＰ
+	        CALL PRINT_BAR(BASE:NUM:2,MAXBASE:NUM:2,5,　COLOR("ＳＰ"))
+	        PRINTFORM ({BASE:NUM:2}/{MAXBASE:NUM:2})
+            PRINT 精力
+	        CALL PRINT_BAR(BASE:NUM:4,MAXBASE:NUM:4,5,　COLOR("精力"))
+	        PRINTFORM ({BASE:NUM:4}/{MAXBASE:NUM:4})
+            PRINT 性欲
+            CALL PRINT_BAR(BASE:NUM:5,MAXBASE:NUM:5,5,COLOR("粉红"))
+            PRINTFORM ({BASE:NUM:5}/{MAXBASE:NUM:5})
+            PRINTL
+        ENDIF
+    NEXT
+    CUSTOMDRAWLINE -
+    PRINTFORML [99] 返回
+    INPUT
+    SIF RESULT == 999
+        CALL OTHER_CHARACTER_LIST, ARG, 1
+    IF EXISTCSV(RESULT,0) == 1
+        IF RESULT != 99
+            SELECTCASE ARG
+                CASE 1
+                    TARGET = RESULT
+                CASE 2
+                    ASSI = RESULT
+            ENDSELECT
+        ENDIF
+    ENDIF
