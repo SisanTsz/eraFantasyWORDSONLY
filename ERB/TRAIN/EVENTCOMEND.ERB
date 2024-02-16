@@ -1,0 +1,26 @@
+﻿@EVENTCOMEND
+    #DIM NUM
+	#DIM LCOUNT
+	#DIM PALAMCOUNT = 0
+    ;UP变珠
+    FOR LCOUNT, 0, 110
+        PALAM:LCOUNT += UP:LCOUNT
+    NEXT
+    ;高潮后暂得珠归零
+    IF TFLAG:今回高潮 == 1
+        FOR LCOUNT, 101, 110
+            SELECTCASE PALAM:LCOUNT
+                CASE IS >= 200000
+                    PALAM:LCOUNT -= 200000
+                CASE IS >= 100000
+                    PALAM:LCOUNT -= 100000
+                CASE IS >= 50000
+                    PALAM:LCOUNT -= 50000
+                CASE IS >= 20000
+                    PALAM:LCOUNT -= 20000
+                CASE IS >= 10000
+                    PALAM:LCOUNT -= 10000
+            ENDSELECT
+        NEXT
+    ENDIF
+    TFLAG:今回高潮 = 0

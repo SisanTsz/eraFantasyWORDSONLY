@@ -1,0 +1,746 @@
+﻿@ABLUP_JUEL_KIND, ARGS
+
+
+
+
+@ABLUP_JUEL_NEEDED, ARGS
+    #FUNCTION
+    #DIM JUEL_NEEDED
+    SELECTCASE ARGS
+        CASE "Ｍ感觉"
+            SELECTCASE ABL:TARGET:Ｍ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｍ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｍ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｍ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｂ感觉"
+            SELECTCASE ABL:TARGET:Ｂ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｂ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｂ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｂ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｈ感觉"
+            SELECTCASE ABL:TARGET:Ｈ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｈ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｈ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｈ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｐ感觉"
+            SELECTCASE ABL:TARGET:Ｐ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｐ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｐ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｐ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｃ感觉"
+            SELECTCASE ABL:TARGET:Ｃ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｃ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｃ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｃ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｕ感觉"
+            SELECTCASE ABL:TARGET:Ｕ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｕ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｕ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｕ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｖ感觉"
+            SELECTCASE ABL:TARGET:Ｖ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｖ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｖ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｖ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ａ感觉"
+            SELECTCASE ABL:TARGET:Ａ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ａ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ａ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ａ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｆ感觉"
+            SELECTCASE ABL:TARGET:Ｆ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｆ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｆ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｆ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｓ感觉"
+            SELECTCASE ABL:TARGET:Ｓ感觉
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｓ感觉-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｓ感觉-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｓ感觉-10) * 10000
+            ENDSELECT
+        CASE "Ｍ技巧"
+            SELECTCASE ABL:TARGET:Ｍ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｍ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｍ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｍ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｂ技巧"
+            SELECTCASE ABL:TARGET:Ｂ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｂ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｂ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｂ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｈ技巧"
+            SELECTCASE ABL:TARGET:Ｈ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｈ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｈ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｈ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｃ技巧"
+            SELECTCASE ABL:TARGET:Ｃ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｃ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｃ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｃ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｐ技巧"
+            SELECTCASE ABL:TARGET:Ｐ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｐ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｐ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｐ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｕ技巧"
+            SELECTCASE ABL:TARGET:Ｕ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｕ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｕ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｕ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｖ技巧"
+            SELECTCASE ABL:TARGET:Ｖ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｖ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｖ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｖ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ａ技巧"
+            SELECTCASE ABL:TARGET:Ａ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ａ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ａ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ａ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｆ技巧"
+            SELECTCASE ABL:TARGET:Ｆ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｆ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｆ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｆ技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｓ技巧"
+            SELECTCASE ABL:TARGET:Ｓ技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｓ技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｓ技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｓ技巧-10) * 10000
+            ENDSELECT
+        CASE "道具技巧"
+            SELECTCASE ABL:TARGET:道具技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:道具技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:道具技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:道具技巧-10) * 10000
+            ENDSELECT
+        CASE "寸止技巧"
+            SELECTCASE ABL:TARGET:寸止技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:寸止技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:寸止技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:寸止技巧-10) * 10000
+            ENDSELECT
+        CASE "忍耐技巧"
+            SELECTCASE ABL:TARGET:忍耐技巧
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:忍耐技巧-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:忍耐技巧-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:忍耐技巧-10) * 10000
+            ENDSELECT
+        CASE "Ｍ耐性"
+            SELECTCASE ABL:TARGET:Ｍ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｍ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｍ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｍ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｂ耐性"
+            SELECTCASE ABL:TARGET:Ｂ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｂ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｂ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｂ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｈ耐性"
+            SELECTCASE ABL:TARGET:Ｈ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｈ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｈ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｈ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｃ耐性"
+            SELECTCASE ABL:TARGET:Ｃ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｃ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｃ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｃ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｐ耐性"
+            SELECTCASE ABL:TARGET:Ｐ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｐ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｐ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｐ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｕ耐性"
+            SELECTCASE ABL:TARGET:Ｕ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｕ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｕ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｕ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｖ耐性"
+            SELECTCASE ABL:TARGET:Ｖ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｖ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｖ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｖ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ａ耐性"
+            SELECTCASE ABL:TARGET:Ａ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ａ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ａ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ａ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｆ耐性"
+            SELECTCASE ABL:TARGET:Ｆ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｆ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｆ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｆ耐性-10) * 10000
+            ENDSELECT
+        CASE "Ｓ耐性"
+            SELECTCASE ABL:TARGET:Ｓ耐性
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:Ｓ耐性-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｓ耐性-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:Ｓ耐性-10) * 10000
+            ENDSELECT
+        CASE "信赖"
+            SELECTCASE ABL:TARGET:信赖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:信赖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:信赖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:信赖-10) * 10000
+            ENDSELECT
+        CASE "欲望"
+            SELECTCASE ABL:TARGET:欲望
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:欲望-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:欲望-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:欲望-10) * 10000
+            ENDSELECT
+        CASE "服从"
+            SELECTCASE ABL:TARGET:服从
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:服从-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:服从-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:服从-10) * 10000
+            ENDSELECT
+        CASE "献身"
+            SELECTCASE ABL:TARGET:献身
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:献身-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:献身-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:献身-10) * 10000
+            ENDSELECT
+        CASE "露出癖"
+            SELECTCASE ABL:TARGET:露出癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:露出癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:露出癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:露出癖-10) * 10000
+            ENDSELECT
+        CASE "扩张癖"
+            SELECTCASE ABL:TARGET:扩张癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:扩张癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:扩张癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:扩张癖-10) * 10000
+            ENDSELECT
+        CASE "漏尿癖"
+            SELECTCASE ABL:TARGET:漏尿癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:漏尿癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:漏尿癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:漏尿癖-10) * 10000
+            ENDSELECT
+        CASE "脱粪癖"
+            SELECTCASE ABL:TARGET:脱粪癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:脱粪癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:脱粪癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:脱粪癖-10) * 10000
+            ENDSELECT
+        CASE "宫脱癖"
+            SELECTCASE ABL:TARGET:宫脱癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:宫脱癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:宫脱癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:宫脱癖-10) * 10000
+            ENDSELECT
+        CASE "肛脱癖"
+            SELECTCASE ABL:TARGET:肛脱癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:肛脱癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:肛脱癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:肛脱癖-10) * 10000
+            ENDSELECT
+        CASE "气味癖"
+            SELECTCASE ABL:TARGET:气味癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:气味癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:气味癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:气味癖-10) * 10000
+            ENDSELECT
+        CASE "精液癖"
+            SELECTCASE ABL:TARGET:精液癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:精液癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:精液癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:精液癖-10) * 10000
+            ENDSELECT
+        CASE "喷乳癖"
+            SELECTCASE ABL:TARGET:喷乳癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:喷乳癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:喷乳癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:喷乳癖-10) * 10000
+            ENDSELECT
+        CASE "药物癖"
+            SELECTCASE ABL:TARGET:药物癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:药物癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:药物癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:药物癖-10) * 10000
+            ENDSELECT
+        CASE "媚药癖"
+            SELECTCASE ABL:TARGET:媚药癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:媚药癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:媚药癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:媚药癖-10) * 10000
+            ENDSELECT
+        CASE "尿液癖"
+            SELECTCASE ABL:TARGET:尿液癖
+                CASE 0
+                    JUEL_NEEDED = 500
+                CASE 1
+                    JUEL_NEEDED = 1000
+                CASE 2
+                    JUEL_NEEDED = 3000
+                CASE 3 TO 5
+                    JUEL_NEEDED = (ABL:TARGET:尿液癖-2) * 5000
+                CASE 6 TO 10
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:尿液癖-5) * 10000
+                CASEELSE
+                    JUEL_NEEDED = 10000 + (ABL:TARGET:尿液癖-10) * 10000
+            ENDSELECT
+    ENDSELECT
+    RETURNF JUEL_NEEDED

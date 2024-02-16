@@ -1,0 +1,78 @@
+﻿@ABLUP_COND303
+    #DIM JUEL_NEEDED
+    #DIM BASE_NEEDED
+    PRINTFORML 服从 LV{ABL:TARGET:服从+1}
+    PRINTL 服从描述
+    PRINTL
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("服从")
+    BASE_NEEDED = ABLUP_BASE_NEEDED("服从")
+    SELECTCASE ABL:TARGET:服从
+        CASE 0 TO 4
+            PRINTFORML 屈服之珠 {JUEL:TARGET:屈服}/{JUEL_NEEDED}
+            PRINTFORML 服从度 {BASE:TARGET:服从度}/{BASE_NEEDED}
+            PRINTL
+        CASE 5 TO 9
+            PRINTFORML 屈服之珠 {JUEL:TARGET:屈服}/{JUEL_NEEDED}
+            PRINTFORML 服从度 {BASE:TARGET:服从度}/{BASE_NEEDED}
+            PRINTFORML 服从特质 {TALENT:TARGET:服从}/1
+    ENDSELECT
+    PRINTL
+    SELECTCASE ABL:TARGET:服从
+        CASE 0 TO 4
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:服从 != 0
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+    ENDSELECT
+
+@ABLUP303_CONFIRM
+    #DIM JUEL_NEEDED
+    #DIM BASE_NEEDED
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("服从")
+    BASE_NEEDED = ABLUP_BASE_NEEDED("服从")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:服从
+        CASE 0 TO 4
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                JUEL:TARGET:屈服 -= JUEL_NEEDED
+                ABL:TARGET:服从 += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:屈服 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:服从 != 0
+                JUEL:TARGET:屈服 -= JUEL_NEEDED
+                ABL:TARGET:服从 += 1
+            ENDIF
+    ENDSELECT
+
+@IS_ABLUP303
+    #DIM JUEL_NEEDED
+    #DIM BASE_NEEDED
+    #DIMS COND
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("服从")
+    BASE_NEEDED = ABLUP_BASE_NEEDED("服从")
+    SELECTCASE ABL:TARGET:服从
+        CASE 0 TO 4
+            IF JUEL:TARGET:屈服 >= JUEL_NEEDED && BASE:TARGET:服从度 > BASE_NEEDED
+                COND = ◯
+            ELSE
+                COND = 
+            ENDIF
+        CASE 5 TO 9
+            IF TALENT:TARGET:服从 == 0
+                COND = 
+            ELSE
+                IF JUEL:TARGET:屈服 >= JUEL_NEEDED && BASE:TARGET:服从度 > BASE_NEEDED
+                    COND = ◯
+                ELSE
+                    COND =
+                ENDIF
+            ENDIF
+    ENDSELECT
+    PRINTFORM %COND%

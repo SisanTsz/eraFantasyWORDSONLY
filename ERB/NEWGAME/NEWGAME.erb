@@ -1,0 +1,31 @@
+﻿@EVENTFIRST
+    #DIM MEMO_LINECOUNT
+    #DIM LCOUNT
+    $EVENTFIRST_LOOP
+    LOADGLOBAL
+    REDRAW 0
+    PRINTL
+    PRINTL
+    PRINTBUTTONLC "开始", "开始"
+    PRINTL
+    PRINTL
+    PRINTBUTTONLC "返回", "返回"
+
+    INPUTS
+    SELECTCASE RESULTS
+        CASE "返回"
+            BEGIN TITLE
+        CASE "开始"
+            CALL START_DATA
+    ENDSELECT
+
+@START_DATA
+    CALL SETDATA
+    CALL NEW_CHARACTER
+
+@SETDATA ;初期数据设定
+    ADDCHARA 1
+    ADDCHARA 2
+    MASTER = 0
+    TARGET = 1
+    DAY = 1

@@ -1,0 +1,22 @@
+﻿@SOURCE_CHECK_MEIKI, ARG
+    #DIM LV
+    #DIM TIMES_LV
+    IF ARG == 1 
+        LV = CFLAG:MASTER:(ARG + 400)
+        SELECTCASE LV
+            CASE 6 TO 10
+                TIMES_LV = 1 + (LV - 6)* 0.5
+            CASE 1 TO 5
+                TIMES_LV = 0.5 + (LV - 1)* 0.1
+        ENDSELECT
+        TIMES SOURCE:TARGET:(CFLAG:MASTER:(ARG + 40)), TIMES_LV
+    ELSEIF ARG == 2
+        LV = CFLAG:MASTER:(ARG + 400)
+        SELECTCASE LV
+            CASE 6 TO 10
+                TIMES_LV = 1 + (LV - 6)* 0.5
+            CASE 1 TO 5
+                TIMES_LV = 0.5 + (LV - 1)* 0.1
+        ENDSELECT
+        TIMES SOURCE:MASTER:(CFLAG:MASTER:(ARG + 40)), TIMES_LV
+    ENDIF
