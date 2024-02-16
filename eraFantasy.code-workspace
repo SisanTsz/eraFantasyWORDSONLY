@@ -1,0 +1,16 @@
+{
+<<<<<<< HEAD
+    "folders": [
+        {
+            "path": ".."
+        }
+    ]
+=======
+	"folders": [
+		{
+			"path": "."
+		}
+	],
+	"settings": {}
+>>>>>>> 67b5255 (Fusion.)
+}
