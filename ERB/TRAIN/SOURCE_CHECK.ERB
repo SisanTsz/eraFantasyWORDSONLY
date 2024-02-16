@@ -44,7 +44,7 @@
                     ;性欲加成
                     CALL SOURCE_CHECK_LUST
                     ;名器计算
-                    CALL SOURCE_CHECK_MEIKI
+                    CALL SOURCE_CHECK_MEIKI, LCOUNT_1
                     ;调教者口上(口上_番号_COM_动作番号_A)
                     TRYCALLFORM KOJO_{MASTER}_COM_{LCOUNT_1 + 20}_A
                     ;被调教者口上(口上_番号_COM_动作番号_B)
@@ -55,13 +55,6 @@
             NEXT
         ENDIF
     NEXT
-    ;尿意计算
-
-    ;便意计算
-
-    ;经验增加
-
-    ;刻印增加
     
     FOR LCOUNT, 0 ,CHARANUM                    
         MASTER = LCOUNT
@@ -78,8 +71,6 @@
 
     MASTER = MEMO_MASTER
     TARGET = MEMO_TARGET                              
-    
-    ;高潮运算                  
     
                         
 
