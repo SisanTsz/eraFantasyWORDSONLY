@@ -1,0 +1,18 @@
+stages:
+  - deploy
+
+variables:
+  REMOTE_PATH: "Public/🗃️ era 其他资源"
+
+deploy-job:
+  stage: deploy
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "master"'
+    - when: manual
+  script:
+    - echo "Pack EmueraEE……"
+    - zip -r "./$(basename `git rev-parse --show-toplevel`).zip" ./*
+    - echo "EmueraEE successfully packed to zip file."
+    - echo "Deploying EmueraEE..."
+    - onedrive-uploader -c "/home/gitlab-runner/onedrive_auth.json" -s "$(basename `git rev-parse --show-toplevel`).zip" -r "${REMOTE_PATH}"
+    - echo "EmueraEE successfully deployed to CDN."

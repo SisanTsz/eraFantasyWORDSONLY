@@ -1,0 +1,80 @@
+﻿@ABLUP_COND104
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    PRINTFORML Ｃ技巧 LV{ABL:TARGET:Ｃ技巧+1}
+    PRINTL Ｃ技巧描述
+    PRINTL
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ｃ技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ｃ技巧")
+    SELECTCASE ABL:TARGET:Ｃ技巧
+        CASE 0 TO 4
+            PRINTFORML 习得之珠 {JUEL:TARGET:习得}/{JUEL_NEEDED}
+            PRINTFORML Ｃ经验 {EXP:TARGET:Ｃ经验}/{EXP_NEEDED}
+            PRINTL
+        CASE 5 TO 9
+            PRINTFORML 习得之珠 {JUEL:TARGET:习得}/{JUEL_NEEDED}
+            PRINTFORML Ｃ经验 {EXP:TARGET:Ｃ经验}/{EXP_NEEDED}
+            PRINTFORML 外阴精通特质 {TALENT:TARGET:外阴精通}/1
+    ENDSELECT
+    PRINTL
+    SELECTCASE ABL:TARGET:Ｃ技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｍ经验 > EXP_NEEDED
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｍ经验 > EXP_NEEDED && TALENT:TARGET:外阴精通 != 0
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+    ENDSELECT
+    
+
+@ABLUP104_CONFIRM
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ｃ技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ｃ技巧")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:Ｃ技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｍ经验 > EXP_NEEDED
+                JUEL:TARGET:习得 -= JUEL_NEEDED
+                ABL:TARGET:Ｃ技巧 += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｍ经验 > EXP_NEEDED && TALENT:TARGET:外阴精通 != 0
+                JUEL:TARGET:习得 -= JUEL_NEEDED
+                ABL:TARGET:Ｃ技巧 += 1
+            ENDIF
+    ENDSELECT
+    
+
+@IS_ABLUP104
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    #DIMS COND
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ｃ技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ｃ技巧")
+    SELECTCASE ABL:TARGET:Ｃ技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 >= JUEL_NEEDED && EXP:TARGET:Ｃ经验 > EXP_NEEDED
+                COND = ◯
+            ELSE
+                COND = 
+            ENDIF
+        CASE 5 TO 9
+            IF TALENT:TARGET:外阴精通 == 0
+                COND = 
+            ELSE
+                IF JUEL:TARGET:习得 >= JUEL_NEEDED && EXP:TARGET:Ｃ经验 > EXP_NEEDED
+                    COND = ◯
+                ELSE
+                    COND =
+                ENDIF
+            ENDIF
+    ENDSELECT
+    PRINTFORM %COND%

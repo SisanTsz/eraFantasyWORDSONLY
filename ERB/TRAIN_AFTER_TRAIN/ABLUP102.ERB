@@ -1,0 +1,78 @@
+﻿@ABLUP_COND102
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    PRINTFORML Ｂ技巧 LV{ABL:TARGET:Ｂ技巧+1}
+    PRINTL Ｂ技巧描述
+    PRINTL
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ｂ技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ｂ技巧")
+    SELECTCASE ABL:TARGET:Ｂ技巧
+        CASE 0 TO 4
+            PRINTFORML 习得之珠 {JUEL:TARGET:习得}/{JUEL_NEEDED}
+            PRINTFORML Ｂ经验 {EXP:TARGET:Ｂ经验}/{EXP_NEEDED}
+            PRINTL
+        CASE 5 TO 9
+            PRINTFORML 习得之珠 {JUEL:TARGET:习得}/{JUEL_NEEDED}
+            PRINTFORML Ｂ经验 {EXP:TARGET:Ｂ经验}/{EXP_NEEDED}
+            PRINTFORML 胸部精通特质 {TALENT:TARGET:胸部精通}/1
+    ENDSELECT
+    PRINTL
+    SELECTCASE ABL:TARGET:Ｂ技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｂ经验 > EXP_NEEDED
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｂ经验 > EXP_NEEDED && TALENT:TARGET:胸部精通 != 0
+                PRINTFORML [ 998] 确认升级
+            ELSE
+                PRINTL [    ] 条件不足
+            ENDIF
+    ENDSELECT
+
+@ABLUP102_CONFIRM
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ｂ技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ｂ技巧")
+    CUSTOMDRAWLINE -
+    SELECTCASE ABL:TARGET:Ｂ技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｂ经验 > EXP_NEEDED
+                JUEL:TARGET:习得 -= JUEL_NEEDED
+                ABL:TARGET:Ｂ技巧 += 1
+            ENDIF
+        CASE 5 TO 9
+            IF JUEL:TARGET:习得 > JUEL_NEEDED && EXP:TARGET:Ｂ经验 > EXP_NEEDED && TALENT:TARGET:胸部精通 != 0
+                JUEL:TARGET:习得 -= JUEL_NEEDED
+                ABL:TARGET:Ｂ技巧 += 1
+            ENDIF
+    ENDSELECT
+
+@IS_ABLUP102
+    #DIM JUEL_NEEDED
+    #DIM EXP_NEEDED
+    #DIMS COND
+    JUEL_NEEDED = ABLUP_JUEL_NEEDED("Ｂ技巧")
+    EXP_NEEDED = ABLUP_EXP_NEEDED("Ｂ技巧")
+    SELECTCASE ABL:TARGET:Ｂ技巧
+        CASE 0 TO 4
+            IF JUEL:TARGET:习得 >= JUEL_NEEDED && EXP:TARGET:Ｂ经验 > EXP_NEEDED
+                COND = ◯
+            ELSE
+                COND = 
+            ENDIF
+        CASE 5 TO 9
+            IF TALENT:TARGET:胸部精通 == 0
+                COND = 
+            ELSE
+                IF JUEL:TARGET:习得 >= JUEL_NEEDED && EXP:TARGET:Ｂ经验 > EXP_NEEDED
+                    COND = ◯
+                ELSE
+                    COND =
+                ENDIF
+            ENDIF
+    ENDSELECT
+    PRINTFORM %COND%

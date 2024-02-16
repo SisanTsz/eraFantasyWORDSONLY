@@ -1,0 +1,118 @@
+﻿@NEW_CHARACTER_CHECK(ARGS)
+    SELECTCASE ARGS
+        CASE "名称"
+            PRINTL 请输入
+            INPUTS
+            NAME:MASTER = %RESULTS%
+        CASE "昵称"
+            PRINTL 请输入
+            INPUTS
+            CALLNAME:MASTER = %RESULTS%
+        CASE "种族"
+            IF CFLAG:MASTER:2 < 2
+                CFLAG:MASTER:2 += 1
+            ELSE 
+                CFLAG:MASTER:2 = 1
+            ENDIF
+        CASE "性别"
+            IF CFLAG:MASTER:1 < 3
+                CFLAG:MASTER:1 += 1
+            ELSE
+                CFLAG:MASTER:1 = 1
+            ENDIF
+        CASE "包茎"
+            IF CFLAG:MASTER:106 < 2
+                CFLAG:MASTER:106 += 1
+            ELSE
+                CFLAG:MASTER:106 = 0
+            ENDIF
+        CASE "包皮"
+            IF CFLAG:MASTER:105 < 2
+                CFLAG:MASTER:105 += 1
+            ELSE
+                CFLAG:MASTER:105 = 0
+            ENDIF
+        CASE "精液颜色"
+            IF CFLAG:MASTER:115 < 3
+                CFLAG:MASTER:115 += 1
+            ELSE
+                CFLAG:MASTER:115 = 0
+            ENDIF
+        CASE "精液浓度"
+            IF CFLAG:MASTER:116 < 4
+               CFLAG:MASTER:116 += 1
+            ELSE
+                CFLAG:MASTER:116 = 0
+            ENDIF
+        CASE "耻垢"
+            IF CFLAG:MASTER:113 < 5
+                CFLAG:MASTER:113 += 1
+            ELSE
+                CFLAG:MASTER:113 = 0
+            ENDIF
+        CASE "耻垢类型"
+            IF CFLAG:MASTER:114 < 1
+                CFLAG:MASTER:114 += 1
+            ELSE
+                CFLAG:MASTER:114 = 0
+            ENDIF
+        CASE "胸部大小"
+            IF CFLAG:MASTER:201 < 4
+                CFLAG:MASTER:201 += 1
+            ELSE
+                CFLAG:MASTER:201 == 0
+            ENDIF
+        CASE "乳房形状"
+            IF CFLAG:MASTER:112 < 5
+                CFLAG:MASTER:112 += 1
+            ELSE
+                CFLAG:MASTER:112 = 0
+            ENDIF
+        CASE "陷没乳头"
+            IF CFLAG:MASTER:109 < 2
+                CFLAG:MASTER:109 += 1
+            ELSE
+                CFLAG:MASTER:109 = 0
+            ENDIF
+        CASE "乳头颜色"
+            IF CFLAG:MASTER:110 < 1
+                CFLAG:MASTER:110 += 1
+            ELSE
+                CFLAG:MASTER:110 = 0
+            ENDIF
+        CASE "乳晕大小"
+            IF CFLAG:MASTER:111 < 2
+                CFLAG:MASTER:111 += 1
+            ELSE
+                CFLAG:MASTER:111 = 0
+            ENDIF
+        CASE "阴毛"
+            IF CFLAG:MASTER:101 < 6
+                CFLAG:MASTER:101 += 1
+            ELSE
+                CFLAG:MASTER:101 = 0
+            ENDIF
+        CASE "穴型"
+            IF CFLAG:MASTER:108 < 5
+                CFLAG:MASTER:108 += 1
+            ELSE
+                CFLAG:MASTER:108 = 0
+            ENDIF
+        CASE "阴茎长度"
+            IF CFLAG:MASTER:202 < 4
+                CFLAG:MASTER:202 += 1
+            ELSE
+                CFLAG:MASTER:202 = 1
+            ENDIF
+        CASE "阴茎直径"
+            IF CFLAG:MASTER:203 < 4
+                CFLAG:MASTER:203 += 1
+            ELSE
+                CFLAG:MASTER:203 = 1
+            ENDIF
+        CASE "[开始]"
+            ;初始化角色数据
+            CALL INITIALIZE_MASTER
+            BEGIN SHOP
+    ENDSELECT
+    CALL NEW_CHARACTER
