@@ -1,15 +1,15 @@
-Built on EmueraEE 改进版
+# Built on EmueraEE 改进版
 
-Game Designer QQ :
+## Game Designer
 紫三思 2579737656,
 娜娜莉 1420309796,
 Choke cola 2652328248,
 洛九幽 2687675138
 
-Programmer QQ :
+## Programmer
 紫三思 2579737656
 
-Writer QQ :
+## Copy Writer
 紫三思 2579737656,
 娜娜莉 1420309796,
 爱尔温尼娅 1507306320,
@@ -24,4 +24,4 @@ scp-1004 3251533955,
 白风 429290560,
 BAZINGA 471799982
 
-eraFantasy EST. 2023
+#### ***eraFantasy EST. 2023***
