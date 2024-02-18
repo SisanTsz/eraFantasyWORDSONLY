@@ -5,7 +5,8 @@
     #DIM MEMO_TARGET
 
     MEMO_MASTER = MASTER
-    MEMO_TARGET = TARGE
+    MEMO_TARGET = TARGET
+    FLAG:目标 = TARGET
 
     CALL TRAIN_FTF
     ;CALL LVUP
@@ -18,13 +19,64 @@
 
 
     $TRAIN_LOOP
-    ;CALL TRAIN_UI
-    ;CALL UPDATE_PRINT_PALAM(ARG)
-    ;CALL COMABLE_UI
+    CALL TRAIN_UI
     INPUT
-    TRYCALLFORM COM{RESULT}
-    CALL SOURCE_CHECK_MAIN
-    ;GOTO TRAIN_LOOP
+    SELECTCASE RESULT
+        CASE 3001
+            CALL SOURCE_CHECK_MAIN
+            GOTO TRAIN_LOOP
+        CASE 3002
+            IF FLAG:指令页面 != 4
+                FLAG:上一页 = FLAG:指令页面
+                FLAG:指令页面 = 4
+            ELSE
+                FLAG:指令页面 = FLAG:上一页
+            ENDIF
+            GOTO TRAIN_LOOP
+        CASE 2000 TO 2100
+            MASTER = RESULT - 2000
+            GOTO TRAIN_LOOP
+        CASEELSE
+            SELECTCASE FLAG:指令页面
+                CASE 0
+                    SELECTCASE RESULT
+                        CASE 1 TO 13
+                            FLAG:指令页面 = 1
+                            FLAG:自机部位 = RESULT
+                    ENDSELECT
+                CASE 1
+                    SELECTCASE RESULT
+                        CASE 99
+                            FLAG:指令页面 = 3
+                            FLAG:目标 = RESULT
+                        CASE 9999
+                            FLAG:指令页面 = 0
+                        CASE 0 TO 99
+                            FLAG:指令页面 = 2
+                            FLAG:目标 = RESULT
+                    ENDSELECT
+                CASE 2
+                    SELECTCASE RESULT
+                        CASE 1 TO 10
+                            FLAG:指令页面 = 3
+                            FLAG:目标部位 = RESULT
+                        CASE 9999
+                            FLAG:指令页面 = 1
+                    ENDSELECT
+                CASE 3
+                    SELECTCASE RESULT
+                        CASE 9999
+                            FLAG:指令页面 = 2
+                        CASE 1 TO 2000
+                            FLAG:指令选择 = RESULT
+                            CALL TRAIN_MOVEMENT
+                    ENDSELECT
+                CASE 4
+                    CALL TRAIN_MOVMENT_DELECT
+            ENDSELECT
+            GOTO TRAIN_LOOP
+    ENDSELECT
+    
 
 @EVENTTRAIN
 
@@ -40,35 +92,44 @@
     PRINTC 结束调教 [2099]
     CALL PRINT_LINE(3)
 
+
 @TRAIN_UI
+    CALL TRAIN_UI_CHARACTER_DATA
+    CUSTOMDRAWLINE -
+    CALL COM_LIST_PLAN
+    CUSTOMDRAWLINE -
+    CALL COM_LIST
+    CUSTOMDRAWLINE -
+    ;CALL TRAIN_MOVEMENT_LIST
+    ;CUSTOMDRAWLINE -
+    CALL OTHER_COM_LIST
+
+
+@TRAIN_UI_CHARACTER_DATA
     #DIM LCOUNT
     #DIM C_NO
     CALL DRAWLINES_CENTER("【 调教中 】")
     PRINTFORML 第{DAY}天 {FLAG:3}时{FLAG:4}分 所在地:{CFLAG}
-    PRINTFORML 自机: %NAME:MASTER%
     PRINTL
+    CALL TRAIN_CHARA_LIST
+    PRINTFORML 自机: %NAME:MASTER%
+    PRINT 体力:
 	CALL PRINT_BAR(BASE:MASTER:体力,MAXBASE:MASTER:体力, 10, COLOR("体力"))
 	PRINTFORML ({BASE:MASTER:体力}/{MAXBASE:MASTER:体力})
+    PRINT 理智:
     CALL PRINT_BAR(BASE:MASTER:理智,MAXBASE:MASTER:理智, 10, COLOR("理智"))
 	PRINTFORML ({BASE:MASTER:理智}/{MAXBASE:MASTER:理智})
+    PRINT 精力:
     CALL PRINT_BAR(BASE:MASTER:精力,MAXBASE:MASTER:精力, 10, COLOR("精力"))
 	PRINTFORML ({BASE:MASTER:精力}/{MAXBASE:MASTER:精力})
+    PRINT 性欲:
     CALL PRINT_BAR(BASE:MASTER:性欲,MAXBASE:MASTER:性欲, 10, COLOR("性欲"))
 	PRINTFORML ({BASE:MASTER:性欲}/{MAXBASE:MASTER:性欲})
     CALL TRAIN_CLOTHE_STATUS(MASTER)
+    CALL TRAIN_MASTER_PART_STATUS
+    PRINTL
     CALL UPDATE_PRINT_PALAM(MASTER)
-
-    CUSTOMDRAWLINE -
-    SIF TFLAG:忍耐中 == 0
-        PRINTBUTTON "[忍耐指示]", 2051
-    SIF TFLAG:忍耐中 == 1
-        PRINTBUTTON "[解放指示]", 2051
-    SIF TFLAG:寸止中 == 0
-        PRINTBUTTON "[寸止挑逗]", 2052
-    SIF TFLAG:寸止中 == 1
-        PRINTBUTTON "[停止挑逗]", 2052
-    CALL PRINT_LINE(2)
-
+    
 
 @UPDATE_PRINT_PALAM(ARG)
     #DIM LCOUNT
@@ -83,13 +144,28 @@
     BAR_COLOUR = 0x6666FF
     PRINTL 【 快感 】
     FOR LCOUNT, 101, 111
-        SELECTCASE PALAM:LCOUNT
+        SELECTCASE PALAM:ARG:LCOUNT
+            CASE IS >= 500000
+                EX_LEVEL = 10
+                PALAM_MAX = PALAM:ARG:LCOUNT + 1
+            CASE IS >= 400000
+                EX_LEVEL = 9
+                PALAM_MAX = 500000
+            CASE IS >= 300000
+                EX_LEVEL = 8
+                PALAM_MAX = 400000
+            CASE IS >= 250000
+                EX_LEVEL = 7
+                PALAM_MAX = 300000
             CASE IS >= 200000
+                EX_LEVEL = 6
+                PALAM_MAX = 250000
+            CASE IS >= 150000
                 EX_LEVEL = 5
-                PALAM_MAX = PALAM:LCOUNT + 1
+                PALAM_MAX = 200000
             CASE IS >= 100000
                 EX_LEVEL = 4
-                PALAM_MAX = 200000
+                PALAM_MAX = 150000
             CASE IS >= 50000
                 EX_LEVEL = 3
                 PALAM_MAX = 100000
@@ -104,7 +180,7 @@
                 PALAM_MAX = 10000
         ENDSELECT
         IF PALAMNAME:LCOUNT != ""
-	        PRINTFORM %PALAMNAME:(LCOUNT-100)%LV:{EX_LEVEL}
+	        PRINTFORM %PALAMNAME:(LCOUNT)%LV:{EX_LEVEL}
 
 	        CALL PRINT_BAR(PALAM:ARG:LCOUNT, PALAM_MAX, BAR_SIZE, BAR_COLOUR)
             PCOUNT += 1
@@ -142,3 +218,176 @@
             PRINTFORM [%GET_STR_CLOTHE("鞋子",ARG)%]
     ENDIF
     PRINTL
+
+
+
+@TRAIN_CHARA_LIST
+    #DIM LOCATION
+    #DIM LCOUNT
+    FOR LCOUNT, 0 ,CHARANUM
+        IF CFLAG:LCOUNT:调教中 >= 1 && CFLAG:LCOUNT:所在处 == LOCATION
+            PRINTBUTTON @" [%NAME:LCOUNT%]" , LCOUNT + 2000
+        ENDIF
+    NEXT
+    PRINTL
+
+@COM_LIST
+    #DIM LCOUNT
+
+    ALIGNMENT CENTER
+    
+    FOR LCOUNT, 0, 3
+        PRINTL
+    NEXT
+
+    SELECTCASE FLAG:指令页面
+        CASE 0
+            CALL COM_LIST_MASTER_BODY_SELECTION
+        CASE 1
+            CALL COM_LIST_TARGET_SELECTION
+        CASE 2
+            CALL COM_LIST_TARGET_BODY_SELECTION
+        CASE 3
+            CALL COM_LIST_SELECTION
+        CASE 4
+            CALL TRAIN_MOVEMENT_LIST
+    ENDSELECT
+
+    FOR LCOUNT, 0, 3
+        PRINTL
+    NEXT
+
+    ALIGNMENT LEFT
+
+@COM_LIST_PLAN
+    #DIMS PART_A
+    #DIMS PART_B
+    PART_A = %STRNAME:(FLAG:自机部位)%
+    PART_B = %STRNAME:(FLAG:目标部位)%
+
+    ALIGNMENT CENTER
+
+    PRINTFORM %NAME:MASTER%(%PART_A%) －　%NAME:(FLAG:目标)%(%PART_B%)
+
+    ALIGNMENT LEFT
+    
+    PRINTL
+
+@COM_LIST_MASTER_BODY_SELECTION
+    SELECTCASE TALENT:MASTER:性别
+        CASE 0
+            PRINTBUTTON "[Ｍ]" , 1
+            PRINTBUTTON "[Ｂ]" , 2
+            PRINTBUTTON "[Ｈ]" , 3
+            PRINTBUTTON "[Ｃ]" , 4
+            ;PRINTBUTTON "[Ｐ]" , 5
+            PRINTBUTTON "[Ｕ]" , 6
+            PRINTBUTTON "[Ｖ]" , 7
+            PRINTBUTTON "[Ａ]" , 8
+            PRINTBUTTON "[Ｆ]" , 9
+            PRINTBUTTON "[Ｓ]" , 10
+            PRINTBUTTON "[道具]" , 11
+            PRINTBUTTON "[消耗品]" , 12
+            PRINTBUTTON "[特殊]" , 13
+        CASE 1
+            PRINTBUTTON "[Ｍ]" , 1
+            PRINTBUTTON "[Ｂ]" , 2
+            PRINTBUTTON "[Ｈ]" , 3
+            PRINTBUTTON "[Ｃ]" , 4
+            PRINTBUTTON "[Ｐ]" , 5
+            ;PRINTBUTTON "[Ｕ]" , 6
+            PRINTBUTTON "[Ｖ]" , 7
+            PRINTBUTTON "[Ａ]" , 8
+            PRINTBUTTON "[Ｆ]" , 9
+            PRINTBUTTON "[Ｓ]" , 10
+            PRINTBUTTON "[道具]" , 11
+            PRINTBUTTON "[消耗品]" , 12
+            PRINTBUTTON "[特殊]" , 13
+        CASE 2
+            PRINTBUTTON "[Ｍ]" , 1
+            PRINTBUTTON "[Ｂ]" , 2
+            PRINTBUTTON "[Ｈ]" , 3
+            PRINTBUTTON "[Ｃ]" , 4
+            PRINTBUTTON "[Ｐ]" , 5
+            PRINTBUTTON "[Ｕ]" , 6
+            PRINTBUTTON "[Ｖ]" , 7
+            PRINTBUTTON "[Ａ]" , 8
+            PRINTBUTTON "[Ｆ]" , 9
+            PRINTBUTTON "[Ｓ]" , 10
+            PRINTBUTTON "[道具]" , 11
+            PRINTBUTTON "[消耗品]" , 12
+            PRINTBUTTON "[特殊]" , 13
+    ENDSELECT
+
+@COM_LIST_TARGET_SELECTION
+    #DIM LOCATION
+    #DIM LCOUNT
+    FOR LCOUNT, 0 ,CHARANUM
+        IF CFLAG:LCOUNT:调教中 >= 1 && CFLAG:LCOUNT:所在处 == LOCATION
+            PRINTBUTTON @" [%NAME:LCOUNT%]" , LCOUNT
+        ENDIF
+    NEXT
+    PRINTBUTTON "[其他]" , 99
+    PRINTBUTTON "[返回]" , 9999
+    PRINTL
+
+@COM_LIST_TARGET_BODY_SELECTION
+    PRINTBUTTON "[Ｍ]" , 1
+    PRINTBUTTON "[Ｂ]" , 2
+    PRINTBUTTON "[Ｈ]" , 3
+    PRINTBUTTON "[Ｃ]" , 4
+    PRINTBUTTON "[Ｐ]" , 5
+    PRINTBUTTON "[Ｕ]" , 6
+    PRINTBUTTON "[Ｖ]" , 7
+    PRINTBUTTON "[Ａ]" , 8
+    PRINTBUTTON "[Ｆ]" , 9
+    PRINTBUTTON "[Ｓ]" , 10
+    PRINTBUTTON "[返回]" , 9999
+
+
+@OTHER_COM_LIST
+    PRINTBUTTONLC "[行动]" , 3001
+    PRINTBUTTONLC "[行动列表]" , 3002
+
+
+@TRAIN_MOVEMENT
+
+    IF FLAG:目标 == MASTER
+
+        SELECTCASE FLAG:自机部位
+            CASE 1 TO 10
+                CFLAG:MASTER:(FLAG:自机部位+300) = 2
+        ENDSELECT
+    ELSE
+        SELECTCASE FLAG:自机部位
+            CASE 1 TO 10
+                CFLAG:MASTER:(FLAG:自机部位+300) = 1
+        ENDSELECT
+
+        SELECTCASE FLAG:目标
+            CASE 0 TO 100
+                SELECTCASE FLAG:自机部位
+                    CASE 1 TO 10
+                        CFLAG:MASTER:(FLAG:自机部位+310) = TARGET
+                ENDSELECT
+        ENDSELECT
+    ENDIF
+    
+        SELECTCASE FLAG:目标部位
+            CASE 1 TO 10
+                CFLAG:MASTER:(FLAG:目标部位+340) = FLAG:目标部位
+        ENDSELECT
+
+        SELECTCASE FLAG:指令选择
+            CASE 1 TO 2000
+                CFLAG:MASTER:(FLAG:自机部位+320) = FLAG:指令选择
+        ENDSELECT
+
+
+@TRAIN_MASTER_PART_STATUS
+    #DIM LCOUNT
+    FOR LCOUNT, 301, 311
+        IF CFLAG:MASTER:LCOUNT != 0
+            PRINTFORML %STRNAME:(LCOUNT-300)%: %NAME:(CFLAG:MASTER:(LCOUNT + 10))%(%STRNAME:(CFLAG:MASTER:(LCOUNT + 40))%)
+        ENDIF
+    NEXT
