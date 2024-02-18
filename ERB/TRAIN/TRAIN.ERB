@@ -69,6 +69,7 @@
                             FLAG:指令页面 = 2
                         CASE 1 TO 2000
                             FLAG:指令选择 = RESULT
+                            TRYCALLFORM COM_PRE_{RESULT}
                             CALL TRAIN_MOVEMENT
                     ENDSELECT
                 CASE 4

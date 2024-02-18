@@ -33,8 +33,6 @@
                     TRYCALLFORM COM_{CFLAG:MASTER:(LCOUNT_1 + 20)}
                     ;体力减免
                     CALL SOURCE_CHECK_POWER
-                    ;快感等级计算
-                    CALL SOURCE_CHECK_KAIKAN
                     ;不同理智下的加成
                     CALL SOURCE_CHECK_SANS
                     ;特质加成
@@ -45,10 +43,12 @@
                     CALL SOURCE_CHECK_LUST
                     ;名器计算
                     CALL SOURCE_CHECK_MEIKI, LCOUNT_1
+                    ;快感等级计算
+                    CALL SOURCE_CHECK_KAIKAN
                     ;调教者口上(口上_番号_COM_动作番号_A)
-                    TRYCALLFORM KOJO_{MASTER}_COM_{LCOUNT_1 + 20}_A
+                    TRYCALLFORM KOJO_{MASTER}_COM_{CFLAG:MASTER:(LCOUNT_1 + 20)}_A
                     ;被调教者口上(口上_番号_COM_动作番号_B)
-                    TRYCALLFORM KOJO_{TARGET}_COM_{LCOUNT_1 + 20}_B
+                    TRYCALLFORM KOJO_{TARGET}_COM_{CFLAG:TARGET:(LCOUNT_1 + 20)}_B
                     ;SOURCE结算
                     CALL SOURCE_TO_PALAM
                 ENDIF

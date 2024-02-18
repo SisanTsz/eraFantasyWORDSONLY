@@ -8,24 +8,24 @@
     BASE_NEEDED = ABLUP_BASE_NEEDED("信赖")
     SELECTCASE ABL:TARGET:信赖
         CASE 0 TO 4
-            PRINTFORML 情爱之珠 {JUEL:TARGET:情爱}/{JUEL_NEEDED}
+            PRINTFORML 信任之珠 {JUEL:TARGET:信任}/{JUEL_NEEDED}
             PRINTFORML 好感度 {BASE:TARGET:好感度}/{BASE_NEEDED}
             PRINTL
         CASE 5 TO 9
-            PRINTFORML 情爱之珠 {JUEL:TARGET:情爱}/{JUEL_NEEDED}
+            PRINTFORML 信任之珠 {JUEL:TARGET:信任}/{JUEL_NEEDED}
             PRINTFORML 好感度 {BASE:TARGET:好感度}/{BASE_NEEDED}
             PRINTFORML 亲密特质 {TALENT:TARGET:亲密}/1
     ENDSELECT
     PRINTL
     SELECTCASE ABL:TARGET:信赖
         CASE 0 TO 4
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+            IF JUEL:TARGET:信任 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
                 PRINTFORML [ 998] 确认升级
             ELSE
                 PRINTL [    ] 条件不足
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
+            IF JUEL:TARGET:信任 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
                 PRINTFORML [ 998] 确认升级
             ELSE
                 PRINTL [    ] 条件不足
@@ -40,13 +40,13 @@
     CUSTOMDRAWLINE -
     SELECTCASE ABL:TARGET:信赖
         CASE 0 TO 4
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
-                JUEL:TARGET:情爱 -= JUEL_NEEDED
+            IF JUEL:TARGET:信任 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                JUEL:TARGET:信任 -= JUEL_NEEDED
                 ABL:TARGET:信赖 += 1
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
-                JUEL:TARGET:情爱 -= JUEL_NEEDED
+            IF JUEL:TARGET:信任 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
+                JUEL:TARGET:信任 -= JUEL_NEEDED
                 ABL:TARGET:信赖 += 1
             ENDIF
     ENDSELECT
@@ -58,7 +58,7 @@
     BASE_NEEDED = ABLUP_BASE_NEEDED("信赖")
     SELECTCASE ABL:TARGET:信赖
         CASE 0 TO 4
-            IF JUEL:TARGET:情爱 >= JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+            IF JUEL:TARGET:信任 >= JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
                 COND = ◯
             ELSE
                 COND = 
@@ -67,7 +67,7 @@
             IF TALENT:TARGET:亲密 == 0
                 COND = 
             ELSE
-                IF JUEL:TARGET:情爱 >= JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                IF JUEL:TARGET:信任 >= JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
                     COND = ◯
                 ELSE
                     COND =

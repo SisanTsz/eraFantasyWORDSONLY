@@ -154,14 +154,14 @@
     BASE_NEEDED = ABLUP_BASE_NEEDED("信赖")
     SELECTCASE ABL:TARGET:信赖
         CASE 0 TO 4
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
-                JUEL:TARGET:情爱 -= JUEL_NEEDED
+            IF JUEL:TARGET:信任 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED
+                JUEL:TARGET:信任 -= JUEL_NEEDED
                 ABL:TARGET:信赖 += 1
                 IS_LVUP += 1
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:情爱 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
-                JUEL:TARGET:情爱 -= JUEL_NEEDED
+            IF JUEL:TARGET:信任 > JUEL_NEEDED && BASE:TARGET:好感度 > BASE_NEEDED && TALENT:TARGET:亲密 != 0
+                JUEL:TARGET:信任 -= JUEL_NEEDED
                 ABL:TARGET:信赖 += 1
                 IS_LVUP += 1
             ENDIF
@@ -170,14 +170,14 @@
     EXP_NEEDED = ABLUP_EXP_NEEDED("欲望")
     SELECTCASE ABL:TARGET:欲望
         CASE 0 TO 4
-            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
-                JUEL:TARGET:欲情 -= JUEL_NEEDED
+            IF JUEL:TARGET:欲求 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED
+                JUEL:TARGET:欲求 -= JUEL_NEEDED
                 ABL:TARGET:欲望 += 1
                 IS_LVUP += 1
             ENDIF
         CASE 5 TO 9
-            IF JUEL:TARGET:欲情 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:情欲 != 0
-                JUEL:TARGET:欲情 -= JUEL_NEEDED
+            IF JUEL:TARGET:欲求 > JUEL_NEEDED && EXP:TARGET:绝顶经验 > EXP_NEEDED && TALENT:TARGET:情欲 != 0
+                JUEL:TARGET:欲求 -= JUEL_NEEDED
                 ABL:TARGET:欲望 += 1
                 IS_LVUP += 1
             ENDIF
