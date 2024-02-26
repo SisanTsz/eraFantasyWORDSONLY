@@ -369,7 +369,7 @@
             CASE 0 TO 100
                 SELECTCASE FLAG:自机部位
                     CASE 1 TO 10
-                        CFLAG:MASTER:(FLAG:自机部位+310) = TARGET
+                        CFLAG:MASTER:(FLAG:自机部位+310) = FLAG:目标
                 ENDSELECT
         ENDSELECT
     ENDIF

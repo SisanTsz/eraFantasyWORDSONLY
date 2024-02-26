@@ -15,4 +15,8 @@
         SOURCE:TARGET:LCOUNT = 0
         SOURCE:MASTER:LCOUNT = 0
     NEXT
-    
+    ;体力消耗
+    BASE:MASTER:体力 -= SOURCE:MASTER:体力消耗 * 100
+    SIF BASE:MASTER:体力 <= 0
+        BASE:MASTER:体力 = 0
+    SOURCE:MASTER:体力消耗 = 0

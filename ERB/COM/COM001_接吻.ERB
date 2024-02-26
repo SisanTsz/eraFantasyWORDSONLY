@@ -1,17 +1,25 @@
 ﻿@COM_ABLE1
     IF FLAG:自机部位 == 1 && FLAG:目标 != MASTER && FLAG:目标部位 == 1
         IF MASTER != FLAG:本机
-            IF COMABLE(FLAG:目标,3) == 1
+            IF COMABLE(MASTER,3) == 1
                 FLAG:指令可行 = 1
+                SIF CFLAG:MASTER:Ｍ插入中 == 1
+                    FLAG:指令可行 = 2
                 SIF CFLAG:(FLAG:目标):Ｍ插入中 == 1
                     FLAG:指令可行 = 2
+                SIF CFLAG:MASTER:Ｍ状态 > 0
+                    FLAG:指令可行 = 3
             ELSE
-            FLAG:指令可行 = 0
+                FLAG:指令可行 = 0
             ENDIF
         ELSE
             FLAG:指令可行 = 1
+            SIF CFLAG:MASTER:Ｍ插入中 == 1
+                FLAG:指令可行 = 2
             SIF CFLAG:(FLAG:目标):Ｍ插入中 == 1
-                    FLAG:指令可行 = 2
+                FLAG:指令可行 = 2
+            SIF CFLAG:MASTER:Ｍ状态 > 0
+                FLAG:指令可行 = 3
         ENDIF
     ELSE
         FLAG:指令可行 = 0
@@ -24,25 +32,10 @@
     #DIM MEMO_TARGET
     MEMO_TARGET = CFLAG:MASTER:Ｍ对象
 
-    IF CFLAG:MASTER:Ｍ插入中 == 1
-        CFLAG:MASTER:Ｍ插入中 = 0
-        FOR LCOUNT,0 , CHARANUM
-            FOR LCOUNT_2, 301, 311
-                IF CFLAG:LCOUNT:LCOUNT_2 != 0
-                    IF CFLAG:LCOUNT:(LCOUNT_2 + 10) == MEMO_TARGET
-                        IF CFLAG:LCOUNT:(LCOUNT_2 + 40) == 1
-                            CFLAG:LCOUNT:(LCOUNT_2 - 10) = 0
-                            CFLAG:LCOUNT:(LCOUNT_2) = 0
-                            CFLAG:LCOUNT:(LCOUNT_2 + 10) = 0
-                            CFLAG:LCOUNT:(LCOUNT_2 + 20) = 0
-                            CFLAG:LCOUNT:(LCOUNT_2 + 40) = 0
-                        ENDIF
-                    ENDIF
-                ENDIF
-            NEXT
-        NEXT
-    ENDIF
-    
+    CALL COM_PRE_COMMON(1, 1, 1, "Ｍ插入中", "Ｍ插入中")
+
+    CFLAG:MEMO_TARGET:Ｍ插入中 = 0
+    CFLAG:MASTER:Ｍ插入中 = 0
     CFLAG:MASTER:Ｍ状态 = 1
     CFLAG:MASTER:Ｍ对象 = FLAG:目标
     CFLAG:MASTER:Ｍ指令 = 1
@@ -54,142 +47,47 @@
     #DIM LCOUNT
 
     PRINTL 接吻
+
+    ;消耗
+    SOURCE:MASTER:体力消耗 += 30
+    SOURCE:TARGET:体力消耗 += 30
+
     ;自机快感
-    MEMO_SOURCE = 100
-    IF MASTER != FLAG:本机
-        IF COMABLE(MASTER,3) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    IF TARGET != FLAG:本机
-        IF COMABLE(TARGET,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-    ENDIF
-    SOURCE:MASTER:Ｍ快楽 += MEMO_SOURCE
-
-    ;目标快感
-    MEMO_SOURCE = 100
-    IF MASTER != FLAG:本机
-        IF COMABLE(TARGET,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    IF TARGET != FLAG:本机
-        IF COMABLE(TARGET,3) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-    ENDIF
-    SOURCE:TARGET:Ｍ快楽 += MEMO_SOURCE
-
-    ;目标信任
-    MEMO_SOURCE = 100
-    IF MASTER != FLAG:本机
-        IF COMABLE(TARGET,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    SOURCE:TARGET:信任 += MEMO_SOURCE
+    SOURCE:MASTER:Ｍ快楽 += SOURCE_ADD(1, 50, 10, 3, 5, "Ｍ技巧", "Ｍ技巧")
 
     ;自机欲求
-    MEMO_SOURCE = 50
-    IF MASTER != FLAG:本机
-        IF COMABLE(MASTER,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    IF TARGET != FLAG:本机
-        IF COMABLE(TARGET,5) == 1
-             MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-    ENDIF
-
-    MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ感觉 * 10) / 100
-    SOURCE:MASTER:信任 += MEMO_SOURCE
-
-    ;目标欲求
-    MEMO_SOURCE = 50
-    IF MASTER != FLAG:本机
-        IF COMABLE(MASTER,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    IF TARGET != FLAG:本机
-        IF COMABLE(TARGET,5) == 1
-             MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-    ENDIF
-    MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ感觉 * 10) / 100
-    SOURCE:TARGET:欲求 += MEMO_SOURCE
-
-    ;目标屈服
-    MEMO_SOURCE = 50
-    IF MASTER != FLAG:本机
-        IF COMABLE(MASTER,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ感觉 * 10) / 100
-    SOURCE:TARGET:屈服 += MEMO_SOURCE
-
+    SOURCE:MASTER:信任 += SOURCE_ADD(1, 50, 10, 3, 5, "Ｍ感觉", "Ｍ技巧")
+    
     ;自机恭顺
-    MEMO_SOURCE = 50
-    MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ感觉 * 10) / 100
-    SOURCE:TARGET:屈服 += MEMO_SOURCE
+    SOURCE:TARGET:屈服 += SOURCE_ADD(1, 50, 10, 3, 5, "Ｍ感觉", "Ｍ技巧")
 
     ;自机习得
-    MEMO_SOURCE = 50
-    IF MASTER != FLAG:本机
-        IF COMABLE(MASTER,5) == 1
-            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:Ｍ技巧 * 10) / 100
-    ENDIF
-    IF TARGET != FLAG:本机
-        IF COMABLE(TARGET,5) == 1
-             MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-        ENDIF
-    ELSE
-        MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:Ｍ技巧 * 10) / 100
-    ENDIF
-    SOURCE:TARGET:习得 += MEMO_SOURCE
+    SOURCE:TARGET:习得 += SOURCE_ADD(1, 50, 10, 3, 5, "Ｍ技巧", "Ｍ技巧")
     
+    ;自机耻情
+    SOURCE:MASTER:耻情 += SOURCE_ADD(1, 50, 10 , 3, 5, "Ｍ感觉", "Ｍ技巧")
+
+    ;目标快感
+    SOURCE:TARGET:Ｍ快楽 += SOURCE_ADD(1, 50, 10, 5, 3, "Ｍ技巧", "Ｍ技巧")
+    
+    ;目标信任
+    SOURCE:TARGET:信任 += SOURCE_ADD(1, 50, 10, 5, 3, "Ｍ技巧", "Ｍ感觉")
+    
+    ;目标欲求
+    SOURCE:TARGET:欲求 += SOURCE_ADD(1, 50, 10, 5, 3, "Ｍ技巧", "Ｍ感觉")
+    
+    ;目标屈服
+    SOURCE:TARGET:屈服 += SOURCE_ADD(1, 50, 10, 5, 3, "Ｍ技巧", "Ｍ感觉")
+    
+    ;目标习得
+    SOURCE:TARGET:习得 += SOURCE_ADD(1, 50, 10 , 5, 3, "Ｍ技巧", "Ｍ技巧")
+
+    ;目标耻情
+    SOURCE:TARGET:耻情 += SOURCE_ADD(1, 50, 10 , 5, 3, "Ｍ技巧", "Ｍ感觉")
+
     ;自机反抗
-    MEMO_SOURCE = 50
-    IF MASTER != FLAG:本机
-        MEMO_SOURCE *= RESISTANCE(MASTER)
-    ELSE
-        MEMO_SOURCE = 0
-    ENDIF
-    SOURCE:MASTER:反抗 += MEMO_SOURCE
+    CALL RESIS(MASTER,50)
 
     ;目标反抗
-    MEMO_SOURCE = 100
-    IF TARGET != FLAG:本机
-        MEMO_SOURCE *= RESISTANCE(TARGET)
-    ELSE
-        MEMO_SOURCE = 0
-    ENDIF
-    SOURCE:TARGET:反抗 += MEMO_SOURCE
+    CALL RESIS(TARGET,50)
     

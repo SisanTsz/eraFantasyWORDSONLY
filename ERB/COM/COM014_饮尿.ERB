@@ -1,0 +1,132 @@
+﻿@COMABLE(ARG,ARG:1)
+    #FUNCTION
+    IF ABL:(FLAG:ARG):信赖 || ABL:(FLAG:ARG):欲望 || ABL:(FLAG:ARG):服从 || ABL:(FLAG:ARG):献身 >= ARG:1
+        RETURNF 1
+    ELSE
+        RETURNF 0
+    ENDIF
+
+
+@MAX_RELATION(ARG)
+    #FUNCTION
+    #DIM MAX_LV = 0
+    #DIM LCOUNT 
+    FOR LCOUNT, 301, 305
+        SIF ABL:ARG:LCOUNT > MAX_LV
+            MAX_LV = ABL:ARG:LCOUNT
+    NEXT
+    RETURNF MAX_LV
+
+@RESISTANCE(ARG)
+    #FUNCTION
+    #DIM RES = 10
+    RES = 10 - MAX_RELATION(ARG)
+    RETURNF RES
+
+@SOURCE_ADD(ARG,ARG:1,ARG:2,ARG:3,ARG:4,ARGS,ARGS:1) ;条件,基础数值,乘数,主人条件,对象条件,主人技巧,对象技巧
+    #FUNCTION 
+    #DIM MEMO_SOURCE
+    #DIM TIMES_LV
+    #DIM M_LV 
+    #DIM T_LV
+    #DIMS M_ABL
+    #DIMS T_ABL
+    MEMO_SOURCE = ARG:1
+    TIMES_LV = ARG:2
+    M_LV = ARG:3
+    T_LV = ARG:4
+    M_ABL = ARGS
+    T_ABL = ARGS:1
+    IF ARG == 1
+        IF MASTER != FLAG:本机
+            IF COMABLE(MASTER,M_LV) == 1
+                MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:ARGS * TIMES_LV) / 100
+            ENDIF
+        ELSE
+            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:ARGS * TIMES_LV) / 100
+        ENDIF
+        IF TARGET != FLAG:本机
+            IF COMABLE(TARGET,T_LV) == 1
+                MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:(ARGS:1) * TIMES_LV) / 100
+            ENDIF
+        ELSE
+            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:TARGET:(ARGS:1) * TIMES_LV) / 100
+        ENDIF
+    ELSEIF ARG == 2
+        IF MASTER != FLAG:本机
+            IF COMABLE(MASTER,M_LV) == 1
+                MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:(ARGS) * TIMES_LV) / 100
+            ENDIF
+        ELSE
+            MEMO_SOURCE = (MEMO_SOURCE * 100 + ABL:MASTER:(ARGS) * TIMES_LV) / 100
+        ENDIF
+    ENDIF
+    RETURNF MEMO_SOURCE
+
+
+@RESIS(ARG,ARG:1)
+    IF ARG != FLAG:本机
+        SOURCE:ARG:反抗 += ARG:1 * RESISTANCE(TARGET)
+    ENDIF
+
+@COM_PRE_COMMON(ARG,ARG:1,ARG:2,ARGS,ARGS:1);模式,主角部位,对象部位,指令,主角状态,对象状态
+    #DIM LCOUNT
+    #DIM LCOUNT_2
+    #DIM MEMO_TARGET
+    MEMO_TARGET = CFLAG:MASTER:Ｍ对象
+
+    IF ARG == 1
+        IF CFLAG:MASTER:(ARGS) == 1
+            FOR LCOUNT,0 , CHARANUM
+                FOR LCOUNT_2, 301, 311
+                    IF CFLAG:LCOUNT:LCOUNT_2 != 0
+                        IF CFLAG:LCOUNT:(LCOUNT_2 + 10) == MASTER
+                            IF CFLAG:LCOUNT:(LCOUNT_2 + 40) == ARG:1
+                                CFLAG:LCOUNT:(LCOUNT_2 - 10) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 10) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 20) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 40) = 0
+                            ENDIF
+                        ENDIF
+                    ENDIF
+                NEXT
+            NEXT
+        ENDIF
+        IF CFLAG:MEMO_TARGET:(ARGS:1) == 1
+            FOR LCOUNT,0 , CHARANUM
+                FOR LCOUNT_2, 301, 311
+                    IF CFLAG:LCOUNT:LCOUNT_2 != 0
+                        IF CFLAG:LCOUNT:(LCOUNT_2 + 10) == MEMO_TARGET
+                            IF CFLAG:LCOUNT:(LCOUNT_2 + 40) == ARG:2
+                                CFLAG:LCOUNT:(LCOUNT_2 - 10) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 10) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 20) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 40) = 0
+                            ENDIF
+                        ENDIF
+                    ENDIF
+                NEXT
+            NEXT
+        ENDIF
+    ELSEIF ARG == 2
+        IF CFLAG:MASTER:(ARGS) == 1
+            FOR LCOUNT,0 , CHARANUM
+                FOR LCOUNT_2, 301, 311
+                    IF CFLAG:LCOUNT:LCOUNT_2 != 0
+                        IF CFLAG:LCOUNT:(LCOUNT_2 + 10) == MASTER
+                            IF CFLAG:LCOUNT:(LCOUNT_2 + 40) == ARG:1
+                                CFLAG:LCOUNT:(LCOUNT_2 - 10) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 10) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 20) = 0
+                                CFLAG:LCOUNT:(LCOUNT_2 + 40) = 0
+                            ENDIF
+                        ENDIF
+                    ENDIF
+                NEXT
+            NEXT
+        ENDIF
+    ENDIF
+

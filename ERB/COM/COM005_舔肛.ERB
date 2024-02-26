@@ -1,0 +1,85 @@
+﻿@COM_ABLE5
+    IF FLAG:自机部位 == 1 && FLAG:目标 != MASTER && FLAG:目标部位 == 8
+        IF MASTER != FLAG:本机
+            IF COMABLE(MASTER,4) == 1
+                FLAG:指令可行 = 1
+                SIF CFLAG:MASTER:Ｍ插入中 == 1
+                    FLAG:指令可行 = 2
+                SIF CFLAG:(FLAG:目标):Ａ插入中 == 1
+                    FLAG:指令可行 = 2
+                SIF CFLAG:MASTER:Ｍ状态 > 0
+                    FLAG:指令可行 = 3
+            ELSE
+                FLAG:指令可行 = 0
+            ENDIF
+        ELSE
+            FLAG:指令可行 = 1
+            SIF CFLAG:MASTER:Ｍ插入中 == 1
+                FLAG:指令可行 = 2
+            SIF CFLAG:(FLAG:目标):Ａ插入中 == 1
+                FLAG:指令可行 = 2
+            SIF CFLAG:MASTER:Ｍ状态 > 0
+                FLAG:指令可行 = 3
+        ENDIF
+    ELSE
+        FLAG:指令可行 = 0
+    ENDIF
+    
+@COM_PRE_5
+    #DIM LCOUNT
+    #DIM LCOUNT_2
+    #DIM MEMO_TARGET
+    MEMO_TARGET = CFLAG:MASTER:Ｍ对象
+
+    CALL COM_PRE_COMMON(1, 1, 8, "Ｍ插入中", "Ａ插入中")
+    
+    CFLAG:MEMO_TARGET:Ａ插入中 = 1
+    CFLAG:MASTER:Ｍ插入中 == 1
+    CFLAG:MASTER:Ｍ状态 = 1
+    CFLAG:MASTER:Ｍ对象 = FLAG:目标
+    CFLAG:MASTER:Ｍ指令 = 5
+    CFLAG:MASTER:Ｍ接触 = 8
+
+@COM_5
+    PRINTL 舔肛
+
+    ;消耗
+    SOURCE:MASTER:体力消耗 += 80
+    SOURCE:TARGET:体力消耗 += 50
+
+    ;自机快感
+    SOURCE:MASTER:Ｍ快乐 += SOURCE_ADD(1, 60, 10, 3, 5, "Ｍ技巧", "Ａ技巧")
+
+    ;自机欲求
+    SOURCE:MASTER:欲求 += SOURCE_ADD(1, 60, 10, 3, 5, "Ｍ感觉", "Ａ技巧")
+
+    ;自机恭顺
+    SOURCE:MASTER:恭顺 += SOURCE_ADD(1, 100, 10, 3, 5, "Ｍ感觉", "Ａ技巧")
+
+    ;自机习得
+    SOURCE:MASTER:习得 += SOURCE_ADD(1, 100, 10, 3, 5, "Ｍ技巧", "Ａ技巧")
+
+    ;自机耻情
+    SOURCE:MASTER:耻情 += SOURCE_ADD(1, 110, 10, 3, 5, "Ｍ感觉", "Ａ技巧")
+
+    ;自机不洁
+    SOURCE:MASTER:不洁 += SOURCE_ADD(1, 150, 10, 3, 5, "Ｍ感觉", "Ａ技巧")
+
+    ;目标快感
+    SOURCE:TARGET:Ａ快楽 += SOURCE_ADD(1, 110, 10, 5, 3, "Ｍ技巧", "Ａ技巧")
+
+    ;目标信任
+    SOURCE:TARGET:信任 += SOURCE_ADD(1, 70, 10, 5, 3, "Ｍ技巧", "Ａ感觉")
+
+    ;目标欲求
+    SOURCE:TARGET:欲求 += SOURCE_ADD(1, 50, 10, 5, 3, "Ｍ技巧", "Ａ感觉")
+
+    ;目标屈服
+    SOURCE:TARGET:屈服 += SOURCE_ADD(1, 150, 10, 5, 3, "Ｍ技巧", "Ａ感觉")
+    
+    ;目标耻情
+    SOURCE:TARGET:耻情 += SOURCE_ADD(1, 150, 10, 5, 3, "Ｍ技巧", "Ａ感觉")
+
+    CALL RESIS(MASTER,150)
+
+    CALL RESIS(TARGET,150)

@@ -14,6 +14,7 @@
     #DIM LCOUNT
     #DIM LCOUNT_1
     #DIM LCOUNT_2
+    #DIM LCOUNT_3
     #DIM LOCATION
 
     LOCATION = CFLAG:MASTER:所在处
@@ -51,6 +52,13 @@
                     TRYCALLFORM KOJO_{TARGET}_COM_{CFLAG:TARGET:(LCOUNT_1 + 20)}_B
                     ;SOURCE结算
                     CALL SOURCE_TO_PALAM
+                ELSE
+                    FOR LCOUNT_3, 301, 311
+                        CFLAG:MASTER:LCOUNT_3 = 0
+                        CFLAG:MASTER:(LCOUNT_3 + 10) = 0
+                        CFLAG:MASTER:(LCOUNT_3 + 20) = 0
+                        CFLAG:MASTER:(LCOUNT_3 + 40) = 0
+                    NEXT
                 ENDIF
             NEXT
         ENDIF
