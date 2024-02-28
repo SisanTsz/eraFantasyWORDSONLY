@@ -1,4 +1,4 @@
-﻿番号,1,
+﻿番号,1
 名前,娜娜莉,
 呼び名,小娜娜莉,
 
@@ -61,9 +61,9 @@ BASE,便意,1000
 BASE,呕吐感,1000
 
 
-Talent,101,1
-Talent,102,1
-Talent,201,1
-Talent,202,1
+TALENT,101,1
+TALENT,102,1
+TALENT,201,1
+TALENT,202,1
 
 CFLAG,调教中,1

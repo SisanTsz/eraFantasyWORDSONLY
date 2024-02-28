@@ -69,6 +69,7 @@
                             FLAG:指令页面 = 2
                         CASE 1 TO 2000
                             FLAG:指令选择 = RESULT
+                            TRYCALLFORM COM_PRE_{RESULT}
                             CALL TRAIN_MOVEMENT
                     ENDSELECT
                 CASE 4
@@ -368,7 +369,7 @@
             CASE 0 TO 100
                 SELECTCASE FLAG:自机部位
                     CASE 1 TO 10
-                        CFLAG:MASTER:(FLAG:自机部位+310) = TARGET
+                        CFLAG:MASTER:(FLAG:自机部位+310) = FLAG:目标
                 ENDSELECT
         ENDSELECT
     ENDIF
