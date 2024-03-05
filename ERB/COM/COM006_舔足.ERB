@@ -1,5 +1,5 @@
 ﻿@COM_ABLE6
-    IF FLAG:自机部位 == 1 && FLAG:目标 != MASTER && FLAG:目标部位 == 9
+    IF FLAG:自机部位 == 1 && FLAG:目标 != MASTER && FLAG:目标部位 == 9 && BASE:MASTER:体力 > 0
         IF MASTER != FLAG:本机
             IF COMABLE(MASTER,3) == 1
                 FLAG:指令可行 = 1
@@ -25,6 +25,12 @@
         FLAG:指令可行 = 0
     ENDIF
 
+
+    
+@COM_KEEP_ABLE6
+    IF BASE:MASTER:体力 > 0
+        FLAG:指令继续可行 = 0
+    ENDIF
 
 @COM_PRE_6
     #DIM MEMO_TARGET

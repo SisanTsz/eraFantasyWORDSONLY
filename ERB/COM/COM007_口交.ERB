@@ -1,5 +1,5 @@
 ﻿@COM_ABLE7
-    IF FLAG:自机部位 == 1 && FLAG:目标 != MASTER && FLAG:目标部位 == 5
+    IF FLAG:自机部位 == 1 && FLAG:目标 != MASTER && FLAG:目标部位 == 5 && BASE:MASTER:体力 > 0
         IF MASTER != FLAG:本机
             IF COMABLE(MASTER,4) == 1
                 FLAG:指令可行 = 1
@@ -23,6 +23,12 @@
         ENDIF
     ELSE
         FLAG:指令可行 = 0
+    ENDIF
+
+    
+@COM_KEEP_ABLE7
+    IF BASE:MASTER:体力 > 0
+        FLAG:指令继续可行 = 0
     ENDIF
 
 @COM_PRE_7

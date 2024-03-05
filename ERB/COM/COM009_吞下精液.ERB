@@ -1,5 +1,5 @@
 ﻿@COM_ABLE9
-    IF FLAG:自机部位 == 1 && FLAG:目标 == MASTER && FLAG:目标部位 == 1
+    IF FLAG:自机部位 == 1 && FLAG:目标 == MASTER && FLAG:目标部位 == 1 && BASE:MASTER:体力 > 0
         IF CFLAG:MASTER:Ｍ精液残留 >= 1
             IF MASTER != FLAG:本机
                 IF COMABLE(MASTER,4) == 1
@@ -21,6 +21,12 @@
         ELSE
             FLAG:指令可行 = 0
         ENDIF
+    ENDIF
+
+    
+@COM_KEEP_ABLE9
+    IF BASE:MASTER:体力 > 0
+        FLAG:指令继续可行 = 0
     ENDIF
 
 @COM_PRE_9
