@@ -1,9 +1,30 @@
 ﻿@TIME_CHECK
-	IF FLAG:4 >= 60
-		FLAG:4 -= 60
-		FLAG:3 += 1
+	IF FLAG:分 >= 60
+		FLAG:分 -= 60
+		FLAG:时 += 1
 	ENDIF
-	IF FLAG:3 >= 24
-		FLAG:3 -= 24
-		DAY += 1
+	IF FLAG:时 > 24
+		FLAG:时 -= 24
+		FLAG:日 += 1
+	ENDIF
+	SELECTCASE FLAG:月
+		CASE 1 || 3 || 5 || 7 || 8 || 10 || 12
+			IF FLAG:日 > 31
+				FLAG:日 -= 31
+				FLAG:月 += 1
+			ENDIF
+		CASE 2
+			IF FLAG:日 > 28
+				FLAG:日 -= 28
+				FLAG:月 += 1
+			ENDIF
+		CASE 4 || 6 || 9 || 11
+			IF FLAG:日 > 30
+				FLAG:日 -= 30
+				FLAG:月 += 1
+			ENDIF
+	ENDSELECT
+	IF FLAG:月 > 12
+		FLAG:月 -= 12
+		FLAG:年 += 1
 	ENDIF

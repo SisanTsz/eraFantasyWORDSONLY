@@ -1,0 +1,32 @@
+﻿@ONCLICK(ARG) ;页面
+    SELECTCASE ARG
+        CASE 1
+            SELECTCASE RESULT
+                CASE 1001
+                    IF FLAG:主界面Status == 1
+                        FLAG:主界面Status = 0
+                    ELSE 
+                        FLAG:主界面Status = 1
+                    ENDIF
+            ENDSELECT
+            SELECTCASE FLAG:主界面准备
+                CASE 0
+                    SELECTCASE RESULT
+                        CASE 1201 TO 1206
+                            FLAG:主界面准备 = RESULT
+                            FLAG:CHOICE界面 = RESULT
+                    ENDSELECT
+                CASE 1201
+                    SELECTCASE RESULT
+                        CASE 1101
+                            CALL GAL_PUSH("【你是说想和我做那种色色的事情吗？】")
+                            STR:CHOICE1 = 说说而已
+                            STR:CHOICE2 = 求之不得
+                            FLAG:CHOICE界面 = 12341
+                    ENDSELECT
+                CASE 12341
+                CASE 999
+            ENDSELECT
+        CALL TRAIN_MAIN
+        CALL SHOW_SHOP
+    ENDSELECT

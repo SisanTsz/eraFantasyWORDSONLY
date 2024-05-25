@@ -1,0 +1,22 @@
+﻿@GAL_PUSH(ARGS)
+    #DIM WNUM
+    #DIM LNUM
+    #DIM WNO = 0
+    #DIM LCOUNT
+    #DIMS PRE 
+    #DIMS PRE_1
+    SPLIT ARGS, "`", LOCALS
+    WNO = 0
+    LNUM = FLAG:MAINUI行数
+    WNUM = RESULT
+    FOR LCOUNT, 1, LNUM - RESULT + 1
+        PRE = MAINUI%TOSTR(LCOUNT)%
+        PRE_1 = MAINUI%TOSTR(LCOUNT + RESULT)%
+        STR:PRE = %STR:PRE_1%
+    NEXT
+    FOR LCOUNT, (LNUM-RESULT+1), LNUM+1
+        PRE = MAINUI%TOSTR(LCOUNT)%
+        STR:PRE = %LOCALS:WNO%
+        WNO += 1
+    NEXT
+
