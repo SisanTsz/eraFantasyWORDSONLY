@@ -1,0 +1,147 @@
+﻿@UI_GAL
+    #DIM LCOUNT
+    #DIMS PRE
+    #DIM LNUM 
+    LNUM = FLAG:GALUI行数
+    FOR LCOUNT, 0, LNUM
+        PRE = GALUI%TOSTR(LCOUNT+1)%
+        PRINTFORML %STR:PRE%
+    NEXT
+    PRINTL
+    CUSTOMDRAWLINE - 
+    
+@GAL_PUSH(ARGS)
+    #DIM WNUM
+    #DIM LNUM
+    #DIM WNO = 0
+    #DIM LCOUNT
+    #DIMS PRE 
+    #DIMS PRE_1
+    SPLIT ARGS, "`", LOCALS
+    WNO = 0
+    LNUM = FLAG:GALUI行数
+    WNUM = RESULT
+    FOR LCOUNT, 1, LNUM - RESULT + 1
+        PRE = GALUI%TOSTR(LCOUNT)%
+        PRE_1 = GALUI%TOSTR(LCOUNT + RESULT)%
+        STR:PRE = %STR:PRE_1%
+    NEXT
+    FOR LCOUNT, (LNUM-RESULT+1), LNUM+1
+        PRE = GALUI%TOSTR(LCOUNT)%
+        STR:PRE = %LOCALS:WNO%
+        WNO += 1
+    NEXT
+
+    WNO = 0
+    FOR LCOUNT, 1, 100 - RESULT + 1
+        PRE = LOG%TOSTR(LCOUNT)%
+        PRE_1 = LOG%TOSTR(LCOUNT + RESULT)%
+        STR:PRE = %STR:PRE_1%
+    NEXT
+    FOR LCOUNT, (100-RESULT+1), 100+1
+        PRE = LOG%TOSTR(LCOUNT)%
+        STR:PRE = %LOCALS:WNO%
+        WNO += 1
+    NEXT
+
+@GAL_CHOICE
+    #DIM LCOUNT
+    #DIMS PRE
+    #DIM BNUM
+    BNUM = 1
+    SELECTCASE UI_CODE()
+        CASE "1.1.1.0.0.0.0.0.0.0" ;互动
+            CALL CHOICE_CHANGE("对话","抱抱","拉去隐秘的地方","送礼","摸头","膝枕","性骚扰")
+        CASE "1.1.1.0.0.0.7.0.0.0" ;性骚扰
+            CALL CHOICE_CHANGE("摸屁","摸腿","摸脚","掀裙子","接吻","摸胸","摸阴","手指插入","摸菊")
+        CASE "1.1.6.0.0.0.0.0.0.0" ;系统
+            CALL CHOICE_CHANGE("保存","读取","设置")
+        CASEELSE
+            CALL CHOICE_CHANGE()
+    ENDSELECT
+    CALL PRINT_LINE(4)
+    FOR LCOUNT, 1, 11
+        PRE = CHOICE%TOSTR(LCOUNT)%
+        IF STR:PRE != ""
+            PRINTBUTTON @"%STR:PRE%" , 1100 + LCOUNT
+            CALL PRINT_SPACE_1(4)
+        ENDIF
+    NEXT
+    PRINTL
+    CUSTOMDRAWLINE -
+
+@CHOICE_CHANGE(ARGS:1, ARGS:2, ARGS:3, ARGS:4, ARGS:5, ARGS:6, ARGS:7, ARGS:8, ARGS:9, ARGS:10)
+    #DIM LCOUNT
+    #DIMS PRE
+    FOR LCOUNT, 1, 11
+        PRE = CHOICE%TOSTR(LCOUNT)%
+        IF ARGS:LCOUNT != ""
+            STR:PRE = %ARGS:LCOUNT%
+        ELSE
+            STR:PRE =
+        ENDIF
+    NEXT
+
+@GAL_BUTTON
+    #DIM LCOUNT
+    #DIMS PRE
+    #DIM BNUM
+    BNUM = 1
+    FOR LCOUNT, 10, 21
+        PRE = GAMEBUTTON%TOSTR(LCOUNT)%
+        STR:PRE = 
+    NEXT
+    FOR LCOUNT, 1, 21
+        PRE = GAMEBUTTON%TOSTR(LCOUNT)%
+        IF STR:PRE != ""
+            PRINTBUTTON @"%STR:PRE%", 1200 + LCOUNT
+            PRINTFORM %SPACE(9)%
+        ENDIF
+    NEXT
+    PRINTBUTTON "调教(DEBUG)" ,1501
+    PRINTL
+
+@GAL_CHARA 
+    #DIM PNUM
+    #DIM CNUM
+    #DIM NNUM
+    #DIM LCOUNT
+    CNUM = 0
+    NNUM = 0
+    FOR LCOUNT, 0, CHARANUM
+        IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER) && LCOUNT != MASTER
+            CNUM += 1
+        ENDIF
+    NEXT
+    IF CNUM == 0
+        PRINTL
+    ELSEIF CNUM <=5
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER) && LCOUNT != MASTER
+                IF NICKNAME:LCOUNT != ""
+                    PRINTBUTTON @"%NICKNAME:LCOUNT%" , 1300 + LCOUNT
+                ELSE
+                    PRINTBUTTON @"%NAME:LCOUNT%" , 1300 + LCOUNT
+                ENDIF
+                CALL PRINT_SPACE_1(4)
+            ENDIF
+        NEXT
+    ELSE
+        FLAG:MAXCHARAPAGE = (CNUM-1)/5
+        PRINTBUTTON "[-]" , 1401
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER) && LCOUNT != MASTER
+                NNUM += 1
+            ENDIF
+            IF NNUM > 5*FLAG:CHARAPAGE && NNUM <= 5*(FLAG:CHARAPAGE + 1)
+                IF NICKNAME:LCOUNT != ""
+                    PRINTBUTTON @"%NICKNAME:LCOUNT%" , 1300 + LCOUNT
+                ELSE
+                    PRINTBUTTON @"%NAME:LCOUNT%" , 1300 + LCOUNT
+                ENDIF
+            ENDIF
+        NEXT
+        PRINTBUTTON "[-]" , 1402
+    ENDIF
+    PRINTL
+    CUSTOMDRAWLINE -

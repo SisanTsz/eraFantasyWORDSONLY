@@ -1,0 +1,98 @@
+﻿@UI_CHANGE(ARGS)
+
+
+
+@UI_CODE
+    #FUNCTIONS
+    #DIM LCOUNT 
+    #DIMS CODE
+    #DIMS PRE
+    CODE = 
+    FOR LCOUNT, 1, 11
+        PRE = UI%TOSTR(LCOUNT)%
+        IF LCOUNT != 10
+            CODE = %CODE%%TOSTR(FLAG:PRE)%.
+        ELSE
+            CODE = %CODE%%TOSTR(FLAG:PRE)%
+        ENDIF
+    NEXT
+    RETURNF CODE
+
+@UI_TP(ARG:1, ARG:2, ARG:3, ARG:4, ARG:5, ARG:6, ARG:7, ARG:8, ARG:9, ARG:10)
+    #DIM LCOUNT 
+    #DIMS PRE
+    PRE = 
+    FOR LCOUNT, 1, 11
+        PRE = UI%TOSTR(LCOUNT)%
+        IF TOSTR(ARG:LCOUNT) != ""
+            FLAG:PRE = ARG:LCOUNT
+        ELSE
+            FLAG:PRE = 0
+        ENDIF
+    NEXT
+    PRINTFORML %UI_CODE()%
+
+@UI_NAME(ARGS)
+    #FUNCTIONS 
+    #DIM LCOUNT
+    #DIMS UI_CODE
+    UI_CODE = ARGS
+    SELECTCASE UI_CODE
+        CASE  "1.0.0.0.0.0.0.0.0.0"
+    ENDSELECT
+
+
+@CON_UI(ARG:1, ARG:2, ARG:3, ARG:4, ARG:5, ARG:6, ARG:7, ARG:8, ARG:9, ARG:10)
+    #FUNCTION
+    #DIM CNUM
+    #DIM LCOUNT
+    #DIM OUT
+    #DIM LEVEL
+    #DIMS PRE 
+    CNUM = ARG
+    PRE =
+    OUT = 0
+    LEVEL = 0
+    FOR LCOUNT, 1, 11
+        IF ARG:LCOUNT != 0
+            LEVEL = LCOUNT
+        ENDIF
+    NEXT
+    FOR LCOUNT, 1, LEVEL + 1
+        PRE = UI%TOSTR(LCOUNT)%
+        IF FLAG:PRE != ARG:LCOUNT
+            OUT = 1
+        ENDIF
+    NEXT
+    IF OUT == 1
+        RETURNF 0
+    ELSE
+        RETURNF 1
+    ENDIF
+@CON_UI_1(ARG:1, ARG:2, ARG:3, ARG:4, ARG:5, ARG:6, ARG:7, ARG:8, ARG:9, ARG:10)
+    #FUNCTION
+    #DIM CNUM
+    #DIM LCOUNT
+    #DIM OUT
+    #DIM LEVEL
+    #DIMS PRE 
+    CNUM = ARG
+    PRE =
+    OUT = 0
+    LEVEL = 0
+    FOR LCOUNT, 1, 11
+        IF TOSTR(ARG:LCOUNT) == ""
+            ARG:LCOUNT = 0
+        ENDIF
+    NEXT
+    FOR LCOUNT, 1, 11
+        PRE = UI%TOSTR(LCOUNT)%
+        IF FLAG:PRE != ARG:LCOUNT
+            OUT = 1
+        ENDIF
+    NEXT
+    IF OUT == 1
+        RETURNF 0
+    ELSE
+        RETURNF 1
+    ENDIF

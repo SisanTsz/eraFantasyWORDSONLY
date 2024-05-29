@@ -1,0 +1,8 @@
+﻿@UI
+    #DIMS UI_CODE
+    IF CON_UI(1,1) == 1
+        CALL UI_MAIN
+    ELSEIF CON_UI(1,2) == 1
+        CALL UI_TRAIN
+    ENDIF
+    CALL ONCLICK

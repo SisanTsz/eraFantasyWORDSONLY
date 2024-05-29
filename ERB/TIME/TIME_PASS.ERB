@@ -1,2 +1,75 @@
-﻿@TIME_PASS(ARG)
-    
+﻿@TIME_PASS
+    ;时间增加
+    FLAG:分 += FLAG:过去的分
+    CALL TIME_CHECK
+    ;基础数值
+    CALL DATA_CHECK_DAILY_MINUTE
+    CALL DATA_CHECK_DAILY_HOUR
+    CALL TIME_DATA_CHECK
+    ;战斗数值
+    CALL DATA_CHECK_TRAIN
+    CALL TIME_DATA_CHECK
+
+
+@DATA_CHECK_DAILY_MINUTE
+    #DIM LCOUNT
+    #DIM TPASS
+    #DIM CNUM
+    TPASS = FLAG:过去的分
+    ;体力
+    FOR LCOUNT, 0, CHARANUM
+        BASE:LCOUNT:体力 += BASE:LCOUNT:体力恢复速度*TPASS
+    NEXT
+    ;ＳＰ
+    FOR LCOUNT, 0, CHARANUM
+        BASE:LCOUNT:ＳＰ += BASE:LCOUNT:ＳＰ恢复速度*TPASS
+    NEXT
+
+@DATA_CHECK_DAILY_HOUR
+    #DIM LCOUNT
+    #DIM INITIATED
+    #DIM TPASS
+    TPASS = FLAG:过去的分
+    INITIATED = 0
+    FLAG:过去的时 += FLAG:过去的分
+    IF FLAG:过去的时 >= 60
+        FLAG:过去的时 -= 60
+        INITIATED = 1
+    ENDIF
+    IF INITIATED == 1
+        ;精力
+        FOR LCOUNT, 0, CHARANUM
+            BASE:LCOUNT:精力 += BASE:LCOUNT:精力恢复速度*TPASS
+        NEXT
+        ;性欲
+        FOR LCOUNT, 0, CHARANUM
+            BASE:LCOUNT:性欲 += BASE:LCOUNT:性欲恢复速度*TPASS
+        NEXT
+        ;尿意
+        FOR LCOUNT, 0, CHARANUM
+            BASE:LCOUNT:尿意 += BASE:LCOUNT:尿意上升值*TPASS
+        NEXT
+        ;便意
+        FOR LCOUNT, 0, CHARANUM
+            BASE:LCOUNT:便意 += BASE:LCOUNT:便意上升值*TPASS
+        NEXT
+    ENDIF
+
+@DATA_CHECK_DAILY_HOUR
+    #DIM LCOUNT
+    #DIM INITIATED
+    #DIM TPASS
+    TPASS = FLAG:FLAG过去的分
+    INITIATED = 0
+    FLAG:过去的天 += FLAG:过去的分
+    IF FLAG:过去的天 >= 1440
+        FLAG:过去的天 = 0
+        INITIATED = 1
+    ENDIF
+    IF INITIATED == 1
+        ;理智
+        FOR LCOUNT, 1, CHARANUM
+            BASE:LCOUNT:理智 += BASE:理智恢复速度
+        NEXT
+    ENDIF
+

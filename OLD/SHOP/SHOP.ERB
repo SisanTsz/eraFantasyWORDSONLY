@@ -1,0 +1,16 @@
+﻿
+@DEBUG_TEST
+    #DIMS WORD
+    BASE:MASTER:0 = 10
+    FLAG:月 = 1
+    FLAG:日 = 1
+    FLAG:时 = 1
+    FLAG:分 = 1
+    FLAG:GALUI行数 = 20
+    FLAG:CHOICE界面 = 0
+    CALL TP(MASTER, 1,1,1,1,1,4,0,0,0,0)
+    CALL TP(2, 1,1,1,1,1,4,0,0,0,0)
+    CALL UI_TP(1,1,2)
+    STR:GALUI10 = 测试字幕
+    CALL GAL_PUSH("这是第一句对白`这是第二句对白`这是第三句对白`这是第四句对白")
+

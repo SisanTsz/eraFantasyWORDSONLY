@@ -1,0 +1,409 @@
+﻿@UI_TRAIN
+    #DIM LCOUNT
+    IF CON_UI(1,2) == 1
+        STR:UI = TRAIN
+    ENDIF
+    IF CON_UI(1,2,2) == 1
+        CALL UI_TP(1,2,1,2)
+        FLAG:SELECTEDCHARA2 = -1
+    ENDIF
+    IF STR:UI == "TRAIN"
+        CALL UI_TRAIN_HEAD
+        CALL UI_TRAIN_UI
+        CALL UI_TRAIN_GROUP
+        CALL UI_TRAIN_CHARALIST_1
+        CALL UI_TRAIN_CHOICE
+        CALL UI_TRAIN_CHARALIST_2
+        CALL UI_TRAIN_BUTTON
+    ENDIF
+
+@UI_TRAIN_HEAD
+    #DIM PNUM
+    #DIM CNUM
+    #DIM NNUM
+    #DIM LCOUNT
+    CUSTOMDRAWLINE -
+    PRINTFORML %LOCATION(MASTER)% %MOUNTH()%月%DATE()%日 %HOUR()%时%MINUTE()%分
+    PRINTL
+    CNUM = 0
+    NNUM = 0
+    FOR LCOUNT, 0, CHARANUM
+        IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER)
+            CNUM += 1
+        ENDIF
+    NEXT
+    IF CNUM == 0
+        PRINTL
+    ELSEIF CNUM <=5
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER)
+                IF NICKNAME:LCOUNT != ""
+                    PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2000 + LCOUNT
+                ELSE
+                    PRINTBUTTON @"[%NAME:LCOUNT%]" , 2000 + LCOUNT
+                ENDIF
+                CALL PRINT_SPACE_1(4)
+            ENDIF
+        NEXT
+    ELSE
+        FLAG:MAXCHARAPAGE = (CNUM-1)/5
+        PRINTBUTTON "[-]" , 2301
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER) && LCOUNT != MASTER
+                NNUM += 1
+            ENDIF
+            IF NNUM > 5*FLAG:CHARAPAGE && NNUM <= 5*(FLAG:CHARAPAGE + 1)
+                IF NICKNAME:LCOUNT != ""
+                    PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2000 + LCOUNT
+                ELSE
+                    PRINTBUTTON @"[%NAME:LCOUNT%]" , 2000 + LCOUNT
+                ENDIF
+            ENDIF
+        NEXT
+        PRINTBUTTON "[-]" , 2302
+    ENDIF
+    CALL PRINT_LINE(1)
+    CALL TRAIN_UI_PALAM
+    ;IF FLAG:SELECTEDCHARA != -1
+    ;    IF FLAG:SELECTEDTRAINCHOICE == -1
+    ;        PRINTFORML %NAME:(FLAG:SELECTEDCHARA)% - 
+    ;    ELSE
+    ;        PRINTFORML %NAME:(FLAG:SELECTEDCHARA)% - %TRAINNAME:(FLAG:SELECTEDTRAINCHOICE)% - [   ]
+    ;    ENDIF
+    ;ELSE
+    ;    PRINTL
+    ;ENDIF
+    CUSTOMDRAWLINE -
+
+@TRAIN_UI_PALAM
+    #DIM LCOUNT
+    #DIM BAR_SIZE
+    #DIM BAR_MAX
+    #DIM BAR_COLOUR
+    #DIM PALAM_MAX
+    #DIM PCOUNT
+    #DIM EX_LEVEL
+    #DIM CNO
+    PCOUNT = 0
+    BAR_SIZE = 5
+    BAR_COLOUR = 0x6666FF
+    CNO = FLAG:CHARASTATUS
+    PRINTL 【 快感 】
+    FOR LCOUNT, 101, 111
+        SELECTCASE PALAM:CNO:LCOUNT
+            CASE IS >= 500000
+                EX_LEVEL = 10
+                PALAM_MAX = PALAM:CNO:LCOUNT + 1
+            CASE IS >= 400000
+                EX_LEVEL = 9
+                PALAM_MAX = 500000
+            CASE IS >= 300000
+                EX_LEVEL = 8
+                PALAM_MAX = 400000
+            CASE IS >= 250000
+                EX_LEVEL = 7
+                PALAM_MAX = 300000
+            CASE IS >= 200000
+                EX_LEVEL = 6
+                PALAM_MAX = 250000
+            CASE IS >= 150000
+                EX_LEVEL = 5
+                PALAM_MAX = 200000
+            CASE IS >= 100000
+                EX_LEVEL = 4
+                PALAM_MAX = 150000
+            CASE IS >= 50000
+                EX_LEVEL = 3
+                PALAM_MAX = 100000
+            CASE IS >= 20000
+                EX_LEVEL = 2
+                PALAM_MAX = 50000
+            CASE IS >= 10000
+                EX_LEVEL = 1
+                PALAM_MAX = 20000
+            CASE IS < 10000
+                EX_LEVEL = 0
+                PALAM_MAX = 10000
+        ENDSELECT
+        IF PALAMNAME:LCOUNT != ""
+	        PRINTFORM %PALAMNAME:(LCOUNT)%LV:{EX_LEVEL}
+
+	        CALL PRINT_BAR(PALAM:CNO:LCOUNT, PALAM_MAX, BAR_SIZE, BAR_COLOUR)
+            PCOUNT += 1
+            IF PCOUNT >= 3
+                PRINTL
+                PCOUNT = 0
+            ENDIF
+        ENDIF
+    NEXT
+    CALL PRINT_LINE(1)
+
+@UI_TRAIN_UI
+    #DIM LCOUNT
+    #DIMS PRE
+    #DIM LNUM 
+    LNUM = 15
+    FOR LCOUNT, 15, 0, -1
+        PRE = TRAINUI%TOSTR(LCOUNT)%
+        PRINTFORML %STR:PRE%
+    NEXT
+    CUSTOMDRAWLINE -
+
+@UI_TRAIN_CHARALIST_1
+    #DIM PNUM
+    #DIM CNUM
+    #DIM NNUM
+    #DIM LCOUNT
+    CNUM = 0
+    NNUM = 0
+    FOR LCOUNT, 0, CHARANUM
+        IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER)
+            CNUM += 1
+        ENDIF
+    NEXT
+    IF CNUM == 0
+        PRINTL
+    ELSEIF CNUM <=5
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER)
+                IF NICKNAME:LCOUNT != ""
+                    IF LCOUNT == FLAG:SELECTEDCHARA1
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2400 + LCOUNT
+                        SETCOLOR = LOCAL
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2400 + LCOUNT
+                    ENDIF
+                ELSE
+                    IF LCOUNT == FLAG:SELECTEDCHARA1
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2400 + LCOUNT
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2400 + LCOUNT
+                    ENDIF
+                ENDIF
+                CALL PRINT_SPACE_1(4)
+            ENDIF
+        NEXT
+    ELSE
+        FLAG:MAXCHARAPAGE1 = (CNUM-1)/5
+        PRINTBUTTON "[-]" , 2501
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER) && LCOUNT != MASTER
+                NNUM += 1
+            ENDIF
+            IF NNUM > 5*FLAG:CHARAPAGE1 && NNUM <= 5*(FLAG:CHARAPAGE1 + 1)
+                IF NICKNAME:LCOUNT != ""
+                    IF LCOUNT == FLAG:SELECTEDCHARA1
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2400 + LCOUNT
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2400 + LCOUNT
+                    ENDIF
+                ELSE
+                    IF LCOUNT == FLAG:SELECTEDCHARA1
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2400 + LCOUNT
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2400 + LCOUNT
+                    ENDIF
+                ENDIF
+            ENDIF
+        NEXT
+        PRINTBUTTON "[-]" , 2502
+    ENDIF
+    PRINTL
+    CUSTOMDRAWLINE - 
+
+@UI_TRAIN_CHARALIST_2
+    #DIM PNUM
+    #DIM CNUM
+    #DIM NNUM
+    #DIM LCOUNT
+    CNUM = 0
+    NNUM = 0
+    FOR LCOUNT, 0, CHARANUM
+        IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER)
+            CNUM += 1
+        ENDIF
+    NEXT
+    CUSTOMDRAWLINE - 
+    IF CNUM == 0
+        PRINTL
+    ELSEIF CNUM <=5
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER)
+                IF NICKNAME:LCOUNT != ""
+                    IF LCOUNT == FLAG:SELECTEDCHARA2
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2800 + LCOUNT
+                        SETCOLOR = LOCAL
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2800 + LCOUNT
+                    ENDIF
+                ELSE
+                    IF LCOUNT == FLAG:SELECTEDCHARA2
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2800 + LCOUNT
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2800 + LCOUNT
+                    ENDIF
+                ENDIF
+                CALL PRINT_SPACE_1(4)
+            ENDIF
+        NEXT
+    ELSE
+        FLAG:MAXCHARAPAGE2 = (CNUM-1)/5
+        PRINTBUTTON "[-]" , 2901
+        FOR LCOUNT, 0, CHARANUM
+            IF LOCATION_CODE(LCOUNT) == LOCATION_CODE(MASTER) && LCOUNT != MASTER
+                NNUM += 1
+            ENDIF
+            IF NNUM > 5*FLAG:CHARAPAGE2 && NNUM <= 5*(FLAG:CHARAPAGE2 + 1)
+                IF NICKNAME:LCOUNT != ""
+                    IF LCOUNT == FLAG:SELECTEDCHARA2
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2800 + LCOUNT
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NICKNAME:LCOUNT%]" , 2800 + LCOUNT
+                    ENDIF
+                ELSE
+                    IF LCOUNT == FLAG:SELECTEDCHARA2
+                        CALL SET_COLOR("黄")
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2800 + LCOUNT
+                        RESETCOLOR
+                    ELSE
+                        PRINTBUTTON @"[%NAME:LCOUNT%]" , 2800 + LCOUNT
+                    ENDIF
+                ENDIF
+            ENDIF
+        NEXT
+        PRINTBUTTON "[-]" , 2902
+    ENDIF
+    PRINTL
+    CUSTOMDRAWLINE -
+
+@UI_TRAIN_GROUP
+    #DIM LCOUNT
+    #DIMS PRE
+    STR:TRAINGROUP1 = Ｍ系
+    STR:TRAINGROUP2 = Ｂ系
+    STR:TRAINGROUP3 = Ｈ系
+    STR:TRAINGROUP4 = Ｃ系
+    STR:TRAINGROUP5 = Ｐ系
+    STR:TRAINGROUP6 = Ｕ系
+    STR:TRAINGROUP7 = Ｖ系
+    STR:TRAINGROUP8 = Ａ系
+    STR:TRAINGROUP9 = Ｆ系
+    STR:TRAINGROUP10 = Ｓ系
+    STR:TRAINGROUP10 = 道具
+    STR:TRAINGROUP10 = 消耗品
+    STR:TRAINGROUP10 = 特殊
+    
+    FOR LCOUNT, 1, 20
+        PRE = TRAINGROUP%TOSTR(LCOUNT)%
+        IF STR:PRE != ""
+            PRINTBUTTON @"[%STR:PRE%]" , 2600 + LCOUNT
+            CALL PRINT_SPACE_1(1)
+        ENDIF
+    NEXT
+    PRINTL
+    CUSTOMDRAWLINE - 
+
+@UI_TRAIN_GROUP_CHANGE
+    #DIM LCOUNT 
+    #DIMS PRE
+
+    FOR LCOUNT, 1, 100
+        PRE = TRAINCHOICE%TOSTR(LCOUNT)%
+        STR:PRE = %TRAINNAME:(LCOUNT+100*(FLAG:SELECTEDTRAINGROUP-1))%
+    NEXT
+
+@UI_TRAIN_CHOICE
+    #DIM LCOUNT
+    #DIMS PRE
+    #DIM CNUM 
+    #DIM LNUM
+    CNUM = 0
+    LNUM = 0
+    IF CON_UI(1,2) == 1
+        FOR LCOUNT, 1, 100
+            PRE = TRAINCHOICE%TOSTR(LCOUNT)%
+            IF STR:PRE != ""
+                IF LCOUNT+100*FLAG:SELECTEDTRAINGROUP == FLAG:SELECTEDTRAINCHOICE
+                    CALL SET_COLOR("黄")
+                    PRINTBUTTON @"%LEN_STR(STR:PRE,15)%" , LCOUNT+100*FLAG:SELECTEDTRAINGROUP
+                    CALL PRINT_SPACE_1(2)
+                    CNUM += 1
+                    IF CNUM == 8
+                        CNUM = 0
+                        PRINTL
+                        LNUM += 1
+                    ENDIF
+                    RESETCOLOR
+                ELSE
+                    PRINTBUTTON @"%LEN_STR(STR:PRE,15)%" , LCOUNT+100*FLAG:SELECTEDTRAINGROUP
+                    CALL PRINT_SPACE_1(2)
+                    CNUM += 1
+                    IF CNUM == 8
+                        CNUM = 0
+                        PRINTL
+                        LNUM += 1
+                    ENDIF
+                ENDIF
+            ENDIF
+        NEXT
+        IF LNUM < 5
+            CALL PRINT_LINE(5-LNUM)
+        ENDIF
+    ENDIF
+    PRINTL
+
+@UI_TRAIN_BUTTON
+    #DIM LCOUNT
+    #DIMS PRE
+    STR:TRAINBUTTON1 = 行动
+    STR:TRAINBUTTON2 = 行动列表
+    STR:TRAINBUTTON3 = 模式切换
+    STR:TRAINBUTTON4 = 查看
+    STR:TRAINBUTTON5 = 系统
+    STR:TRAINBUTTON6 = 结束
+
+    FOR LCOUNT, 1, 10
+        PRE = TRAINBUTTON%TOSTR(LCOUNT)%
+        IF STR:PRE != ""
+            PRINTBUTTON @"[%STR:PRE%]" , 2700 + LCOUNT
+            CALL PRINT_SPACE_1(1)
+        ENDIF
+    NEXT
+    PRINTL
+
+@TRAIN_PUSH(ARGS)
+    #DIM WNUM
+    #DIM LNUM
+    #DIM WNO = 0
+    #DIM LCOUNT
+    #DIMS PRE 
+    #DIMS PRE_1
+    SPLIT ARGS, "`", LOCALS
+    WNO = 0
+    LNUM = 15
+    WNUM = RESULT
+    FOR LCOUNT, LNUM - RESULT, 0, -1
+        PRE = TRAINUI%TOSTR(LCOUNT + RESULT)%
+        PRE_1 = TRAINUI%TOSTR(LCOUNT)%
+        STR:PRE = %STR:PRE_1%
+    NEXT
+    FOR LCOUNT, RESULT, 0, -1
+        PRE = TRAINUI%TOSTR(LCOUNT)%
+        STR:PRE = %LOCALS:WNO%
+        WNO += 1
+    NEXT
+
