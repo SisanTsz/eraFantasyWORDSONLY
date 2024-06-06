@@ -3,20 +3,22 @@
     #DIMS MAIN_UI
     ALIGNMENT LEFT
     FLAG:MEMO_LINE = 0
-    FOR LCOUNT, 1, 5
-        IF CON_UI(1,1,LCOUNT) == 1
-            STR:UI = GAL
-        ENDIF
-    NEXT
-    IF STR:UI == "GAL"
+    IF CON_UI(1,1,1) == 1
+        STR:UI = GAL 
+    ;ELSEIF CON_UI(1,1,2) == 1
+        ;STR:UI = INTERACTION
+    ENDIF
         STR:GAMEBUTTON1 = 互动
         STR:GAMEBUTTON2 = 交互
         STR:GAMEBUTTON3 = 查看
         STR:GAMEBUTTON4 = 能力
         STR:GAMEBUTTON5 = 移动
         STR:GAMEBUTTON6 = 系统
+    IF STR:UI == "GAL"
         CALL CALL_FUNCTION("UI_MAIN_CHARACTER_STATUS","GAL_CHARA","UI_GAL","GAL_CHOICE","GAL_BUTTON")
         FLAG:MEMO_LINE = LINECOUNT
+    ELSEIF STR:UI == "INTERACTION"
+        CALL CALL_FUNCTION("UI_MAIN_CHARACTER_STATUS","GAL_CHARA","UI_INTERACTION_SHOP")
     ENDIF
     PRINTFORM %NAME:TARGET%
 
@@ -48,7 +50,7 @@
     FLAG:CHOICE界面 = 0
     CALL TP(MASTER, 1,1,1,1,1,4,0,0,0,0)
     CALL TP(2, 1,1,1,1,1,4,0,0,0,0)
-    CALL UI_TP(1,1,2)
+    CALL UI_TP(1,1,1)
     STR:GALUI10 = 测试字幕
     CALL GAL_PUSH("这是第一句对白`这是第二句对白`这是第三句对白`这是第四句对白")
 

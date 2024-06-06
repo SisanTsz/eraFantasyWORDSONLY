@@ -1,0 +1,28 @@
+﻿@UI_INTERACTION_SHOP
+    #DIM LCOUNT
+    #DIM INUM 
+    #DIM LNUM 
+    #DIMS LOCATION
+    #DIMS PRE
+    LOCATION = ""
+    LNUM = 0
+    INUM = 0
+    IF CONFIRM_LOCATION(1,1,1,1,5) == 1
+        LOCATION = 道具店
+    ENDIF
+    IF LOCATION == "道具店"
+        FOR LCOUNT, 100, 400
+            IF ITEMNAME:LCOUNT != ""
+                PRINTBUTTON @"%LEN_STR(ITEMNAME:LCOUNT, 20)$LEN_STR(TOSTR(ITEMPRICE:LCOUNT))%", LCOUNT
+                INUM += 1
+            ENDIF
+            IF INUM >= 3
+                LNUM += 1
+                PRINTL
+                INUM = 0
+            ENDIF
+        NEXT
+    ENDIF
+    CALL PRINT_LINE(FLAG:GALUI行数-LNUM)
+
+    
