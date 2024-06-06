@@ -29,31 +29,66 @@
 ;互动 
 	;对话（任意,满足要求的都可以选择其一显示）
 		IF 狂乱
-		PRINTFORMW 【作为猫来看……人类的社会真是复杂喵……】
+		PRINTFORMW 【作为猫来看……人类的社会真是复杂喵……规矩好多，还是当一只家猫最好了】
 		or
 		PRINTFORMW 【在主人的身边确实感觉轻松很多喵……无论是气味，还是暖暖的怀抱……都喜欢喵】
 		or
-		PRINTFORMW 【】
+		PRINTFORMW 【太阳充足的时候，正是暖暖和和，适合睡觉的时间喵。雨天？出门毛都要沾湿了，也是在家睡觉的好时间喵。】
 		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
-		PRINTFORMW 【这个给我嘛？谢谢喵！】 
-		PRINTFORMW 喵呜很开心的抱着你给她的东西————一个橡皮老鼠，却没有像以前那样直接玩起来，而是抱在胸口。
-		PRINTFORMW 喵呜的进步很快，似乎很快就能融入人类了。		
-		ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
-		PRINTFORMW 【给我？能……吃？不能喵？】 
-		PRINTFORMW 喵呜很开心的抱着你给她的东西————一个铃铛，然后出乎你意料的咬了一口，发现咬不动后大大的眼睛里反射出了大大的疑惑。
-		PRINTFORMW 喵呜已经逐渐理解了人类的行为，虽然还不太准确。
-		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
-		PRINTFORMW 【喵？】
-		PRINTFORMW 喵呜看着你的礼物————一个玻璃球，扒拉了一下，似乎觉得很好玩，又开始追逐起来。
-		PRINTFORMW 看来还需要教她很多人类的行为呢。
-		ELSE 无陷落
-		PRINTFORMW 【……？】
-		PRINTFORMW 喵呜扒拉着你给她的礼物————一双拖鞋。但她似乎对礼物没兴趣，而是对装拖鞋的纸袋更感兴趣，直接把脑袋钻了进去。
-		PRINTFORMW 猫的习性还很严重，需要进一步的观察吧。	
+		PRINTFORMW 【喜欢吃肉喵！多要多要！】 
 		or
-		;约会聊天（只有约会时候显示）
-		通常
-
+		PRINTFORMW 【】
+		or
+		PRINTFORMW 【】
+		ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+		PRINTFORMW 【】 
+		or
+		PRINTFORMW 
+		or
+		PRINTFORMW 
+		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+		PRINTFORMW 【抱抱~喵~】
+		or
+		PRINTFORMW 【嗅嗅~呼噜~】
+		or
+		PRINTFORMW 【】
+		ELSE 无陷落
+		PRINTFORMW 【喵？】
+		or
+		PRINTFORMW 【咕呜~prpr~】
+		or
+		PRINTFORMW 【呼噜呼噜~】	
+		;约会聊天（以下只有约会时候显示）
+		IF 狂乱
+		PRINTFORMW 【作为猫来看……人类的社会真是复杂喵……规矩好多，还是当一只家猫最好了】
+		or
+		PRINTFORMW 【在主人的身边确实感觉轻松很多喵……无论是气味，还是暖暖的怀抱……都喜欢喵】
+		or
+		PRINTFORMW 【太阳充足的时候，正是暖暖和和，适合睡觉的时间喵。雨天？出门毛都要沾湿了，也是在家睡觉的好时间喵。】
+		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+		PRINTFORMW 【喜欢吃肉喵！多要多要！】 
+		or
+		PRINTFORMW 【】
+		or
+		PRINTFORMW 【】
+		ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+		PRINTFORMW 【】 
+		or
+		PRINTFORMW 
+		or
+		PRINTFORMW 
+		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+		PRINTFORMW 【抱抱~喵~】
+		or
+		PRINTFORMW 【嗅嗅~呼噜~】
+		or
+		PRINTFORMW 【】
+		ELSE 无陷落
+		PRINTFORMW 【喵？】
+		or
+		PRINTFORMW 【咕呜~prpr~】
+		or
+		PRINTFORMW 【呼噜呼噜~】	
 	;抱抱
 		;恋爱线
 		IF 恋慕
@@ -169,17 +204,21 @@
 
 ;约会
 	;约会选择地点后显示
+	IF 有陷落
 		在银行
 		PRINTFORMW 【难得的休息日也不忘来金钱汇聚的地方参观啊，真——了不起呢。】
 		书店
-		PRINTFORMW 【我算是幼年失学，字都认不了太多，书什么的更是看不太懂啦。但是很喜欢听人讲故事……回头给我讲点简单易懂的呗，童话也好。】
+			IF 狂乱
+			PRINTFORMW 【上次买的书？还没看完喵，好难懂喵……】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【书，不喜欢喵……书上面有好多字……】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW 【书，看不懂喵……这里不要吗喵……】
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW 【喵呜……（沮丧）】
+
 		神殿
-			IF 在卢米安
-			PRINTFORMW 【上层大人物总说教会和自己没有什么金钱利益……但谁知道呢。】
-			ELSE IF 在阿克波利
-			PRINTFORMW 【我不算很虔诚的人啦……只希望神祂老人家真的能带领我们前进，直到正确的彼岸。】
-			ELSE 其他
-			PRINTFORMW 【作为当年被救助的无数难民之一，无论如何都应该感谢当年救助了无家可归的人的教士们，至于教会……也姑且感激一下吧。】
+			PRINTFORMW 【很安静的地方喵】
 		道具店
 			IF 在布莱恩
 				IF 初次
@@ -284,6 +323,8 @@
 			PRINTFORMW 【难得的休息日也依然心系工作啊，真——了不起呢。】
 		魔导科学院
 			PRINTFORMW 【明明这么好的花园，却只能看着，学者们还真都那么呆板啊……换我我就都给他摆上烤肉架，无论自己吃还是卖钱都……】
+	ELSE 无陷落
+	PRINTFORMW 【喵？】
 	;牵手
 		IF 恋慕 or 情欲
 		PRINTFORMW 【不要一下子就摸过来啊！给……给你牵就是了……】
