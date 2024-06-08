@@ -28,6 +28,17 @@
 
 ;互动 
 	;对话（任意,满足要求的都可以选择其一显示）
+	;IF 发情中
+		IF 狂乱
+		PRINTFORMW 【主人……发情期来了想要那个……不要让人家说出来嘛……主人坏心眼喵……】
+		ELSEIF  淫欲 or 隶属 or 服从 or 仰慕 or 爱慕 or 献身 or 浸淫 or 情迷 
+		PRINTFORMW 【主人……小穴又痒又湿……快给喵呜大鸡鸡……】
+		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+		PRINTFORMW 【痒喵……那里痒喵……】
+		ELSE 无陷落
+		PRINTFORMW 【喵——喵——】
+	PRINTFORMW 喵呜不停地磨蹭双腿间，裙子下面已经可以看到银色的水滴透过布料，不停地滴下。
+	ELSE
 		IF 狂乱
 		PRINTFORMW 【作为猫来看……人类的社会真是复杂喵……规矩好多，还是当一只家猫最好了】
 		or
@@ -42,16 +53,17 @@
 		PRINTFORMW 【还是不喜欢衣服……磨着身体，有点难受喵……】
 		or
 		PRINTFORMW 【呜哇！别用黄瓜吓我啊喵。】
-		ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+		ELSEIF 
 		PRINTFORMW 【喜欢吃肉喵！多要多要！】
 		or 
 		PRINTFORMW 【主人喝的那个冒气的东西我也能尝一下嘛？谢谢主人！嘶……呜哇好烫！好苦喵！我不要喝啦喵！】
 		or 
 		PRINTFORMW 【来和喵呜聊天吧，只要喵呜知道，什么都会教给主人哦！无论是是抓鸟，还是抓蝴蝶，还是……什么论宇宙……飞行器……不懂啦喵！不要刁难我啦喵！】
 		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
-		PRINTFORMW 【抱抱~喵~】
+		ELSE			
+		PRINTFORMW 【抱抱~温暖，好喜欢喵~】
 		or
-		PRINTFORMW 【嗅嗅~呼噜~】
+		PRINTFORMW 【嗅嗅~喜欢主人的味道~呼噜~】
 		or
 		PRINTFORMW 【哈欠……好困……】
 		ELSE 无陷落
@@ -100,18 +112,22 @@
 			ELSE
 			PRINTFORMW 不容你分说，喵呜撒娇着，直接钻进了你的怀抱里，像是刚出生的小猫一样，不自觉揉按起了你柔软的腹部。
 		;淫乱线
-		ELSEIF 情欲
+		ELSEIF 情欲 or 基础陷落&发情期
 		PRINTFORMW 【主人……痒……蹭蹭……】
 		PRINTFORMW 不容你分说，喵呜直接钻进了你的怀抱里，双腿无意识的夹住你的大腿，不断磨蹭。		
-		ELSEIF 情迷
+		ELSEIF 情迷 or 二级陷落&发情期
 		PRINTFORMW 【主人……味道……喵呜喜欢……】
 		PRINTFORMW 不容你分说，喵呜直接钻进了你的怀抱里，嘴巴含住着你的手指啧啧吮吸起来
-		ELSEIF 淫欲 or 浸淫
+		ELSEIF 淫欲 or 浸淫 or 进阶陷落&发情期
 		PRINTFORMW 【喵呜，下面好痒喵……闻到主人的气味就……】
 		PRINTFORMW 喵呜趴在你的怀里，直接把你的手夹进她的双腿之间，不断蹭弄起来
 		ELSEIF 狂乱
 		PRINTFORMW 【嘿嘿，我来啦喵~咕噜咕噜~】
 		PRINTFORMW 终于学会人类的语言和习俗的喵呜直接冲进了你的怀里，肉肉的脸颊在你胸口磨蹭，两个尖尖的猫耳朵不停戳着你的下巴。
+		ELSEIF 狂乱 & 发情期
+		PRINTFORMW 【抓到你啦，主人……人家已经迫不及待想要吃掉主人啦喵~当然是下面的嘴啦喵~】
+		PRINTFORMW 终于学会人类的语言和习俗的喵呜直接冲进了你的怀里，舌头不断地舔着你的脖颈，乳球也在你的胸前蹭来蹭去。
+		;其他
 		ELSEIF 隶属 or 服从 or 献身 or 奉献
 		PRINTFORMW 你抱起呜喵，手放在了尖尖的猫耳朵之间，揉搓起来。 
 		PRINTFORMW 喵呜虽然没有反抗，但是也不像是很喜欢你的抱抱，只是静静接受了你的抚摸。
@@ -125,8 +141,22 @@
 
 	;拉去隐秘的地方
 	;送礼
-		IF 狂乱
-		PRINTFORMW 【这朵些是给我的吗？嘶哈……好香啊！谢谢主人，我会好好养的！】 
+		IF 狂乱 & 发情期
+		PRINTFORMW 【这个是给我的吗？咦，是要送给我这个嘛喵？】 
+			CASE1 如果有B敏感 or C敏感
+			PRINTFORMW 喵呜三两下就扯开了你送的礼物包装，发现里面竟然是两颗跳蛋
+			CASE2 如果有V敏感
+			PRINTFORMW 喵呜三两下就扯开了你送的礼物包装，发现里面竟然是一根自慰棒			
+			CASE3 如果有A敏感
+			PRINTFORMW 喵呜三两下就扯开了你送的礼物包装，发现里面竟然是一根肛用自慰棒
+			CASE4 如果有U敏感
+			PRINTFORMW 喵呜三两下就扯开了你送的礼物包装，发现里面竟然是一根尿道用自慰棒
+			CASE5 如果是扶她 & 有P敏感
+			PRINTFORMW 喵呜三两下就扯开了你送的礼物包装，发现里面竟然是一根飞机杯
+		PRINTFORMW 【难道是发情期需求太多让主人困扰了喵？对不起啦，虽然忍不住，但我会尽量克制的喵……】
+		PRINTFORMW 喵呜的耳朵耷拉下来，看起来有点可怜。
+		ELSEIF 狂乱
+		PRINTFORMW 【这朵些是给我的吗？嘶哈……好香啊！谢谢主人，我会好好放在花瓶里的！】 
 		PRINTFORMW 喵呜很开心的抱着你给她的东西————一捧鲜花。圆圆的脸蛋埋在花丛中，嘴角勾起甜美的笑容
 		PRINTFORMW 喵呜已经和一个普通人别无二致，无论是行为还是思维————当然前提是要忽略头顶上因为喜悦而抖动的猫耳朵。
 		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
@@ -163,9 +193,28 @@
 
 ;约会
 	;约会选择地点后显示
-	IF 有陷落
+	IF 发情中
+		IF 狂乱
+		PRINTFORMW 【主人把喵呜带出来是想看喵呜出丑喵……但喵呜忍不住了，喵呜现在就想要喵……】
+		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+		PRINTFORMW 【不要逗弄喵呜了……小穴已经受不了了呜呜……主人的精液快点灌进来喵……】
+		ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+		PRINTFORMW 【这里……好疼好痒喵……主人帮帮喵呜……】
+		ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+		PRINTFORMW 【痒喵……痒喵……】	
+		ELSE 无陷落
+		PRINTFORMW 【喵——喵——喵——】
+	PRINTFORMW 喵呜不停地磨蹭双腿间，隐约能听见裙子里面发出了咕叽咕叽粘稠的水声。
+	ELSEIF 有陷落 & 无发情中
 		在银行
-		PRINTFORMW 【	】
+			IF 狂乱
+			PRINTFORMW 【】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW 【冷……】
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW 【】
 		书店
 			IF 狂乱
 			PRINTFORMW 【上次买的书？还没看完喵，好难懂喵……】
@@ -173,9 +222,8 @@
 			PRINTFORMW 【书，不喜欢喵……书上面有好多字……】
 			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
 			PRINTFORMW 【书，看不懂喵……这里不要吗喵……】
-			ELSE 恋慕 or 拜倒 or 奉献 or 情欲 or 无陷落
+			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
 			PRINTFORMW 【喵呜……（沮丧）】
-
 		神殿
 			IF 狂热
 			PRINTFORMW 【很安静的地方喵。】
@@ -196,14 +244,15 @@
 			PRINTFORMW
 			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
 			PRINTFORMW
-			ELSE 无陷落
-			PRINTFORMW
-
 		饭店
-			IF 未陷落 OR 献身 OR 隶属 OR 奉献 OR 服从 or 恋慕 or 情欲
-			PRINTFORMW 【一直以来我要求的，就只有能够填饱肚子这一条，所以一直以来都吃的方便口粮，热量又大，饱腹感又高，不过细想来美味度肯定是不如新鲜现做的啦。所以看你吃什么，我和你吃一样的就行，要是还有肉吃就最好啦。】
-			ELSE 爱慕 OR 情迷 OR 拜倒 OR 浸淫 OR 淫欲 OR 仰慕 OR 狂热
-			PRINTFORMW 【这道菜味道可真好！再多吃几口的话，怕是以后那些方便口粮就再也入不了口了啊。】
+			IF 狂热
+			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW
+			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW
 		公园
 		PRINTFORMW 【】
 		服饰店
@@ -217,7 +266,7 @@
 		魔导科学院
 		PRINTFORMW
 			
-	ELSE 无陷落
+	ELSE 无陷落 & 无发情中
 	PRINTFORMW 【喵？】
 	;牵手
 		IF 恋慕 or 情欲
