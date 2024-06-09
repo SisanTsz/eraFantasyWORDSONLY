@@ -113,16 +113,89 @@
 		隶属 or 服从 or 仰慕 or 狂乱
 		PRINTFORMW 【Boss，有何指示？】	
 	;抱抱
-	;拉去隐秘的地方
+		PRINTFORMW 你张开双臂，把玛雯搂在怀里。	
+			IF 进阶陷落
+			PRINTFORMW 【有时候会想，如果无时无刻不能抱在一起就好了呢。要怎么走路？确实呢……要不学螃蟹横着走？】
+			ELSEIF 二级陷落
+			PRINTFORMW 【Boss的怀抱总是很温柔很温暖呢……】
+			ELSEIF 恋慕 or 情欲
+			PRINTFORMW 【虽然不讨厌……只能抱一下哦……喂别这么使劲啊，轻点轻点。】
+			ELSEIF 狂热
+			PRINTFORMW 【谢谢……光是抱在Boss的怀里，感受到Boss的体温就很幸福了……没错，我很幸福哦，或许就是这一刻最幸福的人了~】
+			ELSEIF 献身 OR 隶属 OR 奉献 OR 服从
+			PRINTFORMW 【好……好吧……】
+			ELSE
+			PRINTFORMW 【和我这种男人婆拥抱……不会是寻找兄弟情的吧？开玩笑的~】
+	;拉去隐秘的地方 （未完成）
 	;送礼
+		IF 进阶陷落
+		PRINTFORMW 【礼物中最重要的是思念对方的心，所以不管是什么，只要有，我就很喜欢了哦。】
+		ELSEIF 二级陷落
+		PRINTFORMW 【虽然很开心……但是我就先装起来了，如果弄坏了就不好了。】
+		ELSEIF 恋慕 or 情欲
+		PRINTFORMW 【谢谢啦。我会珍惜的。】
+		ELSEIF 狂热
+			IF 狂热后初次
+			PRINTFORMW 【这个盒子……是什么？是给我的礼物？谢谢Boss哦~】
+			PRINTFORMW 玛雯急匆匆拆掉包装，然后在天鹅绒包裹的小盒中看到了里面的内容物————一枚戒指。
+			PRINTFORMW 你以为玛雯会开心的跳起来什么的，
+			PRINTFORMW ……没想到的是，玛雯突然大哭起来，
+			PRINTFORMW 周围的人的目光突然都聚集过来，没办法，把她带到了没人打扰的安静地方
+			PRINTFORMW 【抱歉……突然就哭出来了……哭得很大声，吓到你们了吧……】
+			PRINTFORMW 玛雯抹着眼泪，但是脸上却不是悲伤的表情。
+			PRINTFORMW 【我啊，曾经时常在想，像我这样的孤儿，又在商战中伤害了那么多人，是否配得到其他人的爱呢……】
+			PRINTFORMW 【如果我接受了这枚戒指……】
+			PRINTFORMW 【意思是，会和你成为家人……的意思吗？】
+			PRINTFORMW 【然后，去包容我的一切，永远守护在我身边的意思吗？】
+			PRINTFORMW 当然啦，你点点头。
+			PRINTFORMW 【好高兴……活了这么多年，真的第一次这么高兴……】
+			PRINTFORMW 玛雯又开始啜泣起来，把脸埋在你的胸口，过了好久才缓和过来。
+			PRINTFORMW 【可以为我戴上吗？】
+			PRINTFORMW 当然没问题啦，这么回答的你，拿起戒指，戴在了玛雯的无名指上。
+			PRINTFORMW 【从今往后……我们就是家人了……最喜欢Boss了……】
+			ELSE 
+			PRINTFORMW 【谢谢……光是抱在怀里就很幸福了……】
+		ELSEIF 献身 OR 隶属 OR 奉献 OR 服从
+		PRINTFORMW 【这个……我可以接受吗？总之谢谢了。】
+		ELSE
+		PRINTFORMW 【不用勉强的……】
 	;摸头
+		IF 短发
+		PRINTFORMW 你抚摸着玛雯柔顺的短发。
+		ELSE 长发
+		PRINTFORMW 你梳理着玛雯飘逸的长发。
+		IF 进阶陷落
+		PRINTFORMW 【Boss的手很温暖，每次被摸头，都感觉能安定下来呢。】
+		ELSEIF 二级陷落
+		PRINTFORMW 【没有不喜欢啦……喜欢的话，可以多摸摸哦。】
+		ELSEIF 恋慕 or 情欲
+		PRINTFORMW 【好啦……就……让你摸好了……不要把发型摸乱了哦。】
+		ELSEIF 狂热
+		PRINTFORMW 【留了长发之后，时常头发会打结呢……有个人给梳梳就好多啦。】
+		ELSEIF 献身 OR 隶属 OR 奉献 OR 服从
+		PRINTFORMW 【好……好吧……】
+		ELSE
+		PRINTFORMW 【干嘛啦，这样摸头会秃的。】
 	;膝枕
+		IF 进阶陷落
+		PRINTFORMW 【累了的话，就休息一下吧。多睡一会也可以哦。】
+		ELSEIF 二级陷落
+		PRINTFORMW 【偶尔娇惯你一下也没问题吧……】
+		ELSEIF 恋慕 or 情欲
+		PRINTFORMW 【膝盖不会太硬吧……】
+		ELSEIF 狂热
+		PRINTFORMW 【累了吗？来休息一会吧。想听我讲故事？我倒是无所谓了……那就讲讲我是怎么把布莱恩商会】
+		ELSEIF 献身 OR 隶属 OR 奉献 OR 服从
+		PRINTFORMW 【好……好吧……】
+		ELSE
+		PRINTFORMW 【腿会麻的……算了，敢做奇怪的事就打你哦。】
+
 ;性骚扰
 	;摸屁
 		PRINTFORMW 你对着玛雯那不大但是线条感很强的臀部抚摸了上去。
 		IF 没有内裤
 			IF 穿的裤子
-			PRINTFORMW 刚好是一手就可以掌握的大小，但是隔着裤子，似乎没有摸到玛雯的内裤纹路……？
+			PRINTFORMW 刚好是一手就可以掌握的大小，但是隔着裤子，似乎没有摸到玛雯的内裤布料纹路……？
 			ELSE 穿的裙子
 			PRINTFORMW 刚好是一手就可以掌握的大小，但是她的裙下竟然没有穿裙子。
 			PRINTFORMW 隐隐约约能看到银色的粘稠的液体拉丝从她的裙下流出，沾湿了大腿内侧。
@@ -160,9 +233,6 @@
 	;摸脚（未完成）
 	;掀裙子
 	;接吻
-		初吻
-		PRINTFORMW 你捧住她的脸，对准她毫无准备的纯洁双唇，用自己的嘴唇狠狠地蹂躏起来。
-			
 	;摸胸
 	;手指插入
 	;摸菊
