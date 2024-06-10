@@ -1,0 +1,171 @@
+﻿@LOCATION(ARG) ;角色编号
+    #FUNCTIONS
+    #DIMS LNAME
+    LNAME = %LOCATION_NAME(LOCATION_CODE(ARG))%
+    RETURNF LNAME
+    
+@LOCATION_CODE(ARG)
+    #FUNCTIONS
+    #DIM LCOUNT
+    #DIM CNUM
+    #DIMS CODE
+    #DIMS PRE
+    CNUM = ARG
+    CODE =
+    FOR LCOUNT, 1, 11
+        PRE =  位置%TOSTR(LCOUNT)%
+        IF LCOUNT != 10
+            CODE = %CODE%%TOSTR(CFLAG:CNUM:PRE)%.
+        ELSE
+            CODE = %CODE%%TOSTR(CFLAG:CNUM:PRE)%
+        ENDIF
+    NEXT
+    RETURNF CODE
+
+
+@TP(ARG, ARG:1, ARG:2, ARG:3, ARG:4, ARG:5, ARG:6, ARG:7, ARG:8, ARG:9, ARG:10)
+    #DIM CNUM
+    #DIM LCOUNT
+    #DIMS PRE 
+    CNUM = ARG
+    PRE =
+    FOR LCOUNT, 1, 11
+        PRE = 位置%TOSTR(LCOUNT)%
+        IF TOSTR(ARG:LCOUNT) != ""
+            CFLAG:CNUM:PRE = ARG:LCOUNT
+        ELSE
+            CFLAG:CNUM:PRE = 0
+        ENDIF
+    NEXT
+
+@LOCATION_NAME(ARGS)
+    #FUNCTIONS
+    #DIM LCOUNT
+    #DIM CNUM
+    #DIM LNAME
+    SELECTCASE ARGS
+        CASE "0.0.0.0.0.0.0.0.0.0"
+            RETURNF "错误"
+        CASE "1.1.1.1.1.0.0.0.0.0"
+            RETURNF "家"
+        CASE "1.1.1.1.2.0.0.0.0.0"
+            RETURNF "银行"
+        CASE "1.1.1.1.3.0.0.0.0.0"
+            RETURNF "书店"
+        CASE "1.1.1.1.4.0.0.0.0.0"
+            RETURNF "神殿"
+        CASE "1.1.1.1.5.0.0.0.0.0"
+            RETURNF "道具店"
+        CASE "1.1.1.1.6.0.0.0.0.0"
+            RETURNF "服饰店"
+        CASE "1.1.1.1.7.0.0.0.0.0"
+            RETURNF "社会事务管理中心"
+        CASE "1.1.1.1.8.0.0.0.0.0"
+            RETURNF "星际开拓事业管理中心"
+        CASE "1.1.1.1.1.4.0.0.0.0"
+            RETURNF "卧室"
+        CASE "1.1.1.1.1.1.0.0.0.0"
+            RETURNF "客厅"
+        CASE "1.1.1.1.1.2.0.0.0.0"
+            RETURNF "料理间"
+        CASE "1.1.1.1.1.3.0.0.0.0"
+            RETURNF "餐厅"
+        CASE "1.1.1.1.1.4.0.0.0.0"
+            RETURNF "客厅"
+        CASE "1.1.1.1.1.5.0.0.0.0"
+            RETURNF "实验室"
+        CASE "1.1.1.1.1.6.0.0.0.0"
+            RETURNF "研究室"
+        CASE "1.1.1.1.1.7.0.0.0.0"
+            RETURNF "工作坊"
+        CASE "1.1.1.1.1.8.0.0.0.0"
+            RETURNF "调教室"
+        CASE "1.1.1.1.1.9.0.0.0.0"
+            RETURNF "处理间"
+        CASE "1.1.1.1.1.10.0.0.0.0"
+            RETURNF "展示间"
+        CASE "1.1.1.1.1.11.0.0.0.0"
+            RETURNF "浴室"
+        CASE "1.1.1.1.1.12.0.0.0.0"
+            RETURNF "咖啡厅"
+        CASE "1.1.1.1.1.13.0.0.0.0"
+            RETURNF "牧场"
+        CASE "1.1.1.1.1.14.0.0.0.0"
+            RETURNF "风俗店"
+        CASE "1.1.1.1.1.15.0.0.0.0"
+            RETURNF "花园"
+        CASE "1.1.1.1.1.16.0.0.0.0"
+            RETURNF "种植园"
+        CASEELSE
+            RETURNF "错误"
+    ENDSELECT
+
+
+
+@CONFIRM_LOCATION(ARG, ARG:1, ARG:2, ARG:3, ARG:4, ARG:5, ARG:6, ARG:7, ARG:8, ARG:9, ARG:10)
+    #FUNCTION
+    #DIM CNUM
+    #DIM LCOUNT
+    #DIM OUT = 0
+    #DIMS PRE 
+    CNUM = ARG
+    PRE =
+    FOR LCOUNT, 1, 11
+        IF TOSTR(ARG:LCOUNT) != ""
+            PRE = 位置%TOSTR(LCOUNT)%
+            SIF CFLAG:CNUM:PRE != ARG:LCOUNT
+                OUT = 1
+        ENDIF
+    NEXT
+    IF OUT == 1
+        RETURNF 0
+    ELSE
+        RETURNF 1
+    ENDIF
+
+
+@LOCATION_LIST(ARG,ARGS)
+    #DIM CNUM
+    #DIM LNUM
+    #DIM LCOUNT
+    #DIMS CODE
+    #DIMS CODE_1
+    #DIMS PRE
+    #DIMS LIST
+    CNUM = ARG
+    FOR LCOUNT, 10, 0
+        PRE = 位置%TOSTR(LCOUNT)%
+        IF CFLAG:CNUM:PRE != 0
+            LNUM = LCOUNT
+            BREAK
+        ENDIF
+    NEXT
+    PRINTFORML {LNUM}
+    CODE = 
+    LNUM = 7
+    FOR LCOUNT, 1, LNUM
+        PRE = 位置%TOSTR(LCOUNT)%
+        IF LCOUNT != 10
+            CODE = %CODE%%TOSTR(CFLAG:CNUM:PRE)%.
+        ELSE
+            CODE = %CODE%%TOSTR(CFLAG:CNUM:PRE)%
+        ENDIF
+    NEXT
+    
+    PRINTFORML %CODE%
+    PRINTFORML %CODE_1%
+    FOR a, 1, 100
+        CODE_1 = %CODE%%TOSTR(a)%
+        FOR b, 0, (10-LNUM)
+            CODE_1 = %CODE_1%.0
+        NEXT
+        IF LOCATION_NAME(CODE_1) != "错误"
+            PRINTFORM %LOCATION_NAME(CODE_1)%
+            PRINTL 1
+        ELSE
+            ;PRINTFORML %CODE_1%
+        ENDIF
+    NEXT
+    PRINTFORML {LNUM}
+    PRINTFORML %CODE%
+    PRINTFORML %CODE_1%

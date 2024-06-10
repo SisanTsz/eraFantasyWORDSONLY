@@ -1,0 +1,71 @@
+﻿@COM_ABLE9
+    IF FLAG:自机部位 == 1 && FLAG:目标 == MASTER && FLAG:目标部位 == 1 && BASE:MASTER:体力 > 0
+        IF CFLAG:MASTER:Ｍ精液残留 >= 1
+            IF MASTER != FLAG:本机
+                IF COMABLE(MASTER,4) == 1
+                    FLAG:指令可行 = 1
+                    SIF CFLAG:MASTER:Ｍ插入中 == 1
+                        FLAG:指令可行 = 2
+                    SIF CFLAG:MASTER:Ｍ状态 > 0
+                    FLAG:指令可行 = 3
+                ELSE
+                    FLAG:指令可行 = 0
+                ENDIF
+            ELSE
+                FLAG:指令可行 = 1
+                SIF CFLAG:MASTER:Ｍ插入中 == 1
+                    FLAG:指令可行 = 2
+                SIF CFLAG:MASTER:Ｍ状态 > 0
+                    FLAG:指令可行 = 3
+            ENDIF
+        ELSE
+            FLAG:指令可行 = 0
+        ENDIF
+    ENDIF
+
+    
+@COM_KEEP_ABLE9
+    IF BASE:MASTER:体力 > 0
+        FLAG:指令继续可行 = 0
+    ENDIF
+
+@COM_PRE_9
+    #DIM MEMO_SOURCE
+    MEMO_TARGET = CFLAG:MASTER:Ｍ对象
+
+    CALL COM_PRE_COMMON(2, 1, 0,"Ｍ插入中")
+
+    CFLAG:MASTER:Ｐ插入中 = 1
+    CFLAG:MASTER:Ｍ状态 = 2
+    CFLAG:MASTER:Ｍ对象 = FLAG:目标
+    CFLAG:MASTER:Ｍ指令 = 9
+    CFLAG:MASTER:Ｍ接触 = 1
+
+@COM_9
+    PRINTL 吞下精液
+
+    ;消耗
+    SOURCE:MASTER:体力消耗 += 50
+    CFLAG:MASTER:Ｍ精液残留 -= 3
+    SIF CFLAG:MASTER:Ｍ精液残留 < 0
+        CFLAG:MASTER:Ｍ精液残留 = 0
+        
+    ;自机快感
+    SOURCE:MASTER:Ｍ快乐 += SOURCE_ADD(2, 30, 10, 3, 0,"Ｍ技巧")
+
+    ;自机欲求
+    SOURCE:MASTER:欲求 += SOURCE_ADD(1, 110, 10, 3, 0, "Ｍ感觉",)
+
+    ;自机屈服
+    SOURCE:MASTER:屈服 += SOURCE_ADD(1, 70, 10, 3, 0, "Ｍ感觉",)
+
+    ;自机恭顺
+    SOURCE:MASTER:恭顺 += SOURCE_ADD(1, 50, 10, 3, 0, "Ｍ感觉",)
+
+    ;自机耻情
+    SOURCE:MASTER:耻情 += SOURCE_ADD(1, 90, 10, 3, 0, "Ｍ感觉",)
+
+    ;自机不洁
+    SOURCE:MASTER:不洁 += SOURCE_ADD(1, 30, 10, 3, 5, "Ｍ感觉",)
+
+    CALL RESIS(MASTER,100)

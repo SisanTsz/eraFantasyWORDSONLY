@@ -1,0 +1,7 @@
+﻿@UNRINAITON(ARG)
+    #FUNCTION
+    #DIM UTARGET
+    #DIM ULV
+    UTARGET = ARG
+    ULV = ((BASE:UTARGET:尿液 + BASE:UTARGET:膀胱精液 + BASE:UTARGET:膀胱输尿 + BASE:UTARGET:膀胱盐水) / 膀胱容量) * 100
+    RETURNF ULV

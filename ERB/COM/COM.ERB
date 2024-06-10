@@ -1,0 +1,13 @@
+﻿@COM(ARG:1.ARG:2,ARG:3,ARG:4,ARG:5,ARG:6) ;自机,对象,自机部位,对象部位,自机快感,对象快感,自机体力,对象体力)
+    #DIMS MBODY
+    #DIMS TBODY
+    #DIMS PRE
+    M = ARG:1
+    T = ARG:2
+    IF ARG:3 != 0
+        MBODY = %STRNAME:(ARG:3)%
+    ENDIF
+    IF ARG:4 != 0
+        TBODY = %STRNAME:(ARG:4)%
+    ENDIF
+    PRE = %MBODY%快楽

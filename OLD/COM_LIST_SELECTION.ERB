@@ -1,0 +1,17 @@
+﻿@COM_LIST_SELECTION
+    #DIM LCOUNT
+    #DIM COMABLE
+    FOR LCOUNT, 0, 2000
+        IF TRAINNAME:LCOUNT != ""
+            TRYCALLFORM COM_ABLE{LCOUNT}
+            SIF FLAG:指令可行 == 1
+                PRINTBUTTON @" [%TRAINNAME:LCOUNT%]" , LCOUNT
+            IF FLAG:指令可行 == 2
+                SETCOLOR COLOR("浅粉")
+                PRINTBUTTON @" [%TRAINNAME:LCOUNT%]" , LCOUNT
+                RESETCOLOR
+            ENDIF
+            FLAG:指令可行 = 0
+        ENDIF
+    NEXT
+    PRINTBUTTON "[返回]" , 9999

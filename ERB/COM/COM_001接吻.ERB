@@ -1,0 +1,23 @@
+﻿@COM_1(ARG:1,ARG:2)
+    #DIMS WORD
+    WORD = %NAME:(ARG:1)%接吻%NAME:(ARG:2)%
+    CALL TRAIN_PUSH(WORD)
+
+@PRE_COM_1(ARG:1,ARG:2)
+    M = ARG:1
+    T = ARG:2
+    CFLAG:M:Ｍ指令 = 1
+    CFLAG:M:Ｍ对象 = T
+    CFLAG:M:Ｍ占用 = 1
+    CFLAG:T:Ｍ占用 = 1
+
+@COMABLE_1(ARG:1,ARG:2)
+    #FUNCTIONS
+    #DIM COMA
+    M = ARG:1
+    T = ARG:2
+    COMA = 1
+    IF CFLAG:M:Ｍ指令 = 0 || CFLAG:M:Ｍ占用 = 1 || CFLAG:T:Ｍ占用 = 1
+        COMA = 0
+    ENDIF
+    RETURNF COMA

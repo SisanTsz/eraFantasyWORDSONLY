@@ -1,0 +1,99 @@
+﻿@ONCLICK
+    #DIM LCOUNT 
+    #DIMS MAIN_UI
+    #DIMS PRE
+    PRE =
+    INPUT
+    IF STR:UI == "GAL"    
+        SELECTCASE RESULT
+            CASE 1001
+                IF FLAG:主界面Status == 1
+                    FLAG:主界面Status = 0
+                ELSE
+                    FLAG:主界面Status = 1
+                ENDIF
+            CASE 1201 TO 1210
+                CALL UI_TP(1,1,RESULT-1200)
+            CASE 1301 TO 1399
+                TARGET = RESULT - 1300
+            CASE 1401
+                IF FLAG:CHARAPAGE != 0
+                    FLAG:CHARAPAGE -= 1
+                ENDIF
+            CASE 1402
+                IF FLAG:CHARAPAGE != FLAG:MAXCHARAPAGE
+                    FLAG:CHARAPAGE += 1
+                ENDIF
+            CASE 1501
+                FLAG:SELECTEDCHARA1 = -1
+                FLAG:SELECTEDCHARA2 = -1
+                FLAG:SELECTEDTRAINGROUP = 1
+                CALL UI_TRAIN_GROUP_CHANGE
+                CALL UI_TP(1,2)
+        ENDSELECT
+    ELSEIF STR:UI == "TRAIN"
+        SELECTCASE RESULT
+            CASE 2000 TO 2100
+                FLAG:CHARASTATUS = RESULT - 2000
+            CASE 2301
+                IF FLAG:CHARAPAGE != 0
+                    FLAG:CHARAPAGE -= 1
+                ENDIF
+            CASE 2302
+                IF FLAG:CHARAPAGE != FLAG:MAXCHARAPAGE
+                    FLAG:CHARAPAGE += 1
+                ENDIF
+            CASE 2400 TO 2500
+                FLAG:SELECTEDCHARA1 = (RESULT - 2400)
+                PRINTFORM chara{FLAG:SELECTEDCHARA1}
+                CALL UI_TP(1,2,1,1)
+            CASE 2800 TO 2900
+                IF CON_UI(1,2,1,2)
+                    FLAG:SELECTEDCHARA2 = RESULT - 2800
+                    CALL UI_TP(1,2,2)
+                    FLAG:过去的分 = 1
+                ENDIF
+            CASE 2501
+                IF FLAG:CHARAPAGE1 != 0
+                    FLAG:CHARAPAGE1 -= 1
+                ENDIF
+            CASE 2502
+                IF FLAG:CHARAPAGE1 != FLAG:MAXCHARAPAGE1
+                    FLAG:CHARAPAGE1 += 1
+                ENDIF
+            CASE 2601 TO 2620
+                PRE = TRAINGROUP%TOSTR(RESULT - 2600)%
+                FLAG:SELECTEDTRAINGROUP = RESULT - 2600
+                FLAG:SELECTEDTRAINCHOICE = -1
+                CALL UI_TRAIN_GROUP_CHANGE
+            CASE 2701 TO 2710
+                CALL UI_TP
+            CASE 2901
+                IF FLAG:CHARAPAGE2 != 0
+                    FLAG:CHARAPAGE2 -= 1
+                ENDIF
+            CASE 2902
+                IF FLAG:CHARAPAGE2 != FLAG:MAXCHARAPAGE2
+                    FLAG:CHARAPAGE2 += 1
+                ENDIF
+            CASE 1 TO 1500
+                FLAG:SELECTEDTRAINCHOICE = RESULT
+                CALL UI_TP(1,2,1,2)
+        ENDSELECT
+    ENDIF
+    IF FLAG:过去的分 >= 1
+        CALL TIME_PASS
+        FLAG:过去的分 = 0
+    ENDIF
+    CALL UI
+
+
+@CALL_FUNCTION(ARGS:1, ARGS:2, ARGS:3, ARGS:4, ARGS:5, ARGS:6, ARGS:7, ARGS:8, ARGS:9, ARGS:10)
+    #DIM LCOUNT
+    #DIMS PRE
+    PRE = 
+    FOR LCOUNT, 1, 11
+        IF ARGS:LCOUNT != ""
+            CALLFORM %ARGS:LCOUNT%
+        ENDIF
+    NEXT

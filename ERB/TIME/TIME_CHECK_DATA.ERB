@@ -1,0 +1,41 @@
+﻿@TIME_DATA_CHECK
+    #DIM LCOUNT
+    #DIM LCOUNT1
+    #DIMS PRE
+    #DIMS PRE_1
+    #DIMS PRE_2
+    FOR LCOUNT, 0, CHARANUM
+        FOR LCOUNT1, 1, 20
+            IF BASENAME:LCOUNT1 != ""
+                IF BASE:LCOUNT:LCOUNT1 > MAXBASE:LCOUNT:LCOUNT1
+                    BASE:LCOUNT:LCOUNT1 = MAXBASE:LCOUNT:LCOUNT1
+                ENDIF
+            ENDIF
+        NEXT
+    NEXT
+    ;珠子结算
+    FOR LCOUNT, 0, CHARANUM
+        IF SOURCE:LCOUNT:体力消耗 > BASE:LCOUNT:体力
+            CALL TRAIN_ACTIVE_STOP(LCOUNT)
+        ENDIF
+        BASE:LCOUNT:体力 -= SOURCE:LCOUNT:体力消耗
+        SOURCE:LCOUNT:体力消耗 = 0
+    NEXT
+    
+    FOR LCOUNT, 0, CHARANUM
+        FOR LCOUNT1, 1, 11
+            PRE = %STRNAME:LCOUNT1%
+            PRE_1 = %PRE%快楽
+            PRE_2 = 暂得快%PRE%
+            SOURCE:LCOUNT:PRE_2 += SOURCE:LCOUNT:PRE_1
+            SOURCE:LCOUNT:PRE_1 = 0
+        NEXT
+    NEXT
+    FOR LCOUNT, 0, CHARANUM
+        FOR LCOUNT1, 20, 100
+            IF SOURCENAME:LCOUNT1 != ""
+                PALAM:LCOUNT:LCOUNT1 += SOURCE:LCOUNT:LCOUNT1
+                SOURCE:LCOUNT:LCOUNT1 = 0
+            ENDIF
+        NEXT
+    NEXT

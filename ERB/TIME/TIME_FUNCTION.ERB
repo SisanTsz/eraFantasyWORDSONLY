@@ -1,0 +1,145 @@
+﻿@MOUNTH
+    #FUNCTIONS
+    SELECTCASE FLAG:月
+        CASE 1
+            RETURNF "一"
+        CASE 2
+            RETURNF "二"
+        CASE 3
+            RETURNF "三"
+        CASE 4
+            RETURNF "四"
+        CASE 5
+            RETURNF "五"
+        CASE 6
+            RETURNF "六"
+        CASE 7
+            RETURNF "七"
+        CASE 8
+            RETURNF "八"
+        CASE 9
+            RETURNF "九"
+        CASE 10
+            RETURNF "十"
+        CASE 11
+            RETURNF "十一"
+        CASE 12
+            RETURNF "十二"
+    ENDSELECT
+
+@DATE
+    #FUNCTIONS
+    SELECTCASE FLAG:日
+        CASE 1
+            RETURNF "一"
+        CASE 2
+            RETURNF "二"
+        CASE 3
+            RETURNF "三"
+        CASE 4
+            RETURNF "四"
+        CASE 5
+            RETURNF "五"
+        CASE 6
+            RETURNF "六"
+        CASE 7
+            RETURNF "七"
+        CASE 8
+            RETURNF "八"
+        CASE 9
+            RETURNF "九"
+        CASE 10
+            RETURNF "十"
+        CASE 11
+            RETURNF "十一"
+        CASE 12
+            RETURNF "十二"
+        CASE 13
+            RETURNF "十三"
+        CASE 14
+            RETURNF "十四"
+        CASE 15
+            RETURNF "十五"
+        CASE 16
+            RETURNF "十六"
+        CASE 17
+            RETURNF "十七"
+        CASE 18
+            RETURNF "十八"
+        CASE 19
+            RETURNF "十九"
+        CASE 20
+            RETURNF "二十"
+        CASE 21
+            RETURNF "二十一"
+        CASE 22
+            RETURNF "二十二"
+        CASE 23
+            RETURNF "二十三"
+        CASE 24
+            RETURNF "二十四"
+        CASE 25
+            RETURNF "二十五"
+        CASE 26
+            RETURNF "二十六"
+        CASE 27
+            RETURNF "二十七"
+        CASE 28
+            RETURNF "二十八"
+        CASE 29
+            RETURNF "二十九"
+        CASE 30
+            RETURNF "三十"
+        CASE 31
+            RETURNF "三十一"
+    ENDSELECT
+
+@HOUR
+    #FUNCTIONS
+    SELECTCASE FLAG:时
+        CASE 1
+            RETURNF "01"
+        CASE 2
+            RETURNF "02"
+        CASE 3
+            RETURNF "03"
+        CASE 4
+            RETURNF "04"
+        CASE 5
+            RETURNF "05"
+        CASE 6
+            RETURNF "06"
+        CASE 7
+            RETURNF "07"
+        CASE 8
+            RETURNF "08"
+        CASE 9
+            RETURNF "09"
+        CASE 10 TO 24
+            RETURNF TOSTR(FLAG:时)
+    ENDSELECT
+
+@MINUTE
+    #FUNCTIONS
+    SELECTCASE FLAG:分
+        CASE 1
+            RETURNF "01"
+        CASE 2
+            RETURNF "02"
+        CASE 3
+            RETURNF "03"
+        CASE 4
+            RETURNF "04"
+        CASE 5
+            RETURNF "05"
+        CASE 6
+            RETURNF "06"
+        CASE 7
+            RETURNF "07"
+        CASE 8
+            RETURNF "08"
+        CASE 9
+            RETURNF "09"
+        CASE 10 TO 60
+            RETURNF TOSTR(FLAG:分)
+    ENDSELECT
