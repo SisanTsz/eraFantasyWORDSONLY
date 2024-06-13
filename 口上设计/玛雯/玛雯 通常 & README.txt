@@ -194,8 +194,11 @@
 
 ;性骚扰（未完成）
 	;摸屁
-		PRINTFORMW 你对着玛雯那不大但是线条感很强的臀部抚摸了上去。
-		IF 没有内裤
+		PRINTFORMW 你对着玛雯那线条感很强的臀部抚摸了上去。
+		IF 只穿着围裙
+			PRINTFORMW 玛雯浑身只穿着围裙，俨然一副新妻的样子
+			PRINTFORMW 难道这就是传说中的裸体围裙？
+		ELSE 没有内裤
 			IF 穿的裤子
 			PRINTFORMW 刚好是一手就可以掌握的大小，但是隔着裤子，似乎没有摸到玛雯的内裤布料纹路……？
 			ELSE 穿的裙子
@@ -204,26 +207,40 @@
 		ELSE 有内裤
 		PRINTFORMW 刚好是一手就可以掌握的大小，因为有内裤绷紧所以有弹弹的肉感，摸起来手感还不错。
 		PRINTW
-		IF 恋慕 or 献身 or 情欲 or 隶属 or 奉献 or 服从
-			IF 恋慕
-			PRINTFORMW 【呀……你做什么呢……】
-			ELSEIF 献身 or 奉献
-			PRINTFORMW 【一会……现在不要……】
-			ELSEIF 情欲
-			PRINTFORMW 【……想摸的话，一会去床上摸怎么样？】
-			ELSE 隶属 or 服从
-			PRINTFORMW 【唔……您……自重】
-		PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
+		IF 狂乱
+			IF 只穿着围裙 && 不在约会
+				PRINTFORMW 【是想先吃饭呢，还是先洗澡呢，还是先吃我呢……看来答案已经很明显了~】
+				PRINTFORMW 玛雯的脸色通红，像是新嫁人的妻子一般娇羞的回应着。
+			ELSEIF 性欲大于 5000
+				PRINTFORMW 	【揉法也太下流了……喂，不要掰开臀缝啊……】
+				PRINTFORMW 你刚把手放在玛雯的屁股上，臀部就像追寻快感一般跟着撅了起来。
+			ELSE 
+				PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
+				PRINTFORMW 玛雯的臀肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+			PRINTFORMW 淫荡的声音从玛雯的嘴唇间漏出，
+				IF 露出狂
+					PRINTFORMW 玛雯却并没有任何想要压抑的意思，被人发现的背德感不断刺激着她的神经。
+				ELSE
+					PRINTFORMW 玛雯不得不紧紧捂住自己，免得被其他的人听到。
 		ELSEIF  爱慕 or 拜倒 or 仰慕 or 情迷 or 淫欲 or 浸淫
-			IF 爱慕 or 拜倒 or 仰慕 
-			PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
-			ELSE 情迷 or 淫欲 or 浸淫
-			PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
-		PRINTFORMW 虽然话语听起来有些窘迫，但看从她似乎自己都没有察觉出的笑容，
-		PRINTFORMW 以及嘴中愈发粗重的喘气声中可知，	可能她也并不是那么讨厌被你摸。
-		ELSEIF 狂乱
-		PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
-		PRINTFORMW 玛雯的臀肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+			IF S感觉=＜5
+				PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
+			ELSEIF S感觉＞5 && 处女=0
+				PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
+			ELSE
+				PRINTFORMW 【再摸会忍不住的……如果在公开场合就高潮的话……】
+			PRINTFORMW 虽然话语听起来有些窘迫，但看从她似乎自己都没有察觉出的笑容，
+			PRINTFORMW 以及嘴中愈发粗重的喘气声中可知，	可能她也并不是那么讨厌被你摸。
+		ELSEIF 恋慕 or 献身 or 情欲 or 隶属 or 奉献 or 服从
+			IFS感觉大于5 && 恋慕or情欲 && 处女=0
+				PRINTFORMW 【……想摸的话，一会去床上摸怎么样？】
+			S感觉<3 && S感觉=＜5
+				PRINTFORMW 【呀……你做什么呢……】
+			ELSEIF S感觉＞5
+				PRINTFORMW 【一会……现在不要……】
+			ELSE S感觉=<3
+				PRINTFORMW 【唔……您……自重】
+			PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
 		ELSE 无陷落
 			IF 单次
 			PRINTFORMW 【……你想死对不对】
@@ -231,37 +248,44 @@
 			ELSE 连续
 			【啪！】玛雯没有说话，而是直接甩了一巴掌上来。
 		PRINTFORMW 看来你们的关系还需要进一步的提升。
-	;摸腿（未完成）
-	PRINTFORMW 你对着玛雯肉感十足的长腿抚摸了上去。
-		IF 没有丝袜
-			IF 穿的裤子
-			PRINTFORMW 刚好是一手就可以掌握的大小，但是隔着裤子，似乎没有摸到玛雯的内裤布料纹路……？
-			ELSE 穿的裙子
-			PRINTFORMW 刚好是一手就可以掌握的大小，但是她的裙下竟然没有穿裙子。
-			PRINTFORMW 隐隐约约能看到银色的粘稠的液体拉丝从她的裙下流出，沾湿了大腿内侧。
-		ELSE 有内裤
-		PRINTFORMW 刚好是一手就可以掌握的大小，因为有内裤绷紧所以有弹弹的肉感，摸起来手感还不错。
+	;摸腿 
+		PRINTFORMW 你对着玛雯性感的长腿抚摸了上去。
+		IF 没有丝袜 or 有长裤
+			IF 穿的长裤
+				PRINTFORMW 即便是是被裤子包裹，光凭那修长的比例和裤管下隐约可见的柔美线条，和都让人忍不住想要上前抚摸一番。
+			ELSE 穿的裙子 or 短裤 or 下体没穿
+				PRINTFORMW 露出的光腿看起来没有一点汗毛，应该是出门前就刮过，虽然嘴上不承认，但爱美的天性可不会轻易改变。
+					IF A润滑+V润滑 > 3000
+					PRINTFORMW 隐隐约约能看到银色的粘稠的液体拉丝从她的裙下流出，沾湿了大腿内侧。
+		ELSE 是丝袜 && 没有长裤
+		PRINTFORMW 被丝袜包裹的有大腿，布料塑造起肉体的紧绷感，让腿型显得更加修长得体。
 		PRINTW
-		IF 恋慕 or 献身 or 情欲 or 隶属 or 奉献 or 服从
-			IF 恋慕
-			PRINTFORMW 【呀……你做什么呢……】
-			ELSEIF 献身 or 奉献
-			PRINTFORMW 【一会……现在不要……】
-			ELSEIF 情欲
-			PRINTFORMW 【……想摸的话，一会去床上摸怎么样？】
-			ELSE 隶属 or 服从
-			PRINTFORMW 【唔……您……自重】
-		PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
-		ELSEIF  爱慕 or 拜倒 or 仰慕 or 情迷 or 淫欲 or 浸淫
-			IF 爱慕 or 拜倒 or 仰慕 
-			PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
-			ELSE 情迷 or 淫欲 or 浸淫
-			PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
-		PRINTFORMW 虽然话语听起来有些窘迫，但看从她似乎自己都没有察觉出的笑容，
-		PRINTFORMW 以及嘴中愈发粗重的喘气声中可知，	可能她也并不是那么讨厌被你摸。
-		ELSEIF 狂乱
+		IF 狂乱
 		PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
-		PRINTFORMW 玛雯的臀肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+		PRINTFORMW 玛雯的腿肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+		ELSEIF  爱慕 or 拜倒 or 仰慕 or 情迷 or 淫欲 or 浸淫
+			IF S感觉=＜5
+				PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
+			ELSEIF S感觉＞5 && 处女=0
+				PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
+			ELSEIF 黑色丝袜
+				PRINTFORMW 【黑色丝袜感觉不错哦，感觉还挺正经的。】
+			ELSEIF 短裙 && 裸腿
+				PRINTFORMW 【那些女人为什么能够这么穿啊……内裤都直接露出来了啊？！】
+			ELSE
+				PRINTFORMW 【再摸会忍不住的……如果在公开场合就高潮的话……】
+			PRINTFORMW 虽然话语听起来有些窘迫，但看从她似乎自己都没有察觉出的笑容，
+			PRINTFORMW 以及嘴中愈发粗重的喘气声中可知，	可能她也并不是那么讨厌被你摸。
+		ELSEIF 恋慕 or 献身 or 情欲 or 隶属 or 奉献 or 服从
+			IFS感觉大于5 && 恋慕or情欲 && 处女=0
+				PRINTFORMW 【……想摸的话，一会去床上摸怎么样？】
+			S感觉<3 && S感觉=＜5
+				PRINTFORMW 【呀……你做什么呢……】
+			ELSEIF S感觉＞5
+				PRINTFORMW 【一会……现在不要……】
+			ELSE S感觉=<3
+				PRINTFORMW 【唔……您……自重】
+			PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
 		ELSE 无陷落
 			IF 单次
 			PRINTFORMW 【……你想死对不对】
@@ -270,9 +294,107 @@
 			【啪！】玛雯没有说话，而是直接甩了一巴掌上来。
 		PRINTFORMW 看来你们的关系还需要进一步的提升。
 	;摸脚（未完成）
+		IF 有鞋
+			PRINTFORMW 你轻轻摘下玛雯的鞋子，然后捧起玉足揉按起来
+		ELSEIF 没有鞋 && 有袜子
+			PRINTFORMW 你捧起玛雯套着【袜子名】的嫩足，揉按起来
+		ELSE 没有鞋没有袜子
+			PRINTFORMW 你捧起玛雯光洁的裸足，
+			IF 没有丝袜
+				IF 穿的裤子
+					PRINTFORMW 是被裤管包裹的修长大腿，
+				ELSE 穿的裙子
+					PRINTFORMW 露出的光腿看起来没有一点汗毛，应该是出门前就刮过，虽然嘴上不承认，但爱美的天性可不会轻易改变。
+				PRINTFORMW 隐隐约约能看到银色的粘稠的液体拉丝从她的裙下流出，沾湿了大腿内侧。
+			ELSE 是丝袜
+			PRINTFORMW 被丝袜包裹的有大腿，布料塑造起肉体的紧绷感，让腿型显得更加修长得体
+			PRINTW
+		IF 狂乱
+		PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
+		PRINTFORMW 玛雯的腿肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+		ELSEIF  爱慕 or 拜倒 or 仰慕 or 情迷 or 淫欲 or 浸淫
+			IF S感觉=＜5
+				PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
+			ELSEIF S感觉＞5 && 处女=0
+				PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
+			ELSE
+				PRINTFORMW 【再摸会忍不住的……如果在公开场合就高潮的话……】
+			PRINTFORMW 虽然话语听起来有些窘迫，但看从她似乎自己都没有察觉出的笑容，
+			PRINTFORMW 以及嘴中愈发粗重的喘气声中可知，	可能她也并不是那么讨厌被你摸。
+		ELSEIF 恋慕 or 献身 or 情欲 or 隶属 or 奉献 or 服从
+			IFS感觉大于5 && 恋慕or情欲 && 处女=0
+				PRINTFORMW 【……想摸的话，一会去床上摸怎么样？】
+			S感觉<3 && S感觉=＜5
+				PRINTFORMW 【呀……你做什么呢……】
+			ELSEIF S感觉＞5
+				PRINTFORMW 【一会……现在不要……】
+			ELSE S感觉=<3
+				PRINTFORMW 【唔……您……自重】
+			PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
+		ELSE 无陷落
+			IF 单次
+			PRINTFORMW 【……你想死对不对】
+			PRINTFORMW 玛雯捏紧了拳头，在你的眼前晃了晃，看来是相当生气。
+			ELSE 连续
+			【啪！】玛雯没有说话，而是直接甩了一巴掌上来。
+		PRINTFORMW 看来你们的关系还需要进一步的提升。
 	;掀裙子（未完成）
 	;接吻（未完成）
 	;摸胸（未完成）
+		PRINTFORMW 你对着玛雯那不大但是线条感很强的臀部抚摸了上去。
+		IF 只穿着围裙
+			PRINTFORMW 玛雯浑身只穿着围裙，俨然一副新妻的样子
+			PRINTFORMW 难道这就是传说中的裸体围裙？
+		ELSE 没有胸罩
+			IF 穿的裤子
+			PRINTFORMW 刚好是一手就可以掌握的大小，但是隔着裤子，似乎没有摸到玛雯的内裤布料纹路……？
+			ELSE 穿的裙子
+			PRINTFORMW 刚好是一手就可以掌握的大小，但是她的裙下竟然没有穿裙子。
+			PRINTFORMW 隐隐约约能看到银色的粘稠的液体拉丝从她的裙下流出，沾湿了大腿内侧。
+		ELSE 有内裤
+		PRINTFORMW 刚好是一手就可以掌握的大小，因为有内裤绷紧所以有弹弹的肉感，摸起来手感还不错。
+		PRINTW
+		IF 狂乱
+			IF 只穿着围裙 && 不在约会
+				PRINTFORMW 【是想先吃饭呢，还是先洗澡呢，还是先吃我呢……看来答案已经很明显了~】
+				PRINTFORMW 玛雯的脸色通红，像是新嫁人的妻子一般娇羞的回应着。
+			ELSEIF 性欲大于 5000
+				PRINTFORMW 	【揉法也太下流了……喂，不要掰开臀缝啊……】
+				PRINTFORMW 你刚把手放在玛雯的屁股上，臀部就像追寻快感一般跟着撅了起来。
+			ELSE 
+				PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
+				PRINTFORMW 玛雯的臀肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+			PRINTFORMW 淫荡的声音从玛雯的嘴唇间漏出，
+				IF 露出狂
+					PRINTFORMW 玛雯却并没有任何想要压抑的意思，被人发现的背德感不断刺激着她的神经。
+				ELSE
+					PRINTFORMW 玛雯不得不紧紧捂住自己，免得被其他的人听到。
+		ELSEIF  爱慕 or 拜倒 or 仰慕 or 情迷 or 淫欲 or 浸淫
+			IF S感觉=＜5
+				PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
+			ELSEIF S感觉＞5 && 处女=0
+				PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
+			ELSE
+				PRINTFORMW 【再摸会忍不住的……如果在公开场合就高潮的话……】
+			PRINTFORMW 虽然话语听起来有些窘迫，但看从她似乎自己都没有察觉出的笑容，
+			PRINTFORMW 以及嘴中愈发粗重的喘气声中可知，	可能她也并不是那么讨厌被你摸。
+		ELSEIF 恋慕 or 献身 or 情欲 or 隶属 or 奉献 or 服从
+			IFS感觉大于5 && 恋慕or情欲 && 处女=0
+				PRINTFORMW 【……想摸的话，一会去床上摸怎么样？】
+			S感觉<3 && S感觉=＜5
+				PRINTFORMW 【呀……你做什么呢……】
+			ELSEIF S感觉＞5
+				PRINTFORMW 【一会……现在不要……】
+			ELSE S感觉=<3
+				PRINTFORMW 【唔……您……自重】
+			PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
+		ELSE 无陷落
+			IF 单次
+			PRINTFORMW 【……你想死对不对】
+			PRINTFORMW 玛雯捏紧了拳头，在你的眼前晃了晃，看来是相当生气。
+			ELSE 连续
+			【啪！】玛雯没有说话，而是直接甩了一巴掌上来。
+		PRINTFORMW 看来你们的关系还需要进一步的提升。
 	;手指插入（未完成）
 	;摸菊（未完成）
 	;
