@@ -28,51 +28,51 @@
 
 ;互动 
 	;对话（任意,满足要求的都可以选择其一显示）
-	;IF 发情中
-		IF 狂乱
-		PRINTFORMW 【主人……发情期来了想要那个……不要让人家说出来嘛……主人坏心眼喵……】
-		ELSEIF  淫欲 or 隶属 or 服从 or 仰慕 or 爱慕 or 献身 or 浸淫 or 情迷 
-		PRINTFORMW 【主人……小穴又痒又湿……快给喵呜大鸡鸡……】
-		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
-		PRINTFORMW 【痒喵……那里痒喵……】
-		ELSE 无陷落
-		PRINTFORMW 【喵——喵——】
-	PRINTFORMW 喵呜不停地磨蹭双腿间，裙子下面已经可以看到银色的水滴透过布料，不停地滴下。
-	ELSE
-		IF 狂乱
-		PRINTFORMW 【作为猫来看……人类的社会真是复杂喵……规矩好多，还是当一只家猫最好了】
-		or
-		PRINTFORMW 【在主人的身边确实感觉轻松很多喵……无论是气味，还是暖暖的怀抱……都喜欢喵】
-		or
-		PRINTFORMW 【太阳充足的时候，正是暖暖和和，适合睡觉的时间喵。雨天？出门毛都要沾湿了，也是在家睡觉的好时间喵。】
-		OR
-		PRINTFORMW 【主人的事，如果我能多分担一些就好了喵……要学习的喵？那还是算了喵。】
-		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
-		PRINTFORMW 【能再讲一次那个故事吗？就是把我捡到那天的故事喵！】  
-		or
-		PRINTFORMW 【还是不喜欢衣服……磨着身体，有点难受喵……】
-		or
-		PRINTFORMW 【呜哇！别用黄瓜吓我啊喵。】
-		ELSEIF 
-		PRINTFORMW 【喜欢吃肉喵！多要多要！】
-		or 
-		PRINTFORMW 【主人喝的那个冒气的东西我也能尝一下嘛？谢谢主人！嘶……呜哇好烫！好苦喵！我不要喝啦喵！】
-		or 
-		PRINTFORMW 【来和喵呜聊天吧，只要喵呜知道，什么都会教给主人哦！无论是是抓鸟，还是抓蝴蝶，还是……什么论宇宙……飞行器……不懂啦喵！不要刁难我啦喵！】
-		ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
-		ELSE			
-		PRINTFORMW 【抱抱~温暖，好喜欢喵~】
-		or
-		PRINTFORMW 【嗅嗅~喜欢主人的味道~呼噜~】
-		or
-		PRINTFORMW 【哈欠……好困……】
-		ELSE 无陷落
-		PRINTFORMW 【喵？】
-		or
-		PRINTFORMW 【咕呜~prpr~】
-		or
-		PRINTFORMW 【呼噜呼噜~】	
-		;约会聊天（以下只有约会时候显示）
+		;IF 发情中
+			IF 狂乱
+			PRINTFORMW 【主人……发情期来了想要那个……不要让人家说出来嘛……主人坏心眼喵……】
+			ELSEIF  淫欲 or 隶属 or 服从 or 仰慕 or 爱慕 or 献身 or 浸淫 or 情迷 
+			PRINTFORMW 【主人……小穴又痒又湿……快给喵呜大鸡鸡……】
+			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW 【痒喵……那里痒喵……】
+			ELSE 无陷落
+			PRINTFORMW 【喵——喵——】
+		PRINTFORMW 喵呜不停地磨蹭双腿间，裙子下面已经可以看到银色的水滴透过布料，不停地滴下。
+		ELSE
+			IF 狂乱
+			PRINTFORMW 【作为猫来看……人类的社会真是复杂喵……规矩好多，还是当一只家猫最好了】
+			or
+			PRINTFORMW 【在主人的身边确实感觉轻松很多喵……无论是气味，还是暖暖的怀抱……都喜欢喵】
+			or
+			PRINTFORMW 【太阳充足的时候，正是暖暖和和，适合睡觉的时间喵。雨天？出门毛都要沾湿了，也是在家睡觉的好时间喵。】
+			OR
+			PRINTFORMW 【主人的事，如果我能多分担一些就好了喵……要学习的喵？那还是算了喵。】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【能再讲一次那个故事吗？就是把我捡到那天的故事喵！】  
+			or
+			PRINTFORMW 【还是不喜欢衣服……磨着身体，有点难受喵……】
+			or
+			PRINTFORMW 【呜哇！别用黄瓜吓我啊喵。】
+			ELSEIF 
+			PRINTFORMW 【喜欢吃肉喵！多要多要！】
+			or 
+			PRINTFORMW 【主人喝的那个冒气的东西我也能尝一下嘛？谢谢主人！嘶……呜哇好烫！好苦喵！我不要喝啦喵！】
+			or 
+			PRINTFORMW 【来和喵呜聊天吧，只要喵呜知道，什么都会教给主人哦！无论是是抓鸟，还是抓蝴蝶，还是……什么论宇宙……飞行器……不懂啦喵！不要刁难我啦喵！】
+			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+			ELSE			
+			PRINTFORMW 【抱抱~温暖，好喜欢喵~】
+			or
+			PRINTFORMW 【嗅嗅~喜欢主人的味道~呼噜~】
+			or
+			PRINTFORMW 【哈欠……好困……】
+			ELSE 无陷落
+			PRINTFORMW 【喵？】
+			or
+			PRINTFORMW 【咕呜~prpr~】
+			or
+			PRINTFORMW 【呼噜呼噜~】	
+	;约会聊天（以下只有约会时候显示）
 		IF 狂乱
 		PRINTFORMW 【虽然不喜欢人多的地方，但是和主人牵着手走路，就感觉充满了勇气喵。】
 		or
@@ -82,9 +82,11 @@
 		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
 		PRINTFORMW 【看，主人，那里有鸽子喵！看我抓一只过来……不行吗喵？】 
 		or
-		PRINTFORMW 【腋窝，还有大腿，还有屁股上都痒痒的喵，想要舔舔喵……不能吗喵？】
+		PRINTFORMW 【屁股上都痒痒的喵，好想在地上蹭蹭……不能吗喵？】
 		or
-		PRINTFORMW 【那个飞起来的，是叫气球喵，怎么飞起来的喵？知道啦，不会用爪子的喵！】
+		PRINTFORMW 【那个飞起来的，是叫气球喵，怎么飞起来的喵？我知道的啦，不会用爪子的喵！】
+		OR
+		PRINTFORMW 【主人主人，你猜我今天穿的什么样的内裤？答案是%内裤%啦！咦，不能说嘛？】
 		ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
 		PRINTFORMW 【牵手……嘻嘻……】 
 		or
@@ -113,7 +115,7 @@
 			PRINTFORMW 不容你分说，喵呜撒娇着，直接钻进了你的怀抱里，像是刚出生的小猫一样，不自觉揉按起了你柔软的腹部。
 		;淫乱线
 		ELSEIF 情欲 or 基础陷落&发情期
-		PRINTFORMW 【主人……痒……蹭蹭……】
+		PRINTFORMW 【主人……痒……小穴……】
 		PRINTFORMW 不容你分说，喵呜直接钻进了你的怀抱里，双腿无意识的夹住你的大腿，不断磨蹭。		
 		ELSEIF 情迷 or 二级陷落&发情期
 		PRINTFORMW 【主人……味道……喵呜喜欢……】
@@ -129,7 +131,6 @@
 		PRINTFORMW 终于学会人类的语言和习俗的喵呜直接冲进了你的怀里，舌头不断地舔着你的脖颈，乳球也在你的胸前蹭来蹭去。
 		;其他
 		ELSEIF 隶属 or 服从 or 献身 or 奉献
-		PRINTFORMW 你抱起呜喵，手放在了尖尖的猫耳朵之间，揉搓起来。 
 		PRINTFORMW 喵呜虽然没有反抗，但是也不像是很喜欢你的抱抱，只是静静接受了你的抚摸。
 		ELSE 无陷落
 		PRINTFORMW 你抱起呜喵，慢慢地给她梳起了头发。 
@@ -159,7 +160,7 @@
 		PRINTFORMW 【这朵些是给我的吗？嘶哈……好香啊！谢谢主人，我会好好放在花瓶里的！】 
 		PRINTFORMW 喵呜很开心的抱着你给她的东西————一捧鲜花。圆圆的脸蛋埋在花丛中，嘴角勾起甜美的笑容
 		PRINTFORMW 喵呜已经和一个普通人别无二致，无论是行为还是思维————当然前提是要忽略头顶上因为喜悦而抖动的猫耳朵。
-		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+		ELSEIF 淫欲 or 隶属 or 服从 or 仰慕 
 		PRINTFORMW 【这个给我嘛？谢谢喵！】 
 		PRINTFORMW 喵呜很开心的抱着你给她的东西————一个橡皮老鼠，却没有像以前那样直接玩起来，而是抱在胸口。
 		PRINTFORMW 喵呜的进步很快，似乎很快就能融入人类了。		
@@ -175,9 +176,16 @@
 		PRINTFORMW 【……？】
 		PRINTFORMW 喵呜扒拉着你给她的礼物————一双拖鞋。但她似乎对礼物没兴趣，而是对装拖鞋的纸袋更感兴趣，直接把脑袋钻了进去。
 		PRINTFORMW 猫的习性还很严重，需要进一步的观察吧。
-
 	;摸头
+		PRINTFORMW 你抱起呜喵，手放在了尖尖的猫耳朵之间，揉搓起来。 
+		IF 狂热 && 发情期
+			PRINTFORMW 【别光摸头了喵，主人一定有更喜欢摸的地方吧喵~】
+			PRINTFORMW 喵呜扭动着身体，似乎有别处的空虚，光摸头已经满足不了了。
+		ELSE
+			PRINTFORMW 【呼噜呼噜~】
+			PRINTFORMW 又可爱又乖又黏人的猫猫，什么时候都喜欢被摸摸头。	
 	;膝枕
+		PRINTFORMW
 ;性骚扰
 	;摸屁
 	;摸腿
@@ -193,6 +201,7 @@
 
 ;约会
 	;约会选择地点后显示
+	;发情中和无陷落无发情时候去哪都是一样的口上
 	IF 发情中
 		IF 狂乱
 		PRINTFORMW 【主人把喵呜带出来是想看喵呜出丑喵……但喵呜忍不住了，喵呜现在就想要喵……】
@@ -206,15 +215,15 @@
 		PRINTFORMW 【喵——喵——喵——】
 	PRINTFORMW 喵呜不停地磨蹭双腿间，隐约能听见裙子里面发出了咕叽咕叽粘稠的水声。
 	ELSEIF 有陷落 & 无发情中
-		在银行
+		在银行 or 神殿
 			IF 狂乱
-			PRINTFORMW 【】
+			PRINTFORMW 【不换个有趣的点的地方喵？】
 			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
-			PRINTFORMW 【】
+			PRINTFORMW 【好多人喵。】
 			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
-			PRINTFORMW 【冷……】
+			PRINTFORMW 【感觉冷……】
 			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
-			PRINTFORMW 【】
+			PRINTFORMW 【呜喵？】
 		书店
 			IF 狂乱
 			PRINTFORMW 【上次买的书？还没看完喵，好难懂喵……】
@@ -224,27 +233,61 @@
 			PRINTFORMW 【书，看不懂喵……这里不要吗喵……】
 			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
 			PRINTFORMW 【喵呜……（沮丧）】
-		神殿
-			IF 狂热
-			PRINTFORMW 【很安静的地方喵。】
-			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
-			PRINTFORMW 【】
-			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
-			PRINTFORMW
-			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
-			PRINTFORMW
-			ELSE 无陷落
-			PRINTFORMW
 		道具店
 			IF 狂热
 			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
 			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【要买罐头喵？那种香香的鱼罐头喵？】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW 【这个是什么呀？可以吃吗喵？不能咬嘛喵？】
+			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW 【咪！】
+		饭店
+			IF 狂热
+			PRINTFORMW 【说到吃饭人家肚子就咕噜噜叫了呢喵。可以点鱼排吗？不需要挑刺的那种喵。】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【好香啊，是肉的味道喵！光是闻到口水就要滴出来了喵。多吃蔬菜？知道啦喵。】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW 
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW
+		公园
+			IF 狂热
+			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
 			PRINTFORMW 【】
 			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
 			PRINTFORMW
-			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
 			PRINTFORMW
-		饭店
+		服饰店
+			IF 狂热
+			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW
+		社会事务管理中心
+			IF 狂热
+			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW
+		星际开拓事业管理中心
+			IF 狂热
+			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
+			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
+			PRINTFORMW 【】
+			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
+			PRINTFORMW
+			ELSE 恋慕 or 拜倒 or 奉献 or 情欲
+			PRINTFORMW
+		魔导科学院
 			IF 狂热
 			PRINTFORMW 【需要买东西嘛喵？喵呜帮主人一起提！】
 			ELSEIF 淫欲 or 隶属 or 服从 or 仰慕
@@ -252,20 +295,7 @@
 			ELSEIF 爱慕 or 献身 or 浸淫 or 情迷
 			PRINTFORMW
 			ELSEIF 恋慕 or 拜倒 or 奉献 or 情欲
-			PRINTFORMW
-		公园
-		PRINTFORMW 【】
-		服饰店
-		PRINTFORMW
-		社会事务管理中心
-		PRINTFORMW
-		PRINTFORMW
-		星际开拓事业管理中心
-		PRINTFORMW
-		PRINTFORMW
-		魔导科学院
-		PRINTFORMW
-			
+			PRINTFORMW		
 	ELSE 无陷落 & 无发情中
 	PRINTFORMW 【喵？】
 	;牵手
@@ -281,24 +311,23 @@
 			IF男性
 			PRINTFORMW 【……行吧，也习惯了。】
 			ELSE 女性 or 扶她
-			PRINTFORMW 【之前不知道，你这手保养得还可以嘛……】
-	
-	;休息
-IF 恋慕 or 情欲
-		PRINTFORMW 【不要一下子就摸过来啊！给……给你牵就是了……】
-		ELSEIF 爱慕 OR 情迷 OR 拜倒 OR 浸淫 OR 淫欲 OR 仰慕
-		PRINTFORMW 【之前都没意识到，原来Boss的手是这么大的吗……很温暖……】
-		ELSEIF 狂热
-		PRINTFORMW 【再多握一会嘛。手心好温暖，好怀念……】
-		ELSEIF 献身 OR 隶属 OR 奉献 OR 服从
-		PRINTFORMW 【……牵吧】
-		ELSEIF 初次 && 未陷落
-		PRINTFORMW 【多大人了，还要拉手啊？害不害羞啊。】
-		ELSEIF 未陷落 
-			IF男性
-			PRINTFORMW 【……行吧，也习惯了……大男人走路还需要牵别人的手吗？搞不懂。】
-			ELSE 女性 or 扶她
 			PRINTFORMW 【之前不知道，你这手保养得还可以嘛……】	
+	;休息
+		IF 恋慕 or 情欲
+				PRINTFORMW 【不要一下子就摸过来啊！给……给你牵就是了……】
+				ELSEIF 爱慕 OR 情迷 OR 拜倒 OR 浸淫 OR 淫欲 OR 仰慕
+				PRINTFORMW 【之前都没意识到，原来Boss的手是这么大的吗……很温暖……】
+				ELSEIF 狂热
+				PRINTFORMW 【再多握一会嘛。手心好温暖，好怀念……】
+				ELSEIF 献身 OR 隶属 OR 奉献 OR 服从
+				PRINTFORMW 【……牵吧】
+				ELSEIF 初次 && 未陷落
+				PRINTFORMW 【多大人了，还要拉手啊？害不害羞啊。】
+				ELSEIF 未陷落 
+					IF男性
+					PRINTFORMW 【……行吧，也习惯了……大男人走路还需要牵别人的手吗？搞不懂。】
+					ELSE 女性 or 扶她
+					PRINTFORMW 【之前不知道，你这手保养得还可以嘛……】	
 	;请吃饭
 		;同饭店内容
 		IF 未陷落 OR 献身 OR 隶属 OR 奉献 OR 服从 or 恋慕 or 情欲

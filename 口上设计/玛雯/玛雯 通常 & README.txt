@@ -261,11 +261,11 @@
 		PRINTFORMW 被丝袜包裹的有大腿，布料塑造起肉体的紧绷感，让腿型显得更加修长得体。
 		PRINTW
 		IF 狂乱
-		PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
-		PRINTFORMW 玛雯的腿肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
+			PRINTFORMW 【真没有办法……尽情地摸吧，毕竟消解Boss的性欲，也是我的工作之一呢……】
+			PRINTFORMW 玛雯的腿肉随着你的揉捏颤抖着，嘴唇里也漏出了兴奋的颤音。
 		ELSEIF  爱慕 or 拜倒 or 仰慕 or 情迷 or 淫欲 or 浸淫
 			IF S感觉=＜5
-				PRINTFORMW 【回家再做吧……好吗？会让你揉个够的……】
+				PRINTFORMW 【喜欢摸的话就摸吧。相对的，该工作的时候也要打起精神来。】
 			ELSEIF S感觉＞5 && 处女=0
 				PRINTFORMW 【想要做的话，一会找个私密点的地方做嘛……真是的，我一直都在，不要那么猴急呀……】
 			ELSEIF 黑色丝袜
@@ -284,7 +284,7 @@
 			ELSEIF S感觉＞5
 				PRINTFORMW 【一会……现在不要……】
 			ELSE S感觉=<3
-				PRINTFORMW 【唔……您……自重】
+				PRINTFORMW 【我知道Boss有时候会控制不住自己的手，但是能不能看看场合啊。】
 			PRINTFORMW 玛雯满脸通红，小声呻吟着，忍耐着来自臀部的羞耻感。
 		ELSE 无陷落
 			IF 单次
