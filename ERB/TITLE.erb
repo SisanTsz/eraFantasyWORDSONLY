@@ -18,6 +18,7 @@
     PRINTL 
     CUSTOMDRAWLINE -
     PRINTL
+    ADDDEFCHARA
     PRINTBUTTON "[新游戏]",0
     PRINTL
     PRINTL
@@ -38,3 +39,9 @@
     ELSEIF RESULT == 2
         QUIT
     ENDIF
+
+@TEST
+    
+    REPEAT CHARANUM
+        PRINTFORML %NAME:COUNT%
+    REND
