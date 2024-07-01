@@ -807,19 +807,71 @@
 
 ;陷落特质获得
 		恋慕
-			PRINTFORMW 【不知不觉，就想一直待在Boss身边呢……】
+			PRINTFORMW 【呼……】
+			PRINTFORMW 一天的忙碌后，终于回到家中的玛雯，大大的吐了一口气，像是要把身体中的疲劳全部吐出来一般。
+			PRINTFORMW 【仔细想想，这两天不是跟他逛街，到处吃东西，就是聊天，隔三差五还来点咸猪手……】
+			PRINTFORMW 【这不跟生意什么的完全没有关系嘛！】
+			PRINTFORMW 【虽然……日子倒也过得充实，心情也很开心，不讨厌就是了。】
+			PRINTFORMW 明天还要去哪里呢？
+			PRINTFORMW 玛雯的心中充满了期待。
+
 		爱慕
-			PRINTFORMW 【好想和你就这么拥抱着，24小时不分开……】
+			PRINTFORMW 夜里的玛雯，抱住枕头，辗转反侧，却始终无法坠入梦境。
+			PRINTFORMW 【唉……我究竟是怎么回事……】
+			PRINTFORMW 想着自己是不是已经不务正业很久了，每天只是和那个家伙嘻嘻哈哈，吵吵闹闹，
+			IF MASTER是男性
+				PRINTFORMW 不……不会是喜欢上他了吧……
+			ELSE
+				PRINTFORMW 不……不会是喜欢上她了吧……
+			PRINTFORMW 玛雯烦躁地拿起手机想要转移注意力，却看到了了不知道什么时候，都换成了那个人的照片的待机画面……
+			PRINTFORMW 盯着画面里那个家伙傻乎乎的表情，玛雯的嘴角却不自觉地弯了起来
+			PRINTFORMW 有一个声音，在玛雯心中响起。
+			PRINTFORMW 其实，你早就知道了吧。
+			PRINTFORMW 是呀，其实，我早就知道了呢。
 		拜倒
-			PRINTFORMW 【一切都放心交给我吧……无论是商业，还是爱情，还是……】
+			PRINTFORMW 我做了一个梦，并不是第一次做这个梦了。
+			PRINTFORMW 磅礴的大雨从天而下，浇湿了整片大地，却偏偏透过大篷车帆布顶的漏洞，砸在车里那个头发蓬乱的小女孩身上。
+			PRINTFORMW 周围只剩下父母的财物，好吧，至少一个小时前还是，而现在的他们，为了引开拦路的魔王军残存，已经不知所踪。
+			PRINTFORMW 好冷……妈妈在哪……
+			PRINTFORMW 这样的天气，无论是取暖设备还是光源都不能打开，
+			PRINTFORMW 我只能抱紧自己身上盖着的唯一的保暖遮挡——一条薄毯，把身体再缩一缩。
+			PRINTFORMW 咔嗒，咔嗒，咔嗒。
+			PRINTFORMW 外面想起了马蹄声，会是爸爸妈妈吗？
+			PRINTFORMW 不对，她们并没有马可以骑。
+			PRINTFORMW 那篷车外面的，该不会是……
+			PRINTFORMW 我想找到一把武器用来防身，但是并没有这样的东西，便只好攥紧毯子，等待命运的到来。
+			PRINTFORMW 啪嗒，啪嗒，啪嗒。
+			PRINTFORMW 外面的人似乎下了马，用双脚走了过来。
+			PRINTFORMW 【是这辆篷车吗？】
+			PRINTFORMW 果然不是父母的声音。心脏仿佛提到了嗓子眼，呼吸也开始急促起来。
+			PRINTFORMW 帘子果然被撩开了，探进来一个不认识的人。【这里果然有个小女孩。】
+			PRINTFORMW 【你……你们是谁？】
+			PRINTFORMW 【】
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+
 		献身
-			PRINTFORMW 【……是，我可以的。】
+			;PRINTFORMW 【……是，我可以的。】
 		奉献
-			PRINTFORMW 【为了BOSS您……我什么都会做的……】
+
 		浸淫
-			PRINTFORMW 【那种欲望的处理……我……我也可以……】
+			;PRINTFORMW 
 		情欲
-			PRINTFORMW 【……】（身体不停扭动）
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+
 		情迷
 			PRINTFORMW 【这样的感觉……或许还不错……】
 		淫欲
@@ -831,5 +883,13 @@
 		仰慕
 			PRINTFORMW 【能为您做事，是我的荣幸。】
 		狂乱
-			PRINTFORMW 【嘿嘿，抓住你啦！这可是如家人般充满爱意的拥抱哦！这样，就不会再消失掉吧……对吗？】
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+			PRINTFORMW 
+
 
