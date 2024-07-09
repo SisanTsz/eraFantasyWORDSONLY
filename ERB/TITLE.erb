@@ -1,22 +1,11 @@
 ﻿@SYSTEM_TITLE
     $TITLE_MENU ;标题循环
     ;CLEARLINE LINECOUNT
-    HTML_PRINT "<p align='center'><nobr><img src='TITLE'height='2500'ypos='-2400'></p>"
+    ;HTML_PRINT "<p align='center'><nobr><img src='TITLE'height='2500'ypos='-2400'></p>"
     CUSTOMDRAWLINE -
     ALIGNMENT CENTER
     PRINTL eraFantasy 2023~
     PRINTL QQ:924591480
-    CUSTOMDRAWLINE -
-    PRINTL 策划:
-    PRINTL 紫三思,娜娜莉,艾莉茜尔·沙利西斯,Choke cola,洛九幽
-    PRINTL 程序:
-    PRINTL 紫三思
-    PRINTL 设定:
-    PRINTL 娜娜莉,爱尔温尼娅
-    PRINTL 文案:
-    PRINTL 娜娜莉,127,老湿姬,没什么事我就先挂了,紫三思,北海有愚，其名为昆,团灭发动机,MINKKO,殇齿,scp-1004
-    PRINTL 
-    CUSTOMDRAWLINE -
     PRINTL
     ADDDEFCHARA
     PRINTBUTTON "[新游戏]",0
@@ -26,14 +15,14 @@
     PRINTL
     PRINTL
     PRINTBUTTON "[退出]", 2
+    CALL TEST
+    ALIGNMENT LEFT
+    PRINTL
     INPUT
     IF RESULT == 0
-        RESETDATA
-        ADDDEFCHARA
         BEGIN FIRST
     ELSEIF RESULT == 1
         LOADGLOBAL
-        ALIGNMENT LEFT
         LOADGAME
         GOTO TITLE_MENU ;标题页面循环
     ELSEIF RESULT == 2
@@ -41,7 +30,4 @@
     ENDIF
 
 @TEST
-    
-    REPEAT CHARANUM
-        PRINTFORML %NAME:COUNT%
-    REND
+    UI_MODE = GAL
